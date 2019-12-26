@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "gitnation": {
+      "schemaPath": "schema.graphql",
+      "extensions": {
+        "endpoints": {
+          "default": "https://api-euwest.graphcms.com/v1/ck0qr5av4094801d49206aeqn/master"
+        }
+      }
+    }
+  }
+}

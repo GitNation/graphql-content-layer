@@ -1,0 +1,45 @@
+{
+  "name": "@focus-reactive/gitnation-content",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "storybook": "start-storybook -p 6006 --ci",
+    "update-schema": "graphql get-schema",
+    "test": "jest",
+    "tdd": "jest --watch"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "@focus-reactive/storybook-addon-graphcms": "^1.2.0",
+    "@storybook/addon-actions": "^5.2.8",
+    "@storybook/addon-console": "^1.2.1",
+    "@storybook/addon-links": "^5.2.8",
+    "@storybook/addon-notes": "^5.2.8",
+    "@storybook/addons": "^5.2.8",
+    "@storybook/react": "^5.2.8",
+    "@storybook/storybook-deployer": "^2.8.1",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "dotenv": "^8.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-formatter-pretty": "^1.1.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-graphql": "^3.1.0",
+    "eslint-plugin-jest": "^23.1.1",
+    "graphql-cli": "^3.0.14",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1"
+  },
+  "dependencies": {
+    "graphql-request": "^1.8.2",
+    "react-json-view": "^1.19.1",
+    "remark-html": "^10.0.0",
+    "remark-parse": "^7.0.1",
+    "unified": "^8.4.0"
+  },
+  "license": "MIT"
+}
