@@ -2,13 +2,18 @@
   "name": "@focus-reactive/gitnation-content",
   "version": "1.0.0",
   "private": false,
+  "main": "dist/index.js",
   "scripts": {
+    "start": "yarn dev | yarn storybook | yarn tdd",
+    "dev": "nodemon --exec yarn prepare",
     "storybook": "start-storybook -p 6006 --ci",
     "update-schema": "graphql get-schema",
     "test": "jest",
-    "tdd": "jest --watch"
+    "tdd": "jest --watch",
+    "prepare": "package-prepare"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
@@ -20,6 +25,7 @@
     "@storybook/addons": "^5.2.8",
     "@storybook/react": "^5.2.8",
     "@storybook/storybook-deployer": "^2.8.1",
+    "@usulpro/package-prepare": "^1.2.1",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
@@ -32,6 +38,7 @@
     "eslint-plugin-jest": "^23.1.1",
     "graphql-cli": "^3.0.14",
     "jest": "^24.9.0",
+    "nodemon": "^2.0.2",
     "prettier": "^1.19.1"
   },
   "dependencies": {

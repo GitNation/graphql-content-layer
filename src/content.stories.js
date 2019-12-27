@@ -59,7 +59,7 @@ queriesData.forEach(({ queryPages, getData, story }) => {
 
 module.exports = {
   default: {
-    title: 'JS Nation',
+    title: 'GraphCMS content',
     decorators: [withGraphCMS(credentials)],
   },
   ...allStories,
