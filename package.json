@@ -1,5 +1,5 @@
 {
-  "name": "@focus-reactive/gitnation-content",
+  "name": "@focus-reactive/graphql-content-layer",
   "version": "1.0.0",
   "private": false,
   "main": "dist/index.js",
