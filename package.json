@@ -10,7 +10,9 @@
     "update-schema": "graphql get-schema",
     "test": "jest",
     "tdd": "jest --watch",
-    "prepare": "package-prepare"
+    "prepare": "package-prepare",
+    "prestart": "relative-deps",
+    "-prepare": "yarn relative-deps"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
@@ -48,6 +50,9 @@
     "remark-html": "^10.0.0",
     "remark-parse": "^7.0.1",
     "unified": "^8.4.0"
+  },
+  "relativeDependencies": {
+    "@focus-reactive/storybook-addon-graphcms": "/home/usul/web-projects/FocusOpenSource/storybook-addon-graphcms/"
   },
   "license": "MIT"
 }
