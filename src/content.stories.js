@@ -47,15 +47,17 @@ const TagColor = ({ title, tag }) => (
  */
 const contentPromise = getContent();
 
-queriesData.forEach(({ queryPages, getData, story }) => {
-  allStories[story] = Query({
-    name: story,
-    query: queryPages,
-    vars: { conferenceTitle, eventYear },
-    searchVars: { search: '' },
-    getData,
-  });
-});
+queriesData.forEach(
+  ({ queryPages, getData, story, vars }) => {
+    allStories[story] = Query({
+      name: story,
+      query: queryPages,
+      vars: { conferenceTitle, eventYear, ...vars },
+      searchVars: { search: '' },
+      getData,
+    });
+  },
+);
 
 module.exports = {
   default: {

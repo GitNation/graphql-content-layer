@@ -1,12 +1,12 @@
 const personAvatarFragment = /* GraphQL */ `
   fragment avatarUrl on Speaker {
     avatar {
-      url #(
-        # transformation: {
-        #   image: { resize: { width: 500, height: 500, fit: crop } }
-        #   document: { output: { format: jpg } }
-        # }
-      #)
+      url (
+        transformation: {
+          image: { resize: { width: $avatarWidth, height: $avatarHeight, fit: crop } }
+          document: { output: { format: jpg } }
+        }
+      )
     }
   }
 `;

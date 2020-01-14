@@ -26,15 +26,16 @@ const createClient = ({ endpoint, token }) => {
 const client = createClient(credentials);
 const queriesData = [];
 
-const getQueriesData = content => {
+const getQueriesData = (content, conferenceSettings) => {
   try {
-    const { fetchData, ...data } = content;
+    const { fetchData, selectSettings = () => undefined, ...data } = content;
     if (!Object.keys(data).length) return;
+    data.vars = selectSettings(conferenceSettings);
     queriesData.push(data);
   } catch (err) {}
 };
 
-const getContent = async () => {
+const getContent = async conferenceSettings => {
   const fetchAll = [
     textContent,
     pageContent,
@@ -51,8 +52,13 @@ const getContent = async () => {
     committeeContent,
   ].map(async content => {
     try {
-      getQueriesData(content);
-      return await content.fetchData(client, { conferenceTitle, eventYear });
+      getQueriesData(content, conferenceSettings);
+      const getVarsFromSettings = content.selectSettings || (() => undefined);
+      return await content.fetchData(client, {
+        conferenceTitle,
+        eventYear,
+        ...getVarsFromSettings(conferenceSettings),
+      });
     } catch (err) {
       console.error(err);
     }

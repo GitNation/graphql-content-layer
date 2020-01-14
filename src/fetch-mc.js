@@ -1,8 +1,13 @@
-const { prepareSpeakers } = require('./utils');
+const { prepareSpeakers, trySelectSettings } = require('./utils');
 const { personFragment } = require('./fragments');
 
+const selectSettings = trySelectSettings(s => s.speakerAvatar.dimensions, {
+  avatarWidth: 500,
+  avatarHeight: 500,
+});
+
 const queryPages = /* GraphQL */ `
-  query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
+  query($conferenceTitle: ConferenceTitle, $eventYear: EventYear, $avatarWidth: Int, $avatarHeight: Int) {
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
       id
       status
@@ -36,6 +41,7 @@ const fetchData = async(client, vars) => {
 
 module.exports = {
   fetchData,
+  selectSettings,
   queryPages,
   getData: data => data.conf.year[0].mcs,
   story: 'MCs',
