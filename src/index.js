@@ -76,6 +76,7 @@ const getContent = async conferenceSettings => {
     } catch (err) {}
     return { ...content, ...piece };
   }, {});
+  contentMap.conferenceSettings = conferenceSettings;
   return contentMap;
 };
 

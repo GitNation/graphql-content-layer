@@ -30,7 +30,8 @@ const fetchData = async (client, vars) => {
     .then(res => res.conf.year[0].committee);
 
   const speakers = await prepareSpeakers(
-    data.map(speaker => ({ speaker, decor: true }))
+    data.map(speaker => ({ speaker, decor: true })),
+    {}
   );
 
   return {

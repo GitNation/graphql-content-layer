@@ -1,43 +1,43 @@
 const { markdownToHtml } = require('./markdown');
 
-const tagColors = {
-  NodeJS: {
-    tagBG: '#7AB464',
-    color: '#fff',
-  },
-  WebGL: {
-    tagBG: '#ff7302',
-    color: '#ffffff',
-  },
-  Ecosystem: {
-    tagBG: '#fff40d',
-    color: '#ae4f01',
-  },
-  Language: {
-    tagBG: '#fff40d',
-    color: '#ae4f01',
-  },
-  GraphQL: {
-    tagBG: '#f200fa',
-    color: '#400042',
-  },
-  VueJS: {
-    tagBG: '#4EBA87',
-    color: '#fff',
-  },
-  Performance: {
-    tagBG: '#00ed24',
-    color: '#00410a',
-  },
-  TypeScript: {
-    tagBG: '#61DAFB',
-    color: '#030303',
-  },
-  default: {
-    tagBG: 'black',
-    color: 'white',
-  },
-};
+// const tagColors = {
+//   NodeJS: {
+//     tagBG: '#7AB464',
+//     color: '#fff',
+//   },
+//   WebGL: {
+//     tagBG: '#ff7302',
+//     color: '#ffffff',
+//   },
+//   Ecosystem: {
+//     tagBG: '#fff40d',
+//     color: '#ae4f01',
+//   },
+//   Language: {
+//     tagBG: '#fff40d',
+//     color: '#ae4f01',
+//   },
+//   GraphQL: {
+//     tagBG: '#f200fa',
+//     color: '#400042',
+//   },
+//   VueJS: {
+//     tagBG: '#4EBA87',
+//     color: '#fff',
+//   },
+//   Performance: {
+//     tagBG: '#00ed24',
+//     color: '#00410a',
+//   },
+//   TypeScript: {
+//     tagBG: '#61DAFB',
+//     color: '#030303',
+//   },
+//   default: {
+//     tagBG: 'black',
+//     color: 'white',
+//   },
+// };
 
 const getSocials = speaker => {
   const ICONS = {
@@ -59,12 +59,12 @@ const getSocials = speaker => {
   return socials;
 };
 
-const getLabelColor = label => {
+const getLabelColor = (label, tagColors) => {
   const colors = tagColors[label] || tagColors.default;
   return colors;
 };
 
-const prepareSpeakers = speakers =>
+const prepareSpeakers = (speakers, tagColors) =>
   speakers
     .map(item => ({
       ...item.speaker,
@@ -77,13 +77,14 @@ const prepareSpeakers = speakers =>
       avatar: avatar.url,
       bio: await markdownToHtml(bio),
       socials: getSocials(item),
-      ...getLabelColor(item.label),
+      ...getLabelColor(item.label, tagColors),
     }));
 
 const trySelectSettings = (selector, defaultSettings) => settings => {
   try {
     return selector(settings) || defaultSettings;
-  } catch {
+  } catch (err) {
+    console.warn(err);
     return defaultSettings;
   }
 };
@@ -91,6 +92,6 @@ const trySelectSettings = (selector, defaultSettings) => settings => {
 module.exports = {
   getLabelColor,
   prepareSpeakers,
-  tagColors,
+  // tagColors,
   trySelectSettings,
 };
