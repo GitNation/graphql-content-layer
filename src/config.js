@@ -1,4 +1,5 @@
 if (!process.env.CMS_ENDPOINT || !process.env.CMS_TOKEN) {
+  // eslint-disable-next-line global-require
   require('dotenv').config();
 }
 

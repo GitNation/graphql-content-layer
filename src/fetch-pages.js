@@ -26,7 +26,7 @@ const queryPages = /* GraphQL */ `
   }
 `;
 
-const fetchData = async(client, vars) => {
+const fetchData = async (client, vars) => {
   const data = await client
     .request(queryPages, vars)
     .then(res => res.conf.year[0].pages);
@@ -36,7 +36,7 @@ const fetchData = async(client, vars) => {
       ...obj,
       [item.key]: { ...item, keywords: item.keywords.join(', ') },
     }),
-    {}
+    {},
   );
   return {
     pages,
@@ -49,4 +49,3 @@ module.exports = {
   getData: data => data.conf.year[0].pages,
   story: 'pages',
 };
-

@@ -19,7 +19,7 @@ const queryPages = /* GraphQL */ `
   }
 `;
 
-const fetchData = async(client, vars) => {
+const fetchData = async (client, vars) => {
   const conference = await client
     .request(queryPages, vars)
     .then(res => res.conf)

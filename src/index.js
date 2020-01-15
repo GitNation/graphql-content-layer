@@ -32,7 +32,9 @@ const getQueriesData = (content, conferenceSettings) => {
     if (!Object.keys(data).length) return;
     data.vars = selectSettings(conferenceSettings);
     queriesData.push(data);
-  } catch (err) {}
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 const getContent = async conferenceSettings => {
@@ -61,6 +63,7 @@ const getContent = async conferenceSettings => {
       });
     } catch (err) {
       console.error(err);
+      return undefined;
     }
   });
 
@@ -71,9 +74,12 @@ const getContent = async conferenceSettings => {
       const existentKeys = Object.keys(content);
       const intersectedKeys = newKeys.filter(k => existentKeys.includes(k));
       intersectedKeys.forEach(k => {
+        // eslint-disable-next-line no-param-reassign
         piece[k] = { ...content[k], ...piece[k] };
       });
-    } catch (err) {}
+    } catch (err) {
+      console.error(err);
+    }
     return { ...content, ...piece };
   }, {});
   contentMap.conferenceSettings = conferenceSettings;

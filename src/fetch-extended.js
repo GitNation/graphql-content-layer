@@ -35,17 +35,20 @@ const fetchData = async (client, vars) => {
     data.map(async item => ({
       ...item,
       title: await markdownToHtml(item.title),
-      subtitle: item.subtitle && await markdownToHtml(item.subtitle),
-      description: item.description && await markdownToHtml(item.description),
-      location: item.location && await markdownToHtml(item.location),
-    }))
+      subtitle: item.subtitle && (await markdownToHtml(item.subtitle)),
+      description: item.description && (await markdownToHtml(item.description)),
+      location: item.location && (await markdownToHtml(item.location)),
+    })),
   );
 
   const keys = new Set(allExtendeds.map(e => e.key));
-  const extendeds = [...keys].reduce((obj, key) => ({
-    ...obj,
-    [key]: allExtendeds.filter(e => e.key === key)
-  }), {});
+  const extendeds = [...keys].reduce(
+    (obj, key) => ({
+      ...obj,
+      [key]: allExtendeds.filter(e => e.key === key),
+    }),
+    {},
+  );
 
   return {
     extendeds,

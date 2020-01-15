@@ -7,7 +7,12 @@ const selectSettings = trySelectSettings(s => s.speakerAvatar.dimensions, {
 });
 
 const queryPages = /* GraphQL */ `
-  query($conferenceTitle: ConferenceTitle, $eventYear: EventYear, $avatarWidth: Int, $avatarHeight: Int) {
+  query(
+    $conferenceTitle: ConferenceTitle
+    $eventYear: EventYear
+    $avatarWidth: Int
+    $avatarHeight: Int
+  ) {
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
       id
       status
@@ -21,7 +26,7 @@ const queryPages = /* GraphQL */ `
     }
   }
 
-${personFragment}
+  ${personFragment}
 `;
 
 const fetchData = async (client, vars) => {
@@ -31,7 +36,7 @@ const fetchData = async (client, vars) => {
 
   const speakers = await prepareSpeakers(
     data.map(speaker => ({ speaker, decor: true })),
-    {}
+    {},
   );
 
   return {

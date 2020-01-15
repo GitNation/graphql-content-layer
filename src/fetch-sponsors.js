@@ -59,12 +59,6 @@ const fetchData = async (client, vars) => {
       width,
     }));
 
-  const titlesMap = {
-    Gold: 'Gold',
-    Silver: 'Silver',
-    Partner: 'Partners',
-  };
-
   const sponsors = [
     {
       title: 'Platinum',

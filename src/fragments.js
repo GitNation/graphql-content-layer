@@ -1,9 +1,11 @@
 const personAvatarFragment = /* GraphQL */ `
   fragment avatarUrl on Speaker {
     avatar {
-      url (
+      url(
         transformation: {
-          image: { resize: { width: $avatarWidth, height: $avatarHeight, fit: crop } }
+          image: {
+            resize: { width: $avatarWidth, height: $avatarHeight, fit: crop }
+          }
           document: { output: { format: jpg } }
         }
       )
@@ -14,10 +16,10 @@ const personAvatarFragment = /* GraphQL */ `
 const sponsorLogoFragment = /* GraphQL */ `
   fragment imageUrl on Asset {
     url #(
-      # transformation: {
-      #   image: { resize: { width: 500, height: 500, fit: crop } }
-      #   document: { output: { format: jpg } }
-      # }
+    # transformation: {
+    #   image: { resize: { width: 500, height: 500, fit: crop } }
+    #   document: { output: { format: jpg } }
+    # }
     #)
   }
 `;
@@ -26,10 +28,10 @@ const jobLogoFragment = /* GraphQL */ `
   fragment logo on Job {
     image {
       url #(
-        # transformation: {
-        #   image: { resize: { width: 555 } }
-        #   document: { output: { format: jpg } }
-        # }
+      # transformation: {
+      #   image: { resize: { width: 555 } }
+      #   document: { output: { format: jpg } }
+      # }
       #)
     }
   }

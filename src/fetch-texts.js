@@ -23,17 +23,17 @@ const queryPages = /* GraphQL */ `
   }
 `;
 
-const markdownRender = async (text, style) => {
+const markdownRender = (text, style) => {
   const renders = {
     [renderStyles.None_Default]: t => t,
-    [renderStyles.Standard_Markdown]: async t => await markdownToHtml(t),
+    [renderStyles.Standard_Markdown]: t => markdownToHtml(t),
   };
   const defaultRender = renders[renderStyles.None_Default];
 
-  return await (renders[style] || defaultRender)(text);
-}
+  return (renders[style] || defaultRender)(text);
+};
 
-const fetchData = async(client, vars) => {
+const fetchData = async (client, vars) => {
   const pieceOfTexts = await client
     .request(queryPages, vars)
     .then(res => res.conf.year[0].pieceOfTexts);
@@ -42,7 +42,7 @@ const fetchData = async(client, vars) => {
     pieceOfTexts.map(async item => ({
       ...item,
       html: await markdownRender(item.markdown, item.renderStyle),
-    }))
+    })),
   );
 
   const subContent = pieceOfHTMLs.reduce(
@@ -50,7 +50,7 @@ const fetchData = async(client, vars) => {
       ...obj,
       [item.key]: item.html,
     }),
-    {}
+    {},
   );
   return {
     pagesPieceOfTexts: subContent,

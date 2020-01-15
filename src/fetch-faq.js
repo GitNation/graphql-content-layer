@@ -18,7 +18,6 @@ const queryPages = /* GraphQL */ `
   }
 `;
 
-
 const fetchData = async (client, vars) => {
   const faqsRow = await client
     .request(queryPages, vars)
@@ -29,7 +28,7 @@ const fetchData = async (client, vars) => {
       ...item,
       question: await markdownToHtml(item.question),
       answer: await markdownToHtml(item.answer),
-    }))
+    })),
   );
 
   const categories = [...new Set(faqsItems.map(i => i.category))];

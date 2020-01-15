@@ -1,7 +1,6 @@
 const React = require('react');
 const ReactJson = require('react-json-view').default;
 const {
-  Query,
   QueryParams,
   withGraphCMS,
 } = require('@focus-reactive/storybook-addon-graphcms');
@@ -9,9 +8,6 @@ const { storiesOf } = require('@storybook/react');
 
 const { credentials, conferenceTitle, eventYear } = require('./config');
 const { queriesData, getContent } = require('./index');
-// const { tagColors } = require('./utils');
-
-const allStories = {};
 
 const AwaitForData = ({ content }) => {
   if (!content) return 'Loading data from GraphCMS';
