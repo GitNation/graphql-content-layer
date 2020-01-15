@@ -25,7 +25,7 @@ const queryPages = /* GraphQL */ `
   ${jobLogoFragment}
 `;
 
-const fetchData = async(client, vars) => {
+const fetchData = async (client, vars) => {
   const data = await client
     .request(queryPages, vars)
     .then(res => res.conf.year[0].jobs);

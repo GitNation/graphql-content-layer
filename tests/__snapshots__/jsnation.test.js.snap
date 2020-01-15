@@ -18,6 +18,52 @@ Object {
     "url": "https://jsnation.com",
     "youtubeUrl": "https://www.youtube.com/JSNation",
   },
+  "conferenceSettings": Object {
+    "speakerAvatar": Object {
+      "dimensions": Object {
+        "avatarHeight": 500,
+        "avatarWidth": 500,
+      },
+    },
+    "tagColors": Object {
+      "Ecosystem": Object {
+        "color": "#ae4f01",
+        "tagBG": "#fff40d",
+      },
+      "GraphQL": Object {
+        "color": "#400042",
+        "tagBG": "#f200fa",
+      },
+      "Language": Object {
+        "color": "#ae4f01",
+        "tagBG": "#fff40d",
+      },
+      "NodeJS": Object {
+        "color": "#fff",
+        "tagBG": "#7AB464",
+      },
+      "Performance": Object {
+        "color": "#00410a",
+        "tagBG": "#00ed24",
+      },
+      "TypeScript": Object {
+        "color": "#030303",
+        "tagBG": "#61DAFB",
+      },
+      "VueJS": Object {
+        "color": "#fff",
+        "tagBG": "#4EBA87",
+      },
+      "WebGL": Object {
+        "color": "#ffffff",
+        "tagBG": "#ff7302",
+      },
+      "default": Object {
+        "color": "white",
+        "tagBG": "black",
+      },
+    },
+  },
   "extendeds": Object {
     "community": Array [
       Object {
@@ -345,10 +391,9 @@ The ticket will also state the main date of the conference – June 6, although 
   ],
   "mcs": Array [
     Object {
-      "avatar": "https://media.graphcms.com/6gQUujMTJatYxdKyBWzq",
+      "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/6gQUujMTJatYxdKyBWzq",
       "bio": "<p>Bruce Lawson is freelance web standards and accessibility consultant. He was co-editor of the HTML5.3 specification, one of the inventors of the <picture> element, and was on the committee that drafted the British Standard for commissioning accessible websites. He co-wrote 'Introducing HTML5'. He's previously been deputy CTO of Opera browsers, front-end lead for a large UK legal organisation, a Fortran and mainframe programmer as well as a Bollywood movie extra, a musician, a tarot card reader, tutor to a Thai princess and actor.</p>
 ",
-      "color": "white",
       "company": "Freelance web standards & accessibility consultant, UK",
       "country": "UK",
       "githubUrl": null,
@@ -366,7 +411,6 @@ The ticket will also state the main date of the conference – June 6, although 
           "link": "https://www.brucelawson.co.uk/",
         },
       ],
-      "tagBG": "black",
       "twitterUrl": "https://twitter.com/brucel",
     },
   ],
@@ -513,6 +557,10 @@ The ticket will also state the main date of the conference – June 6, although 
             "title": "Three.js",
           },
           Object {
+            "image": "img/techs_nestjs_inv.png",
+            "title": "NestJS",
+          },
+          Object {
             "_title": "Angular",
             "image": "img/techs_angular.png",
           },
@@ -653,225 +701,77 @@ The ticket will also state the main date of the conference – June 6, although 
   "speakers": Object {
     "committee": Array [
       Object {
-        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/dmOdGDFUReKKjErJbvaf",
-        "bio": "<p>Max is the technical cofounder of Spectrum.chat, the community platform of the future. He also makes styled-components, react-boilerplate, micro-analytics and a bunch of other open source projects and he co-organises the ReactVienna meetup. He loves to travel, to brew rad coffee and to ski beautiful mountains.</p>
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/U3D6ETwEQ7GD8wlJUG5G",
+        "bio": "<p>Joonas Salovaara is a Principal Consultant and team lead at Reaktor Amsterdam. He is an advocate of the meetup scene, where he helps run AmsterdamJS, HelsinkiJS, and React Helsinki. </p>
 ",
-        "color": "white",
-        "company": "GitHub, Austria",
-        "country": "Austria",
-        "decor": true,
-        "githubUrl": "https://github.com/mxstbr",
-        "id": "ck0zj6ytry8s20b71lgpuqves",
-        "name": "Max Stoiber",
-        "socials": Array [
-          Object {
-            "icon": "gh",
-            "link": "https://github.com/mxstbr",
-          },
-          Object {
-            "icon": "tw",
-            "link": "https://twitter.com/mxstbr",
-          },
-        ],
-        "tagBG": "black",
-        "twitterUrl": "https://twitter.com/mxstbr",
-      },
-      Object {
-        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/sDbtalRTKQ7lQXzPARHp",
-        "bio": "<p>Kitze founded <a href=\\"https://reactacademy.io/\\">React Academy</a> to teach React and GraphQL around the world. He's the maker of <a href=\\"https://sizzy.co/\\">Sizzy</a> - the browser for designers and developers. He's documenting his journey <a href=\\"https://youtube.com/kitze\\">on YouTube</a>. He made products like <a href=\\"https://github.com/kitze/JSUI\\">JSUI</a>, <a href=\\"https://twizzy.app/\\">Twizzy</a>, <a href=\\"https://luckyretweet.co/\\">Lucky Retweet</a>, <a href=\\"https://ok-google.io/\\">OK Google</a>, etc.</p>
-",
-        "color": "white",
-        "company": "React Academy, Poland",
-        "country": "Poland",
-        "decor": true,
-        "githubUrl": "https://github.com/kitze",
-        "id": "ck10t71go59pg0b71iw2zrad5",
-        "name": "Kitze",
-        "socials": Array [
-          Object {
-            "icon": "gh",
-            "link": "https://github.com/kitze",
-          },
-          Object {
-            "icon": "tw",
-            "link": "https://twitter.com/thekitze",
-          },
-        ],
-        "tagBG": "black",
-        "twitterUrl": "https://twitter.com/thekitze",
-      },
-      Object {
-        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/4QZV07aFSq6KDPQOeOpm",
-        "bio": "<p>Independent Consultant, engineer and trainer, Google Developer Expert, worldwide speaker and published author. Vladimir works mostly in Web and Mobile fields advocating usage of React, React Native, GraphQL as well serverless architectures and functional languages such as ReasonML. </p>
-",
-        "color": "white",
-        "company": "Independent Consultant, Engineer & Trainer, Israel",
-        "country": "Israel",
-        "decor": true,
-        "githubUrl": "https://github.com/vnovick",
-        "id": "ck1256gqycb970b71ar9x1qwa",
-        "name": "Vladimir Novick",
-        "socials": Array [
-          Object {
-            "icon": "gh",
-            "link": "https://github.com/vnovick",
-          },
-          Object {
-            "icon": "tw",
-            "link": "https://twitter.com/VladimirNovick",
-          },
-        ],
-        "tagBG": "black",
-        "twitterUrl": "https://twitter.com/VladimirNovick",
-      },
-      Object {
-        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/oam2zBTKugCINhuUB16w",
-        "bio": "<p>Naomi works as a Software Development Engineer at Adobe in New York City, where she is the product champion for internationalization (i18n) on her team. Before writing JavaScript full time, Naomi worked teaching English as a foreign language in local classrooms across Asia and West Africa. She is passionate about developing with diversity, inclusion, and internationalization (i18n) in mind, and enjoys hiking and riding bikes on the weekends.</p>
-",
-        "color": "white",
-        "company": "Adobe, USA",
-        "country": "USA",
-        "decor": true,
-        "githubUrl": "https://github.com/naeohmi",
-        "id": "ck1hkj8woq09x0b712ohb7uts",
-        "name": "Naomi Meyer",
-        "socials": Array [
-          Object {
-            "icon": "gh",
-            "link": "https://github.com/naeohmi",
-          },
-          Object {
-            "icon": "tw",
-            "link": "https://twitter.com/nae_ohmi",
-          },
-        ],
-        "tagBG": "black",
-        "twitterUrl": "https://twitter.com/nae_ohmi",
-      },
-      Object {
-        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/8HarhhMS6OPV6qWV9VIY",
-        "bio": "<p>Kent C. Dodds is a world renowned speaker, teacher, and trainer and he's actively involved in the open source community as a maintainer and contributor of hundreds of popular npm packages. Kent is the creator of TestingJavaScript.com and he's an instructor on egghead.io and Frontend Masters. He's also a Google Developer Expert. Kent is happily married and the father of four kids. He likes his family, code, JavaScript, and React.</p>
-",
-        "color": "white",
-        "company": "Trainer, USA",
-        "country": "USA",
-        "decor": true,
-        "githubUrl": "https://github.com/kentcdodds/",
-        "id": "ck1qix0arx7ve0b71dtvp0d32",
-        "name": "Kent C. Dodds",
-        "socials": Array [
-          Object {
-            "icon": "gh",
-            "link": "https://github.com/kentcdodds/",
-          },
-          Object {
-            "icon": "tw",
-            "link": "https://twitter.com/kentcdodds/",
-          },
-        ],
-        "tagBG": "black",
-        "twitterUrl": "https://twitter.com/kentcdodds/",
-      },
-      Object {
-        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/BO8Srr3DTHyqMu1TLqmU",
-        "bio": "<p>I am a Frontend Developer at Futurice and a coach at Codebar Berlin, where I teach people from underrepresented groups in tech about programming and frontend.</p>
-",
-        "color": "white",
-        "company": "Futurice, Germany",
-        "country": "Germany",
-        "decor": true,
-        "githubUrl": "https://github.com/judithhartmann",
-        "id": "ck2pvp3cqf2l90b73d4vvbsxr",
-        "name": "Judith Hartmann",
-        "socials": Array [
-          Object {
-            "icon": "gh",
-            "link": "https://github.com/judithhartmann",
-          },
-          Object {
-            "icon": "tw",
-            "link": "https://twitter.com/hifiserious",
-          },
-        ],
-        "tagBG": "black",
-        "twitterUrl": "https://twitter.com/hifiserious",
-      },
-      Object {
-        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/wMXZaraBQ2yZbNjZec9N",
-        "bio": "<p>Sid builds tools for developers. In the past, he worked on Design Systems at Auth0 and as the frontend architect at Practo. He loves talking about design, performance and open source.</p>
-",
-        "color": "white",
-        "company": "CodeSandbox, Netherlands",
+        "company": "Reaktor, Netherlands",
         "country": "Netherlands",
         "decor": true,
-        "githubUrl": "https://github.com/siddharthkp",
-        "id": "ck30bhsz8gvw80b669dzgs7sk",
-        "name": "Siddharth Kshetrapal",
+        "githubUrl": "https://github.com/sarukuku",
+        "id": "ck5ci3p89gqqv0b20i49qyt1x",
+        "mediumUrl": null,
+        "name": "Joonas Salovaara",
+        "ownSite": null,
         "socials": Array [
           Object {
             "icon": "gh",
-            "link": "https://github.com/siddharthkp",
+            "link": "https://github.com/sarukuku",
           },
           Object {
             "icon": "tw",
-            "link": "https://twitter.com/siddharthkp",
+            "link": "https://twitter.com/JoonasSalovaara",
           },
         ],
-        "tagBG": "black",
-        "twitterUrl": "https://twitter.com/siddharthkp",
+        "twitterUrl": "https://twitter.com/JoonasSalovaara",
       },
       Object {
-        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/jKuRmrHmSRmG4k8KSapq",
-        "bio": "<p>Oleg is an author of JSS and an architect with a focus on scalable web front-end applications. At React Day Berlin Oleg will share the insights on building complex applications with real-world examples.</p>
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/VttgCnjTkanMOLw0OSJJ",
+        "bio": "<p>Kanstantsin is a Software Developer Consultant in Xebia. He is passionate about running, racing cars and JavaScript.</p>
 ",
-        "color": "white",
-        "company": "Webflow, Germany",
-        "country": "Germany",
+        "company": "Xebia, Netherlands",
+        "country": "Netherlands",
         "decor": true,
-        "githubUrl": "https://github.com/kof",
-        "id": "ck30ceva0gz5h0b663i4uxm4n",
-        "name": "Oleg Isonen",
+        "githubUrl": "https://github.com/mrkosima?tab=stars",
+        "id": "ck5ci9esogqzy0b20s1auip8a",
+        "mediumUrl": null,
+        "name": "Kanstantsin Klimashevich",
+        "ownSite": null,
         "socials": Array [
           Object {
             "icon": "gh",
-            "link": "https://github.com/kof",
-          },
-          Object {
-            "icon": "tw",
-            "link": "https://twitter.com/oleg008",
+            "link": "https://github.com/mrkosima?tab=stars",
           },
         ],
-        "tagBG": "black",
-        "twitterUrl": "https://twitter.com/oleg008",
+        "twitterUrl": null,
       },
       Object {
-        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/QlY3D49T5iDadzDF7ZXw",
-        "bio": "<p>Open source fanatic, speaker and trainer. Author of MobX, MobX-State-Tree, Immer and a plethora of smaller packages. On a continuous quest to make programming as natural as possible. React, JavaScript and TypeScript fan. Working at Facebook on dev tooling for mobile developers.</p>
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/wpWwhvX5T5SBZjbfFaSK",
+        "bio": "<p>Aleksandr is a Frontend Developer with 6 years experience. He is a member of JSNation Program Committee and an active member of Saint-Petersburg local meetup scene. He is passionated about games development, visualization and other graphics stuff.</p>
 ",
-        "color": "white",
-        "company": "Facebook, UK",
-        "country": "UK",
+        "company": "Tinkoff.ru, Russia",
+        "country": "Russia",
         "decor": true,
-        "githubUrl": "https://github.com/mweststrate",
-        "id": "ck30crtskgtbl0b3239sszqt4",
-        "name": "Michel Weststrate",
+        "githubUrl": "https://github.com/lekzd",
+        "id": "ck5dlqk56igxf0b20bz4d7n7y",
+        "mediumUrl": null,
+        "name": "Aleksandr Korotaev",
+        "ownSite": null,
         "socials": Array [
           Object {
             "icon": "gh",
-            "link": "https://github.com/mweststrate",
+            "link": "https://github.com/lekzd",
           },
           Object {
             "icon": "tw",
-            "link": "https://twitter.com/mweststrate",
+            "link": "https://twitter.com/mamu_eval",
           },
         ],
-        "tagBG": "black",
-        "twitterUrl": "https://twitter.com/mweststrate",
+        "twitterUrl": "https://twitter.com/mamu_eval",
       },
     ],
     "main": Array [
       Object {
-        "avatar": "https://media.graphcms.com/S46QV4WvTlefyYEg3I0I",
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/S46QV4WvTlefyYEg3I0I",
         "bio": "<p>Head of Developer Experience at Netlify, Vue core team member, and Staff Writer at CSS-Tricks. Sarah is formerly Principal Lead of Emerging Markets, Cloud Advocates at Microsoft and Manager of UX &#x26; Engineering at Trulia/Zillow Group. She’s the author of SVG Animations from O’Reilly and has given Frontend Masters workshops. Sarah is a co-organizer of ConcatenateConf, a free conference for Nigerian and Kenyan developers.</p>
 ",
         "color": "#ae4f01",
@@ -904,7 +804,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/sarah_edo",
       },
       Object {
-        "avatar": "https://media.graphcms.com/4LTWaL5SpOCr2oBbS8rq",
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/4LTWaL5SpOCr2oBbS8rq",
         "bio": "<p>Node.js TSC member, PhD, Technical Director @ NearForm, IoT Expert, Consultant, author of Pino and Fastify. Co-author of the book \\"Node.js Cookbook, Third Edition\\" edited by Packt.</p>
 ",
         "color": "#fff",
@@ -937,8 +837,8 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/matteocollina",
       },
       Object {
-        "avatar": "https://media.graphcms.com/3PwPQYRMRDKMjoQX05Bk",
-        "bio": "<p>Author of Webpack.</p>
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/3PwPQYRMRDKMjoQX05Bk",
+        "bio": "<p>Creator of webpack. Working full time on Open Source. Father of two children. Likes to play board games.</p>
 ",
         "color": "#ae4f01",
         "company": "Webpack, Germany",
@@ -970,7 +870,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/wSokrav",
       },
       Object {
-        "avatar": "https://media.graphcms.com/h7xLULGR2uFiZUbcWyKe",
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/h7xLULGR2uFiZUbcWyKe",
         "bio": "<p>Author of Three.js.</p>
 ",
         "color": "#ffffff",
@@ -1003,7 +903,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/mrdoob",
       },
       Object {
-        "avatar": "https://media.graphcms.com/zXDRIVADSmqdqh9PIRWU",
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/zXDRIVADSmqdqh9PIRWU",
         "bio": "<p>Сreator of request and NodeConf. He was a leader in the io.js project and lead the Node.js Foundation through the merger of io.js and Node.js. He now works at Protocol Labs leading the IPLD project.</p>
 ",
         "color": "#fff",
@@ -1036,7 +936,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/mikeal",
       },
       Object {
-        "avatar": "https://media.graphcms.com/izWu7SWFQwSdP8wBthcK",
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/izWu7SWFQwSdP8wBthcK",
         "bio": "<p>Programmer and artist who works frequently with open-source software, cartography, live coding, and experimental interfaces. She is the developer of Hydra, a platform for live-coding visuals inspired by analog video synthesis. She works with the performance laboratory ATI-erra, creating interactive visuals for dance and theater. She has also created software and interactive installations for CultureHub Art &#x26; Technology Center, el Museo de Bogotá, and Oakland Museum of California. Originally from San Francisco, she currently lives and works in Bogotá, Colombia.</p>
 ",
         "color": "#ffffff",
@@ -1069,7 +969,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/_ojack_",
       },
       Object {
-        "avatar": "https://media.graphcms.com/jyad5bupSCe8c8Qj1uYX",
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/jyad5bupSCe8c8Qj1uYX",
         "bio": "<p>Member and Chairperson of the Node.js Community Committee, and a contributor to multiple Node.js working groups and initiatives focusing on the continued growth and success of the Node.js community. He is a Regular Member of the OpenJS Foundation Cross-Project Council, and a TC39 delegate. He has been contributing to open-source since he was 16.</p>
 ",
         "color": "#fff",
@@ -1102,18 +1002,18 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/bitandbang",
       },
       Object {
-        "avatar": "https://media.graphcms.com/z6YCMqJZRGqLmyPgTbAF",
-        "bio": "<p>Kamil Mysliwiec is a software architect truly passionate about web technologies. Creator of NestJS, Co-Founder of Trilon.io, Google Developer Expert in Web Technologies and Angular, international speaker, trainer, consultant, and open source contributor.</p>
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/9SEIZ7SueIgj7GiUs9Zg",
+        "bio": "<p>Creator of NestJS, Co-Founder of Trilon.io, Google Developer Expert in Web Technologies and Angular, international speaker, trainer, consultant, and open source contributor.</p>
 ",
         "color": "white",
-        "company": "Creator of NestJS | Co-Founder @ Trilon.io, Poland",
+        "company": "NestJS | Trilon.io, Poland",
         "country": "Poland",
         "githubUrl": "https://github.com/kamilmysliwiec",
         "id": "ck42w9tfl8hfx0b73mk2myam3",
         "isNightSpeaker": null,
         "label": "NestJS",
         "mediumUrl": null,
-        "name": "Kamil Mysliewec",
+        "name": "Kamil Mysliwiec",
         "order": null,
         "ownSite": null,
         "socials": Array [
@@ -1131,12 +1031,12 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/kammysliwiec",
       },
       Object {
-        "avatar": "https://media.graphcms.com/0EkXq8vRTK7ZQ4HQFXUQ",
-        "bio": "<p>Originally from France, I have a background in marketing and advertising and started my career as a Digital Producer in agencies in Paris and Sydney. After a couple of years, I decided to follow my passion for technology, quit my job and took a course in Web Development. Over the past few years, I have worked as a Creative Developer at the New York Times in London, a Software Developer / Consultant at ThoughtWorks and am currently a senior front-end developer at Atlassian in Sydney. By day, I help improve a tool called Jira and by night, I tinker with electronics, creative coding and love to bring any of my ideas to life with code.</p>
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/0EkXq8vRTK7ZQ4HQFXUQ",
+        "bio": "<p>Charlie is a front-end developer at Netlify, a Mozilla Tech Speaker and Google Developer Expert in Web Technologies. She is passionate about creative coding and building interactive prototypes mixing science, art and technology. She also spends time giving back to the community by mentoring new developers, contributing to open-source projects, and speaking at conferences. </p>
 ",
         "color": "white",
-        "company": "Atlassian, Australia",
-        "country": "Australia",
+        "company": "Netlify, Netherlands",
+        "country": "Netherlands",
         "githubUrl": "https://github.com/charliegerard",
         "id": "ck444j0qbo0ou0b32nya7r457",
         "isNightSpeaker": null,
@@ -1144,7 +1044,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "mediumUrl": null,
         "name": "Charlie Gerard",
         "order": null,
-        "ownSite": "https://charliegerard.github.io/#",
+        "ownSite": "https://charliegerard.github.io/",
         "socials": Array [
           Object {
             "icon": "gh",
@@ -1156,7 +1056,7 @@ The ticket will also state the main date of the conference – June 6, although 
           },
           Object {
             "icon": "site",
-            "link": "https://charliegerard.github.io/#",
+            "link": "https://charliegerard.github.io/",
           },
         ],
         "status": "PUBLISHED",
@@ -1166,10 +1066,9 @@ The ticket will also state the main date of the conference – June 6, although 
     ],
     "performanceTeam": Array [
       Object {
-        "avatar": "https://media.graphcms.com/dahQDMISFeJOqjrMXKII",
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/dahQDMISFeJOqjrMXKII",
         "bio": "<p>An electronic music and audiovisual group from London, established by producer Jack Driscoll and visual artist Alex Kempton in 2016. The visuals in their show have been created entirely in Javascript using WebGL. Polyop have developed a spectacular audiovisual show set in an alternate universe. The show follows a mysterious demi-god across the polyhedral-plane, inhabited by strange planets, entities and nomad aliens, to the sound of 90’s techno breakbeat and acid performed live on hardware synthesisers and drum machines.</p>
 ",
-        "color": "white",
         "company": "WebGL, React, Web Audio API, and Web MIDI API, UK",
         "country": "UK",
         "decor": true,
@@ -1184,14 +1083,12 @@ The ticket will also state the main date of the conference – June 6, although 
             "link": "https://twitter.com/polyopuk",
           },
         ],
-        "tagBG": "black",
         "twitterUrl": "https://twitter.com/polyopuk",
       },
       Object {
-        "avatar": "https://media.graphcms.com/WzjuPUZSvaWQ9TQlPiHw",
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/WzjuPUZSvaWQ9TQlPiHw",
         "bio": "<p>AliceEffekt is formed by Devine Lu Linvega, a true digital nomad and a polymath working on a series of experimental tools and applications. Devine has created a set of live coding tools for rapid iteration and creation of rythms based on Node.js. His latest creation: ORCA is a full blown text based sequencer with impressive cappabilities and distinct aesthetic that engulfs the user in a textual fashion rarely seen in live performance.</p>
 ",
-        "color": "white",
         "company": "Node.js, Japan",
         "country": "Japan",
         "decor": true,
@@ -1210,7 +1107,6 @@ The ticket will also state the main date of the conference – June 6, although 
             "link": "https://aliceffekt.bandcamp.com/",
           },
         ],
-        "tagBG": "black",
         "twitterUrl": "https://twitter.com/neauoire",
       },
     ],

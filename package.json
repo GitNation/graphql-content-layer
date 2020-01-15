@@ -1,6 +1,6 @@
 {
   "name": "@focus-reactive/graphql-content-layer",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "private": false,
   "main": "dist/index.js",
   "scripts": {
@@ -9,22 +9,18 @@
     "storybook": "start-storybook -p 6006 --ci",
     "update-schema": "graphql get-schema",
     "test": "jest",
+    "test:smoke": "jest tests/smoke.test.js",
     "tdd": "jest --watch",
-    "prepare": "package-prepare"
+    "prepare": "package-prepare",
+    "prestart": "relative-deps",
+    "-prepare": "yarn relative-deps",
+    "update-dependencies": "yarn upgradeInteractive --latest"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
-    "@focus-reactive/storybook-addon-graphcms": "^1.2.0",
-    "@storybook/addon-actions": "^5.2.8",
-    "@storybook/addon-console": "^1.2.1",
-    "@storybook/addon-links": "^5.2.8",
-    "@storybook/addon-notes": "^5.2.8",
-    "@storybook/addons": "^5.2.8",
-    "@storybook/react": "^5.2.8",
-    "@storybook/storybook-deployer": "^2.8.1",
     "@usulpro/package-prepare": "^1.2.1",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^24.9.0",
@@ -32,10 +28,16 @@
     "dotenv": "^8.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^6.9.0",
     "eslint-formatter-pretty": "^1.1.0",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-graphql": "^3.1.0",
+    "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jest": "^23.1.1",
+    "eslint-plugin-json": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
     "graphql-cli": "^3.0.14",
     "jest": "^24.9.0",
     "nodemon": "^2.0.2",
@@ -43,11 +45,26 @@
     "relative-deps": "^0.2.0"
   },
   "dependencies": {
+    "@focus-reactive/storybook-addon-graphcms": "^1.3.0",
+    "@storybook/addon-actions": "^5.2.8",
+    "@storybook/addon-console": "^1.2.1",
+    "@storybook/addon-links": "^5.2.8",
+    "@storybook/addon-notes": "^5.2.8",
+    "@storybook/addons": "^5.2.8",
+    "@storybook/react": "^5.2.8",
+    "@storybook/storybook-deployer": "^2.8.1",
     "graphql-request": "^1.8.2",
+    "react": "^16.12.0",
     "react-json-view": "^1.19.1",
     "remark-html": "^10.0.0",
     "remark-parse": "^7.0.1",
     "unified": "^8.4.0"
+  },
+  "peerDependencies": {
+    "dotenv": "^8.1.0"
+  },
+  "relativeDependencies": {
+    "@focus-reactive/storybook-addon-graphcms": "../../Addons/storybook-graphql-kit-graphcms/"
   },
   "license": "MIT"
 }

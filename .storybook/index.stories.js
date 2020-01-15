@@ -1,3 +1,5 @@
-const stories = require('../src/content.stories');
+const {
+  passConferenceSettings,
+} =require('../src/content.stories');
 
-module.exports = [stories];
+passConferenceSettings({warning: 'settings should come from conferences projects'});

@@ -4,8 +4,16 @@ const ignore = 0;
 
 module.exports = {
   root: true,
-  extends: ['eslint-config-airbnb', 'plugin:jest/recommended', 'prettier'],
-  plugins: ['prettier', 'jest', 'react', 'json'],
+  extends: [
+    'eslint-config-airbnb',
+    'plugin:jsx-a11y/recommended',
+    'plugin:jest/recommended',
+    'plugin:import/warnings',
+    'plugin:json/recommended',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
+  ],
+  plugins: ['jsx-a11y', 'jest', 'react', 'json'],
   parser: 'babel-eslint',
   parserOptions: {
     sourceType: 'module',
@@ -27,10 +35,11 @@ module.exports = {
         tabWidth: 2,
       },
     ],
-    quotes: [warn, 'single', { avoidEscape: true }],
+    // quotes: [warn, 'single', { avoidEscape: true }],
     'arrow-parens': [warn, 'as-needed'],
-    'import/no-unresolved': warn,
     'import/prefer-default-export': ignore,
-    'import/no-extraneous-dependencies': ignore,
+    'react/prop-types': ignore,
+    'react/jsx-filename-extension': ignore,
+    'no-console': ['error', { allow: ['warn', 'error'] }],
   },
 };

@@ -1,8 +1,25 @@
-const { prepareSpeakers } = require('./utils');
+const { prepareSpeakers, trySelectSettings } = require('./utils');
 const { speakerInfoFragment } = require('./fragments');
 
+const selectSettings = trySelectSettings(
+  s => ({
+    ...s.speakerAvatar.dimensions,
+    tagColors: s.tagColors,
+  }),
+  {
+    avatarWidth: 500,
+    avatarHeight: 500,
+    tagColors: {},
+  },
+);
+
 const queryPages = /* GraphQL */ `
-  query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
+  query(
+    $conferenceTitle: ConferenceTitle
+    $eventYear: EventYear
+    $avatarWidth: Int
+    $avatarHeight: Int
+  ) {
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
       id
       status
@@ -20,17 +37,15 @@ const queryPages = /* GraphQL */ `
   ${speakerInfoFragment}
 `;
 
-const fetchData = async (client, vars) => {
-  const data = await client
-    .request(queryPages, vars)
-    .then(res => ({
-      speakers: res.conf.year[0].speakers,
-      openForTalks: res.conf.year[0].openForTalks,
-    }));
+const fetchData = async (client, { tagColors, ...vars }) => {
+  const data = await client.request(queryPages, vars).then(res => ({
+    speakers: res.conf.year[0].speakers,
+    openForTalks: res.conf.year[0].openForTalks,
+  }));
 
   const { openForTalks } = data;
 
-  const speakers = await prepareSpeakers(data.speakers);
+  const speakers = await prepareSpeakers(data.speakers, tagColors);
 
   return {
     speakers: { main: await Promise.all(speakers) },
@@ -40,6 +55,7 @@ const fetchData = async (client, vars) => {
 
 module.exports = {
   fetchData,
+  selectSettings,
   queryPages,
   getData: data => data.conf.year[0].speakers,
   story: 'speakers',

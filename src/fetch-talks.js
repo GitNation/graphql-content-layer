@@ -46,14 +46,14 @@ const byTime = (a, b) => {
   return aTime - bTime;
 };
 
-const fetchData = async(client, vars) => {
+const fetchData = async (client, vars) => {
   const data = await client
     .request(queryPages, vars)
     .then(res => res.conf.year[0].schedule[0]);
 
-    if (!data) {
-      throw new Error('Schedule not set for this event yet');
-    }
+  if (!data) {
+    throw new Error('Schedule not set for this event yet');
+  }
 
   const talks = data.talks
     .map(({ title, description, timeString, track, speaker }) => ({
