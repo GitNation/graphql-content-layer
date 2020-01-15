@@ -9,6 +9,7 @@
     "storybook": "start-storybook -p 6006 --ci",
     "update-schema": "graphql get-schema",
     "test": "jest",
+    "test:smoke": "jest tests/smoke.test.js",
     "tdd": "jest --watch",
     "prepare": "package-prepare",
     "prestart": "relative-deps",
