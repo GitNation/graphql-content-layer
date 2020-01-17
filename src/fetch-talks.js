@@ -47,15 +47,21 @@ const byTime = (a, b) => {
 };
 
 const fetchData = async (client, vars) => {
-  const data = await client
+  const rawData = await client
     .request(queryPages, vars)
-    .then(res => res.conf.year[0].schedule[0]);
+    .then(res => res.conf.year[0].schedule);
 
-  if (!data) {
+  const dataTalks = rawData
+    .map(({ talks }) => talks)
+    .reduce((flatArray, dayTalks) => [...flatArray, ...dayTalks], [])
+
+  if (!dataTalks.length) {
     throw new Error('Schedule not set for this event yet');
   }
 
-  const talks = data.talks
+  const { additionalEvents } = rawData[0];
+
+  const talks = dataTalks
     .map(({ title, description, timeString, track, speaker }) => ({
       title,
       text: description,
@@ -73,7 +79,7 @@ const fetchData = async (client, vars) => {
     }));
 
   const tracks = [...new Set(talks.map(({ track }) => track))]
-    .map(track => data.talks.find(talk => talk.track.name === track).track)
+    .map(track => dataTalks.find(talk => talk.track.name === track).track)
     .sort((a, b) => {
       return +b.isPrimary - +a.isPrimary;
     })
@@ -83,7 +89,7 @@ const fetchData = async (client, vars) => {
     tab: track,
     title: track,
     name: `${10 + ind}`,
-    list: [...data.additionalEvents, ...talks]
+    list: [...additionalEvents, ...talks]
       .filter(event => event.track === track)
       .sort(byTime),
   }));

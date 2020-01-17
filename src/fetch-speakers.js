@@ -29,6 +29,27 @@ const queryPages = /* GraphQL */ `
         openForTalks
         speakers: pieceOfSpeakerInfoes {
           ...speakerInfo
+          activities: speaker {
+            talks(
+              where: {
+                daySchedule: {
+                  conferenceEvent: {
+                    year: $eventYear
+                    conferenceBrand: { title: $conferenceTitle }
+                  }
+                }
+              }
+            ) {
+              title
+              description
+              timeString
+              isLightning
+              track {
+                name
+                isPrimary
+              }
+            }
+          }
         }
       }
     }
