@@ -32,13 +32,20 @@ const prepareSpeakers = (speakers, tagColors) =>
       ...item,
       avatar: item.speaker.avatar || {},
     }))
-    .map(async ({ bio, speaker, avatar, ...item }) => ({
+    .map(async ({ bio, speaker, avatar, activities = {}, ...item }) => ({
       ...item,
       company: `${item.company}, ${item.country}`,
       avatar: avatar.url,
       bio: await markdownToHtml(bio),
       socials: getSocials(item),
       ...getLabelColor(item.label, tagColors),
+      activities: Object.entries(activities).reduce(
+        (all, [key, value]) => ({
+          ...all,
+          ...(value && value.length ? { [key]: value } : undefined),
+        }),
+        {},
+      ),
     }));
 
 const trySelectSettings = (selector, defaultSettings) => settings => {
