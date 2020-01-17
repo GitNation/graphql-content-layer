@@ -53,7 +53,7 @@ const fetchData = async (client, vars) => {
 
   const dataTalks = rawData
     .map(({ talks }) => talks)
-    .reduce((flatArray, dayTalks) => [...flatArray, ...dayTalks], [])
+    .reduce((flatArray, dayTalks) => [...flatArray, ...dayTalks], []);
 
   if (!dataTalks.length) {
     throw new Error('Schedule not set for this event yet');
@@ -66,7 +66,7 @@ const fetchData = async (client, vars) => {
       title,
       text: description,
       time: timeString,
-      track: track.name,
+      track: track && track.name,
       name: speaker.name,
       place: `${speaker.company}, ${speaker.country}`,
       pieceOfSpeakerInfoes: speaker.pieceOfSpeakerInfoes[0] || {},
@@ -79,7 +79,11 @@ const fetchData = async (client, vars) => {
     }));
 
   const tracks = [...new Set(talks.map(({ track }) => track))]
-    .map(track => dataTalks.find(talk => talk.track.name === track).track)
+    .map(track =>
+      dataTalks.find(talk => talk.track && talk.track.name === track),
+    )
+    .filter(Boolean)
+    .map(({ track }) => track)
     .sort((a, b) => {
       return +b.isPrimary - +a.isPrimary;
     })
@@ -94,9 +98,17 @@ const fetchData = async (client, vars) => {
       .sort(byTime),
   }));
 
+  let scheduleTitle = 'Schedule';
+
+  if (schedule.length === 1) {
+    schedule[0].list = talks.map(talk => ({ ...talk, time: null }));
+    scheduleTitle = 'Talks';
+  }
+
   schedule[0].active = true;
 
   return {
+    scheduleTitle,
     schedule,
     tracks,
     talks,
