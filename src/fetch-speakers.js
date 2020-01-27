@@ -27,7 +27,7 @@ const queryPages = /* GraphQL */ `
         id
         status
         openForTalks
-        speakers: pieceOfSpeakerInfoes {
+        speakers: pieceOfSpeakerInfoes(orderBy: order_DESC) {
           ...speakerInfo
           activities: speaker {
             talks(
