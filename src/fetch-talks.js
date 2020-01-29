@@ -59,7 +59,7 @@ const fetchData = async (client, vars) => {
     throw new Error('Schedule not set for this event yet');
   }
 
-  const { additionalEvents } = rawData[0];
+  const additionalEvents = rawData[0].additionalEvents || [];
 
   const talks = dataTalks
     .map(({ title, description, timeString, track, speaker }) => ({
