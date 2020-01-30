@@ -28,11 +28,17 @@ const queryPages = /* GraphQL */ `
             id
             status
             title
+            toc
+            startingTime
+            duration
             description
             prerequisites
             content
             additionalInfo
             level
+            location
+            slogan
+            code
             speaker {
               name
               info: pieceOfSpeakerInfoes(
@@ -46,6 +52,9 @@ const queryPages = /* GraphQL */ `
                 ...speakerInfo
               }
             }
+            trainers {
+              ...person
+            }
           }
         }
       }
@@ -54,6 +63,11 @@ const queryPages = /* GraphQL */ `
 
   ${speakerInfoFragment}
 `;
+
+const createTrainersTitle = (trainers, fallback) => {
+  if (!trainers) return null;
+  return trainers.map(({ name }) => name).join(', ') || fallback;
+};
 
 const fetchData = async (client, vars) => {
   const data = await client
@@ -66,6 +80,7 @@ const fetchData = async (client, vars) => {
       ...day.workshops.map(ws => ({
         ...ws,
         trainer: ws.speaker.name,
+        trainersTitle: createTrainersTitle(ws.trainers, ws.speaker.name),
         ...(day.additionalEvents &&
           day.additionalEvents.find(({ title }) => title === ws.title)),
       })),
