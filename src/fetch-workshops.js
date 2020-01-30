@@ -112,6 +112,7 @@ const fetchData = async (client, vars) => {
           schedule: createWorkshopSchedule(day.startingTime, ws.duration),
           trainer: ws.speaker.name,
           trainersTitle: createTrainersTitle(ws.trainers, ws.speaker.name),
+          slug: ws.id,
           ...(day.additionalEvents &&
             day.additionalEvents.find(({ title }) => title === ws.title)),
         })),
