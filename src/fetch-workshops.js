@@ -1,6 +1,10 @@
+const dayjs = require('dayjs');
+const customParseFormat = require('dayjs/plugin/customParseFormat');
 const { markdownToHtml } = require('./markdown');
 const { prepareSpeakers, trySelectSettings } = require('./utils');
 const { speakerInfoFragment } = require('./fragments');
+
+dayjs.extend(customParseFormat);
 
 const selectSettings = trySelectSettings(s => s.speakerAvatar.dimensions, {
   avatarWidth: 500,
@@ -25,12 +29,12 @@ const queryPages = /* GraphQL */ `
           status
           additionalEvents
           date
+          startingTime
           workshops {
             id
             status
             title
             toc
-            startingTime
             duration
             description
             prerequisites
@@ -70,8 +74,16 @@ const createTrainersTitle = (trainers, fallback) => {
   return trainers.map(({ name }) => name).join(', ') || fallback;
 };
 
-export const createWorkshopSchedule = (start, duration) => {
-  const startTime = start.padStart(5, '0');
+const createWorkshopSchedule = (start, duration) => {
+  if (!start) return null;
+  if (!duration) return null;
+
+  const startTime = dayjs(start, 'HH:mm');
+  const endTime = startTime.add(duration, 'h');
+  return {
+    starting: startTime.format('H:mm'),
+    ending: endTime.format('H:mm'),
+  };
 };
 
 const fetchData = async (client, vars) => {
@@ -82,15 +94,27 @@ const fetchData = async (client, vars) => {
   const workshops = data.reduce(
     (all, day) => [
       ...all,
-      ...day.workshops.map(ws => ({
-        ...ws,
-        date: day.date,
-        dateString: new Date(day.date).toDateString(),
-        trainer: ws.speaker.name,
-        trainersTitle: createTrainersTitle(ws.trainers, ws.speaker.name),
-        ...(day.additionalEvents &&
-          day.additionalEvents.find(({ title }) => title === ws.title)),
-      })),
+      ...day.workshops
+        .map(({ speaker, trainers, ...ws }) => ({
+          speaker: speaker || {
+            info: [],
+          },
+          trainers: trainers || [],
+          ...ws,
+        }))
+        .map(ws => ({
+          ...ws,
+          date: day.date,
+          dateString: dayjs(day.date)
+            .format('MMMM, D')
+            .trim(),
+          startingTime: day.startingTime,
+          schedule: createWorkshopSchedule(day.startingTime, ws.duration),
+          trainer: ws.speaker.name,
+          trainersTitle: createTrainersTitle(ws.trainers, ws.speaker.name),
+          ...(day.additionalEvents &&
+            day.additionalEvents.find(({ title }) => title === ws.title)),
+        })),
     ],
     [],
   );
@@ -107,9 +131,27 @@ const fetchData = async (client, vars) => {
     })),
   );
 
+  const rawTrainers = allWorkshops
+    .reduce(
+      (list, { speaker, trainers }) => [
+        ...list,
+        speaker.info[0],
+        ...trainers.map(tr => ({ speaker: tr })),
+      ],
+      [],
+    )
+    .filter(Boolean)
+    .filter(({ speaker: { name } }) => !!name);
+
+  const trainersIDs = [
+    ...new Set(rawTrainers.map(({ speaker: { id } }) => id)),
+  ];
+
   const trainers = await Promise.all(
     await prepareSpeakers(
-      allWorkshops.map(ws => ws.speaker.info[0]),
+      trainersIDs.map(id =>
+        rawTrainers.find(trainer => trainer.speaker.id === id),
+      ),
       {},
     ),
   );
