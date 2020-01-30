@@ -217,7 +217,7 @@ Object {
 ",
         },
         Object {
-          "answer": "<p>Yes, it is possible to pay via invoice. Please, send your company details to <a href=\\"hi@amsterdamjs.com\\">hi@amsterdamjs.com</a> and we will issue it for you: </p>
+          "answer": "<p>Yes, it is possible to pay via invoice. Please, send your company details to <a href=\\"mailto:hi@jsnation.com\\">hi@jsnation.com</a> and we will issue it for you: </p>
 <ul>
 <li>company name</li>
 <li>company address</li>
@@ -232,8 +232,8 @@ Object {
         Object {
           "answer": "<p>Please, be attentive with the dates! </p>
 <p>The correct date is indicated in the name of the ticket – example: “Advanced React Workshop (June 4)”.
-The ticket will also state the main date of the conference – June 6, although you might not have bought a ticket to the conference itself – this is how eventbrite works, and we cannot change it unfortunately. Pay attention to what the name of the workshop says. </p>
-<p>If you have doubts – consult the website or email us hi@amsterdamjs.com</p>
+The ticket will also state the main date of the conference – June 5, although you might not have bought a ticket to the conference itself – this is how eventbrite works, and we cannot change it, unfortunately. Pay attention to what the name of the workshop says. </p>
+<p>If you have doubts – consult the website or email us hi@jsnation.com.</p>
 ",
           "category": "Tickets, invoices, refunds",
           "question": "<p>I bought a ticket to workshop, but have another date in my ticket. What is the correct date? </p>
@@ -344,7 +344,7 @@ The ticket will also state the main date of the conference – June 6, although 
 ",
         },
         Object {
-          "answer": "<p>Yes, of course! We’d be happy if you become our info-partner. Please, drop us a line at <a href=\\"hi@amsterdamjs.com\\">hi@amsterdamjs.com</a> and we’ll get back to you with all the information.</p>
+          "answer": "<p>Yes, of course! We’d be happy if you become our info-partner. Please, drop us a line at <a href=\\"mailto:hi@jsnation.com\\">hi@jsnation.com</a> and we’ll get back to you with all the information.</p>
 ",
           "category": "Other questions",
           "question": "<p>We are a community/also a tech conference. Could we collaborate with your conference?</p>
@@ -356,7 +356,7 @@ The ticket will also state the main date of the conference – June 6, although 
     Object {
       "items": Array [
         Object {
-          "answer": "<p>Yes, we can issue an invitation letter to make the process of getting visa easier. Please, send to <a href=\\"hi@amsterdamjs.com\\">hi@amsterdamjs.com</a> the following details according to your travel document, as well as your ticket to the conference:</p>
+          "answer": "<p>Yes, we can issue an invitation letter to make the process of getting visa easier. Please, send to <a href=\\"mailto:hi@jsnation.com\\">hi@jsnation.com</a> the following details according to your travel document, as well as your ticket to the conference:</p>
 <ul>
 <li>First name:</li>
 <li>Last name:</li>
@@ -562,6 +562,9 @@ The ticket will also state the main date of the conference – June 6, although 
         },
         "performance": Object {
           "title": "Last year's JS performances",
+        },
+        "speakers": Object {
+          "title": "First speakers",
         },
         "sponsorsSection": Object {
           "descr": "Looking for a company that cares about developer communities and invests into personal development?<br/> Check out the <a href=\\"/js-jobs\\">job placements from our partners</a>.",
@@ -1668,13 +1671,14 @@ The ticket will also state the main date of the conference – June 6, although 
   ],
   "workshops": Array [
     Object {
-      "additionalInfo": "
-",
+      "additionalInfo": null,
       "code": "ws-svelte",
       "content": Array [
         "Introduction & local setup​",
         "Why Svelte​",
       ],
+      "date": "2020-06-04T00:00:00.000Z",
+      "dateString": "Thu Jun 04 2020",
       "description": "<p>Svelte is a new prominent JS framework exposing “write less do more” philosophy. During this workshop you will get proficiency as a Svelte developer.
 We will be building an app that mimics the famous Q&#x26;A website stackoverflow.com. Will start developing from simple front end components, later we'll connect it to a real running backend and then test it and optimise for production.
 Attending a workshop is the fastest way to acquire a body of knowledge about building web apps with Svelte.
@@ -1685,6 +1689,7 @@ content:</p>
 </ul>
 ",
       "duration": null,
+      "finishingTime": "",
       "id": "ck5y1nxsshol10b66j4uo5g5a",
       "level": "Intermediate",
       "location": null,
@@ -1722,22 +1727,26 @@ content:</p>
       "toc": null,
       "trainer": "Vasilisa Pupkina",
       "trainers": Array [],
+      "trainersTitle": "Vasilisa Pupkina",
     },
     Object {
-      "additionalInfo": "
-",
+      "additionalInfo": null,
       "code": "ws-test",
       "content": Array [
         "Introduction & local setup​",
         "Why Svelte​",
       ],
-      "description": "<p>GraphQL in React applications is more popular than ever but modern clients are often seen as complex and confusing. In this full-day workshop we will be demystifying GraphQL clients and will start writing a basic one from scratch. After this workshop you will not only know how modern GraphQL clients work, but how and why they work the way they do – from sending GraphQL queries to caching their responses. Over the course of the day we will design and build a client whilst integrating it into an existing UI.</p>
-<p>This course is brought to you by the team behind urql, the lightweight and extensible GraphQL client.</p>
+      "date": "2020-06-04T00:00:00.000Z",
+      "dateString": "Thu Jun 04 2020",
+      "description": "<p>GraphQL in React applications is more popular than ever but modern clients are often seen as complex and confusing. In this full-day workshop <strong>we will be demystifying GraphQL clients</strong> and will start writing a basic one from scratch. After this workshop you will not only know how modern GraphQL clients work, but how and why they work the way they do – from sending GraphQL queries <strong>to caching their responses</strong>. Over the course of the day we will design and build a client whilst integrating it into an existing UI.</p>
+<p>This course is brought to you by the team behind <strong>urql</strong>, the lightweight and extensible GraphQL client.</p>
 ",
       "duration": "6",
+      "finishingTime": "",
       "id": "ck5zpbea0kfyw0b20qg0nh6qc",
       "level": "Intermediate Javascript and React developer",
-      "location": "[THT](https://link-to-map)",
+      "location": "<p><a href=\\"https://link-to-map\\">THT</a></p>
+",
       "prerequisites": "Familiarity with GraphQL syntax and experience using a GraphQL client, eg, Apollo, Relay modern.",
       "slogan": null,
       "speaker": Object {
@@ -1768,24 +1777,20 @@ content:</p>
       },
       "startingTime": "9:00",
       "status": "DRAFT",
-      "title": "TEST Advanced GraphQL: Build Your Own GraphQL Client",
-      "toc": "- React hooks API
-
-- **Networking**
-- - Making queries and fetching data
-- - Mutations
-- - Subscriptions
-
-- - **Error handling**
-- Middleware
-- - Fetch options
-- - Context
-- - Exchanges/Links
-
-- **Caching**
-- - Non-normalised/document caching
-- - Query introspection/transformation
-- - Cache invalidation
+      "title": "Advanced GraphQL: Build Your Own GraphQL Client (Example Workshop description)",
+      "toc": "<ul>
+<li>React hooks API</li>
+<li>Making queries and fetching data</li>
+<li>Mutations</li>
+<li>Subscriptions</li>
+<li><strong>Error handling</strong></li>
+<li>Middleware</li>
+<li>Fetch options</li>
+<li>Context</li>
+<li>Exchanges/Links</li>
+<li><strong>Caching</strong></li>
+<li>Cache invalidation</li>
+</ul>
 ",
       "trainer": "Vasilisa Pupkina",
       "trainers": Array [
@@ -1822,6 +1827,7 @@ Mikhail runs a local ​Svelte meetup group in Amsterdam​.",
           "twitterUrl": null,
         },
       ],
+      "trainersTitle": "Mikhail Kuznetcov, Vasilisa Pupkina",
     },
   ],
 }

@@ -24,6 +24,7 @@ const queryPages = /* GraphQL */ `
           id
           status
           additionalEvents
+          date
           workshops {
             id
             status
@@ -69,6 +70,10 @@ const createTrainersTitle = (trainers, fallback) => {
   return trainers.map(({ name }) => name).join(', ') || fallback;
 };
 
+export const createWorkshopSchedule = (start, duration) => {
+  const startTime = start.padStart(5, '0');
+};
+
 const fetchData = async (client, vars) => {
   const data = await client
     .request(queryPages, vars)
@@ -79,6 +84,8 @@ const fetchData = async (client, vars) => {
       ...all,
       ...day.workshops.map(ws => ({
         ...ws,
+        date: day.date,
+        dateString: new Date(day.date).toDateString(),
         trainer: ws.speaker.name,
         trainersTitle: createTrainersTitle(ws.trainers, ws.speaker.name),
         ...(day.additionalEvents &&
@@ -91,8 +98,12 @@ const fetchData = async (client, vars) => {
   const allWorkshops = await Promise.all(
     workshops.map(async wrp => ({
       ...wrp,
+      toc: wrp.toc && (await markdownToHtml(wrp.toc)),
+      location: wrp.location && (await markdownToHtml(wrp.location)),
       description: await markdownToHtml(wrp.description),
-      additionalInfo: await markdownToHtml(wrp.additionalInfo),
+      additionalInfo:
+        wrp.additionalInfo && (await markdownToHtml(wrp.additionalInfo)),
+      finishingTime: '',
     })),
   );
 
