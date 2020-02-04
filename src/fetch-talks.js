@@ -1,3 +1,5 @@
+const { createSlug } = require('./utils');
+
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
@@ -70,6 +72,8 @@ const fetchData = async (client, vars) => {
       name: speaker.name,
       place: `${speaker.company}, ${speaker.country}`,
       pieceOfSpeakerInfoes: speaker.pieceOfSpeakerInfoes[0] || {},
+      slug: createSlug({ title }, 'talk'),
+      speakerSlug: createSlug(speaker, 'user'),
     }))
     .map(({ pieceOfSpeakerInfoes, ...talk }) => ({
       ...talk,

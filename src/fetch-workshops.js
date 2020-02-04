@@ -1,8 +1,8 @@
 const dayjs = require('dayjs');
 const customParseFormat = require('dayjs/plugin/customParseFormat');
 const { markdownToHtml } = require('./markdown');
-const { prepareSpeakers, trySelectSettings } = require('./utils');
-const { speakerInfoFragment } = require('./fragments');
+const { prepareSpeakers, trySelectSettings, createSlug } = require('./utils');
+const { speakerInfoFragment, activitiesFragment } = require('./fragments');
 
 dayjs.extend(customParseFormat);
 
@@ -56,9 +56,11 @@ const queryPages = /* GraphQL */ `
               ) {
                 ...speakerInfo
               }
+              ...activities
             }
             trainers {
               ...person
+              ...activities
             }
           }
         }
@@ -67,6 +69,7 @@ const queryPages = /* GraphQL */ `
   }
 
   ${speakerInfoFragment}
+  ${activitiesFragment}
 `;
 
 const createTrainersTitle = (trainers, fallback) => {
@@ -99,7 +102,8 @@ const fetchData = async (client, vars) => {
           speaker: speaker || {
             info: [],
           },
-          trainers: trainers || [],
+          trainers:
+            trainers.map(tr => ({ ...tr, slug: createSlug(tr, 'user') })) || [],
           ...ws,
         }))
         .map(ws => ({
@@ -112,7 +116,7 @@ const fetchData = async (client, vars) => {
           schedule: createWorkshopSchedule(day.startingTime, ws.duration),
           trainer: ws.speaker.name,
           trainersTitle: createTrainersTitle(ws.trainers, ws.speaker.name),
-          slug: ws.id,
+          slug: createSlug(ws, 'workshop'),
           ...(day.additionalEvents &&
             day.additionalEvents.find(({ title }) => title === ws.title)),
         })),
@@ -150,9 +154,19 @@ const fetchData = async (client, vars) => {
 
   const trainers = await Promise.all(
     await prepareSpeakers(
-      trainersIDs.map(id =>
-        rawTrainers.find(trainer => trainer.speaker.id === id),
-      ),
+      trainersIDs.map(id => {
+        const person = rawTrainers.find(trainer => trainer.speaker.id === id);
+        const activeTrainer = {
+          ...person,
+          activities: {
+            workshops: [
+              ...(person.speaker.workshopsActivity || []),
+              ...(person.speaker.workshops || []),
+            ],
+          },
+        };
+        return activeTrainer;
+      }),
       {},
     ),
   );
