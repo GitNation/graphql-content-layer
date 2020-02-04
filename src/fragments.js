@@ -54,6 +54,54 @@ const personFragment = /* GraphQL */ `
   ${personAvatarFragment}
 `;
 
+const activitiesFragment = /* GraphQL */ `
+  fragment activities on Speaker {
+    talks(
+      where: {
+        daySchedule: {
+          conferenceEvent: {
+            year: $eventYear
+            conferenceBrand: { title: $conferenceTitle }
+          }
+        }
+      }
+    ) {
+      title
+      description
+      timeString
+      isLightning
+      track {
+        name
+        isPrimary
+      }
+    }
+    workshops(
+      where: {
+        daySchedules_some: {
+          conferenceEvent: {
+            year: $eventYear
+            conferenceBrand: { title: $conferenceTitle }
+          }
+        }
+      }
+    ) {
+      title
+    }
+    workshopsActivity: runinigWorkshops(
+      where: {
+        daySchedules_some: {
+          conferenceEvent: {
+            year: $eventYear
+            conferenceBrand: { title: $conferenceTitle }
+          }
+        }
+      }
+    ) {
+      title
+    }
+  }
+`;
+
 const speakerInfoFragment = /* GraphQL */ `
   fragment speakerInfo on PieceOfSpeakerInfo {
     status
@@ -75,4 +123,5 @@ module.exports = {
   personFragment,
   sponsorLogoFragment,
   jobLogoFragment,
+  activitiesFragment
 };

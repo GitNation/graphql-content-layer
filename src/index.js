@@ -14,6 +14,7 @@ const faqContent = require('./fetch-faq');
 const extContent = require('./fetch-extended');
 const jobsContent = require('./fetch-jobs');
 const committeeContent = require('./fetch-committee');
+const diversityContent = require('./fetch-diversity');
 
 const createClient = ({ endpoint, token }) => {
   return new GraphQLClient(endpoint, {
@@ -52,6 +53,7 @@ const getContent = async conferenceSettings => {
     extContent,
     jobsContent,
     committeeContent,
+    diversityContent,
   ].map(async content => {
     try {
       getQueriesData(content, conferenceSettings);

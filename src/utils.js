@@ -1,3 +1,4 @@
+const slugify = require('url-slug');
 const { markdownToHtml } = require('./markdown');
 
 const getSocials = speaker => {
@@ -25,6 +26,22 @@ const getLabelColor = (label, tagColors) => {
   return colors;
 };
 
+const prepareActivities = rawActivities => {
+  const activities = Object.entries(rawActivities).reduce(
+    (all, [key, value]) => ({
+      ...all,
+      ...(value && value.length ? { [key]: value } : undefined),
+    }),
+    {},
+  );
+  Object.entries(activities).forEach(([key, value]) => {
+    value.forEach(item => {
+      item.slug = createSlug(item, key);
+    });
+  });
+  return activities;
+};
+
 const prepareSpeakers = (speakers, tagColors) =>
   speakers
     .map(item => ({
@@ -39,13 +56,7 @@ const prepareSpeakers = (speakers, tagColors) =>
       bio: await markdownToHtml(bio),
       socials: getSocials(item),
       ...getLabelColor(item.label, tagColors),
-      activities: Object.entries(activities).reduce(
-        (all, [key, value]) => ({
-          ...all,
-          ...(value && value.length ? { [key]: value } : undefined),
-        }),
-        {},
-      ),
+      activities: prepareActivities(activities),
     }));
 
 const trySelectSettings = (selector, defaultSettings) => settings => {
@@ -57,9 +68,34 @@ const trySelectSettings = (selector, defaultSettings) => settings => {
   }
 };
 
+const createSlug = (object, type) => {
+  const keys = {
+    user: obj => obj.name,
+    sponsor: obj => obj.title,
+    talk: obj => obj.title,
+    talks: obj => obj.title,
+    workshop: obj => obj.title,
+    workshops: obj => obj.title,
+    other: obj => {
+      throw new Error(
+        `Can't create slug for object of type [${type}]\n${JSON.stringify(
+          obj,
+          null,
+          2,
+        )}`,
+      );
+    },
+  };
+  const getValue = keys[type] || keys.other;
+  const value = getValue(object);
+  const slug = slugify(value);
+  return slug;
+};
+
 module.exports = {
   getLabelColor,
   prepareSpeakers,
   // tagColors,
   trySelectSettings,
+  createSlug,
 };
