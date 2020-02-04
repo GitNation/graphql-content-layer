@@ -6,7 +6,7 @@
   "scripts": {
     "start": "yarn dev | yarn storybook | yarn tdd",
     "dev": "nodemon --exec yarn prepare",
-    "storybook": "start-storybook -p 6006 --ci",
+    "storybook": "start-storybook -p 6001 --ci",
     "update-schema": "graphql get-schema",
     "test": "jest",
     "test:smoke": "jest tests/smoke.test.js",
