@@ -57,6 +57,7 @@ const prepareSpeakers = (speakers, tagColors) =>
       socials: getSocials(item),
       ...getLabelColor(item.label, tagColors),
       activities: prepareActivities(activities),
+      slug: createSlug(item, 'user'),
     }));
 
 const trySelectSettings = (selector, defaultSettings) => settings => {
