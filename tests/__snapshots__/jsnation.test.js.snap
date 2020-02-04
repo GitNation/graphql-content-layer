@@ -217,7 +217,7 @@ Object {
 ",
         },
         Object {
-          "answer": "<p>Yes, it is possible to pay via invoice. Please, send your company details to <a href=\\"hi@amsterdamjs.com\\">hi@amsterdamjs.com</a> and we will issue it for you: </p>
+          "answer": "<p>Yes, it is possible to pay via invoice. Please, send your company details to <a href=\\"mailto:hi@jsnation.com\\">hi@jsnation.com</a> and we will issue it for you: </p>
 <ul>
 <li>company name</li>
 <li>company address</li>
@@ -232,8 +232,8 @@ Object {
         Object {
           "answer": "<p>Please, be attentive with the dates! </p>
 <p>The correct date is indicated in the name of the ticket – example: “Advanced React Workshop (June 4)”.
-The ticket will also state the main date of the conference – June 6, although you might not have bought a ticket to the conference itself – this is how eventbrite works, and we cannot change it unfortunately. Pay attention to what the name of the workshop says. </p>
-<p>If you have doubts – consult the website or email us hi@amsterdamjs.com</p>
+The ticket will also state the main date of the conference – June 5, although you might not have bought a ticket to the conference itself – this is how eventbrite works, and we cannot change it, unfortunately. Pay attention to what the name of the workshop says. </p>
+<p>If you have doubts – consult the website or email us hi@jsnation.com.</p>
 ",
           "category": "Tickets, invoices, refunds",
           "question": "<p>I bought a ticket to workshop, but have another date in my ticket. What is the correct date? </p>
@@ -344,7 +344,7 @@ The ticket will also state the main date of the conference – June 6, although 
 ",
         },
         Object {
-          "answer": "<p>Yes, of course! We’d be happy if you become our info-partner. Please, drop us a line at <a href=\\"hi@amsterdamjs.com\\">hi@amsterdamjs.com</a> and we’ll get back to you with all the information.</p>
+          "answer": "<p>Yes, of course! We’d be happy if you become our info-partner. Please, drop us a line at <a href=\\"mailto:hi@jsnation.com\\">hi@jsnation.com</a> and we’ll get back to you with all the information.</p>
 ",
           "category": "Other questions",
           "question": "<p>We are a community/also a tech conference. Could we collaborate with your conference?</p>
@@ -356,7 +356,7 @@ The ticket will also state the main date of the conference – June 6, although 
     Object {
       "items": Array [
         Object {
-          "answer": "<p>Yes, we can issue an invitation letter to make the process of getting visa easier. Please, send to <a href=\\"hi@amsterdamjs.com\\">hi@amsterdamjs.com</a> the following details according to your travel document, as well as your ticket to the conference:</p>
+          "answer": "<p>Yes, we can issue an invitation letter to make the process of getting visa easier. Please, send to <a href=\\"mailto:hi@jsnation.com\\">hi@jsnation.com</a> the following details according to your travel document, as well as your ticket to the conference:</p>
 <ul>
 <li>First name:</li>
 <li>Last name:</li>
@@ -391,6 +391,7 @@ The ticket will also state the main date of the conference – June 6, although 
   ],
   "mcs": Array [
     Object {
+      "activities": Object {},
       "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/6gQUujMTJatYxdKyBWzq",
       "bio": "<p>Bruce Lawson is freelance web standards and accessibility consultant. He was co-editor of the HTML5.3 specification, one of the inventors of the <picture> element, and was on the committee that drafted the British Standard for commissioning accessible websites. He co-wrote 'Introducing HTML5'. He's previously been deputy CTO of Opera browsers, front-end lead for a large UK legal organisation, a Fortran and mainframe programmer as well as a Bollywood movie extra, a musician, a tarot card reader, tutor to a Thai princess and actor.</p>
 ",
@@ -412,6 +413,54 @@ The ticket will also state the main date of the conference – June 6, although 
         },
       ],
       "twitterUrl": "https://twitter.com/brucel",
+    },
+    Object {
+      "activities": Object {},
+      "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/LJvYR4kGQLOdL6y5CWC9",
+      "bio": "<p>Floor studied design, worked in advertising, then worked with a bunch of start-ups in product and community roles, learned how to program (Ruby), (co)organized countless tech conferences, meetups and workshops, ran a co-working space and start-up accelerator in Vienna, before moving back to the Netherlands and getting back into developer relations.</p>
+",
+      "company": "Microsoft, Netherlands",
+      "country": "Netherlands",
+      "githubUrl": "https://github.com/FloorD",
+      "id": "ck5we9vpqer9u0b66r7n5rq4z",
+      "mediumUrl": null,
+      "name": "Floor Drees",
+      "ownSite": null,
+      "socials": Array [
+        Object {
+          "icon": "gh",
+          "link": "https://github.com/FloorD",
+        },
+        Object {
+          "icon": "tw",
+          "link": "https://twitter.com/floordrees",
+        },
+      ],
+      "twitterUrl": "https://twitter.com/floordrees",
+    },
+    Object {
+      "activities": Object {},
+      "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/dVk76RUqrRdTGRSbGgsp",
+      "bio": "<p>React focused developer, working on a Design System at Albert Heijn (Dutch supermarket). Started out writing ActionScript, did jQuery and thus has all sorts of knowledge on deprecated stuff. Part of a frontend development couple that produced a kid.</p>
+",
+      "company": "Passionate People, Netherlands",
+      "country": "Netherlands",
+      "githubUrl": "https://github.com/mettin",
+      "id": "ck5weu60bem5y0b20y7hj3pd9",
+      "mediumUrl": null,
+      "name": "Mettin Parzinski",
+      "ownSite": null,
+      "socials": Array [
+        Object {
+          "icon": "gh",
+          "link": "https://github.com/mettin",
+        },
+        Object {
+          "icon": "tw",
+          "link": "https://twitter.com/mettinparzinski",
+        },
+      ],
+      "twitterUrl": "https://twitter.com/mettinparzinski",
     },
   ],
   "pages": Object {
@@ -501,7 +550,7 @@ The ticket will also state the main date of the conference – June 6, although 
       },
       "pageSections": Object {
         "committee": Object {
-          "title": "Programm Committee",
+          "title": "Programme Committee",
         },
         "locationSection": Object {
           "showArrows": false,
@@ -513,6 +562,9 @@ The ticket will also state the main date of the conference – June 6, although 
         },
         "performance": Object {
           "title": "Last year's JS performances",
+        },
+        "speakers": Object {
+          "title": "First speakers",
         },
         "sponsorsSection": Object {
           "descr": "Looking for a company that cares about developer communities and invests into personal development?<br/> Check out the <a href=\\"/js-jobs\\">job placements from our partners</a>.",
@@ -596,6 +648,14 @@ The ticket will also state the main date of the conference – June 6, although 
             "_title": "Webdriver.io",
             "image": "img/techs_webdriver.png",
           },
+          Object {
+            "image": "https://media.graphcms.com/pcyqiYpDRXGtdYeSprs8",
+            "title": "Svelte",
+          },
+          Object {
+            "image": "https://media.graphcms.com/mkPnhEJETVJMOTS7Xl8Q",
+            "title": "TypeScript",
+          },
         ],
       },
       "seoDescription": "Amsterdam JSNation is a 2-day event focusing exclusively on JavaScript development. At our conference, inspiring talks meet fresh ideas and good people - you’ll hear all you need to know about the latest trends in JS tech, see stellar speakers, meet new friends and colleagues, and connect with key people in the industry. Plus, all of that in one of Europe's top destinations.",
@@ -624,7 +684,7 @@ The ticket will also state the main date of the conference – June 6, although 
     "event__descr": "<p>Amsterdam JSNation is going to be the main happening of the JS scene in 2020. The conference unites library authors and core teams with fresh ideas, great people, and a summer Amsterdam in the background. We recognize JavaScript development as an art of engineering, and that's why the conference offers both a JS-driven art exhibition and audiovisual performances during the afterparty. After the event, we'll explore the well-known Amsterdam museums together, and later on, we'll gather for a JS hangout in the Vondelpark.</p>
 ",
     "faq__descr": "<p>Our team is always striving to provide the best support to help you with any questions related to conference attendance and to make information more transparent and instantly accessible, we've started gathering most frequently asked questions on the page below.</p>
-<p>If you can't find an answer to your question below - contact us via hi@amsterdamjs.com.</p>
+<p>If you can't find an answer to your question below - contact us via hi@jsnation.com.</p>
 ",
     "performance__descr": "<p>In 2019, we initiated a Call for JavaScript Artists which allowed us to deliver a state-of-the-art afterparty program with audiovisual acts powered by NodeJS, WebGL, WebAudioAPI. Want to know the programme for 2020? <a href=\\"#subscribe\\">Follow us</a></p>
 ",
@@ -634,63 +694,59 @@ The ticket will also state the main date of the conference – June 6, although 
       "active": true,
       "list": Array [
         Object {
-          "name": "Doors open, welcome breakfast",
-          "time": "08:00",
-          "title": "",
-          "track": "General",
-        },
-        Object {
-          "name": "Opening",
-          "time": "09:00",
-          "title": "",
-          "track": "General",
-        },
-        Object {
-          "name": "Kyle Simpson",
-          "time": "09:15",
-          "title": "Keynote",
-          "track": "General",
-        },
-        Object {
-          "name": "Break",
-          "time": "09:45",
-          "title": "You may find the way to NodeJS hall if interested",
-          "track": "General",
-        },
-        Object {
-          "name": "Krzysztof Kotowicz",
-          "time": "09:55",
-          "title": "Securing the DOM from the Bottom Up",
-          "track": "General",
-        },
-        Object {
-          "name": "Gleb Bahmutov",
-          "time": "10:25",
-          "title": "Testing Tools and Their Friends",
-          "track": "General",
-        },
-        Object {
-          "name": "Coffee break",
-          "time": "10:55",
-          "title": "",
-          "track": "General",
-        },
-        Object {
-          "from": "Netlify, USA",
+          "from": "Webpack, Germany",
           "label": "Ecosystem",
-          "name": "SARAH DRASNER",
-          "place": "Netlify, USA",
-          "speaker": "SARAH DRASNER",
-          "text": "Lorem ipsum Lorem ipsum Lorem Ipsum",
-          "time": "11:00",
-          "title": "Talk about Ecosystem",
+          "name": "TOBIAS KOPPERS",
+          "place": "Webpack, Germany",
+          "speaker": "TOBIAS KOPPERS",
+          "text": "Lorem Ipsum description about Webpack and so on and so on. Lorem dallsr ipsum suom.",
+          "time": null,
+          "title": "Fake Title Webpack is awesome!",
           "track": "General",
         },
         Object {
-          "name": "Tobias Koppers",
-          "time": "11:15",
-          "title": "Webpack 5 - Why Breaking Changes? What is next?",
+          "from": "NestJS | Trilon.io, Poland",
+          "label": "NestJS",
+          "name": "Kamil Mysliwiec",
+          "place": "NestJS | Trilon.io, Poland",
+          "speaker": "Kamil Mysliwiec",
+          "text": "Lorem riba Lorem riba. Dollor doorlrl. Ipsum.",
+          "time": null,
+          "title": "Fake Title it just a template",
           "track": "General",
+        },
+        Object {
+          "from": "NearForm, Italy",
+          "label": "NodeJS",
+          "name": "Matteo Collina",
+          "place": "NearForm, Italy",
+          "speaker": "Matteo Collina",
+          "text": "lightning talk about something interesting",
+          "time": null,
+          "title": "Fake Title it just a template",
+          "track": null,
+        },
+        Object {
+          "from": "Three.js, Spain",
+          "label": "WebGL",
+          "name": "MR.DOOB",
+          "place": "Three.js, Spain",
+          "speaker": "MR.DOOB",
+          "text": null,
+          "time": null,
+          "title": "Fake Title it just a template",
+          "track": "General",
+        },
+        Object {
+          "from": "Microsoft, USA",
+          "label": "TypeScript",
+          "name": "Orta Therox",
+          "place": "Microsoft, USA",
+          "speaker": "Orta Therox",
+          "text": "There are stats coming out that in 2020 about 50% of all JavaScript projects using npm will be using TypeScript, how did this come to be and what systems are in place to keep the TypeScript team in Microsoft from trying to extinguish JavaScript?",
+          "time": null,
+          "title": "How TypeScript Embraces and Extends JavaScript",
+          "track": null,
         },
       ],
       "name": "10",
@@ -698,9 +754,11 @@ The ticket will also state the main date of the conference – June 6, although 
       "title": "General",
     },
   ],
+  "scheduleTitle": "Talks",
   "speakers": Object {
     "committee": Array [
       Object {
+        "activities": Object {},
         "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/U3D6ETwEQ7GD8wlJUG5G",
         "bio": "<p>Joonas Salovaara is a Principal Consultant and team lead at Reaktor Amsterdam. He is an advocate of the meetup scene, where he helps run AmsterdamJS, HelsinkiJS, and React Helsinki. </p>
 ",
@@ -725,6 +783,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/JoonasSalovaara",
       },
       Object {
+        "activities": Object {},
         "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/VttgCnjTkanMOLw0OSJJ",
         "bio": "<p>Kanstantsin is a Software Developer Consultant in Xebia. He is passionate about running, racing cars and JavaScript.</p>
 ",
@@ -745,6 +804,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": null,
       },
       Object {
+        "activities": Object {},
         "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/wpWwhvX5T5SBZjbfFaSK",
         "bio": "<p>Aleksandr is a Frontend Developer with 6 years experience. He is a member of JSNation Program Committee and an active member of Saint-Petersburg local meetup scene. He is passionated about games development, visualization and other graphics stuff.</p>
 ",
@@ -771,39 +831,51 @@ The ticket will also state the main date of the conference – June 6, although 
     ],
     "main": Array [
       Object {
-        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/S46QV4WvTlefyYEg3I0I",
-        "bio": "<p>Head of Developer Experience at Netlify, Vue core team member, and Staff Writer at CSS-Tricks. Sarah is formerly Principal Lead of Emerging Markets, Cloud Advocates at Microsoft and Manager of UX &#x26; Engineering at Trulia/Zillow Group. She’s the author of SVG Animations from O’Reilly and has given Frontend Masters workshops. Sarah is a co-organizer of ConcatenateConf, a free conference for Nigerian and Kenyan developers.</p>
+        "activities": Object {},
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/0EkXq8vRTK7ZQ4HQFXUQ",
+        "bio": "<p>Charlie is a front-end developer at Netlify, a Mozilla Tech Speaker and Google Developer Expert in Web Technologies. She is passionate about creative coding and building interactive prototypes mixing science, art and technology. She also spends time giving back to the community by mentoring new developers, contributing to open-source projects, and speaking at conferences. </p>
 ",
-        "color": "#ae4f01",
-        "company": "Netlify, USA",
-        "country": "USA",
-        "githubUrl": "https://github.com/sdras",
-        "id": "ck2wz494viqmx0b73yobzoe5w",
+        "color": "white",
+        "company": "Netlify, Netherlands",
+        "country": "Netherlands",
+        "githubUrl": "https://github.com/charliegerard",
+        "id": "ck444j0qbo0ou0b32nya7r457",
         "isNightSpeaker": null,
-        "label": "Ecosystem",
-        "mediumUrl": "",
-        "name": "SARAH DRASNER",
-        "order": null,
-        "ownSite": "https://sarah.dev/",
+        "label": null,
+        "mediumUrl": null,
+        "name": "Charlie Gerard",
+        "order": 10,
+        "ownSite": "https://charliegerard.github.io/",
         "socials": Array [
           Object {
             "icon": "gh",
-            "link": "https://github.com/sdras",
+            "link": "https://github.com/charliegerard",
           },
           Object {
             "icon": "tw",
-            "link": "https://twitter.com/sarah_edo",
+            "link": "https://twitter.com/devdevcharlie",
           },
           Object {
             "icon": "site",
-            "link": "https://sarah.dev/",
+            "link": "https://charliegerard.github.io/",
           },
         ],
         "status": "PUBLISHED",
-        "tagBG": "#fff40d",
-        "twitterUrl": "https://twitter.com/sarah_edo",
+        "tagBG": "black",
+        "twitterUrl": "https://twitter.com/devdevcharlie",
       },
       Object {
+        "activities": Object {
+          "talks": Array [
+            Object {
+              "description": "lightning talk about something interesting",
+              "isLightning": true,
+              "timeString": "14:45",
+              "title": "Fake Title it just a template",
+              "track": null,
+            },
+          ],
+        },
         "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/4LTWaL5SpOCr2oBbS8rq",
         "bio": "<p>Node.js TSC member, PhD, Technical Director @ NearForm, IoT Expert, Consultant, author of Pino and Fastify. Co-author of the book \\"Node.js Cookbook, Third Edition\\" edited by Packt.</p>
 ",
@@ -816,7 +888,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "label": "NodeJS",
         "mediumUrl": "http://matteocollina.com/",
         "name": "Matteo Collina",
-        "order": null,
+        "order": 9,
         "ownSite": "",
         "socials": Array [
           Object {
@@ -837,6 +909,20 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/matteocollina",
       },
       Object {
+        "activities": Object {
+          "talks": Array [
+            Object {
+              "description": "Lorem Ipsum description about Webpack and so on and so on. Lorem dallsr ipsum suom.",
+              "isLightning": null,
+              "timeString": "11:00",
+              "title": "Fake Title Webpack is awesome!",
+              "track": Object {
+                "isPrimary": true,
+                "name": "General",
+              },
+            },
+          ],
+        },
         "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/3PwPQYRMRDKMjoQX05Bk",
         "bio": "<p>Creator of webpack. Working full time on Open Source. Father of two children. Likes to play board games.</p>
 ",
@@ -849,7 +935,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "label": "Ecosystem",
         "mediumUrl": "https://medium.com/@sokra",
         "name": "TOBIAS KOPPERS",
-        "order": null,
+        "order": 8,
         "ownSite": null,
         "socials": Array [
           Object {
@@ -870,6 +956,20 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/wSokrav",
       },
       Object {
+        "activities": Object {
+          "talks": Array [
+            Object {
+              "description": null,
+              "isLightning": false,
+              "timeString": "14:45",
+              "title": "Fake Title it just a template",
+              "track": Object {
+                "isPrimary": true,
+                "name": "General",
+              },
+            },
+          ],
+        },
         "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/h7xLULGR2uFiZUbcWyKe",
         "bio": "<p>Author of Three.js.</p>
 ",
@@ -882,7 +982,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "label": "WebGL",
         "mediumUrl": "",
         "name": "MR.DOOB",
-        "order": null,
+        "order": 7,
         "ownSite": "https://mrdoob.com/",
         "socials": Array [
           Object {
@@ -903,6 +1003,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/mrdoob",
       },
       Object {
+        "activities": Object {},
         "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/zXDRIVADSmqdqh9PIRWU",
         "bio": "<p>Сreator of request and NodeConf. He was a leader in the io.js project and lead the Node.js Foundation through the merger of io.js and Node.js. He now works at Protocol Labs leading the IPLD project.</p>
 ",
@@ -915,7 +1016,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "label": "NodeJS",
         "mediumUrl": "https://medium.com/@mikeal",
         "name": "MIKEAL ROGERS",
-        "order": null,
+        "order": 6,
         "ownSite": null,
         "socials": Array [
           Object {
@@ -936,6 +1037,124 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/mikeal",
       },
       Object {
+        "activities": Object {},
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/S46QV4WvTlefyYEg3I0I",
+        "bio": "<p>Head of Developer Experience at Netlify, Vue core team member, and Staff Writer at CSS-Tricks. Sarah is formerly Principal Lead of Emerging Markets, Cloud Advocates at Microsoft and Manager of UX &#x26; Engineering at Trulia/Zillow Group. She’s the author of SVG Animations from O’Reilly and has given Frontend Masters workshops. Sarah is a co-organizer of ConcatenateConf, a free conference for Nigerian and Kenyan developers.</p>
+",
+        "color": "#ae4f01",
+        "company": "Netlify, USA",
+        "country": "USA",
+        "githubUrl": "https://github.com/sdras",
+        "id": "ck2wz494viqmx0b73yobzoe5w",
+        "isNightSpeaker": null,
+        "label": "Ecosystem",
+        "mediumUrl": "",
+        "name": "SARAH DRASNER",
+        "order": 5,
+        "ownSite": "https://sarah.dev/",
+        "socials": Array [
+          Object {
+            "icon": "gh",
+            "link": "https://github.com/sdras",
+          },
+          Object {
+            "icon": "tw",
+            "link": "https://twitter.com/sarah_edo",
+          },
+          Object {
+            "icon": "site",
+            "link": "https://sarah.dev/",
+          },
+        ],
+        "status": "PUBLISHED",
+        "tagBG": "#fff40d",
+        "twitterUrl": "https://twitter.com/sarah_edo",
+      },
+      Object {
+        "activities": Object {
+          "talks": Array [
+            Object {
+              "description": "There are stats coming out that in 2020 about 50% of all JavaScript projects using npm will be using TypeScript, how did this come to be and what systems are in place to keep the TypeScript team in Microsoft from trying to extinguish JavaScript?",
+              "isLightning": null,
+              "timeString": null,
+              "title": "How TypeScript Embraces and Extends JavaScript",
+              "track": null,
+            },
+          ],
+        },
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/NPpzhbjmTU2x6vl9kySi",
+        "bio": "<p>TypeScript compiler team at Microsoft. For the last decade has worked on large-scale open source projects across the native and JavaScript ecosystem.</p>
+",
+        "color": "#030303",
+        "company": "Microsoft, USA",
+        "country": "USA",
+        "githubUrl": "https://github.com/orta",
+        "id": "ck5miip5wmdqz0b7535julaeu",
+        "isNightSpeaker": null,
+        "label": "TypeScript",
+        "mediumUrl": null,
+        "name": "Orta Therox",
+        "order": 4,
+        "ownSite": null,
+        "socials": Array [
+          Object {
+            "icon": "gh",
+            "link": "https://github.com/orta",
+          },
+          Object {
+            "icon": "tw",
+            "link": "https://twitter.com/orta",
+          },
+        ],
+        "status": "PUBLISHED",
+        "tagBG": "#61DAFB",
+        "twitterUrl": "https://twitter.com/orta",
+      },
+      Object {
+        "activities": Object {
+          "talks": Array [
+            Object {
+              "description": "Lorem riba Lorem riba. Dollor doorlrl. Ipsum.",
+              "isLightning": null,
+              "timeString": "14:45",
+              "title": "Fake Title it just a template",
+              "track": Object {
+                "isPrimary": true,
+                "name": "General",
+              },
+            },
+          ],
+        },
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/9SEIZ7SueIgj7GiUs9Zg",
+        "bio": "<p>Creator of NestJS, Co-Founder of Trilon.io, Google Developer Expert in Web Technologies and Angular, international speaker, trainer, consultant, and open source contributor.</p>
+",
+        "color": "white",
+        "company": "NestJS | Trilon.io, Poland",
+        "country": "Poland",
+        "githubUrl": "https://github.com/kamilmysliwiec",
+        "id": "ck42w9tfl8hfx0b73mk2myam3",
+        "isNightSpeaker": null,
+        "label": "NestJS",
+        "mediumUrl": null,
+        "name": "Kamil Mysliwiec",
+        "order": 3,
+        "ownSite": null,
+        "socials": Array [
+          Object {
+            "icon": "gh",
+            "link": "https://github.com/kamilmysliwiec",
+          },
+          Object {
+            "icon": "tw",
+            "link": "https://twitter.com/kammysliwiec",
+          },
+        ],
+        "status": "PUBLISHED",
+        "tagBG": "black",
+        "twitterUrl": "https://twitter.com/kammysliwiec",
+      },
+      Object {
+        "activities": Object {},
         "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/izWu7SWFQwSdP8wBthcK",
         "bio": "<p>Programmer and artist who works frequently with open-source software, cartography, live coding, and experimental interfaces. She is the developer of Hydra, a platform for live-coding visuals inspired by analog video synthesis. She works with the performance laboratory ATI-erra, creating interactive visuals for dance and theater. She has also created software and interactive installations for CultureHub Art &#x26; Technology Center, el Museo de Bogotá, and Oakland Museum of California. Originally from San Francisco, she currently lives and works in Bogotá, Colombia.</p>
 ",
@@ -948,7 +1167,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "label": "WebGL",
         "mediumUrl": null,
         "name": "OILVIA JACK",
-        "order": null,
+        "order": 2,
         "ownSite": "https://ojack.github.io/",
         "socials": Array [
           Object {
@@ -969,6 +1188,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/_ojack_",
       },
       Object {
+        "activities": Object {},
         "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/jyad5bupSCe8c8Qj1uYX",
         "bio": "<p>Member and Chairperson of the Node.js Community Committee, and a contributor to multiple Node.js working groups and initiatives focusing on the continued growth and success of the Node.js community. He is a Regular Member of the OpenJS Foundation Cross-Project Council, and a TC39 delegate. He has been contributing to open-source since he was 16.</p>
 ",
@@ -981,7 +1201,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "label": "NodeJS",
         "mediumUrl": "https://medium.com/@bitandbang",
         "name": "TIERNEY CYREN",
-        "order": null,
+        "order": 1,
         "ownSite": null,
         "socials": Array [
           Object {
@@ -1002,70 +1222,56 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/bitandbang",
       },
       Object {
-        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/9SEIZ7SueIgj7GiUs9Zg",
-        "bio": "<p>Creator of NestJS, Co-Founder of Trilon.io, Google Developer Expert in Web Technologies and Angular, international speaker, trainer, consultant, and open source contributor.</p>
+        "activities": Object {},
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/rBzXz8MRwmFwvCWJjkPD",
+        "bio": "<p>Core member of Svelte since 2017.  These days Alan is mostly a JavaScript programmer, the rest of the time he also enjoys hiking, skiing, and listening to music.</p>
 ",
         "color": "white",
-        "company": "NestJS | Trilon.io, Poland",
-        "country": "Poland",
-        "githubUrl": "https://github.com/kamilmysliwiec",
-        "id": "ck42w9tfl8hfx0b73mk2myam3",
+        "company": "Core member of Svelte, US",
+        "country": "US",
+        "githubUrl": "https://github.com/Conduitry",
+        "id": "ck5wcjhfif16l0b753eqy3w9r",
         "isNightSpeaker": null,
-        "label": "NestJS",
+        "label": "Svelte",
         "mediumUrl": null,
-        "name": "Kamil Mysliwiec",
+        "name": " Alan Faubert",
         "order": null,
         "ownSite": null,
         "socials": Array [
           Object {
             "icon": "gh",
-            "link": "https://github.com/kamilmysliwiec",
-          },
-          Object {
-            "icon": "tw",
-            "link": "https://twitter.com/kammysliwiec",
+            "link": "https://github.com/Conduitry",
           },
         ],
         "status": "PUBLISHED",
         "tagBG": "black",
-        "twitterUrl": "https://twitter.com/kammysliwiec",
+        "twitterUrl": null,
       },
       Object {
-        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/0EkXq8vRTK7ZQ4HQFXUQ",
-        "bio": "<p>Charlie is a front-end developer at Netlify, a Mozilla Tech Speaker and Google Developer Expert in Web Technologies. She is passionate about creative coding and building interactive prototypes mixing science, art and technology. She also spends time giving back to the community by mentoring new developers, contributing to open-source projects, and speaking at conferences. </p>
+        "activities": Object {},
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/mbETdJvNTd2SHOKv6T76",
+        "bio": "
 ",
         "color": "white",
-        "company": "Netlify, Netherlands",
-        "country": "Netherlands",
-        "githubUrl": "https://github.com/charliegerard",
-        "id": "ck444j0qbo0ou0b32nya7r457",
+        "company": "Hydra, Zakovia",
+        "country": "Zakovia",
+        "githubUrl": null,
+        "id": "ck5y2joqjhrd70b66yuznh3mq",
         "isNightSpeaker": null,
         "label": null,
         "mediumUrl": null,
-        "name": "Charlie Gerard",
+        "name": "Vasilisa Pupkina",
         "order": null,
-        "ownSite": "https://charliegerard.github.io/",
-        "socials": Array [
-          Object {
-            "icon": "gh",
-            "link": "https://github.com/charliegerard",
-          },
-          Object {
-            "icon": "tw",
-            "link": "https://twitter.com/devdevcharlie",
-          },
-          Object {
-            "icon": "site",
-            "link": "https://charliegerard.github.io/",
-          },
-        ],
-        "status": "PUBLISHED",
+        "ownSite": null,
+        "socials": Array [],
+        "status": "DRAFT",
         "tagBG": "black",
-        "twitterUrl": "https://twitter.com/devdevcharlie",
+        "twitterUrl": null,
       },
     ],
     "performanceTeam": Array [
       Object {
+        "activities": Object {},
         "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/dahQDMISFeJOqjrMXKII",
         "bio": "<p>An electronic music and audiovisual group from London, established by producer Jack Driscoll and visual artist Alex Kempton in 2016. The visuals in their show have been created entirely in Javascript using WebGL. Polyop have developed a spectacular audiovisual show set in an alternate universe. The show follows a mysterious demi-god across the polyhedral-plane, inhabited by strange planets, entities and nomad aliens, to the sound of 90’s techno breakbeat and acid performed live on hardware synthesisers and drum machines.</p>
 ",
@@ -1086,6 +1292,7 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/polyopuk",
       },
       Object {
+        "activities": Object {},
         "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/WzjuPUZSvaWQ9TQlPiHw",
         "bio": "<p>AliceEffekt is formed by Devine Lu Linvega, a true digital nomad and a polymath working on a series of experimental tools and applications. Devine has created a set of live coding tools for rapid iteration and creation of rythms based on Node.js. His latest creation: ORCA is a full blown text based sequencer with impressive cappabilities and distinct aesthetic that engulfs the user in a textual fashion rarely seen in live performance.</p>
 ",
@@ -1110,7 +1317,46 @@ The ticket will also state the main date of the conference – June 6, although 
         "twitterUrl": "https://twitter.com/neauoire",
       },
     ],
-    "workshops": Array [],
+    "workshops": Array [
+      Object {
+        "activities": Object {},
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/mbETdJvNTd2SHOKv6T76",
+        "bio": "
+",
+        "company": "Hydra, Zakovia",
+        "country": "Zakovia",
+        "githubUrl": null,
+        "id": "ck5y2joqjhrd70b66yuznh3mq",
+        "isNightSpeaker": null,
+        "label": null,
+        "mediumUrl": null,
+        "name": "Vasilisa Pupkina",
+        "order": null,
+        "ownSite": null,
+        "socials": Array [],
+        "status": "DRAFT",
+        "twitterUrl": null,
+      },
+      Object {
+        "activities": Object {},
+        "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/mbETdJvNTd2SHOKv6T76",
+        "bio": "
+",
+        "company": "Hydra, Zakovia",
+        "country": "Zakovia",
+        "githubUrl": null,
+        "id": "ck5y2joqjhrd70b66yuznh3mq",
+        "isNightSpeaker": null,
+        "label": null,
+        "mediumUrl": null,
+        "name": "Vasilisa Pupkina",
+        "order": null,
+        "ownSite": null,
+        "socials": Array [],
+        "status": "DRAFT",
+        "twitterUrl": null,
+      },
+    ],
   },
   "speakersBtn": "CALL FOR SPEAKERS",
   "sponsors": Array [
@@ -1123,6 +1369,13 @@ The ticket will also state the main date of the conference – June 6, although 
           "link": "https://focusreactive.com",
           "width": null,
         },
+        Object {
+          "alt": "Reaktor",
+          "category": "Gold",
+          "img": "https://media.graphcms.com/vCP0HfPuQYKBLKXH0f3Z",
+          "link": "https://www.reaktor.com/",
+          "width": null,
+        },
       ],
       "mod": "logos_md",
       "title": "Gold",
@@ -1130,11 +1383,11 @@ The ticket will also state the main date of the conference – June 6, although 
     Object {
       "list": Array [
         Object {
-          "alt": "Oslo-Flutter-Dart-Meetup",
+          "alt": "wwcode-vancouver",
           "category": "Partner",
-          "img": "https://media.graphcms.com/dwfDUbf4RLGYQJHcOfQC",
-          "link": "https://www.meetup.com/Oslo-Flutter-Dart-Meetup/",
-          "width": 100,
+          "img": "https://media.graphcms.com/ZqdXyujWTbW87j3pNrPx",
+          "link": "https://www.womenwhocode.com/vancouver",
+          "width": 150,
         },
         Object {
           "alt": "Piter JS",
@@ -1193,10 +1446,10 @@ The ticket will also state the main date of the conference – June 6, although 
           "width": 100,
         },
         Object {
-          "alt": "UtrechtJUG",
+          "alt": "Oslo-Flutter-Dart-Meetup",
           "category": "Partner",
-          "img": "https://media.graphcms.com/dyJ3m0rcRgWNXNYUnqdY",
-          "link": "https://www.meetup.com/Utrecht-Java-User-Group/",
+          "img": "https://media.graphcms.com/dwfDUbf4RLGYQJHcOfQC",
+          "link": "https://www.meetup.com/Oslo-Flutter-Dart-Meetup/",
           "width": 100,
         },
         Object {
@@ -1204,7 +1457,7 @@ The ticket will also state the main date of the conference – June 6, although 
           "category": "Partner",
           "img": "https://media.graphcms.com/B0avSOhLTimtCCx4ZrQ1",
           "link": "https://www.meetup.com/framsia/",
-          "width": 100,
+          "width": 70,
         },
         Object {
           "alt": "AngularJS-Oslo",
@@ -1221,11 +1474,11 @@ The ticket will also state the main date of the conference – June 6, although 
           "width": 100,
         },
         Object {
-          "alt": "wwcode-vancouver",
+          "alt": "UtrechtJUG",
           "category": "Partner",
-          "img": "https://media.graphcms.com/ZqdXyujWTbW87j3pNrPx",
-          "link": "https://www.womenwhocode.com/vancouver",
-          "width": 150,
+          "img": "https://media.graphcms.com/dyJ3m0rcRgWNXNYUnqdY",
+          "link": "https://www.meetup.com/Utrecht-Java-User-Group/",
+          "width": 100,
         },
         Object {
           "alt": "rsconf",
@@ -1246,14 +1499,70 @@ The ticket will also state the main date of the conference – June 6, although 
           "category": "Partner",
           "img": "https://media.graphcms.com/tPDy3EA8TDuO0nnM5FEx",
           "link": "https://kcwomenintech.org/",
-          "width": 60,
+          "width": 40,
         },
         Object {
           "alt": "Dublin Node.js",
           "category": "Partner",
           "img": "https://media.graphcms.com/Ed7nv4qRaaXBV2Oouutg",
           "link": "https://www.meetup.com/Dublin-Node-js-Meetup/",
+          "width": 40,
+        },
+        Object {
+          "alt": "React GraphQL Academy",
+          "category": "Partner",
+          "img": "https://media.graphcms.com/9dC4KF0QXiklgK8u5aaf",
+          "link": "https://reactgraphql.academy/",
+          "width": 70,
+        },
+        Object {
+          "alt": "Nodetlv",
+          "category": "Partner",
+          "img": "https://media.graphcms.com/4s9W6dOITVWZ9hjlR4P4",
+          "link": "https://www.nodetlv.com/",
+          "width": 120,
+        },
+        Object {
+          "alt": "ReactNext",
+          "category": "Partner",
+          "img": "https://media.graphcms.com/pV29a4DROuUNDTMJzu1Q",
+          "link": "http://react-next.com/",
+          "width": 100,
+        },
+        Object {
+          "alt": "ReactWeek",
+          "category": "Partner",
+          "img": "https://media.graphcms.com/DYhwRSsHR1W1FEwdsF6a",
+          "link": "http://reactweek.nyc/",
+          "width": 70,
+        },
+        Object {
+          "alt": "InfinumJSTalks",
+          "category": "Partner",
+          "img": "https://media.graphcms.com/Z55PEVXQS8CyZafNpi1F",
+          "link": "https://www.meetup.com/Infinum-JS-Talks/",
           "width": 80,
+        },
+        Object {
+          "alt": "FullstackCluj",
+          "category": "Partner",
+          "img": "https://media.graphcms.com/uT5HJdE3Tn2FMoM1ODKY",
+          "link": "https://www.meetup.com/fullstack-cluj/",
+          "width": 120,
+        },
+        Object {
+          "alt": "AmsNode",
+          "category": "Partner",
+          "img": "https://media.graphcms.com/0L3yoJJtQmqObSqXbQbw",
+          "link": "https://www.meetup.com/amsnode/",
+          "width": 100,
+        },
+        Object {
+          "alt": "Tproger",
+          "category": "Partner",
+          "img": "https://media.graphcms.com/4NezSgfrQdO2NTbE1SWu",
+          "link": "https://tproger.ru/",
+          "width": 100,
         },
       ],
       "mod": "logos_xs",
@@ -1262,21 +1571,264 @@ The ticket will also state the main date of the conference – June 6, although 
   ],
   "talks": Array [
     Object {
-      "from": "Netlify, USA",
+      "from": "Webpack, Germany",
       "label": "Ecosystem",
-      "name": "SARAH DRASNER",
-      "place": "Netlify, USA",
-      "speaker": "SARAH DRASNER",
-      "text": "Lorem ipsum Lorem ipsum Lorem Ipsum",
+      "name": "TOBIAS KOPPERS",
+      "place": "Webpack, Germany",
+      "speaker": "TOBIAS KOPPERS",
+      "text": "Lorem Ipsum description about Webpack and so on and so on. Lorem dallsr ipsum suom.",
       "time": "11:00",
-      "title": "Talk about Ecosystem",
+      "title": "Fake Title Webpack is awesome!",
       "track": "General",
+    },
+    Object {
+      "from": "NestJS | Trilon.io, Poland",
+      "label": "NestJS",
+      "name": "Kamil Mysliwiec",
+      "place": "NestJS | Trilon.io, Poland",
+      "speaker": "Kamil Mysliwiec",
+      "text": "Lorem riba Lorem riba. Dollor doorlrl. Ipsum.",
+      "time": "14:45",
+      "title": "Fake Title it just a template",
+      "track": "General",
+    },
+    Object {
+      "from": "NearForm, Italy",
+      "label": "NodeJS",
+      "name": "Matteo Collina",
+      "place": "NearForm, Italy",
+      "speaker": "Matteo Collina",
+      "text": "lightning talk about something interesting",
+      "time": "14:45",
+      "title": "Fake Title it just a template",
+      "track": null,
+    },
+    Object {
+      "from": "Three.js, Spain",
+      "label": "WebGL",
+      "name": "MR.DOOB",
+      "place": "Three.js, Spain",
+      "speaker": "MR.DOOB",
+      "text": null,
+      "time": "14:45",
+      "title": "Fake Title it just a template",
+      "track": "General",
+    },
+    Object {
+      "from": "Microsoft, USA",
+      "label": "TypeScript",
+      "name": "Orta Therox",
+      "place": "Microsoft, USA",
+      "speaker": "Orta Therox",
+      "text": "There are stats coming out that in 2020 about 50% of all JavaScript projects using npm will be using TypeScript, how did this come to be and what systems are in place to keep the TypeScript team in Microsoft from trying to extinguish JavaScript?",
+      "time": null,
+      "title": "How TypeScript Embraces and Extends JavaScript",
+      "track": null,
     },
   ],
   "tracks": Array [
     "General",
   ],
-  "trainers": Array [],
-  "workshops": Array [],
+  "trainers": Array [
+    Object {
+      "activities": Object {},
+      "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/mbETdJvNTd2SHOKv6T76",
+      "bio": "
+",
+      "company": "Hydra, Zakovia",
+      "country": "Zakovia",
+      "githubUrl": null,
+      "id": "ck5y2joqjhrd70b66yuznh3mq",
+      "isNightSpeaker": null,
+      "label": null,
+      "mediumUrl": null,
+      "name": "Vasilisa Pupkina",
+      "order": null,
+      "ownSite": null,
+      "socials": Array [],
+      "status": "DRAFT",
+      "twitterUrl": null,
+    },
+    Object {
+      "activities": Object {},
+      "avatar": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/mbETdJvNTd2SHOKv6T76",
+      "bio": "
+",
+      "company": "Hydra, Zakovia",
+      "country": "Zakovia",
+      "githubUrl": null,
+      "id": "ck5y2joqjhrd70b66yuznh3mq",
+      "isNightSpeaker": null,
+      "label": null,
+      "mediumUrl": null,
+      "name": "Vasilisa Pupkina",
+      "order": null,
+      "ownSite": null,
+      "socials": Array [],
+      "status": "DRAFT",
+      "twitterUrl": null,
+    },
+  ],
+  "workshops": Array [
+    Object {
+      "additionalInfo": null,
+      "code": "ws-svelte",
+      "content": Array [
+        "Introduction & local setup​",
+        "Why Svelte​",
+      ],
+      "date": "2020-06-04T00:00:00.000Z",
+      "dateString": "Thu Jun 04 2020",
+      "description": "<p>Svelte is a new prominent JS framework exposing “write less do more” philosophy. During this workshop you will get proficiency as a Svelte developer.
+We will be building an app that mimics the famous Q&#x26;A website stackoverflow.com. Will start developing from simple front end components, later we'll connect it to a real running backend and then test it and optimise for production.
+Attending a workshop is the fastest way to acquire a body of knowledge about building web apps with Svelte.
+content:</p>
+<ul>
+<li>topic 1</li>
+<li>topic 2</li>
+</ul>
+",
+      "duration": null,
+      "finishingTime": "",
+      "id": "ck5y1nxsshol10b66j4uo5g5a",
+      "level": "Intermediate",
+      "location": null,
+      "prerequisites": "Some Prerequisites should be there ",
+      "slogan": null,
+      "speaker": Object {
+        "info": Array [
+          Object {
+            "id": "ck5y2joqjhrd70b66yuznh3mq",
+            "isNightSpeaker": null,
+            "label": null,
+            "order": null,
+            "speaker": Object {
+              "avatar": Object {
+                "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/mbETdJvNTd2SHOKv6T76",
+              },
+              "bio": null,
+              "company": "Hydra",
+              "country": "Zakovia",
+              "githubUrl": null,
+              "id": "ck60gduudqlr30b75qyumd2is",
+              "mediumUrl": null,
+              "name": "Vasilisa Pupkina",
+              "ownSite": null,
+              "twitterUrl": null,
+            },
+            "status": "DRAFT",
+          },
+        ],
+        "name": "Vasilisa Pupkina",
+      },
+      "startingTime": null,
+      "status": "DRAFT",
+      "title": "TEST Build full featured frontend app with Svelte",
+      "toc": null,
+      "trainer": "Vasilisa Pupkina",
+      "trainers": Array [],
+      "trainersTitle": "Vasilisa Pupkina",
+    },
+    Object {
+      "additionalInfo": null,
+      "code": "ws-test",
+      "content": Array [
+        "Introduction & local setup​",
+        "Why Svelte​",
+      ],
+      "date": "2020-06-04T00:00:00.000Z",
+      "dateString": "Thu Jun 04 2020",
+      "description": "<p>GraphQL in React applications is more popular than ever but modern clients are often seen as complex and confusing. In this full-day workshop <strong>we will be demystifying GraphQL clients</strong> and will start writing a basic one from scratch. After this workshop you will not only know how modern GraphQL clients work, but how and why they work the way they do – from sending GraphQL queries <strong>to caching their responses</strong>. Over the course of the day we will design and build a client whilst integrating it into an existing UI.</p>
+<p>This course is brought to you by the team behind <strong>urql</strong>, the lightweight and extensible GraphQL client.</p>
+",
+      "duration": "6",
+      "finishingTime": "",
+      "id": "ck5zpbea0kfyw0b20qg0nh6qc",
+      "level": "Intermediate Javascript and React developer",
+      "location": "<p><a href=\\"https://link-to-map\\">THT</a></p>
+",
+      "prerequisites": "Familiarity with GraphQL syntax and experience using a GraphQL client, eg, Apollo, Relay modern.",
+      "slogan": null,
+      "speaker": Object {
+        "info": Array [
+          Object {
+            "id": "ck5y2joqjhrd70b66yuznh3mq",
+            "isNightSpeaker": null,
+            "label": null,
+            "order": null,
+            "speaker": Object {
+              "avatar": Object {
+                "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/mbETdJvNTd2SHOKv6T76",
+              },
+              "bio": null,
+              "company": "Hydra",
+              "country": "Zakovia",
+              "githubUrl": null,
+              "id": "ck60gduudqlr30b75qyumd2is",
+              "mediumUrl": null,
+              "name": "Vasilisa Pupkina",
+              "ownSite": null,
+              "twitterUrl": null,
+            },
+            "status": "DRAFT",
+          },
+        ],
+        "name": "Vasilisa Pupkina",
+      },
+      "startingTime": "9:00",
+      "status": "DRAFT",
+      "title": "Advanced GraphQL: Build Your Own GraphQL Client (Example Workshop description)",
+      "toc": "<ul>
+<li>React hooks API</li>
+<li>Making queries and fetching data</li>
+<li>Mutations</li>
+<li>Subscriptions</li>
+<li><strong>Error handling</strong></li>
+<li>Middleware</li>
+<li>Fetch options</li>
+<li>Context</li>
+<li>Exchanges/Links</li>
+<li><strong>Caching</strong></li>
+<li>Cache invalidation</li>
+</ul>
+",
+      "trainer": "Vasilisa Pupkina",
+      "trainers": Array [
+        Object {
+          "avatar": Object {
+            "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/G1EemJwgREea4f6ltNsi",
+          },
+          "bio": "Mikhail is a developer with 10 years of expertise building web
+applications. He used a variety of frameworks, throughout his career
+starting with jQuery , AngularJS and Polymer; then he discovered VueJS and used it for several projects. Since 2019 he became a happy user of Svelte v3.
+Besides fullstack development for enterprise companies Mikhail is doing open source projects and speaks on meetups and conferences about various topics in modern web development.
+Mikhail runs a local ​Svelte meetup group in Amsterdam​.",
+          "company": null,
+          "country": "Netherlands",
+          "githubUrl": null,
+          "id": "ck5y2i5nshr4s0b6635ypswup",
+          "mediumUrl": null,
+          "name": "Mikhail Kuznetcov",
+          "ownSite": null,
+          "twitterUrl": null,
+        },
+        Object {
+          "avatar": Object {
+            "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/mbETdJvNTd2SHOKv6T76",
+          },
+          "bio": null,
+          "company": "Hydra",
+          "country": "Zakovia",
+          "githubUrl": null,
+          "id": "ck60gduudqlr30b75qyumd2is",
+          "mediumUrl": null,
+          "name": "Vasilisa Pupkina",
+          "ownSite": null,
+          "twitterUrl": null,
+        },
+      ],
+      "trainersTitle": "Mikhail Kuznetcov, Vasilisa Pupkina",
+    },
+  ],
 }
 `;
