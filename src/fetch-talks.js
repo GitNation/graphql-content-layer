@@ -67,6 +67,7 @@ const fetchData = async (client, vars) => {
     .map(({ title, description, timeString, track, speaker }) => ({
       title,
       text: description,
+      description,
       time: timeString,
       track: track && track.name,
       name: speaker.name,

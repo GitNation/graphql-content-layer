@@ -102,7 +102,8 @@ const fetchData = async (client, vars) => {
           speaker: speaker || {
             info: [],
           },
-          trainers: trainers || [],
+          trainers:
+            trainers.map(tr => ({ ...tr, slug: createSlug(tr, 'user') })) || [],
           ...ws,
         }))
         .map(ws => ({
