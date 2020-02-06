@@ -89,6 +89,13 @@ const createWorkshopSchedule = (start, duration) => {
   };
 };
 
+const byOrder = (a, b) => {
+  const orderA = a.order || Infinity;
+  const orderB = b.order || Infinity;
+  console.log('TCL: byOrder -> orderB', orderA, orderB);
+  return orderA - orderB;
+};
+
 const fetchData = async (client, vars) => {
   const data = await client
     .request(queryPages, vars)
@@ -119,7 +126,8 @@ const fetchData = async (client, vars) => {
           slug: createSlug(ws, 'workshop'),
           ...(day.additionalEvents &&
             day.additionalEvents.find(({ title }) => title === ws.title)),
-        })),
+        }))
+        .sort(byOrder),
     ],
     [],
   );
