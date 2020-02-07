@@ -62,41 +62,42 @@ const fetchData = async (client, vars) => {
   const sponsors = [
     {
       title: 'Platinum',
+      mod: 'sponsors-block_xl',
       list: sponsorsList
         .filter(({ category }) => category === 'Platinum')
         .sort(sortByOrder),
     },
     {
       title: 'Production Partners',
-      mod: 'logos_sm',
+      mod: 'logos_sm sponsors-block_lg',
       list: sponsorsList
         .filter(({ category }) => category === 'ProductionPartner')
         .sort(sortByOrder),
     },
     {
       title: 'Gold',
-      mod: 'logos_md',
+      mod: 'logos_md sponsors-block_lg',
       list: sponsorsList
         .filter(({ category }) => category === 'Gold')
         .sort(sortByOrder),
     },
     {
       title: 'Silver',
-      mod: 'logos_sm',
+      mod: 'logos_sm sponsors-block_lg',
       list: sponsorsList
         .filter(({ category }) => category === 'Silver')
         .sort(sortByOrder),
     },
     {
       title: 'Media Partners',
-      mod: 'logos_xs',
+      mod: 'logos_xs sponsors-block_xs',
       list: sponsorsList
         .filter(({ category }) => category === 'MediaPartner')
         .sort(sortByOrder),
     },
     {
-      title: 'Partner',
-      mod: 'logos_xs',
+      title: 'Partners',
+      mod: 'logos_xs sponsors-block_xs',
       list: sponsorsList
         .filter(({ category }) => category === 'Partner')
         .sort(sortByOrder),

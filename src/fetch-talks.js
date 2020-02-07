@@ -107,7 +107,7 @@ const fetchData = async (client, vars) => {
 
   if (schedule.length === 1) {
     schedule[0].list = talks.map(talk => ({ ...talk, time: null }));
-    scheduleTitle = 'Talks';
+    scheduleTitle = 'First talks';
   }
 
   schedule[0].active = true;
