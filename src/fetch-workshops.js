@@ -45,7 +45,7 @@ const queryPages = /* GraphQL */ `
             slogan
             code
             speaker {
-              name
+              ...person
               info: pieceOfSpeakerInfoes(
                 where: {
                   conferenceEvent: {
@@ -147,7 +147,7 @@ const fetchData = async (client, vars) => {
     .reduce(
       (list, { speaker, trainers }) => [
         ...list,
-        speaker.info[0],
+        speaker.info[0] || { speaker },
         ...trainers.map(tr => ({ speaker: tr })),
       ],
       [],
