@@ -17,6 +17,7 @@ const prepareSpeakers = async speakers => {
         ownSite,
         speaker,
         avatar,
+        activities = {},
         ...item
       }) => ({
         ...item,
@@ -27,11 +28,20 @@ const prepareSpeakers = async speakers => {
         twitter: twitterUrl,
         medium: mediumUrl,
         site: ownSite,
+        activities: Object.entries(activities).reduce(
+          (all, [key, value]) => ({
+            ...all,
+            ...(value && value.length ? { [key]: value } : undefined),
+          }),
+          {}
+        ),
       })
     );
-  const allSpeakers = await Promise.all(allSpeakersAsync)
+  const allSpeakers = await Promise.all(allSpeakersAsync);
   const uniqueSpeakers = new Set(allSpeakers.map(({ name }) => name));
-  const readySpeakers = [...uniqueSpeakers].map(name => allSpeakers.find(speaker => speaker.name === name));
+  const readySpeakers = [...uniqueSpeakers].map(name =>
+    allSpeakers.find(speaker => speaker.name === name)
+  );
   return readySpeakers;
 };
 
