@@ -17,8 +17,8 @@ const queryPages = /* GraphQL */ `
           image {
             url(
               transformation: {
-                image: { resize: { width: 700 } },
-                document: { output: { format: jpg } } 
+                image: { resize: { width: 700 } }
+                document: { output: { format: jpg } }
               }
             )
           }
@@ -29,7 +29,7 @@ const queryPages = /* GraphQL */ `
   }
 `;
 
-const fetchData = async(client, vars) => {
+const fetchData = async (client, vars) => {
   const data = await client
     .request(queryPages, vars)
     .then(res => res.conf.year[0].jobs);

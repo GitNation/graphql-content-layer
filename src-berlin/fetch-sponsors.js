@@ -19,8 +19,8 @@ const queryPages = /* GraphQL */ `
             avatar {
               url(
                 transformation: {
-                  image: { resize: { width: 600 } },
-                  document: { output: { format: jpg } } 
+                  image: { resize: { width: 600 } }
+                  document: { output: { format: jpg } }
                 }
               )
             }
@@ -38,7 +38,7 @@ const sortByOrder = (a, b) => {
   return aInd - bInd;
 };
 
-const fetchData = async(client, vars) => {
+const fetchData = async (client, vars) => {
   const data = await client
     .request(queryPages, vars)
     .then(res => res.conf.year[0].sponsors);
@@ -66,7 +66,9 @@ const fetchData = async(client, vars) => {
   };
   const sponsors = ['Gold', 'Silver', 'Partner'].map(cat => ({
     title: titlesMap[cat],
-    list: sponsorsList.filter(({ category }) => category === cat).sort(sortByOrder),
+    list: sponsorsList
+      .filter(({ category }) => category === cat)
+      .sort(sortByOrder),
   }));
 
   return {
