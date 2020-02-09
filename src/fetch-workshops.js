@@ -116,7 +116,7 @@ const fetchData = async (client, vars) => {
           ...ws,
           date: day.date,
           dateString: dayjs(day.date)
-            .format('MMMM, D')
+            .format('MMMM D')
             .trim(),
           startingTime: day.startingTime,
           schedule: createWorkshopSchedule(day.startingTime, ws.duration),
@@ -134,11 +134,11 @@ const fetchData = async (client, vars) => {
   const allWorkshops = await Promise.all(
     workshops.map(async wrp => ({
       ...wrp,
-      toc: wrp.toc && (await markdownToHtml(wrp.toc)),
-      location: wrp.location && (await markdownToHtml(wrp.location)),
+      toc: await markdownToHtml(wrp.toc),
+      location: await markdownToHtml(wrp.location),
       description: await markdownToHtml(wrp.description),
-      additionalInfo:
-        wrp.additionalInfo && (await markdownToHtml(wrp.additionalInfo)),
+      additionalInfo: await markdownToHtml(wrp.additionalInfo),
+      prerequisites: await markdownToHtml(wrp.prerequisites),
       finishingTime: '',
     })),
   );

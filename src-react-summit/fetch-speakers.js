@@ -53,10 +53,10 @@ const fetchData = async (client, vars) => {
   const allSpeakers = await Promise.all(speakers);
 
   const daySpeakers = allSpeakers.filter(
-    ({ isNightSpeaker }) => !isNightSpeaker
+    ({ isNightSpeaker }) => !isNightSpeaker,
   );
   const eveningSpeakers = allSpeakers.filter(
-    ({ isNightSpeaker }) => isNightSpeaker
+    ({ isNightSpeaker }) => isNightSpeaker,
   );
 
   return {
