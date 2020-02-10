@@ -42,7 +42,15 @@ const prepareActivities = rawActivities => {
   return activities;
 };
 
-const prepareSpeakers = (speakers, tagColors) =>
+const labelTag = ({ prefix, labelColors = [], label }) => {
+  const colorInfo =
+    labelColors.find(c => c.label === label) ||
+    labelColors.find(c => c.label === null) ||
+    {};
+  return `${prefix}--${colorInfo.tag}`;
+};
+
+const prepareSpeakers = (speakers, tagColors, labelColors) =>
   speakers
     .map(item => ({
       ...item.speaker,
@@ -58,6 +66,7 @@ const prepareSpeakers = (speakers, tagColors) =>
       ...getLabelColor(item.label, tagColors),
       activities: prepareActivities(activities),
       slug: createSlug(item, 'user'),
+      tag: labelTag({ label: item.label, prefix: 'speaker', labelColors }),
     }));
 
 const trySelectSettings = (selector, defaultSettings) => settings => {

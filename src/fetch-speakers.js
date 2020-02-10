@@ -5,6 +5,7 @@ const selectSettings = trySelectSettings(
   s => ({
     ...s.speakerAvatar.dimensions,
     tagColors: s.tagColors,
+    labelColors: s.labelColors,
   }),
   {
     avatarWidth: 500,
@@ -58,7 +59,7 @@ const queryPages = /* GraphQL */ `
   ${speakerInfoFragment}
 `;
 
-const fetchData = async (client, { tagColors, ...vars }) => {
+const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
   const data = await client.request(queryPages, vars).then(res => ({
     speakers: res.conf.year[0].speakers,
     openForTalks: res.conf.year[0].openForTalks,
@@ -66,11 +67,12 @@ const fetchData = async (client, { tagColors, ...vars }) => {
 
   const { openForTalks } = data;
 
-  const speakers = await prepareSpeakers(data.speakers, tagColors);
+  const speakers = await prepareSpeakers(data.speakers, tagColors, labelColors);
 
   return {
     speakers: { main: await Promise.all(speakers) },
     speakersBtn: openForTalks ? 'CALL FOR SPEAKERS' : false,
+    labelColors,
   };
 };
 
