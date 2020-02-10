@@ -44,6 +44,8 @@ const prepareActivities = rawActivities => {
 
 const prepareSpeakers = (speakers, tagColors) =>
   speakers
+    .filter(Boolean)
+    .filter(({ speaker }) => !!speaker)
     .map(item => ({
       ...item.speaker,
       ...item,
