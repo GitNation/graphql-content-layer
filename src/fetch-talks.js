@@ -104,10 +104,12 @@ const fetchData = async (client, vars) => {
   }));
 
   let scheduleTitle = 'Schedule';
+  let noTracks = false;
 
   if (schedule.length === 1) {
     schedule[0].list = talks.map(talk => ({ ...talk, time: null }));
-    scheduleTitle = 'First talks';
+    scheduleTitle = 'First Talks';
+    noTracks = true;
   }
 
   schedule[0].active = true;
@@ -117,6 +119,7 @@ const fetchData = async (client, vars) => {
     schedule,
     tracks,
     talks,
+    noTracks,
   };
 };
 

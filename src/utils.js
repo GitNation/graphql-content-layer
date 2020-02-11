@@ -52,19 +52,21 @@ const labelTag = ({ prefix, labelColors = [], label }) => {
 
 const prepareSpeakers = (speakers, tagColors, labelColors) =>
   speakers
+    .filter(Boolean)
+    .filter(({ speaker }) => !!speaker)
     .map(item => ({
       ...item.speaker,
       ...item,
       avatar: item.speaker.avatar || {},
     }))
-    .map(async ({ bio, speaker, avatar, activities = {}, ...item }) => ({
+    .map(async ({ bio, speaker, avatar, activities, ...item }) => ({
       ...item,
       company: `${item.company}, ${item.country}`,
       avatar: avatar.url,
       bio: await markdownToHtml(bio),
       socials: getSocials(item),
       ...getLabelColor(item.label, tagColors),
-      activities: prepareActivities(activities),
+      activities: prepareActivities(activities || {}),
       slug: createSlug(item, 'user'),
       tag: labelTag({ label: item.label, prefix: 'speaker', labelColors }),
     }));

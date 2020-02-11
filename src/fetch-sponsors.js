@@ -35,8 +35,8 @@ const queryPages = /* GraphQL */ `
 `;
 
 const sortByOrder = (a, b) => {
-  const aInd = a.order || 0;
-  const bInd = b.order || 0;
+  const aInd = a.order || Infinity;
+  const bInd = b.order || Infinity;
   return aInd - bInd;
 };
 
@@ -51,7 +51,8 @@ const fetchData = async (client, vars) => {
       ...item,
       avatar: item.avatar || item.sponsor.avatar || {},
     }))
-    .map(({ site, avatar, title, width, category }) => ({
+    .map(({ site, avatar, title, width, category, ...item }) => ({
+      ...item,
       category,
       alt: title,
       img: avatar.url,
