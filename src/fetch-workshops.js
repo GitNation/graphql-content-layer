@@ -89,9 +89,15 @@ const createWorkshopSchedule = (start, duration) => {
   };
 };
 
+const byDate = (a, b) => {
+  const orderA = new Date(a.date);
+  const orderB = new Date(b.date);
+  return orderA.getTime() - orderB.getTime();
+};
+
 const byOrder = (a, b) => {
-  const orderA = a.order || Infinity;
-  const orderB = b.order || Infinity;
+  const orderA = a.order;
+  const orderB = b.order;
   return orderA - orderB;
 };
 
@@ -100,36 +106,43 @@ const fetchData = async (client, vars) => {
     .request(queryPages, vars)
     .then(res => res.conf.year[0].schedule);
 
-  const workshops = data.reduce(
-    (all, day) => [
-      ...all,
-      ...day.workshops
-        .map(({ speaker, trainers, ...ws }) => ({
-          speaker: speaker || {
-            info: [],
-          },
-          trainers:
-            trainers.map(tr => ({ ...tr, slug: createSlug(tr, 'user') })) || [],
-          ...ws,
-        }))
-        .map(ws => ({
-          ...ws,
-          date: day.date,
-          dateString: dayjs(day.date)
-            .format('MMMM D')
-            .trim(),
-          startingTime: day.startingTime,
-          schedule: createWorkshopSchedule(day.startingTime, ws.duration),
-          trainer: ws.speaker.name,
-          trainersTitle: createTrainersTitle(ws.trainers, ws.speaker.name),
-          slug: createSlug(ws, 'workshop'),
-          ...(day.additionalEvents &&
-            day.additionalEvents.find(({ title }) => title === ws.title)),
-        }))
-        .sort(byOrder),
-    ],
-    [],
-  );
+  let workshops = data
+    .reduce(
+      (all, day) => [
+        ...all,
+        ...day.workshops
+          .map(({ speaker, trainers, ...ws }) => ({
+            speaker: speaker || {
+              info: [],
+            },
+            trainers:
+              trainers.map(tr => ({ ...tr, slug: createSlug(tr, 'user') })) ||
+              [],
+            ...ws,
+          }))
+          .map(ws => ({
+            ...ws,
+            date: day.date,
+            dateString: dayjs(day.date)
+              .format('MMMM D')
+              .trim(),
+            startingTime: day.startingTime,
+            schedule: createWorkshopSchedule(day.startingTime, ws.duration),
+            trainer: ws.speaker.name,
+            trainersTitle: createTrainersTitle(ws.trainers, ws.speaker.name),
+            slug: createSlug(ws, 'workshop'),
+            ...(day.additionalEvents &&
+              day.additionalEvents.find(({ title }) => title === ws.title)),
+          })),
+      ],
+      [],
+    )
+    .sort(byDate)
+    .map(({ order, ...ws }, ind) => ({
+      ...ws,
+      order: order || 1010 + ind * 10,
+    }))
+    .sort(byOrder);
 
   const allWorkshops = await Promise.all(
     workshops.map(async wrp => ({
@@ -180,6 +193,7 @@ const fetchData = async (client, vars) => {
 
   return {
     trainers,
+    workshopDays: data.length,
     workshops: allWorkshops,
     speakers: {
       workshops: trainers,

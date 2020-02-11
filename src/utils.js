@@ -53,7 +53,7 @@ const labelTag = ({ prefix, labelColors = [], label }) => {
 const prepareSpeakers = (speakers, tagColors, labelColors) =>
   speakers
     .filter(Boolean)
-    .filter(({ speaker }) => !!speaker)
+    // .filter(({ speaker }) => !!speaker)
     .map(item => ({
       ...item.speaker,
       ...item,
