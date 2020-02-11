@@ -1,7 +1,7 @@
-const dayjs = require('dayjs');
 const { markdownToHtml } = require('./markdown');
 const { prepareSpeakers } = require('./utils');
 const { imageUrlFragment } = require('./fragments');
+const dayjs = require('dayjs');
 
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {

@@ -3,6 +3,7 @@ const { markdownToHtml } = require('./markdown');
 const prepareSpeakers = async speakers => {
   const allSpeakersAsync = speakers
     .filter(Boolean)
+    // .filter(({ speaker }) => !!speaker)
     .map(item => ({
       ...item.speaker,
       ...item,
@@ -28,19 +29,19 @@ const prepareSpeakers = async speakers => {
         twitter: twitterUrl,
         medium: mediumUrl,
         site: ownSite,
-        activities: Object.entries(activities).reduce(
+        activities: Object.entries(activities || {}).reduce(
           (all, [key, value]) => ({
             ...all,
             ...(value && value.length ? { [key]: value } : undefined),
           }),
-          {}
+          {},
         ),
-      })
+      }),
     );
   const allSpeakers = await Promise.all(allSpeakersAsync);
   const uniqueSpeakers = new Set(allSpeakers.map(({ name }) => name));
   const readySpeakers = [...uniqueSpeakers].map(name =>
-    allSpeakers.find(speaker => speaker.name === name)
+    allSpeakers.find(speaker => speaker.name === name),
   );
   return readySpeakers;
 };
