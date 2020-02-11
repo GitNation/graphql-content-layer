@@ -69,8 +69,18 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
 
   const speakers = await prepareSpeakers(data.speakers, tagColors, labelColors);
 
+  const allSpeakers = await Promise.all(speakers);
+
+  const daySpeakers = allSpeakers.filter(
+    ({ isNightSpeaker }) => !isNightSpeaker,
+  );
+  const eveningSpeakers = allSpeakers.filter(
+    ({ isNightSpeaker }) => isNightSpeaker,
+  );
+
   return {
-    speakers: { main: await Promise.all(speakers) },
+    speakers: { main: daySpeakers },
+    eveningSpeakers,
     speakersBtn: openForTalks ? 'CALL FOR SPEAKERS' : false,
     labelColors,
   };
