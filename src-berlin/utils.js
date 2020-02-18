@@ -8,5 +8,5 @@ const labelTag = prefix => label => {
 };
 
 module.exports = {
-  labelTag
+  labelTag,
 };

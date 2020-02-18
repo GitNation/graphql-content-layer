@@ -21,7 +21,7 @@ const queryPages = /* GraphQL */ `
               url(
                 transformation: {
                   image: { resize: { width: 500, height: 500, fit: crop } },
-                  document: { output: { format: jpg } } 
+                  document: { output: { format: jpg } }
                 }
               )
             }

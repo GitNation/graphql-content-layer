@@ -80,7 +80,7 @@ const fetchData = async (client, vars) => {
     }));
 
   const tracks = [...new Set(talks.map(({ track }) => track))]
-    .map(track => data.talks.find(talk => talk.track.name === track).track)
+    .map(track => data.talks.find(talk => talk.track && talk.track.name === track).track)
     .sort((a, b) => {
       return +b.isPrimary - +a.isPrimary;
     })
@@ -96,12 +96,14 @@ const fetchData = async (client, vars) => {
 
   const lightningTalks = talks.filter(({ isLightning }) => isLightning);
 
+  const hideSchedule = tracks.length < 2;
 
   return {
     scheduleList,
     tracks,
     talks,
-    lightningTalks
+    lightningTalks,
+    hideSchedule
   };
 };
 

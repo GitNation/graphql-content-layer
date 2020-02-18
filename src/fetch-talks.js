@@ -19,6 +19,7 @@ const queryPages = /* GraphQL */ `
             timeString
             title
             description
+            isLightning
             track {
               id
               status
@@ -64,14 +65,15 @@ const fetchData = async (client, vars) => {
   const additionalEvents = rawData[0].additionalEvents || [];
 
   const talks = dataTalks
-    .map(({ title, description, timeString, track, speaker }) => ({
+    .map(({ title, description, timeString, track, speaker, ...talk }) => ({
+      ...talk,
       title,
       text: description,
       description,
       time: timeString,
       track: track && track.name,
-      name: speaker.name,
-      place: `${speaker.company}, ${speaker.country}`,
+      name: speaker && speaker.name,
+      place: speaker && `${speaker.company}, ${speaker.country}`,
       pieceOfSpeakerInfoes: speaker.pieceOfSpeakerInfoes[0] || {},
       slug: createSlug({ title }, 'talk'),
       speakerSlug: createSlug(speaker, 'user'),
@@ -82,6 +84,8 @@ const fetchData = async (client, vars) => {
       from: talk.place,
       label: pieceOfSpeakerInfoes.label,
     }));
+
+  const lightningTalks = talks.filter(({ isLightning }) => isLightning);
 
   const tracks = [...new Set(talks.map(({ track }) => track))]
     .map(track =>
@@ -119,6 +123,7 @@ const fetchData = async (client, vars) => {
     schedule,
     tracks,
     talks,
+    lightningTalks,
     noTracks,
   };
 };
