@@ -14,6 +14,7 @@ const queryPages = /* GraphQL */ `
           titlePage
           pageSlogan
           pageStatistics
+          locationTitle
           themeColor {
             hex
           }

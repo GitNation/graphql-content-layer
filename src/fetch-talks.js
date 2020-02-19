@@ -1,4 +1,13 @@
-const { createSlug } = require('./utils');
+
+const { markdownToHtml } = require('./markdown');
+const { createSlug, labelTag, trySelectSettings } = require('./utils');
+
+const selectSettings = trySelectSettings(
+  s => ({
+    labelColors: s.labelColors,
+  }),
+  {},
+);
 
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
@@ -49,7 +58,9 @@ const byTime = (a, b) => {
   return aTime - bTime;
 };
 
-const fetchData = async (client, vars) => {
+const fetchData = async (client, { labelColors, ...vars }) => {
+  const overlay = label => labelTag({ prefix: 'talk', labelColors, label });
+
   const rawData = await client
     .request(queryPages, vars)
     .then(res => res.conf.year[0].schedule);
@@ -64,7 +75,7 @@ const fetchData = async (client, vars) => {
 
   const additionalEvents = rawData[0].additionalEvents || [];
 
-  const allTalks = dataTalks
+  const talksRaw = dataTalks
     .map(({ title, description, timeString, track, speaker, ...talk }) => ({
       ...talk,
       title,
@@ -83,7 +94,14 @@ const fetchData = async (client, vars) => {
       speaker: talk.name,
       from: talk.place,
       label: pieceOfSpeakerInfoes.label,
+      tag: overlay(pieceOfSpeakerInfoes.label),
+    }))
+    .map(async item => ({
+      ...item,
+      text: await markdownToHtml(item.text),
     }));
+
+  const allTalks = await Promise.all(talksRaw);
 
   const talks = allTalks.filter(({ isLightning }) => !isLightning);
   const lightningTalks = allTalks.filter(({ isLightning }) => isLightning);
@@ -185,6 +203,7 @@ const fetchData = async (client, vars) => {
 
 module.exports = {
   fetchData,
+  selectSettings,
   queryPages,
   getData: data => data.conf.year[0].schedule,
   story: 'schedule/talks',
