@@ -110,4 +110,5 @@ module.exports = {
   // tagColors,
   trySelectSettings,
   createSlug,
+  labelTag,
 };

@@ -1,4 +1,13 @@
-const { createSlug } = require('./utils');
+
+const { markdownToHtml } = require('./markdown');
+const { createSlug, labelTag, trySelectSettings } = require('./utils');
+
+const selectSettings = trySelectSettings(
+  s => ({
+    labelColors: s.labelColors,
+  }),
+  {},
+);
 
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
@@ -49,7 +58,9 @@ const byTime = (a, b) => {
   return aTime - bTime;
 };
 
-const fetchData = async (client, vars) => {
+const fetchData = async (client, { labelColors, ...vars }) => {
+  const overlay = label => labelTag({ prefix: 'talk', labelColors, label });
+
   const rawData = await client
     .request(queryPages, vars)
     .then(res => res.conf.year[0].schedule);
@@ -64,7 +75,7 @@ const fetchData = async (client, vars) => {
 
   const additionalEvents = rawData[0].additionalEvents || [];
 
-  const talks = dataTalks
+  const talksRaw = dataTalks
     .map(({ title, description, timeString, track, speaker, ...talk }) => ({
       ...talk,
       title,
@@ -83,11 +94,19 @@ const fetchData = async (client, vars) => {
       speaker: talk.name,
       from: talk.place,
       label: pieceOfSpeakerInfoes.label,
+      tag: overlay(pieceOfSpeakerInfoes.label),
+    }))
+    .map(async item => ({
+      ...item,
+      text: await markdownToHtml(item.text),
     }));
 
-  const lightningTalks = talks.filter(({ isLightning }) => isLightning);
+  const allTalks = await Promise.all(talksRaw);
 
-  const tracks = [...new Set(talks.map(({ track }) => track))]
+  const talks = allTalks.filter(({ isLightning }) => !isLightning);
+  const lightningTalks = allTalks.filter(({ isLightning }) => isLightning);
+
+  const tracks = [...new Set(allTalks.map(({ track }) => track))]
     .map(track =>
       dataTalks.find(talk => talk.track && talk.track.name === track),
     )
@@ -98,12 +117,66 @@ const fetchData = async (client, vars) => {
     })
     .map(({ name }) => name);
 
+  const ltTalksScheduleItems = tracks
+    .map(track => {
+      const ltTalks = lightningTalks.filter(lt => lt.track === track);
+      if (!ltTalks.length) return null;
+
+      const timeGroups = new Set(ltTalks.map(({ time }) => time));
+      const lightningTalksGroups = [...timeGroups].map(time =>
+        ltTalks.filter(lt => lt.time === time),
+      );
+
+      return lightningTalksGroups.map(ltGroup => ({
+        title: 'tbd',
+        time: ltGroup[0].time,
+        isLightning: true,
+        track,
+        lightningTalks: ltGroup,
+      }));
+    })
+    .filter(Boolean);
+
+  const ltTalksScheduleItemsFlatMap = ltTalksScheduleItems.reduce(
+    (array, subArray) => [...array, ...subArray],
+    [],
+  );
+
   const schedule = tracks.map((track, ind) => ({
     tab: track,
     title: track,
     name: `${10 + ind}`,
-    list: [...additionalEvents, ...talks]
+    list: [...talks, ...ltTalksScheduleItemsFlatMap, ...additionalEvents]
       .filter(event => event.track === track)
+      .reduce((list, talk) => {
+        const findSameTalk = (ls, tk) => {
+          const sameTalkInd = ls.findIndex(
+            ({ title, time, isLightning }) =>
+              title === tk.title ||
+              (time === tk.time && isLightning && tk.isLightning),
+          );
+          const sameTalk = ls[sameTalkInd];
+          if (!sameTalk) return {};
+
+          if (!sameTalk.time) {
+            return { sameTalk, sameTalkInd };
+          }
+
+          return tk.time === sameTalk.time ? { sameTalk, sameTalkInd } : {};
+        };
+
+        const { sameTalk, sameTalkInd } = findSameTalk(list, talk);
+
+        if (sameTalk) {
+          const newList = [...list];
+          newList[sameTalkInd] = {
+            ...sameTalk,
+            ...talk,
+          };
+          return newList;
+        }
+        return [...list, talk];
+      }, [])
       .sort(byTime),
   }));
 
@@ -130,6 +203,7 @@ const fetchData = async (client, vars) => {
 
 module.exports = {
   fetchData,
+  selectSettings,
   queryPages,
   getData: data => data.conf.year[0].schedule,
   story: 'schedule/talks',

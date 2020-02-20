@@ -27,12 +27,12 @@ const sponsorLogoFragment = /* GraphQL */ `
 const jobLogoFragment = /* GraphQL */ `
   fragment logo on Job {
     image {
-      url #(
-      # transformation: {
-      #   image: { resize: { width: 555 } }
-      #   document: { output: { format: jpg } }
-      # }
-      #)
+      url(
+        transformation: {
+          image: { resize: { width: 700 } }
+          document: { output: { format: jpg } }
+        }
+      )
     }
   }
 `;
@@ -123,5 +123,5 @@ module.exports = {
   personFragment,
   sponsorLogoFragment,
   jobLogoFragment,
-  activitiesFragment
+  activitiesFragment,
 };
