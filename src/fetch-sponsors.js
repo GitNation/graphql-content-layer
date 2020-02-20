@@ -63,17 +63,12 @@ const fetchData = async (client, vars) => {
   const sponsors = [
     {
       title: 'Platinum',
+      /* TODO: deprecate mode in favor of category */
       mod: 'sponsors-block_xl',
       list: sponsorsList
         .filter(({ category }) => category === 'Platinum')
         .sort(sortByOrder),
-    },
-    {
-      title: 'Production Partners',
-      mod: 'logos_sm sponsors-block_lg',
-      list: sponsorsList
-        .filter(({ category }) => category === 'ProductionPartner')
-        .sort(sortByOrder),
+      category: 'Platinum',
     },
     {
       title: 'Gold',
@@ -81,6 +76,7 @@ const fetchData = async (client, vars) => {
       list: sponsorsList
         .filter(({ category }) => category === 'Gold')
         .sort(sortByOrder),
+      category: 'Gold',
     },
     {
       title: 'Silver',
@@ -88,6 +84,23 @@ const fetchData = async (client, vars) => {
       list: sponsorsList
         .filter(({ category }) => category === 'Silver')
         .sort(sortByOrder),
+      category: 'Silver',
+    },
+    {
+      title: 'Party Partners',
+      mod: 'logos_sm sponsors-block_lg',
+      list: sponsorsList
+        .filter(({ category }) => category === 'PartyPartner')
+        .sort(sortByOrder),
+      category: 'PartyPartner',
+    },
+    {
+      title: 'Production Partners',
+      mod: 'logos_sm sponsors-block_lg',
+      list: sponsorsList
+        .filter(({ category }) => category === 'ProductionPartner')
+        .sort(sortByOrder),
+      category: 'ProductionPartner',
     },
     {
       title: 'Media Partners',
@@ -95,6 +108,7 @@ const fetchData = async (client, vars) => {
       list: sponsorsList
         .filter(({ category }) => category === 'MediaPartner')
         .sort(sortByOrder),
+      category: 'MediaPartner',
     },
     {
       title: 'Partners',
@@ -102,6 +116,7 @@ const fetchData = async (client, vars) => {
       list: sponsorsList
         .filter(({ category }) => category === 'Partner')
         .sort(sortByOrder),
+      category: 'Partner',
     },
   ].filter(({ list }) => list.length);
 
