@@ -1,4 +1,4 @@
-const { createSlug } = require('./utils');
+const { createSlug, contentTypeMap } = require('./utils');
 
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
@@ -80,6 +80,7 @@ const fetchData = async (client, vars) => {
     }))
     .map(({ pieceOfSpeakerInfoes, ...talk }) => ({
       ...talk,
+      contentType: contentTypeMap.talk,
       speaker: talk.name,
       from: talk.place,
       label: pieceOfSpeakerInfoes.label,

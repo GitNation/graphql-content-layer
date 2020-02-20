@@ -104,10 +104,16 @@ const createSlug = (object, type) => {
   return slug;
 };
 
+const contentTypeMap = {
+  page: '371641c28b044b00bf532b2dd6e1516d',
+  talk: 'd5d4bfeb605c41569b30d478a03bbb0e'
+};
+
 module.exports = {
   getLabelColor,
   prepareSpeakers,
   // tagColors,
   trySelectSettings,
   createSlug,
+  contentTypeMap,
 };

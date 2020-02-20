@@ -1,3 +1,5 @@
+const { contentTypeMap } = require('./utils');
+
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
@@ -7,6 +9,7 @@ const queryPages = /* GraphQL */ `
         id
         status
         pages {
+          id
           titleSeo
           description
           seoDescription
@@ -34,7 +37,11 @@ const fetchData = async (client, vars) => {
   const pages = data.reduce(
     (obj, item) => ({
       ...obj,
-      [item.key]: { ...item, keywords: item.keywords.join(', ') },
+      [item.key]: {
+        ...item,
+        contentType: contentTypeMap.page,
+        keywords: item.keywords.join(', ')
+      },
     }),
     {},
   );
