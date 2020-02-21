@@ -1,6 +1,10 @@
-
 const { markdownToHtml } = require('./markdown');
-const { createSlug, labelTag, trySelectSettings } = require('./utils');
+const {
+  createSlug,
+  labelTag,
+  trySelectSettings,
+  contentTypeMap,
+} = require('./utils');
 
 const selectSettings = trySelectSettings(
   s => ({
@@ -73,7 +77,11 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     throw new Error('Schedule not set for this event yet');
   }
 
-  const additionalEvents = rawData[0].additionalEvents || [];
+  const additionalEvents = (rawData[0].additionalEvents || []).map(event => ({
+    ...event,
+    id: rawData[0] && rawData[0].id,
+    contentType: contentTypeMap.DaySchedule,
+  }));
 
   const talksRaw = dataTalks
     .map(({ title, description, timeString, track, speaker, ...talk }) => ({
@@ -88,9 +96,11 @@ const fetchData = async (client, { labelColors, ...vars }) => {
       pieceOfSpeakerInfoes: speaker.pieceOfSpeakerInfoes[0] || {},
       slug: createSlug({ title }, 'talk'),
       speakerSlug: createSlug(speaker, 'user'),
+      contentType: contentTypeMap.Talk,
     }))
     .map(({ pieceOfSpeakerInfoes, ...talk }) => ({
       ...talk,
+      contentType: contentTypeMap.Talk,
       speaker: talk.name,
       from: talk.place,
       label: pieceOfSpeakerInfoes.label,

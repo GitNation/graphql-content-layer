@@ -1,4 +1,5 @@
 const { markdownToHtml } = require('./markdown');
+const { contentTypeMap } = require('./utils');
 
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
@@ -54,11 +55,14 @@ const fetchData = async (client, { tagColors, ...vars }) => {
   const diversity = {
     ...data,
     description: await markdownToHtml(data.description),
-    sponsors: data.sponsors.map(({ title, avatar: { url } }) => ({
+    sponsors: data.sponsors.map(({ title, avatar: { url }, id }) => ({
+      id,
       title,
       avatar: url,
+      contentType: contentTypeMap.Sponsor,
     })),
     progress: Math.round((100 * sponsoredTickets) / maxTickets),
+    contentType: contentTypeMap.Diversity,
   };
 
   return {

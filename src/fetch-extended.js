@@ -1,4 +1,5 @@
 const { markdownToHtml } = require('./markdown');
+const { contentTypeMap } = require('./utils');
 
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
@@ -9,6 +10,7 @@ const queryPages = /* GraphQL */ `
         id
         status
         extendeds {
+          id
           key
           title
           subtitle
@@ -38,6 +40,7 @@ const fetchData = async (client, vars) => {
       subtitle: item.subtitle && (await markdownToHtml(item.subtitle)),
       description: item.description && (await markdownToHtml(item.description)),
       location: item.location && (await markdownToHtml(item.location)),
+      contentType: contentTypeMap.Extended,
     })),
   );
 

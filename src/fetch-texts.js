@@ -1,4 +1,5 @@
 const { markdownToHtml } = require('./markdown');
+const { contentTypeMap } = require('./utils');
 
 const renderStyles = {
   None_Default: 'None_Default',
@@ -14,6 +15,7 @@ const queryPages = /* GraphQL */ `
         id
         status
         pieceOfTexts {
+          id
           key
           renderStyle
           markdown
@@ -34,26 +36,36 @@ const markdownRender = (text, style) => {
 };
 
 const fetchData = async (client, vars) => {
-  const pieceOfTexts = await client
+  const data = await client
     .request(queryPages, vars)
     .then(res => res.conf.year[0].pieceOfTexts);
 
   const pieceOfHTMLs = await Promise.all(
-    pieceOfTexts.map(async item => ({
+    data.map(async item => ({
       ...item,
       html: await markdownRender(item.markdown, item.renderStyle),
+      contentType: contentTypeMap.PieceOfText,
     })),
   );
 
-  const subContent = pieceOfHTMLs.reduce(
+  const pagesPieceOfTexts = pieceOfHTMLs.reduce(
     (obj, item) => ({
       ...obj,
       [item.key]: item.html,
     }),
     {},
   );
+
+  const pieceOfTexts = pieceOfHTMLs.reduce(
+    (obj, item) => ({
+      ...obj,
+      [item.key]: item,
+    }),
+    {},
+  );
   return {
-    pagesPieceOfTexts: subContent,
+    pagesPieceOfTexts,
+    pieceOfTexts,
   };
 };
 
