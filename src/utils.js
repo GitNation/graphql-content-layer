@@ -1,5 +1,6 @@
 const slugify = require('url-slug');
 const { markdownToHtml } = require('./markdown');
+const { contentTypeMap } = require('./content-type-map');
 
 const getSocials = speaker => {
   const ICONS = {
@@ -58,6 +59,7 @@ const prepareSpeakers = (speakers, tagColors, labelColors) =>
       ...item.speaker,
       ...item,
       avatar: item.speaker.avatar || {},
+      id: item.speaker.id,
     }))
     .map(async ({ bio, speaker, avatar, activities, ...item }) => ({
       ...item,
@@ -69,6 +71,8 @@ const prepareSpeakers = (speakers, tagColors, labelColors) =>
       activities: prepareActivities(activities || {}),
       slug: createSlug(item, 'user'),
       tag: labelTag({ label: item.label, prefix: 'speaker', labelColors }),
+      contentType: contentTypeMap.Speaker,
+      contentTypeAlt: contentTypeMap.PieceOfSpeakerInfo,
     }));
 
 const trySelectSettings = (selector, defaultSettings) => settings => {
@@ -111,4 +115,5 @@ module.exports = {
   trySelectSettings,
   createSlug,
   labelTag,
+  contentTypeMap,
 };

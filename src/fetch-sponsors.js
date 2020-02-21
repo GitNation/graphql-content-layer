@@ -1,4 +1,5 @@
 const { sponsorLogoFragment } = require('./fragments');
+const { contentTypeMap } = require('./utils');
 
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
@@ -50,6 +51,10 @@ const fetchData = async (client, vars) => {
       ...item.sponsor,
       ...item,
       avatar: item.avatar || item.sponsor.avatar || {},
+      idAlt: item.id,
+      id: item.sponsor ? item.sponsor.id : 'error: no sponsor object',
+      contentType: contentTypeMap.Sponsor,
+      contentTypeAlt: contentTypeMap.PieceOfSponsorInfo,
     }))
     .map(({ site, avatar, title, width, category, ...item }) => ({
       ...item,

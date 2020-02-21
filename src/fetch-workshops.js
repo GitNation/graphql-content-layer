@@ -1,7 +1,12 @@
 const dayjs = require('dayjs');
 const customParseFormat = require('dayjs/plugin/customParseFormat');
 const { markdownToHtml } = require('./markdown');
-const { prepareSpeakers, trySelectSettings, createSlug } = require('./utils');
+const {
+  prepareSpeakers,
+  trySelectSettings,
+  createSlug,
+  contentTypeMap,
+} = require('./utils');
 const { speakerInfoFragment, activitiesFragment } = require('./fragments');
 
 dayjs.extend(customParseFormat);
@@ -119,6 +124,7 @@ const fetchData = async (client, vars) => {
               trainers.map(tr => ({ ...tr, slug: createSlug(tr, 'user') })) ||
               [],
             ...ws,
+            contentType: contentTypeMap.Workshop,
           }))
           .map(ws => ({
             ...ws,

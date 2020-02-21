@@ -40,6 +40,7 @@ const jobLogoFragment = /* GraphQL */ `
 const personFragment = /* GraphQL */ `
   fragment person on Speaker {
     id
+    idMain: id
     name
     company
     country
@@ -106,6 +107,7 @@ const speakerInfoFragment = /* GraphQL */ `
   fragment speakerInfo on PieceOfSpeakerInfo {
     status
     id
+    idAlt: id
     label
     isNightSpeaker
     order

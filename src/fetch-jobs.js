@@ -1,5 +1,6 @@
 const { markdownToHtml } = require('./markdown');
 const { jobLogoFragment } = require('./fragments');
+const { contentTypeMap } = require('./utils');
 
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
@@ -36,6 +37,7 @@ const fetchData = async (client, vars) => {
     subtitle: await markdownToHtml(jb.subtitle),
     description: await markdownToHtml(jb.description),
     image: jb.image && jb.image.url,
+    contentType: contentTypeMap.Job,
   }));
 
   const jobs = await Promise.all(jobsRaw);
