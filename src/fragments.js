@@ -27,12 +27,12 @@ const sponsorLogoFragment = /* GraphQL */ `
 const jobLogoFragment = /* GraphQL */ `
   fragment logo on Job {
     image {
-      url #(
-      # transformation: {
-      #   image: { resize: { width: 555 } }
-      #   document: { output: { format: jpg } }
-      # }
-      #)
+      url(
+        transformation: {
+          image: { resize: { width: 700 } }
+          document: { output: { format: jpg } }
+        }
+      )
     }
   }
 `;
@@ -40,6 +40,7 @@ const jobLogoFragment = /* GraphQL */ `
 const personFragment = /* GraphQL */ `
   fragment person on Speaker {
     id
+    idMain: id
     name
     company
     country
@@ -106,6 +107,7 @@ const speakerInfoFragment = /* GraphQL */ `
   fragment speakerInfo on PieceOfSpeakerInfo {
     status
     id
+    idAlt: id
     label
     isNightSpeaker
     order
@@ -123,5 +125,5 @@ module.exports = {
   personFragment,
   sponsorLogoFragment,
   jobLogoFragment,
-  activitiesFragment
+  activitiesFragment,
 };

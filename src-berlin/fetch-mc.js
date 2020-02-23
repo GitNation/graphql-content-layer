@@ -22,8 +22,8 @@ const queryPages = /* GraphQL */ `
             avatar {
               url(
                 transformation: {
-                  image: { resize: { width: 500, height: 500, fit: crop } },
-                  document: { output: { format: jpg } } 
+                  image: { resize: { width: 500, height: 500, fit: crop } }
+                  document: { output: { format: jpg } }
                 }
               )
             }
@@ -34,12 +34,15 @@ const queryPages = /* GraphQL */ `
   }
 `;
 
-const fetchData = async(client, vars) => {
+const fetchData = async (client, vars) => {
   const data = await client
     .request(queryPages, vars)
     .then(res => res.conf.year[0].mcs);
 
-  const mcsAsync =  data.map(async m => ({ ...m.speaker, bio: await markdownToHtml(m.speaker.bio) }));
+  const mcsAsync = data.map(async m => ({
+    ...m.speaker,
+    bio: await markdownToHtml(m.speaker.bio),
+  }));
 
   const mcs = await Promise.all(mcsAsync);
   return {

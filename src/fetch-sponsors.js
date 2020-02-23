@@ -1,4 +1,5 @@
 const { sponsorLogoFragment } = require('./fragments');
+const { contentTypeMap } = require('./utils');
 
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
@@ -50,6 +51,10 @@ const fetchData = async (client, vars) => {
       ...item.sponsor,
       ...item,
       avatar: item.avatar || item.sponsor.avatar || {},
+      idAlt: item.id,
+      id: item.sponsor ? item.sponsor.id : 'error: no sponsor object',
+      contentType: contentTypeMap.Sponsor,
+      contentTypeAlt: contentTypeMap.PieceOfSponsorInfo,
     }))
     .map(({ site, avatar, title, width, category, ...item }) => ({
       ...item,
@@ -63,44 +68,60 @@ const fetchData = async (client, vars) => {
   const sponsors = [
     {
       title: 'Platinum',
+      /* TODO: deprecate mode in favor of category */
+      mod: 'sponsors-block_xl',
       list: sponsorsList
         .filter(({ category }) => category === 'Platinum')
         .sort(sortByOrder),
-    },
-    {
-      title: 'Production Partners',
-      mod: 'logos_sm',
-      list: sponsorsList
-        .filter(({ category }) => category === 'ProductionPartner')
-        .sort(sortByOrder),
+      category: 'Platinum',
     },
     {
       title: 'Gold',
-      mod: 'logos_md',
+      mod: 'logos_md sponsors-block_lg',
       list: sponsorsList
         .filter(({ category }) => category === 'Gold')
         .sort(sortByOrder),
+      category: 'Gold',
     },
     {
       title: 'Silver',
-      mod: 'logos_sm',
+      mod: 'logos_sm sponsors-block_lg',
       list: sponsorsList
         .filter(({ category }) => category === 'Silver')
         .sort(sortByOrder),
+      category: 'Silver',
+    },
+    {
+      title: 'Party Partners',
+      mod: 'logos_sm sponsors-block_lg',
+      list: sponsorsList
+        .filter(({ category }) => category === 'PartyPartner')
+        .sort(sortByOrder),
+      category: 'PartyPartner',
+    },
+    {
+      title: 'Production Partners',
+      mod: 'logos_sm sponsors-block_lg',
+      list: sponsorsList
+        .filter(({ category }) => category === 'ProductionPartner')
+        .sort(sortByOrder),
+      category: 'ProductionPartner',
     },
     {
       title: 'Media Partners',
-      mod: 'logos_xs',
+      mod: 'logos_xs sponsors-block_xs',
       list: sponsorsList
         .filter(({ category }) => category === 'MediaPartner')
         .sort(sortByOrder),
+      category: 'MediaPartner',
     },
     {
-      title: 'Partner',
-      mod: 'logos_xs',
+      title: 'Partners',
+      mod: 'logos_xs sponsors-block_xs',
       list: sponsorsList
         .filter(({ category }) => category === 'Partner')
         .sort(sortByOrder),
+      category: 'Partner',
     },
   ].filter(({ list }) => list.length);
 

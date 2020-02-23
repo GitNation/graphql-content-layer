@@ -1,5 +1,6 @@
 const slugify = require('url-slug');
 const { markdownToHtml } = require('./markdown');
+const { contentTypeMap } = require('./content-type-map');
 
 const getSocials = speaker => {
   const ICONS = {
@@ -42,14 +43,23 @@ const prepareActivities = rawActivities => {
   return activities;
 };
 
-const prepareSpeakers = (speakers, tagColors) =>
+const labelTag = ({ prefix, labelColors = [], label }) => {
+  const colorInfo =
+    labelColors.find(c => c.label === label) ||
+    labelColors.find(c => c.label === null) ||
+    {};
+  return `${prefix}--${colorInfo.tag}`;
+};
+
+const prepareSpeakers = (speakers, tagColors, labelColors) =>
   speakers
     .filter(Boolean)
-    .filter(({ speaker }) => !!speaker)
+    // .filter(({ speaker }) => !!speaker)
     .map(item => ({
       ...item.speaker,
       ...item,
       avatar: item.speaker.avatar || {},
+      id: item.speaker.id,
     }))
     .map(async ({ bio, speaker, avatar, activities, ...item }) => ({
       ...item,
@@ -60,6 +70,9 @@ const prepareSpeakers = (speakers, tagColors) =>
       ...getLabelColor(item.label, tagColors),
       activities: prepareActivities(activities || {}),
       slug: createSlug(item, 'user'),
+      tag: labelTag({ label: item.label, prefix: 'speaker', labelColors }),
+      contentType: contentTypeMap.Speaker,
+      contentTypeAlt: contentTypeMap.PieceOfSpeakerInfo,
     }));
 
 const trySelectSettings = (selector, defaultSettings) => settings => {
@@ -101,4 +114,6 @@ module.exports = {
   // tagColors,
   trySelectSettings,
   createSlug,
+  labelTag,
+  contentTypeMap,
 };

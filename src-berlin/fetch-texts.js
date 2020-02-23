@@ -31,9 +31,9 @@ const markdownRender = async (text, style) => {
   const defaultRender = renders[renderStyles.None_Default];
 
   return await (renders[style] || defaultRender)(text);
-}
+};
 
-const fetchData = async(client, vars) => {
+const fetchData = async (client, vars) => {
   const pieceOfTexts = await client
     .request(queryTexts, vars)
     .then(res => res.conf.year[0].pieceOfTexts);
@@ -42,7 +42,7 @@ const fetchData = async(client, vars) => {
     pieceOfTexts.map(async item => ({
       ...item,
       html: await markdownRender(item.markdown, item.renderStyle),
-    }))
+    })),
   );
 
   const subContent = pieceOfHTMLs.reduce(
@@ -50,7 +50,7 @@ const fetchData = async(client, vars) => {
       ...obj,
       [item.key]: item.html,
     }),
-    {}
+    {},
   );
   return {
     pagesPieceOfTexts: subContent,

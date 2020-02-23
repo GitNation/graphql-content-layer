@@ -27,7 +27,7 @@ const queryPages = /* GraphQL */ `
               avatar {
                 url(
                   transformation: {
-                    image: { resize: { width: 500, height: 500, fit: crop } },
+                    image: { resize: { width: 500, height: 500, fit: crop } }
                     document: { output: { format: jpg } }
                   }
                 )
@@ -40,7 +40,7 @@ const queryPages = /* GraphQL */ `
   }
 `;
 
-const fetchData = async(client, vars) => {
+const fetchData = async (client, vars) => {
   const data = await client
     .request(queryPages, vars)
     .then(res => res.conf.year[0].schedule);
@@ -48,31 +48,36 @@ const fetchData = async(client, vars) => {
   const advicers = data.reduce(
     (all, day) => [
       ...all,
-      ...day.adviceLounges.map(
-        ({
+      ...day.adviceLounges
+        .map(({ expertise, speaker }) => ({
           expertise,
-          speaker: {
+          speaker: speaker || {},
+        }))
+        .map(
+          ({
+            expertise,
+            speaker: {
+              name,
+              company,
+              bio,
+              githubUrl,
+              twitterUrl,
+              mediumUrl,
+              ownSite,
+              avatar,
+            },
+          }) => ({
+            expertise,
             name,
+            photo: avatar && avatar.url,
             company,
-            bio,
-            githubUrl,
-            twitterUrl,
-            mediumUrl,
-            ownSite,
-            avatar
-          },
-        }) => ({
-          expertise,
-          name,
-          photo: avatar && avatar.url,
-          company,
-          desc: bio,
-          github: githubUrl,
-          twitter: twitterUrl,
-          medium: mediumUrl,
-          site: ownSite,
-        })
-      ),
+            desc: bio,
+            github: githubUrl,
+            twitter: twitterUrl,
+            medium: mediumUrl,
+            site: ownSite,
+          })
+        ),
     ],
     []
   );

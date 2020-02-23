@@ -21,7 +21,7 @@ const createClient = ({ endpoint, token }) => {
 
 const client = createClient(credentials);
 
-const getContent = async() => {
+const getContent = async () => {
   const fetchAll = [
     textContent,
     pageContent,
@@ -41,19 +41,17 @@ const getContent = async() => {
   });
 
   const contentArray = await Promise.all(fetchAll);
-  const contentMap = contentArray.reduce(
-    (content, piece) => {
-      try {
-        const newKeys = Object.keys(piece);
-        const existentKeys = Object.keys(content);
-        const intersectedKeys = newKeys.filter(k => existentKeys.includes(k));
-        intersectedKeys.forEach(k => { piece[k] = { ...content[k], ...piece[k] }; });
-      }
-      catch (err) {}
-      return { ...content, ...piece };
-    },
-    {}
-  );
+  const contentMap = contentArray.reduce((content, piece) => {
+    try {
+      const newKeys = Object.keys(piece);
+      const existentKeys = Object.keys(content);
+      const intersectedKeys = newKeys.filter(k => existentKeys.includes(k));
+      intersectedKeys.forEach(k => {
+        piece[k] = { ...content[k], ...piece[k] };
+      });
+    } catch (err) {}
+    return { ...content, ...piece };
+  }, {});
   return contentMap;
 };
 

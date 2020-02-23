@@ -32,7 +32,7 @@ const queryPages = /* GraphQL */ `
   }
 `;
 
-const fetchData = async(client, vars) => {
+const fetchData = async (client, vars) => {
   const data = await client
     .request(queryPages, vars)
     .then(res => res.conf.year[0].schedule);
@@ -48,7 +48,7 @@ const fetchData = async(client, vars) => {
           day.additionalEvents.find(({ title }) => title === ws.title)),
       })),
     ],
-    []
+    [],
   );
 
   const allWorkshops = await Promise.all(
@@ -59,7 +59,7 @@ const fetchData = async(client, vars) => {
       prerequisites: await markdownToHtml(wrp.prerequisites),
       additionalInfo: await markdownToHtml(wrp.additionalInfo),
       information: await markdownToHtml(wrp.information),
-    }))
+    })),
   );
 
   return {

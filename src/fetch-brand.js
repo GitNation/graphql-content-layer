@@ -1,4 +1,5 @@
 const { markdownToHtml } = require('./markdown');
+const { contentTypeMap } = require('./utils');
 
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle) {
@@ -27,6 +28,7 @@ const fetchData = async (client, vars) => {
       ...conf,
       codeOfConductIntro: await markdownToHtml(conf.codeOfConductIntro),
       codeOfConductMain: await markdownToHtml(conf.codeOfConductMain),
+      contentType: contentTypeMap.ConferenceBrand,
     }));
 
   return {

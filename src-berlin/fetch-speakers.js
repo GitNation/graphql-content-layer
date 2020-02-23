@@ -25,8 +25,8 @@ const queryPages = /* GraphQL */ `
             avatar {
               url(
                 transformation: {
-                  image: { resize: { width: 500, height: 500, fit: crop } },
-                  document: { output: { format: jpg } } 
+                  image: { resize: { width: 500, height: 500, fit: crop } }
+                  document: { output: { format: jpg } }
                 }
               )
             }
@@ -39,7 +39,7 @@ const queryPages = /* GraphQL */ `
 
 const overlay = labelTag('speaker');
 
-const fetchData = async(client, vars) => {
+const fetchData = async (client, vars) => {
   const data = await client
     .request(queryPages, vars)
     .then(res => res.conf.year[0].speakers);
@@ -51,7 +51,7 @@ const fetchData = async(client, vars) => {
       avatar: item.speaker.avatar || {},
       tag: overlay(item.label),
     }))
-    .map(async({ bio, githubUrl, twitterUrl, speaker, avatar, ...item }) => ({
+    .map(async ({ bio, githubUrl, twitterUrl, speaker, avatar, ...item }) => ({
       ...item,
       company: `${item.company}, ${item.country}`,
       avatar: avatar.url,

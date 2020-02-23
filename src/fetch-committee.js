@@ -1,4 +1,8 @@
-const { prepareSpeakers, trySelectSettings } = require('./utils');
+const {
+  prepareSpeakers,
+  trySelectSettings,
+  contentTypeMap,
+} = require('./utils');
 const { personFragment } = require('./fragments');
 
 const selectSettings = trySelectSettings(s => s.speakerAvatar.dimensions, {

@@ -1,6 +1,6 @@
 const { GraphQLClient } = require('graphql-request');
 
-const { credentials, conferenceTitle, eventYear } = require('./config');
+const { credentials } = require('./config');
 const textContent = require('./fetch-texts');
 const pageContent = require('./fetch-pages');
 const brandContent = require('./fetch-brand');
@@ -58,6 +58,7 @@ const getContent = async conferenceSettings => {
     try {
       getQueriesData(content, conferenceSettings);
       const getVarsFromSettings = content.selectSettings || (() => undefined);
+      const { conferenceTitle, eventYear } = conferenceSettings;
       return await content.fetchData(client, {
         conferenceTitle,
         eventYear,
