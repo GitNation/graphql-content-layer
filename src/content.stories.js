@@ -7,7 +7,7 @@ const {
 const { storiesOf } = require('@storybook/react');
 const { withThemes } = require('@react-theming/storybook-addon');
 
-const { credentials } = require('./config');
+const { credentials /* conferenceTitle, eventYear */ } = require('./config');
 const { queriesData, getContent } = require('./index');
 
 const ThemeProvider = ({ children }) => (
