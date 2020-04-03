@@ -5,9 +5,14 @@ const {
   withGraphCMS,
 } = require('@focus-reactive/storybook-addon-graphcms');
 const { storiesOf } = require('@storybook/react');
+const { withThemes } = require('@react-theming/storybook-addon');
 
 const { credentials } = require('./config');
 const { queriesData, getContent } = require('./index');
+
+const ThemeProvider = ({ children }) => (
+  <React.Fragment>{children}</React.Fragment>
+);
 
 const AwaitForData = ({ content }) => {
   if (!content) return 'Loading data from GraphCMS';
@@ -35,11 +40,11 @@ const TagColor = ({ title, tag }) => (
 const passConferenceSettings = async conferenceSettings => {
   const { conferenceTitle, eventYear } = conferenceSettings;
   const content = await getContent(conferenceSettings);
-
+  const { tagColors } = content.conferenceSettings;
   storiesOf('Content Layer', module)
+    .addDecorator(withThemes(ThemeProvider, [tagColors]))
     .add('content', () => <AwaitForData content={content} />)
     .add('tag colors', () => {
-      const { tagColors } = content.conferenceSettings;
       const tags = Object.keys(tagColors);
       return (
         <div>
