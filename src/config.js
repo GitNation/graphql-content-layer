@@ -9,16 +9,11 @@ if (!process.env.CMS_ENDPOINT || !process.env.CMS_TOKEN) {
   `);
 }
 
-const conferenceTitle = 'Amsterdam_JSNation';
-const eventYear = 'Y2020';
-
 const credentials = {
   endpoint: process.env.CMS_ENDPOINT,
   token: process.env.CMS_TOKEN,
 };
 
 module.exports = {
-  conferenceTitle,
-  eventYear,
   credentials,
 };

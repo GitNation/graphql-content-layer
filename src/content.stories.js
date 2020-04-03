@@ -6,7 +6,7 @@ const {
 } = require('@focus-reactive/storybook-addon-graphcms');
 const { storiesOf } = require('@storybook/react');
 
-const { credentials, conferenceTitle, eventYear } = require('./config');
+const { credentials } = require('./config');
 const { queriesData, getContent } = require('./index');
 
 const AwaitForData = ({ content }) => {
@@ -33,6 +33,7 @@ const TagColor = ({ title, tag }) => (
 );
 
 const passConferenceSettings = async conferenceSettings => {
+  const { conferenceTitle, eventYear } = conferenceSettings;
   const content = await getContent(conferenceSettings);
 
   storiesOf('Content Layer', module)
