@@ -10,6 +10,18 @@ const queryPages = /* GraphQL */ `
       year: conferenceEvents(where: { year: $eventYear }) {
         id
         status
+        jobAds {
+          id
+          title
+          slogan
+          subtitle
+          description
+          ...logo
+          link
+          events {
+            title
+          }
+        }
         jobs {
           id
           title
@@ -29,9 +41,12 @@ const queryPages = /* GraphQL */ `
 const fetchData = async (client, vars) => {
   const data = await client
     .request(queryPages, vars)
-    .then(res => res.conf.year[0].jobs);
+    .then(res => res.conf.year[0]);
 
-  const jobsRaw = data.map(async jb => ({
+  const fetchedJobs = data.jobs;
+  const fetchedJobAds = data.jobAds;
+
+  const jobsRaw = [...fetchedJobAds, ...fetchedJobs].map(async jb => ({
     ...jb,
     slogan: await markdownToHtml(jb.slogan),
     subtitle: await markdownToHtml(jb.subtitle),
