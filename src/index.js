@@ -83,6 +83,7 @@ const getContent = async conferenceSettings => {
         piece[k] = { ...content[k], ...piece[k] };
       });
     } catch (err) {
+      console.log('content, piece', piece);
       console.error(err);
     }
     return { ...content, ...piece };

@@ -9,7 +9,7 @@
     "storybook": "start-storybook -p 6001 --ci",
     "update-schema": "graphql get-schema",
     "test": "jest",
-    "test:smoke": "jest tests/smoke.test.js",
+    "test:smoke": "jest tests/smoke.test.js --detectOpenHandles",
     "tdd": "jest --watch",
     "prepare": "package-prepare",
     "prestart": "relative-deps",
@@ -69,5 +69,26 @@
   "relativeDependencies": {
     "@focus-reactive/storybook-addon-graphcms": "../../Addons/storybook-graphql-kit-graphcms/"
   },
-  "license": "MIT"
+  "homepage": "https://github.com/GitNation/graphql-content-layer",
+  "bugs": {
+    "url": "https://github.com/GitNation/graphql-content-layer/issues"
+  },
+  "author": "Oleg Proskurin <oleg@focusreactive.com> (https://github.com/focusreactive)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GitNation/graphql-content-layer.git"
+  },
+  "keywords": [
+    "graphql",
+    "graphcms",
+    "query",
+    "queries",
+    "search",
+    "storybookjs",
+    "content",
+    "content-layer",
+    "gitnation",
+    "conference"
+  ]
 }

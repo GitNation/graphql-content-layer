@@ -1,4 +1,5 @@
-# GitNation GraphQL Content Layer [![npm version](https://badge.fury.io/js/%40focus-reactive%2Fgraphql-content-layer.svg)](https://badge.fury.io/js/%40focus-reactive%2Fgraphql-content-layer)
+[![npm version](https://badge.fury.io/js/%40focus-reactive%2Fgraphql-content-layer.svg)](https://badge.fury.io/js/%40focus-reactive%2Fgraphql-content-layer)
+# GitNation GraphQL Content Layer
 
 package for fetching conference content from GraphCMS
 

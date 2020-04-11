@@ -1,3 +1,6 @@
+const conferenceTitle = 'React_Summit_Online';
+const eventYear = 'Y2020';
+
 const tagColors = {
   NodeJS: {
     tagBG: '#7AB464',
@@ -45,6 +48,8 @@ const speakerAvatar = {
 };
 
 module.exports = {
+  conferenceTitle,
+  eventYear,
   tagColors,
   speakerAvatar,
 };

@@ -39,6 +39,9 @@ const fetchData = async (client, { tagColors, ...vars }) => {
   const data = await client
     .request(queryPages, vars)
     .then(res => res.conf.year[0].diversity);
+  if (!data) {
+    return {};
+  }
 
   let { maxTickets, sponsoredTickets } = data;
 
