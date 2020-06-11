@@ -46,8 +46,50 @@ const fetchData = async (client, vars) => {
     }),
     {},
   );
+
+  const customContent = {
+    videoRooms: [],
+    scheduleExtends: [],
+    tracks: [],
+  };
+
+  data.forEach(page => {
+    if (page.pageSections && page.pageSections.tracks) {
+      const customTracks = page.pageSections.tracks;
+      customTracks.forEach(({ list }) => {
+        if (!list) {
+          return;
+        }
+        list.forEach(customEvent => {
+          if (customEvent.type === 'videoRoom') {
+            customContent.videoRooms.push(customEvent);
+          }
+        });
+      });
+    }
+    if (page.pageSections && page.pageSections.scheduleExtends) {
+      customContent.scheduleExtends = [
+        ...customContent.scheduleExtends,
+        ...page.pageSections.scheduleExtends,
+      ];
+    }
+    if (page.pageSections && page.pageSections.tracks) {
+      customContent.tracks = [
+        ...customContent.tracks,
+        ...page.pageSections.tracks,
+      ];
+    }
+  });
+
+  customContent.videoRooms = customContent.videoRooms.sort((a, b) => {
+    const orderA = a.orderAsc || Infinity;
+    const orderB = b.orderAsc || Infinity;
+    return orderA >= orderB;
+  });
+
   return {
     pages,
+    customContent,
   };
 };
 
