@@ -51,6 +51,7 @@ const fetchData = async (client, vars) => {
     videoRooms: [],
     scheduleExtends: [],
     tracks: [],
+    eventInfo: {},
   };
 
   data.forEach(page => {
@@ -78,6 +79,12 @@ const fetchData = async (client, vars) => {
         ...customContent.tracks,
         ...page.pageSections.tracks,
       ];
+    }
+    if (page.pageSections && page.pageSections.eventInfo) {
+      customContent.eventInfo = {
+        ...customContent.eventInfo,
+        ...page.pageSections.eventInfo,
+      };
     }
   });
 
