@@ -70,7 +70,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     .then(res => res.conf.year[0].schedule);
 
   const dataTalks = rawData
-    .map(({ talks, date }) => talks.map(tl => ({ ...tl, date })))
+    .map(({ talks, date }) => talks.map(tl => ({ ...tl, isoDate: date })))
     .reduce((flatArray, dayTalks) => [...flatArray, ...dayTalks], []);
 
   if (!dataTalks.length) {
@@ -79,7 +79,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
 
   // TODO: Currently we take additionalEvents only from 1st day schedule. Update to multi days conferences
   const additionalEvents = (rawData[0].additionalEvents || []).map(event => ({
-    date: rawData[0].date,
+    isoDate: rawData[0].date,
     ...event,
     // id: rawData[0] && rawData[0].id, // TODO: this id is overriding real id. do we need it here?
     contentType: contentTypeMap.DaySchedule,
