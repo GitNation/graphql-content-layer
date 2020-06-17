@@ -81,7 +81,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
   const additionalEvents = (rawData[0].additionalEvents || []).map(event => ({
     date: rawData[0].date,
     ...event,
-    id: rawData[0] && rawData[0].id,
+    // id: rawData[0] && rawData[0].id, // TODO: this id is overriding real id. do we need it here?
     contentType: contentTypeMap.DaySchedule,
   }));
 

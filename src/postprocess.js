@@ -19,7 +19,6 @@ const populateTalkActivities = content => {
       if (!fullTalk) {
         return tl;
       }
-      console.log('fullTalk', fullTalk);
       return {
         ...fullTalk,
         ...tl,
@@ -59,15 +58,15 @@ const mergeTalksAndQA = content => {
 };
 
 export const postProcessLayer = content => {
-  const processedContent = [
-    /* mergeTalksAndQA, */
-    populateTalkActivities,
-  ].reduce((updatedContent, processFn) => {
-    try {
-      return processFn(updatedContent);
-    } catch (err) {
-      return updatedContent;
-    }
-  }, content);
+  const processedContent = [mergeTalksAndQA, populateTalkActivities].reduce(
+    (updatedContent, processFn) => {
+      try {
+        return processFn(updatedContent);
+      } catch (err) {
+        return updatedContent;
+      }
+    },
+    content,
+  );
   return processedContent;
 };
