@@ -41,6 +41,7 @@ const queryPages = /* GraphQL */ `
                 }
               }
             ) {
+              id
               title
               description
               timeString

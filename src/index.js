@@ -16,6 +16,7 @@ const extContent = require('./fetch-extended');
 const jobsContent = require('./fetch-jobs');
 const committeeContent = require('./fetch-committee');
 const diversityContent = require('./fetch-diversity');
+const { postProcessLayer } = require('./postprocess');
 
 const createClient = ({ endpoint, token }) => {
   return new GraphQLClient(endpoint, {
@@ -89,7 +90,8 @@ const getContent = async conferenceSettings => {
     return { ...content, ...piece };
   }, {});
   contentMap.conferenceSettings = conferenceSettings;
-  return contentMap;
+  const processedContent = postProcessLayer(contentMap);
+  return processedContent;
 };
 
 module.exports = {

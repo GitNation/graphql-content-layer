@@ -70,14 +70,16 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     .then(res => res.conf.year[0].schedule);
 
   const dataTalks = rawData
-    .map(({ talks }) => talks)
+    .map(({ talks, date }) => talks.map(tl => ({ ...tl, date })))
     .reduce((flatArray, dayTalks) => [...flatArray, ...dayTalks], []);
 
   if (!dataTalks.length) {
     throw new Error('Schedule not set for this event yet');
   }
 
+  // TODO: Currently we take additionalEvents only from 1st day schedule. Update to multi days conferences
   const additionalEvents = (rawData[0].additionalEvents || []).map(event => ({
+    date: rawData[0].date,
     ...event,
     id: rawData[0] && rawData[0].id,
     contentType: contentTypeMap.DaySchedule,
