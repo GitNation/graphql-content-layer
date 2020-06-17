@@ -1,8 +1,8 @@
 const populateTalkActivities = content => {
   const mainSpeakers = content.speakers.main;
+  const { lightningTalks } = content;
   const talks = content.schedule.reduce(
-    (allTalks, sch) => [...allTalks, ...sch.list],
-
+    (allTalks, sch) => [...allTalks, ...sch.list, ...lightningTalks],
     [],
   );
 
