@@ -77,13 +77,17 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     throw new Error('Schedule not set for this event yet');
   }
 
-  // TODO: Currently we take additionalEvents only from 1st day schedule. Update to multi days conferences
-  const additionalEvents = (rawData[0].additionalEvents || []).map(event => ({
-    isoDate: rawData[0].date,
-    ...event,
-    // id: rawData[0] && rawData[0].id, // TODO: this id is overriding real id. do we need it here?
-    contentType: contentTypeMap.DaySchedule,
-  }));
+  const additionalEventsOfAllDays = rawData.reduce(
+    (allEvents, { additionalEvents, date }) => [
+      ...allEvents,
+      ...additionalEvents.map(event => ({
+        ...event,
+        isoDate: date,
+        contentType: contentTypeMap.DaySchedule,
+      })),
+    ],
+    [],
+  );
 
   const talksRaw = dataTalks
     .map(({ title, description, timeString, track, speaker, ...talk }) => ({
@@ -142,6 +146,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
       return lightningTalksGroups.map(ltGroup => ({
         title: 'tbd',
         time: ltGroup[0].time,
+        isoDate: ltGroup[0].isoDate || 'unknown',
         isLightning: true,
         track,
         lightningTalks: ltGroup,
@@ -158,14 +163,21 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     tab: track,
     title: track,
     name: `${10 + ind}`,
-    list: [...talks, ...ltTalksScheduleItemsFlatMap, ...additionalEvents]
+    list: [
+      ...talks,
+      ...ltTalksScheduleItemsFlatMap,
+      ...additionalEventsOfAllDays,
+    ]
       .filter(event => event.track === track)
       .reduce((list, talk) => {
         const findSameTalk = (ls, tk) => {
           const sameTalkInd = ls.findIndex(
-            ({ title, time, isLightning }) =>
-              title === tk.title ||
-              (time === tk.time && isLightning && tk.isLightning),
+            ({ title, time, isLightning, overridden }) =>
+              (title === tk.title && !isLightning) ||
+              (time === tk.time &&
+                isLightning &&
+                tk.isLightning &&
+                !overridden),
           );
           const sameTalk = ls[sameTalkInd];
           if (!sameTalk) return {};
@@ -184,6 +196,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
           newList[sameTalkInd] = {
             ...sameTalk,
             ...talk,
+            overridden: true,
           };
           return newList;
         }
