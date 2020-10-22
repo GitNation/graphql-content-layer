@@ -209,7 +209,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
   let noTracks = false;
 
   if (schedule.length === 1) {
-    schedule[0].list = talks.map(talk => ({ ...talk, time: null }));
+    schedule[0].list = talks.map(talk => ({ ...talk, /* time: null */ }));
     scheduleTitle = 'First Talks';
     noTracks = true;
   }
