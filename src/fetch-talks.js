@@ -208,11 +208,14 @@ const fetchData = async (client, { labelColors, ...vars }) => {
   let scheduleTitle = 'Schedule';
   let noTracks = false;
 
-  if (schedule.length === 1) {
-    schedule[0].list = talks.map(talk => ({ ...talk, /* time: null */ }));
-    scheduleTitle = 'First Talks';
-    noTracks = true;
-  }
+  /**
+   * It was a workaround for listing early talks
+   */
+  // if (schedule.length === 1) {
+  //   schedule[0].list = talks.map(talk => ({ ...talk, time: null }));
+  //   scheduleTitle = 'First Talks';
+  //   noTracks = true;
+  // }
 
   schedule[0].active = true;
 
