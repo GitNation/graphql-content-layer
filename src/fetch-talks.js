@@ -172,8 +172,9 @@ const fetchData = async (client, { labelColors, ...vars }) => {
       .reduce((list, talk) => {
         const findSameTalk = (ls, tk) => {
           const sameTalkInd = ls.findIndex(
-            ({ title, time, isLightning, overridden }) =>
-              (title === tk.title && !isLightning) ||
+            ({ title, time, isLightning, overridden, isoDate }) =>
+              (title === tk.title && !isLightning && !isoDate) ||
+              (title === tk.title && !isLightning && isoDate === tk.isoDate) ||
               (time === tk.time &&
                 isLightning &&
                 tk.isLightning &&
