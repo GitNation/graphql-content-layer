@@ -25,6 +25,7 @@ const queryPages = /* GraphQL */ `
           sponsors {
             id
             title
+            site
             avatar {
               url
             }
@@ -58,9 +59,10 @@ const fetchData = async (client, { tagColors, ...vars }) => {
   const diversity = {
     ...data,
     description: await markdownToHtml(data.description),
-    sponsors: data.sponsors.map(({ title, avatar: { url }, id }) => ({
+    sponsors: data.sponsors.map(({ title, avatar: { url }, id, site }) => ({
       id,
       title,
+      site,
       avatar: url,
       contentType: contentTypeMap.Sponsor,
     })),
