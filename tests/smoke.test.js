@@ -1,10 +1,14 @@
 import { getContent } from '../src';
-import settings from './jsnation.conference-settings';
+import { getSettings } from '../develop/conference-settings';
 
-describe('JsNation', () => {
-  it('should generate content', async () => {
-    expect(async () => {
-      await getContent(settings);
-    }).not.toThrow();
-  });
+describe('get Content', () => {
+  const settings = getSettings();
+  it.each(['jsn', 'gqconf', 'mlconf', 'qaconf', 'doconf', 'nodeconf', 'rs'])(
+    'should generate content for %s',
+    async () => {
+      expect(async confCode => {
+        await getContent(settings[confCode]);
+      }).not.toThrow();
+    },
+  );
 });

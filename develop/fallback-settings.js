@@ -1,4 +1,4 @@
-const conferenceTitle = 'React_Summit_Online';
+const conferenceTitle = 'React_Amsterdam';
 const eventYear = 'Y2020';
 
 const tagColors = {
@@ -34,6 +34,26 @@ const tagColors = {
     tagBG: '#61DAFB',
     color: '#030303',
   },
+  'Summit Track': {
+    tagBG: '#a4ff00',
+    color: '#324e00',
+  },
+  'Base Camp Track': {
+    tagBG: '#696969',
+    color: '#e7e7e7',
+  },
+  'Lightning Talk': {
+    tagBG: '#2acadd',
+    color: '#003238',
+  },
+  'Panel Discussion': {
+    tagBG: '#ddce2a',
+    color: '#3f3a00',
+  },
+  Workshop: {
+    tagBG: '#bd2add',
+    color: '#f3cbff',
+  },
   default: {
     tagBG: 'black',
     color: 'white',
@@ -48,8 +68,8 @@ const speakerAvatar = {
 };
 
 module.exports = {
-  conferenceTitle,
-  eventYear,
   tagColors,
   speakerAvatar,
+  conferenceTitle,
+  eventYear,
 };
