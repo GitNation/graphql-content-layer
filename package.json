@@ -6,12 +6,13 @@
   "scripts": {
     "start": "yarn dev | yarn storybook | yarn tdd",
     "dev": "nodemon --exec yarn prepare",
+    "test-run": "node develop",
     "storybook": "start-storybook -p 6001 --ci",
     "update-schema": "graphql get-schema",
     "test": "jest",
     "test:smoke": "jest tests/smoke.test.js --detectOpenHandles",
     "tdd": "jest --watch",
-    "prepare": "package-prepare",
+    "prepare": "package-prepare && yarn test-run",
     "prestart": "relative-deps",
     "-prepare": "yarn relative-deps",
     "update-dependencies": "yarn upgradeInteractive --latest"
@@ -41,6 +42,7 @@
     "graphql-cli": "^3.0.14",
     "jest": "^24.9.0",
     "nodemon": "^2.0.2",
+    "object-hash": "^2.0.3",
     "prettier": "^1.19.1",
     "relative-deps": "^0.2.0"
   },
