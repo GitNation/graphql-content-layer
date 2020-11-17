@@ -41,6 +41,13 @@ export const createReport = content => {
     return {
       pages: createPagesReport(pages),
       conference,
+      speakers,
+      sponsors,
+      schedule,
+      tracks,
+      talks,
+      workshops,
+      otherContent: hash(rest),
     };
   } catch (err) {
     console.error(err);
