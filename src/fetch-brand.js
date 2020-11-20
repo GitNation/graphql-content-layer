@@ -5,7 +5,6 @@ const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle) {
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
       id
-      status
       city
       url
       title

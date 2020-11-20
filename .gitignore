@@ -39,3 +39,6 @@ package-lock.json
 content-log.json
 
 dist/
+
+.env
+.env.local

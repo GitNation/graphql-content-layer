@@ -16,7 +16,7 @@ describe('RS', () => {
     'workshops',
     'otherContent',
   ])('should prepare %s', async contentSection => {
-    const content = await getContent(settings.rs);
+    const content = await getContent(settings.mlconf);
     const report = createReport(content);
     expect(report[contentSection]).toMatchSnapshot();
   });

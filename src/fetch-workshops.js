@@ -24,49 +24,52 @@ const queryPages = /* GraphQL */ `
     $avatarHeight: Int
   ) {
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
-      id
-      status
-      year: conferenceEvents(where: { year: $eventYear }) {
-        id
-        status
-        schedule: daySchedules(where: { workshops_some: {} }) {
+      events: conferenceEvents(where: { year: $eventYear }) {
+        isoStartDate
+        isoEndDate
+        workshops {
           id
-          status
-          additionalEvents
-          date
-          startingTime
-          workshops {
-            id
-            status
-            title
-            toc
-            duration
-            description
-            prerequisites
-            content
-            additionalInfo
-            level
-            location
-            slogan
-            code
-            speaker {
-              ...person
-              info: pieceOfSpeakerInfoes(
-                where: {
-                  conferenceEvent: {
-                    year: $eventYear
-                    conferenceBrand: { title: $conferenceTitle }
-                  }
-                }
-              ) {
-                ...speakerInfo
+          title
+          toc
+          duration
+          description
+          prerequisites
+          content
+          additionalInfo
+          level
+          location
+          slogan
+          code
+          workshopExtensions(
+            where: {
+              conferenceEvent: {
+                year: $eventYear
+                conferenceBrand: { title: $conferenceTitle }
               }
-              ...activities
             }
-            trainers {
-              ...person
-              ...activities
+          ) {
+            isoDate
+            location
+            includedToPackage
+            extension
+          }
+          speaker {
+            ...person
+            ...activities
+            info: pieceOfSpeakerInfoes(
+              where: {
+                conferenceEvent: {
+                  year: $eventYear
+                  conferenceBrand: { title: $conferenceTitle }
+                }
+              }
+            ) {
+              ...speakerInfo
             }
+          }
+          trainers {
+            ...person
+            ...activities
           }
         }
       }
@@ -94,61 +97,50 @@ const createWorkshopSchedule = (start, duration) => {
   };
 };
 
-const byDate = (a, b) => {
-  const orderA = new Date(a.date);
-  const orderB = new Date(b.date);
-  return orderA.getTime() - orderB.getTime();
-};
-
-const byOrder = (a, b) => {
-  const orderA = a.order;
-  const orderB = b.order;
-  return orderA - orderB;
-};
-
 const fetchData = async (client, vars) => {
   const data = await client
     .request(queryPages, vars)
-    .then(res => res.conf.year[0].schedule);
+    .then(res => res.conf.events[0]);
 
-  let workshops = data
-    .reduce(
-      (all, day) => [
-        ...all,
-        ...day.workshops
-          .map(({ speaker, trainers, ...ws }) => ({
-            speaker: speaker || {
-              info: [],
-            },
-            trainers:
-              trainers.map(tr => ({ ...tr, slug: createSlug(tr, 'user') })) ||
-              [],
-            ...ws,
-            contentType: contentTypeMap.Workshop,
-          }))
-          .map(ws => ({
-            ...ws,
-            date: day.date,
-            dateString: dayjs(day.date)
-              .format('MMMM D')
-              .trim(),
-            startingTime: day.startingTime,
-            schedule: createWorkshopSchedule(day.startingTime, ws.duration),
-            trainer: ws.speaker.name,
-            trainersTitle: createTrainersTitle(ws.trainers, ws.speaker.name),
-            slug: createSlug(ws, 'workshop'),
-            ...(day.additionalEvents &&
-              day.additionalEvents.find(({ title }) => title === ws.title)),
-          })),
-      ],
-      [],
-    )
-    .sort(byDate)
-    .map(({ order, ...ws }, ind) => ({
+  const { isoStartDate } = data;
+
+  const confStartDate = dayjs(isoStartDate);
+
+  const workshops = data.workshops
+    .map(({ speaker, trainers, ...ws }) => ({
+      speaker: speaker || {
+        info: [],
+      },
+      trainers:
+        trainers.map(tr => ({ ...tr, slug: createSlug(tr, 'user') })) || [],
       ...ws,
-      order: order || 1010 + ind * 10,
+      contentType: contentTypeMap.Workshop,
     }))
-    .sort(byOrder);
+    .map(ws => {
+      const extensionData =
+        ws.workshopExtensions && ws.workshopExtensions[0]
+          ? ws.workshopExtensions[0]
+          : {};
+
+      const { extension, ...restExtensionFields } = extensionData;
+
+      return {
+        ...ws,
+        date: confStartDate.toISOString(),
+        dateString: confStartDate.format('MMMM D').trim(),
+        startingTime: confStartDate.format('HH:mm'),
+        schedule: createWorkshopSchedule(
+          confStartDate.format('HH:mm'),
+          ws.duration,
+        ),
+        trainer: ws.speaker.name,
+        trainersTitle: createTrainersTitle(ws.trainers, ws.speaker.name),
+        slug: createSlug(ws, 'workshop'),
+
+        ...(restExtensionFields || {}),
+        ...(extension || {}),
+      };
+    });
 
   const allWorkshops = await Promise.all(
     workshops.map(async wrp => ({

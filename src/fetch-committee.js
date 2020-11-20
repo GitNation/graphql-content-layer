@@ -1,7 +1,6 @@
 const {
   prepareSpeakers,
   trySelectSettings,
-  contentTypeMap,
 } = require('./utils');
 const { personFragment } = require('./fragments');
 
@@ -19,10 +18,8 @@ const queryPages = /* GraphQL */ `
   ) {
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
       id
-      status
       year: conferenceEvents(where: { year: $eventYear }) {
         id
-        status
         committee {
           ...person
         }

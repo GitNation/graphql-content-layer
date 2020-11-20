@@ -56,7 +56,7 @@
     "@storybook/addons": "^5.2.8",
     "@storybook/react": "^5.2.8",
     "@storybook/storybook-deployer": "^2.8.1",
-    "dayjs": "^1.8.19",
+    "dayjs": "^1.9.6",
     "graphql-request": "^1.8.2",
     "react": "^16.12.0",
     "react-json-view": "^1.19.1",

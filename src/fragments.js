@@ -57,9 +57,9 @@ const personFragment = /* GraphQL */ `
 
 const activitiesFragment = /* GraphQL */ `
   fragment activities on Speaker {
-    talks(
+    lightningTalks(
       where: {
-        daySchedule: {
+        track: {
           conferenceEvent: {
             year: $eventYear
             conferenceBrand: { title: $conferenceTitle }
@@ -67,10 +67,29 @@ const activitiesFragment = /* GraphQL */ `
         }
       }
     ) {
+      id
       title
       description
-      timeString
-      isLightning
+      timeString: isoDate
+      track {
+        name
+        isPrimary
+      }
+    }
+    talks(
+      where: {
+        track: {
+          conferenceEvent: {
+            year: $eventYear
+            conferenceBrand: { title: $conferenceTitle }
+          }
+        }
+      }
+    ) {
+      id
+      title
+      description
+      timeString: isoDate
       track {
         name
         isPrimary
@@ -78,11 +97,9 @@ const activitiesFragment = /* GraphQL */ `
     }
     workshops(
       where: {
-        daySchedules_some: {
-          conferenceEvent: {
-            year: $eventYear
-            conferenceBrand: { title: $conferenceTitle }
-          }
+        conferenceEvents_some: {
+          year: $eventYear
+          conferenceBrand: { title: $conferenceTitle }
         }
       }
     ) {
@@ -90,11 +107,9 @@ const activitiesFragment = /* GraphQL */ `
     }
     workshopsActivity: runinigWorkshops(
       where: {
-        daySchedules_some: {
-          conferenceEvent: {
-            year: $eventYear
-            conferenceBrand: { title: $conferenceTitle }
-          }
+        conferenceEvents_some: {
+          year: $eventYear
+          conferenceBrand: { title: $conferenceTitle }
         }
       }
     ) {
@@ -105,7 +120,6 @@ const activitiesFragment = /* GraphQL */ `
 
 const speakerInfoFragment = /* GraphQL */ `
   fragment speakerInfo on PieceOfSpeakerInfo {
-    status
     id
     idAlt: id
     label
@@ -119,6 +133,96 @@ const speakerInfoFragment = /* GraphQL */ `
   ${personFragment}
 `;
 
+const orgEvent = /* GraphQL */ `
+  fragment orgEventFragment on OrgEvent {
+    title
+    description
+    isoDate
+    duration
+    extension
+  }
+`;
+const talkEvent = /* GraphQL */ `
+  fragment talkEventFragment on Talk {
+    speaker {
+      name
+      company
+      country
+      pieceOfSpeakerInfoes {
+        label
+      }
+    }
+    label
+    title
+    description
+    isoDate
+    duration
+    secondaryLabel
+    extension
+    youtubeUrl
+  }
+`;
+const qaEvent = /* GraphQL */ `
+  fragment qaEventFragment on QA {
+    title
+    description
+    isoDate
+    duration
+    extension
+  }
+`;
+const groupLTEvent = /* GraphQL */ `
+  fragment groupLTEventFragment on GroupLT {
+    title
+    description
+    isoDate
+    duration
+    extension
+  }
+`;
+const speakerRoomEvent = /* GraphQL */ `
+  fragment speakerRoomEventFragment on SpeakersRoom {
+    title
+    speakers {
+      name
+      company
+      country
+      pieceOfSpeakerInfoes {
+        label
+      }
+    }
+    description
+    isoDate
+    duration
+    extension
+    roomLink
+    subTrackIndex
+  }
+`;
+const discussionRoomEvent = /* GraphQL */ `
+  fragment discussionRoomEventFragment on DiscussionRoom {
+    title
+    speakers {
+      name
+      company
+      country
+      pieceOfSpeakerInfoes {
+        label
+      }
+    }
+    description
+    isoDate
+    duration
+    extension
+    pic {
+      id
+    }
+    roomLink
+    roomLinkText
+    subTrackIndex
+  }
+`;
+
 module.exports = {
   speakerInfoFragment,
   personAvatarFragment,
@@ -126,4 +230,10 @@ module.exports = {
   sponsorLogoFragment,
   jobLogoFragment,
   activitiesFragment,
+  orgEvent,
+  talkEvent,
+  discussionRoomEvent,
+  speakerRoomEvent,
+  groupLTEvent,
+  qaEvent,
 };

@@ -1,5 +1,6 @@
 const { prepareSpeakers, trySelectSettings } = require('./utils');
 const { speakerInfoFragment } = require('./fragments');
+const dayjs = require('dayjs');
 
 const selectSettings = trySelectSettings(
   s => ({
@@ -23,17 +24,15 @@ const queryPages = /* GraphQL */ `
   ) {
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
       id
-      status
       year: conferenceEvents(where: { year: $eventYear }) {
         id
-        status
         openForTalks
-        speakers: pieceOfSpeakerInfoes(orderBy: order_DESC) {
+        speakers: pieceOfSpeakerInfoes {
           ...speakerInfo
           activities: speaker {
-            talks(
+            lightningTalks(
               where: {
-                daySchedule: {
+                track: {
                   conferenceEvent: {
                     year: $eventYear
                     conferenceBrand: { title: $conferenceTitle }
@@ -44,8 +43,27 @@ const queryPages = /* GraphQL */ `
               id
               title
               description
-              timeString
-              isLightning
+              timeString: isoDate
+              track {
+                name
+                isPrimary
+              }
+            }
+            talks(
+              where: {
+                track: {
+                  conferenceEvent: {
+                    year: $eventYear
+                    conferenceBrand: { title: $conferenceTitle }
+                  }
+                }
+              }
+            ) {
+              id
+              title
+              label
+              description
+              timeString: isoDate
               track {
                 name
                 isPrimary
@@ -68,7 +86,26 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
 
   const { openForTalks } = data;
 
-  const speakers = await prepareSpeakers(data.speakers, tagColors, labelColors);
+  const convertDateToIso = item => ({
+    ...item,
+    timeString: item.timeString ? dayjs(item.timeString).toISOString() : null,
+  });
+
+  const speakersWithPlainActivities = data.speakers.map(speaker => ({
+    ...speaker,
+    activities: {
+      talks: [
+        ...speaker.activities.lightningTalks.map(convertDateToIso),
+        ...speaker.activities.talks.map(convertDateToIso),
+      ],
+    },
+  }));
+
+  const speakers = await prepareSpeakers(
+    speakersWithPlainActivities,
+    tagColors,
+    labelColors,
+  );
 
   const allSpeakers = await Promise.all(speakers);
 
