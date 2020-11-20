@@ -174,6 +174,35 @@ const qaEvent = /* GraphQL */ `
     extension
   }
 `;
+const zoomBarEvent = /* GraphQL */ `
+  fragment zoomBarEventFragment on ZoomBar {
+    title
+    description
+    isoDate
+    duration
+    extension
+    roomLink
+    roomLinkImage {
+      id
+      url
+    }
+    bgImage {
+      id
+      url
+    }
+    speaker {
+      name
+      company
+      country
+      pieceOfSpeakerInfoes {
+        label
+      }
+      avatar {
+        url
+      }
+    }
+  }
+`;
 const groupLTEvent = /* GraphQL */ `
   fragment groupLTEventFragment on GroupLT {
     title
@@ -280,4 +309,5 @@ module.exports = {
   speakerRoomEvent,
   groupLTEvent,
   qaEvent,
+  zoomBarEvent,
 };

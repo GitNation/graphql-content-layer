@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const { markdownToHtml } = require('./markdown');
 
 const { trySelectSettings } = require('./utils');
@@ -117,8 +118,11 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     tracksData.map(async (track, ind) => {
       const listWithMarkdown = await Promise.all(
         track.events
-          // eslint-disable-next-line no-underscore-dangle
-          .filter(event => event.__typename !== 'LightningTalk')
+          .filter(
+            event =>
+              event.__typename !== 'LightningTalk' &&
+              event.__typename !== 'ZoomBar',
+          )
           .map(async event => {
             const result = await formatEvent(event, labelColors, track.name);
             return result;
@@ -161,6 +165,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     schedule,
     tracks,
     talks,
+    zoomBars: [],
     lightningTalks: formattedLightningEvents,
     noTracks: false,
   };

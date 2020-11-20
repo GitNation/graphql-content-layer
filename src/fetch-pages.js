@@ -6,6 +6,7 @@ const {
   speakerRoomEvent,
   groupLTEvent,
   qaEvent,
+  zoomBarEvent,
 } = require('./fragments');
 const { markdownToHtml } = require('./markdown');
 const { contentTypeMap, trySelectSettings } = require('./utils');
@@ -53,6 +54,9 @@ const queryPages = /* GraphQL */ `
             ... on PanelDiscussion {
               ...panelDiscussionEventFragment
             }
+            ... on ZoomBar {
+              ...zoomBarEventFragment
+            }
           }
         }
         pages {
@@ -83,6 +87,7 @@ const queryPages = /* GraphQL */ `
   ${speakerRoomEvent}
   ${groupLTEvent}
   ${qaEvent}
+  ${zoomBarEvent}
 `;
 
 const fetchData = async (client, { labelColors, ...vars }) => {
@@ -91,6 +96,36 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     .then(res => res.conf.year[0]);
 
   const secondaryTracks = tracks.filter(t => !t.isPrimary);
+  const mainTracks = tracks.filter(t => t.isPrimary);
+
+  const formattedMainTracks = await Promise.all(
+    mainTracks.map(async (track, ind) => {
+      const listWithMarkdown = await Promise.all(
+        track.events
+          // eslint-disable-next-line no-underscore-dangle
+          .map(async event => {
+            const result = await formatEvent(event, labelColors, track.name);
+            return result;
+          }),
+      );
+
+      const clearList = await Promise.all(
+        listWithMarkdown.map(async el => ({
+          ...el,
+          text: await markdownToHtml(el.text),
+        })),
+      );
+
+      return {
+        tab: track.name,
+        title: track.name,
+        name: `${10 + ind}`,
+        odd: Boolean(ind % 2),
+        list: clearList,
+      };
+    }),
+  );
+
   const formattedSecondaryTracks = await Promise.all(
     secondaryTracks.map(async (track, ind) => {
       const listWithMarkdown = await Promise.all(
@@ -140,8 +175,16 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     ];
   }, []);
 
+  const zoomBars = formattedMainTracks.reduce((result, currentTrack) => {
+    return [
+      ...result,
+      ...currentTrack.list.filter(event => event.eventType === 'ZoomBar'),
+    ];
+  }, []);
+
   const customContent = {
-    videoRooms,
+    videoRooms: videoRooms.length ? zoomBars : null,
+    zoomBars: zoomBars.length ? zoomBars : null,
     scheduleExtends: [],
     tracks: formattedSecondaryTracks,
     eventInfo: {},
