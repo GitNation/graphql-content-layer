@@ -12,7 +12,7 @@
     "test": "jest",
     "test:smoke": "jest tests/smoke.test.js --detectOpenHandles",
     "tdd": "jest --watch",
-    "prepare": "package-prepare && yarn test-run",
+    "prepare": "package-prepare",
     "prestart": "relative-deps",
     "-prepare": "yarn relative-deps",
     "update-dependencies": "yarn upgradeInteractive --latest"
