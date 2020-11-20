@@ -1,29 +1,24 @@
-const { sponsorLogoFragment } = require('./fragments');
 const { contentTypeMap } = require('./utils');
 
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
       id
-      status
       year: conferenceEvents(where: { year: $eventYear }) {
         id
-        status
         sponsors: pieceOfSponsorInfoes {
-          status
           id
           category
           order
           avatar {
-            ...imageUrl
+            url
           }
           sponsor {
             id
-            status
             title
             site
             avatar {
-              ...imageUrl
+              url
             }
           }
           width
@@ -31,8 +26,6 @@ const queryPages = /* GraphQL */ `
       }
     }
   }
-
-  ${sponsorLogoFragment}
 `;
 
 const sortByOrder = (a, b) => {

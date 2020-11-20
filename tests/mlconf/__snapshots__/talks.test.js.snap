@@ -1,0 +1,261 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RS should be correct talks data 1`] = `
+Array [
+  Object {
+    "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+    "description": "In this talk I'll start by introducing the recent breakthroughs in NLP that resulted from the combination of Transfer Learning schemes and Transformer architectures. The second part of the talk will be dedicated to an introduction of the open-source tools released by HuggingFace, in particular our Transformers, Tokenizers and Datasets libraries and our models.",
+    "from": "HuggingFace, Netherlands",
+    "id": "ckf2f47y05p9o0976kps2eki1",
+    "isLightning": null,
+    "isoDate": "2020-11-05T00:00:00.000Z",
+    "label": "November 5",
+    "name": "Thomas Wolf",
+    "place": "HuggingFace, Netherlands",
+    "slug": "an-introduction-to-transfer-learning-in-nlp-and-hugging-face",
+    "speaker": "Thomas Wolf",
+    "speakerSlug": "thomas-wolf",
+    "status": "PUBLISHED",
+    "tag": "talk--undefined",
+    "text": "<p>In this talk I'll start by introducing the recent breakthroughs in NLP that resulted from the combination of Transfer Learning schemes and Transformer architectures. The second part of the talk will be dedicated to an introduction of the open-source tools released by HuggingFace, in particular our Transformers, Tokenizers and Datasets libraries and our models.</p>
+",
+    "time": "16:15",
+    "title": "An Introduction to Transfer Learning in NLP and HuggingFace",
+    "track": "Talks & Q&A",
+  },
+  Object {
+    "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+    "description": "Discover how to embrace machine learning in JavaScript using TensorFlow.js in the browser and beyond in this speedy talk. Get inspired through a whole bunch of creative prototypes that push the boundaries of what is possible in the modern web browser (things have come a long way) and then take your own first steps with machine learning in minutes. By the end of the talk everyone will understand how to recognize an object of their choice which could then be used in any creative way you can imagine. Familiarity with JavaScript is assumed, but no background in machine learning is required. Come take your first steps with TensorFlow.js!",
+    "from": "Google, USA",
+    "id": "ckf2f7tc598xt0970jkc9plin",
+    "isLightning": null,
+    "isoDate": "2020-11-05T00:00:00.000Z",
+    "label": "November 5",
+    "name": "Jason Mayes",
+    "place": "Google, USA",
+    "slug": "tensor-flow-js-101-ml-in-the-browser-and-beyond",
+    "speaker": "Jason Mayes",
+    "speakerSlug": "jason-mayes",
+    "status": "PUBLISHED",
+    "tag": "talk--undefined",
+    "text": "<p>Discover how to embrace machine learning in JavaScript using TensorFlow.js in the browser and beyond in this speedy talk. Get inspired through a whole bunch of creative prototypes that push the boundaries of what is possible in the modern web browser (things have come a long way) and then take your own first steps with machine learning in minutes. By the end of the talk everyone will understand how to recognize an object of their choice which could then be used in any creative way you can imagine. Familiarity with JavaScript is assumed, but no background in machine learning is required. Come take your first steps with TensorFlow.js!</p>
+",
+    "time": "20:10",
+    "title": "TensorFlow.js 101: ML in the Browser and Beyond",
+    "track": "Talks & Q&A",
+  },
+  Object {
+    "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+    "description": "Often it's thought that to be able to succeed with Machine Learning and Deep Learning, as an onramp to Artificial Intelligence, that you need a deep background in mathematics and calculus, as well as some form of PhD. But you don't. With modern APIs like TensorFlow, much of the complexity is abstracted away in pre-built libraries, so you can focus on learning. In this session, Laurence Moroney, from Google, will explain how he has used this to create courses with hundreds of thousands of students, and from there, how a certificate program was created. ",
+    "from": "Google, USA",
+    "id": "ckf6n6akj4y0m09112764j2o3",
+    "isLightning": null,
+    "isoDate": "2020-11-05T00:00:00.000Z",
+    "label": "November 5",
+    "name": "Laurence Moroney",
+    "place": "Google, USA",
+    "slug": "teaching-ml-and-ai-to-coders",
+    "speaker": "Laurence Moroney",
+    "speakerSlug": "laurence-moroney",
+    "status": "PUBLISHED",
+    "tag": "talk--undefined",
+    "text": "<p>Often it's thought that to be able to succeed with Machine Learning and Deep Learning, as an onramp to Artificial Intelligence, that you need a deep background in mathematics and calculus, as well as some form of PhD. But you don't. With modern APIs like TensorFlow, much of the complexity is abstracted away in pre-built libraries, so you can focus on learning. In this session, Laurence Moroney, from Google, will explain how he has used this to create courses with hundreds of thousands of students, and from there, how a certificate program was created. </p>
+",
+    "time": "18:55",
+    "title": "Teaching ML and AI to Coders",
+    "track": "Talks & Q&A",
+  },
+  Object {
+    "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+    "description": "As an AI scientist and a developer, I have been engaged with AI-applications for many years especially focusing on object detection and recognition purposes. I love thinking that we can get creative in designing neural networks. We can train them supervised, unsupervised, semi or self-supervised, and this gives possibilities to mimic the human brain in a narrow domain. However, in vision applications, there are still things where AI is lacking and will be lacking without computer vision knowledge. Computer vision has been solving detection and recognition problems for many years. However, in the last decade, it seems like AI is seen as a replacement of computer vision. AI can find the optimal model for a specific type of data set and it might achieve generalization better. AI can be designed in a way that it can learn life-long which also brings possibilities of creating models which serve better when they are used longer. However, an AI vision system will be lacking capabilities without computer vision knowledge. First of all, it will require a very big data set to train the model what can be expensive or even not possible. On the other hand, computer vision systems can be modeled only by using a hand-drawn template image. Training AI models also requires GPUs. Nevertheless, I do not want to encourage everyone to train AI models for solving any simple problem which could be solved easily by computer vision. Last but not least, knowing computer vision, machine learning and especially feature engineering methods helps to design hybrid models that might be more robust to adversarial attacks or changing conditions. 
+
+In this lecture, I will briefly introduce how computer vision (especially using the OpenCV library) and machine learning can be used for creating detection and recognition models. Some experience with python, jupyter notebook and some machine learning background would be useful to get more benefits from this lecture.  ",
+    "from": "Jonkoping University & the Owner of Create4D, Netherlands",
+    "id": "ckfpbwio7vfxj09700mq7yoai",
+    "isLightning": null,
+    "isoDate": "2020-11-05T00:00:00.000Z",
+    "label": "November 5",
+    "name": "Beril Sirmacek",
+    "place": "Jonkoping University & the Owner of Create4D, Netherlands",
+    "slug": "computer-vision-using-open-cv",
+    "speaker": "Beril Sirmacek",
+    "speakerSlug": "beril-sirmacek",
+    "status": "PUBLISHED",
+    "tag": "talk--undefined",
+    "text": "<p>As an AI scientist and a developer, I have been engaged with AI-applications for many years especially focusing on object detection and recognition purposes. I love thinking that we can get creative in designing neural networks. We can train them supervised, unsupervised, semi or self-supervised, and this gives possibilities to mimic the human brain in a narrow domain. However, in vision applications, there are still things where AI is lacking and will be lacking without computer vision knowledge. Computer vision has been solving detection and recognition problems for many years. However, in the last decade, it seems like AI is seen as a replacement of computer vision. AI can find the optimal model for a specific type of data set and it might achieve generalization better. AI can be designed in a way that it can learn life-long which also brings possibilities of creating models which serve better when they are used longer. However, an AI vision system will be lacking capabilities without computer vision knowledge. First of all, it will require a very big data set to train the model what can be expensive or even not possible. On the other hand, computer vision systems can be modeled only by using a hand-drawn template image. Training AI models also requires GPUs. Nevertheless, I do not want to encourage everyone to train AI models for solving any simple problem which could be solved easily by computer vision. Last but not least, knowing computer vision, machine learning and especially feature engineering methods helps to design hybrid models that might be more robust to adversarial attacks or changing conditions. </p>
+<p>In this lecture, I will briefly introduce how computer vision (especially using the OpenCV library) and machine learning can be used for creating detection and recognition models. Some experience with python, jupyter notebook and some machine learning background would be useful to get more benefits from this lecture.  </p>
+",
+    "time": "16:50",
+    "title": "Computer Vision Using OpenCV",
+    "track": "Talks & Q&A",
+  },
+  Object {
+    "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+    "description": "Elegant and graceful mathematics make a cool textbook cover, but the inside of those same books are usually dry cold engineering.  It's important to mix the theory of innovation with the excitement of practicality, and through the composition of these elements we find innovation.  In this talk, I'll show you from an engineering perspective how to explore, balance, and ultimately bottle machined success.",
+    "from": "iFit, USA",
+    "id": "ckfxqoqrdkmjw09708dz0596j",
+    "isLightning": null,
+    "isoDate": "2020-11-05T00:00:00.000Z",
+    "label": "November 5",
+    "name": "Robert Plummer",
+    "place": "iFit, USA",
+    "slug": "the-evolution-revolution",
+    "speaker": "Robert Plummer",
+    "speakerSlug": "robert-plummer",
+    "status": "PUBLISHED",
+    "tag": "talk--undefined",
+    "text": "<p>Elegant and graceful mathematics make a cool textbook cover, but the inside of those same books are usually dry cold engineering.  It's important to mix the theory of innovation with the excitement of practicality, and through the composition of these elements we find innovation.  In this talk, I'll show you from an engineering perspective how to explore, balance, and ultimately bottle machined success.</p>
+",
+    "time": "17:35",
+    "title": "The Evolution Revolution",
+    "track": "Talks & Q&A",
+  },
+  Object {
+    "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+    "description": "This talk will be a walkthrough of utilizing machine learning to replace a rule based system for consumers. We will discuss when is it okay to use ML, how to build these models with intelligent data, evaluate these offline and finally how to validate this evaluation to land these models in production systems. Furthermore, we will illustrate various self-learning/interactive-learning strategies that can be used for production systems to automate how models teach themselves to become better.",
+    "from": "Facebook, USA",
+    "id": "ckggsm0ozab2b0911y7r5r27e",
+    "isLightning": null,
+    "isoDate": "2020-11-05T00:00:00.000Z",
+    "label": "November 5",
+    "name": "Shivani Poddar",
+    "place": "Facebook, USA",
+    "slug": "how-to-machine-learn-ify-any-product",
+    "speaker": "Shivani Poddar",
+    "speakerSlug": "shivani-poddar",
+    "status": "PUBLISHED",
+    "tag": "talk--undefined",
+    "text": "<p>This talk will be a walkthrough of utilizing machine learning to replace a rule based system for consumers. We will discuss when is it okay to use ML, how to build these models with intelligent data, evaluate these offline and finally how to validate this evaluation to land these models in production systems. Furthermore, we will illustrate various self-learning/interactive-learning strategies that can be used for production systems to automate how models teach themselves to become better.</p>
+",
+    "time": "18:10",
+    "title": "How to Machine Learn-ify any Product",
+    "track": "Talks & Q&A",
+  },
+  Object {
+    "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+    "description": "DeepPavlov Agent is a framework designed to facilitate the development of scalable and production-ready multi-skill virtual assistants, complex dialogue systems, and chatbots. Key features of DeepPavlov Agent include (1) scalability and reliability in the high load environment due to micro-service architecture; (2) ease of adding and orchestrating conversational skills; (3) shared dialogue state memory and NLP annotations accessible to all skills.
+
+DeepPavlov DREAM is a socialbot platform with a modular design with the main components such as annotators, skills and selectors run as independent services. These components are conﬁgured and deployed using Docker containers. It allows developers to focus on application development instead of focusing on the intrinsic details of the manual low-level infrastructure conﬁguration.",
+    "from": "DeepPavlov.ai, Russia",
+    "id": "ckf2fb1qa99cu0970jx8silfv",
+    "isLightning": null,
+    "isoDate": "2020-11-06T00:00:00.000Z",
+    "label": "November 6",
+    "name": "Mikhail Burtsev",
+    "place": "DeepPavlov.ai, Russia",
+    "slug": "deep-pavlov-agent-open-source-framework-for-multiskill-conversational-ai",
+    "speaker": "Mikhail Burtsev",
+    "speakerSlug": "mikhail-burtsev",
+    "status": "PUBLISHED",
+    "tag": "talk--undefined",
+    "text": "<p>DeepPavlov Agent is a framework designed to facilitate the development of scalable and production-ready multi-skill virtual assistants, complex dialogue systems, and chatbots. Key features of DeepPavlov Agent include (1) scalability and reliability in the high load environment due to micro-service architecture; (2) ease of adding and orchestrating conversational skills; (3) shared dialogue state memory and NLP annotations accessible to all skills.</p>
+<p>DeepPavlov DREAM is a socialbot platform with a modular design with the main components such as annotators, skills and selectors run as independent services. These components are conﬁgured and deployed using Docker containers. It allows developers to focus on application development instead of focusing on the intrinsic details of the manual low-level infrastructure conﬁguration.</p>
+",
+    "time": "16:50",
+    "title": "DeepPavlov Agent: Open-source Framework for Multiskill Conversational AI",
+    "track": "Talks & Q&A",
+  },
+  Object {
+    "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+    "description": "Data visualisation is a fundamental part of Data Science. The talk will start with a practical demonstration (using pandas, scikit-learn, and matplotlib) of how relying on summary statistics and predictions alone can leave you blind to the true nature of your datasets. I will make the point that visualisations are crucial in every step of the Data Science process and therefore that Jupyter Notebooks definitely do belong in Data Science. We will then look at how maintainability is a real challenge for Jupyter Notebooks, especially when trying to keep them under version control with git. Although there exists a plethora of code quality tools for Python scripts (flake8, black, mypy, etc.), most of them don't work on Jupyter Notebooks. To this end I will present nbQA, which allows any standard Python code quality tool to be run on a Jupyter Notebook. Finally, I will demonstrate how to use it within a workflow which lets practitioners keep the interactivity of their Jupyter Notebooks without having to sacrifice their maintainability.",
+    "from": "Samsung R&D Institute UK, UK",
+    "id": "ckfc7qzixbf9z09111iv2m4w1",
+    "isLightning": null,
+    "isoDate": "2020-11-06T00:00:00.000Z",
+    "label": "November 6",
+    "name": "Marco Gorelli",
+    "place": "Samsung R&D Institute UK, UK",
+    "slug": "never-have-an-unmaintainable-jupyter-notebook-again",
+    "speaker": "Marco Gorelli",
+    "speakerSlug": "marco-gorelli",
+    "status": "PUBLISHED",
+    "tag": "talk--undefined",
+    "text": "<p>Data visualisation is a fundamental part of Data Science. The talk will start with a practical demonstration (using pandas, scikit-learn, and matplotlib) of how relying on summary statistics and predictions alone can leave you blind to the true nature of your datasets. I will make the point that visualisations are crucial in every step of the Data Science process and therefore that Jupyter Notebooks definitely do belong in Data Science. We will then look at how maintainability is a real challenge for Jupyter Notebooks, especially when trying to keep them under version control with git. Although there exists a plethora of code quality tools for Python scripts (flake8, black, mypy, etc.), most of them don't work on Jupyter Notebooks. To this end I will present nbQA, which allows any standard Python code quality tool to be run on a Jupyter Notebook. Finally, I will demonstrate how to use it within a workflow which lets practitioners keep the interactivity of their Jupyter Notebooks without having to sacrifice their maintainability.</p>
+",
+    "time": "19:00",
+    "title": "Never Have an Unmaintainable Jupyter Notebook Again!",
+    "track": "Talks & Q&A",
+  },
+  Object {
+    "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+    "description": "TensorFlow has built a solid foundation for various machine learning applications, on top of which the Keras ecosystem can really boost the productivity of the developers in building machine learning solutions. Keras has a simple and arbitrarily flexible API for building and training models. However, we still need a lot of manual work to tune the hyperparameters. Fortunately, with Keras Tuner, we can automate the hyperparameter tuning process with minor modifications to the code for building and training the models. To further boost the productivity, we introduce AutoKeras, which fully automates the model building, training, and hyperparameter tuning process. It dramatically reduces the amount of prior knowledge needed of using machine learning for some common tasks. All you need is to define the task and to provide the training data.",
+    "from": "Keras Team at Google, USA",
+    "id": "ckfc805csw0od0970shkkjn5p",
+    "isLightning": null,
+    "isoDate": "2020-11-06T00:00:00.000Z",
+    "label": "November 6",
+    "name": "Haifeng Jin",
+    "place": "Keras Team at Google, USA",
+    "slug": "boost-productivity-with-keras-ecosystem",
+    "speaker": "Haifeng Jin",
+    "speakerSlug": "haifeng-jin",
+    "status": "PUBLISHED",
+    "tag": "talk--undefined",
+    "text": "<p>TensorFlow has built a solid foundation for various machine learning applications, on top of which the Keras ecosystem can really boost the productivity of the developers in building machine learning solutions. Keras has a simple and arbitrarily flexible API for building and training models. However, we still need a lot of manual work to tune the hyperparameters. Fortunately, with Keras Tuner, we can automate the hyperparameter tuning process with minor modifications to the code for building and training the models. To further boost the productivity, we introduce AutoKeras, which fully automates the model building, training, and hyperparameter tuning process. It dramatically reduces the amount of prior knowledge needed of using machine learning for some common tasks. All you need is to define the task and to provide the training data.</p>
+",
+    "time": "16:15",
+    "title": "Boost Productivity with Keras Ecosystem",
+    "track": "Talks & Q&A",
+  },
+  Object {
+    "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+    "description": "In many real-world applications, data quality and curation and domain knowledge play a much larger role in building successful models than coming up with complex processing techniques and tweaking hyper-parameters.
+Therefore, a machine learning toolbox should enable users to understand both data and model, and not burden the practitioner with picking preprocessing steps and hyperparameters.
+The dabl library is a first step in this direction. It provides automatic visualization routines and model inspection capabilities while automating away model selection.
+
+dabl contains plot types not available in standard python libraries so far, as well as novel algorithms for picking interesting visualizations.
+Heuristics are used to select appropriate preprocessing for machine learning, while state-of-the-art portfolio selection algorithms are used for efficient model and hyperparameter search.
+
+dabl also provides easy access to model evaluation and model inspection tools provided by scikit-learn.",
+    "from": "Microsoft, USA",
+    "id": "ckfp74z6auxpj0970lkzyyk22",
+    "isLightning": null,
+    "isoDate": "2020-11-06T00:00:00.000Z",
+    "label": "November 6",
+    "name": "Andreas Müller",
+    "place": "Microsoft, USA",
+    "slug": "dabl-automatic-machine-learning-with-a-human-in-the-loop",
+    "speaker": "Andreas Müller",
+    "speakerSlug": "andreas-muller",
+    "status": "PUBLISHED",
+    "tag": "talk--undefined",
+    "text": "<p>In many real-world applications, data quality and curation and domain knowledge play a much larger role in building successful models than coming up with complex processing techniques and tweaking hyper-parameters.
+Therefore, a machine learning toolbox should enable users to understand both data and model, and not burden the practitioner with picking preprocessing steps and hyperparameters.
+The dabl library is a first step in this direction. It provides automatic visualization routines and model inspection capabilities while automating away model selection.</p>
+<p>dabl contains plot types not available in standard python libraries so far, as well as novel algorithms for picking interesting visualizations.
+Heuristics are used to select appropriate preprocessing for machine learning, while state-of-the-art portfolio selection algorithms are used for efficient model and hyperparameter search.</p>
+<p>dabl also provides easy access to model evaluation and model inspection tools provided by scikit-learn.</p>
+",
+    "time": "19:35",
+    "title": "Dabl: Automatic Machine Learning with a Human in the Loop",
+    "track": "Talks & Q&A",
+  },
+  Object {
+    "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+    "description": "The domain of Natural Language Processing have seen a tremendous amount of research and innovation in the past couple of years to tackle the problem of implementing high quality machine learning and AI solutions using natural text. Text Classification is one such area that is extremely important in all sectors like finance, media, product development, etc. Building up a text classification system from scratch for every use case can be challenging in terms of cost as well as resources, considering there is a good amount of dataset to begin training with.
+
+Here comes the concept of transfer learning. Using some of the models that has been pre-trained on terabytes of data and fine-tuning it based on the problem at hand is the new way to efficiently implement machine learning solutions without spending months on data cleaning pipeline.
+
+This talk with highlight ways of implementing the newly launched BERT and fine tuning the base model to build an efficient text classifying model. Basic understanding of python is desirable.",
+    "from": "Indellient US Inc., USA",
+    "id": "ckfwamppzgh7y0970xkxr22bx",
+    "isLightning": null,
+    "isoDate": "2020-11-06T00:00:00.000Z",
+    "label": "November 6",
+    "name": "Jayeeta Putatunda",
+    "place": "Indellient US Inc., USA",
+    "slug": "power-of-transfer-learning-in-nlp-build-a-text-classification-model-using-bert",
+    "speaker": "Jayeeta Putatunda",
+    "speakerSlug": "jayeeta-putatunda",
+    "status": "PUBLISHED",
+    "tag": "talk--undefined",
+    "text": "<p>The domain of Natural Language Processing have seen a tremendous amount of research and innovation in the past couple of years to tackle the problem of implementing high quality machine learning and AI solutions using natural text. Text Classification is one such area that is extremely important in all sectors like finance, media, product development, etc. Building up a text classification system from scratch for every use case can be challenging in terms of cost as well as resources, considering there is a good amount of dataset to begin training with.</p>
+<p>Here comes the concept of transfer learning. Using some of the models that has been pre-trained on terabytes of data and fine-tuning it based on the problem at hand is the new way to efficiently implement machine learning solutions without spending months on data cleaning pipeline.</p>
+<p>This talk with highlight ways of implementing the newly launched BERT and fine tuning the base model to build an efficient text classifying model. Basic understanding of python is desirable.</p>
+",
+    "time": "18:15",
+    "title": "Power of Transfer Learning in NLP: Build a Text Classification Model Using BERT",
+    "track": "Talks & Q&A",
+  },
+]
+`;

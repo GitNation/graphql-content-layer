@@ -2,7 +2,7 @@ import { getSettings } from '../develop/conference-settings';
 import { getContent } from '../src';
 import { createReport } from '../utils/content-report';
 
-describe('JSN', () => {
+describe('RS', () => {
   const settings = getSettings();
 
   it.each([
@@ -16,7 +16,7 @@ describe('JSN', () => {
     'workshops',
     'otherContent',
   ])('should prepare %s', async contentSection => {
-    const content = await getContent(settings.jsn);
+    const content = await getContent(settings.mlconf);
     const report = createReport(content);
     expect(report[contentSection]).toMatchSnapshot();
   });

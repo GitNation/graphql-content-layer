@@ -1,4 +1,4 @@
-const { prepareSpeakers, trySelectSettings, contentTypeMap } = require('./utils');
+const { prepareSpeakers, trySelectSettings } = require('./utils');
 const { personFragment } = require('./fragments');
 
 const selectSettings = trySelectSettings(s => s.speakerAvatar.dimensions, {
@@ -15,10 +15,8 @@ const queryPages = /* GraphQL */ `
   ) {
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
       id
-      status
       year: conferenceEvents(where: { year: $eventYear }) {
         id
-        status
         mcs {
           id
           speaker {

@@ -5,13 +5,10 @@ const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
       id
-      status
       year: conferenceEvents(where: { year: $eventYear }) {
         id
-        status
         diversity {
           id
-          status
           title
           description
           maxTickets

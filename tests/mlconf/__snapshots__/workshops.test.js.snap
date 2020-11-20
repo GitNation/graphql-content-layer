@@ -1,0 +1,648 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RS should be correct workshops data 1`] = `
+Array [
+  Object {
+    "additionalInfo": null,
+    "code": "3h-wsh",
+    "content": Array [
+      "Introduction to AI in the Microsoft Azure Cloud",
+      "Introduction to Azure Machine Learning",
+      "Training Titanic predictive model using Automatic ML",
+      "Using Jupyter Notebooks in Azure ML",
+      "Using Visual Studio Code to schedule and track experiments",
+      "Hyperparameter optimization and HyperDrive",
+      "Training GANs on Azure ML to produce Artificial Art",
+      "Using DeepPavlov NLP to answer COVID-related questions on CORD dataset",
+    ],
+    "contentType": "2ce17eb4016e4be5ae72bb0db484f3f0",
+    "date": "2020-11-04T00:00:00.000Z",
+    "dateString": "For full-access tickets holders only",
+    "description": "<p>This workshop will be both a gentle introduction to Machine Learning, and a practical exercise of using the cloud to train simple and not-so-simple machine learning models. We will start with using Automatic ML to train the model to predict survival on Titanic, and then move to more complex machine learning tasks such as hyperparameter optimization and scheduling series of experiments on the compute cluster. Finally, I will show how Azure Machine Learning can be used to generate artificial paintings using Generative Adversarial Networks, and how to train language question-answering model on COVID papers to answer COVID-related questions.</p>
+",
+    "duration": null,
+    "finishingTime": "",
+    "id": "ckgkutycphblr0911yxv7crj4",
+    "includedToPackage": true,
+    "level": "Beginners and ML practitioners.",
+    "location": "<p>Nov 2, 18:00-20:00 CET. The workshop will be recorded.</p>
+",
+    "order": 90,
+    "prerequisites": "<p>To actively take part in this workshop, you will need Microsoft Azure Account. In order not to spend time during the workshop, please <a href=\\"https://azure.microsoft.com/free/?WT.mc_id=ca-10228-dmitryso\\">register free Azure account in advance</a> if you do not already have one (students can <a href=\\"https://azure.microsoft.com/free/students/?WT.mc_id=ca-10228-dmitryso\\">register student account</a>).</p>
+<p>Also, you may want to install <a href=\\"https://code.visualstudio.com/?WT.mc_id=ca-10228-dmitryso\\">Visual Studio Code</a>, and <a href=\\"https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account\\">Azure Account</a> and <a href=\\"https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai\\">Azure ML Extensions</a> (those are required just for one exercise).</p>
+",
+    "schedule": null,
+    "slogan": null,
+    "slug": "introduction-to-machine-learning-on-the-cloud",
+    "speaker": Object {
+      "avatar": Object {
+        "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/pnKYOEaiTu23p56sfwHT",
+      },
+      "bio": "Dmitry is a Microsoft veteran, working for more than 13 years. He started as a Technical Evangelist, and in this role presented on numerous conferences, including twice being on stage with Steve Ballmer. He then worked for 2 years as Senior Software Engineer, helping big European companies to start pilot digital transformation projects based on AI and ML. As Cloud Developer Advocate, Dmitry focuses on creating educational content and working with academic and research institutions. He is also an Associate Professor at MIPT, HSE and MAI in Moscow, a big fan of functional programming and F#, and a maintainer/primary developer of [mPyPl](http://soshnikov.com/mPyPl/) library. In his spare time, Dmitry explores Science Art and Technological Magic, as well as performs Chinese tea ceremonies. He can be reached at [soshnikov.com](http://soshnikov.com).",
+      "company": "Cloud Developer Advocate @ Microsoft",
+      "country": "Russia",
+      "githubUrl": null,
+      "id": "ckcq6n36xxgat0b97lxet1gxq",
+      "idMain": "ckcq6n36xxgat0b97lxet1gxq",
+      "info": Array [],
+      "mediumUrl": null,
+      "name": "Dmitry Soshnikov",
+      "ownSite": "https://soshnikov.com/",
+      "talks": Array [],
+      "twitterUrl": null,
+      "workshops": Array [
+        Object {
+          "slug": "introduction-to-machine-learning-on-the-cloud",
+          "title": "Introduction to Machine Learning on the Cloud",
+        },
+      ],
+      "workshopsActivity": Array [],
+    },
+    "startingTime": null,
+    "status": "PUBLISHED",
+    "title": "Introduction to Machine Learning on the Cloud",
+    "toc": null,
+    "trainer": "Dmitry Soshnikov",
+    "trainers": Array [],
+    "trainersTitle": "Dmitry Soshnikov",
+  },
+  Object {
+    "additionalInfo": null,
+    "code": "3h-wsh-DeepPavlov",
+    "content": Array [],
+    "contentType": "2ce17eb4016e4be5ae72bb0db484f3f0",
+    "date": "2020-11-04T00:00:00.000Z",
+    "dateString": "For full-access tickets holders only",
+    "description": "<p>Simple chatbots can be built with a number of simple rules, but their UX will be very narrow and limited. Building complex AI assistants, in contrast, requires a lot of effort. To make your users happy, you have to master many things at once: rules, intents, finite state machines, chit-chat tech, dialog flow management, and many other things. It's a job for an entire team. Fortunately, you don't have to hire it. Instead, you can rely upon your trusty software from DeepPavlov.ai. With it, you can offload the complexity of managing the entire infrastructure to DeepPavlov Agent – an open-source Conversational AI orchestrator. Next, you can pick state-of-the-art NLP components from DeepPavlov Library to decode human emotions and understand their intents. Finally, you can pick some of the available skills from DeepPavlov Dream to avoid reinventing the wheel like chit-chat. </p>
+<p>In this workshop, you'll be guided through the entire process, from an overview of the platform to building a sample AI assistant that you'll be able to re-use later in your own work. </p>
+<p>By the end of this workshop you'll be able to use the provided components from the DeepPavlov family of projects to build  simple AI assistant:</p>
+<ul>
+<li>work with existing NLP components from DeepPavlov Library like sentiment and emotion classifiers</li>
+<li>build simple goal-oriented skill with DeepPavlov Go-Bot</li>
+<li>combine them together with the DeepPavlov Agent into a simple AI assistant</li>
+<li>augment your simple AI assistant with some of the DeepPavlov Dream pre-built skills</li>
+</ul>
+",
+    "duration": null,
+    "finishingTime": "",
+    "id": "ckf2e86sa5ow50b7735ij9jyx",
+    "includedToPackage": true,
+    "level": "Intermediate or Advanced.",
+    "location": "<p>Nov 3, 18:00-21:00 CET. The workshop will be recorded.</p>
+",
+    "order": 100,
+    "prerequisites": null,
+    "schedule": null,
+    "slogan": null,
+    "slug": "ai-assistant-with-deep-pavlov",
+    "speaker": Object {
+      "avatar": Object {
+        "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/bKRipg63QmCJZ5TbE17t",
+      },
+      "bio": "Mikhail Burtsev is a head of Neural Networks and Deep Learning Laboratory at Moscow Institute of Physics and Technology. He is also a founder and leader of open-source conversational AI framework [DeepPavlov](http://deeppavlov.ai/). Mikhail had proposed and co-organize a series of academic [Conversational AI Challenges](http://convai.io/) (including NIPS 2017, NeurIPS 2018, EMNLP 2020).  
+
+His research interests are in the fields of Natural Language Processing, Machine Learning, Artificial Intelligence and Complex Systems. Mikhail Burtsev has published more than 20 technical papers including – Nature, Artificial Life, Lecture Notes in Computer Science series, and other peer-reviewed venues. ",
+      "company": "DeepPavlov.ai",
+      "country": "Russia",
+      "githubUrl": null,
+      "id": "ckejts5zpox7v0a854aku8ol5",
+      "idMain": "ckejts5zpox7v0a854aku8ol5",
+      "info": Array [
+        Object {
+          "id": "ckejtsyxbox930a856pur09jb",
+          "idAlt": "ckejtsyxbox930a856pur09jb",
+          "isNightSpeaker": null,
+          "label": "November 6",
+          "order": 45,
+          "speaker": Object {
+            "avatar": Object {
+              "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/bKRipg63QmCJZ5TbE17t",
+            },
+            "bio": "Mikhail Burtsev is a head of Neural Networks and Deep Learning Laboratory at Moscow Institute of Physics and Technology. He is also a founder and leader of open-source conversational AI framework [DeepPavlov](http://deeppavlov.ai/). Mikhail had proposed and co-organize a series of academic [Conversational AI Challenges](http://convai.io/) (including NIPS 2017, NeurIPS 2018, EMNLP 2020).  
+
+His research interests are in the fields of Natural Language Processing, Machine Learning, Artificial Intelligence and Complex Systems. Mikhail Burtsev has published more than 20 technical papers including – Nature, Artificial Life, Lecture Notes in Computer Science series, and other peer-reviewed venues. ",
+            "company": "DeepPavlov.ai",
+            "country": "Russia",
+            "githubUrl": null,
+            "id": "ckejts5zpox7v0a854aku8ol5",
+            "idMain": "ckejts5zpox7v0a854aku8ol5",
+            "mediumUrl": null,
+            "name": "Mikhail Burtsev",
+            "ownSite": null,
+            "twitterUrl": "https://twitter.com/mikhailburtsev",
+          },
+          "status": "PUBLISHED",
+        },
+      ],
+      "mediumUrl": null,
+      "name": "Mikhail Burtsev",
+      "ownSite": null,
+      "talks": Array [
+        Object {
+          "description": "DeepPavlov Agent is a framework designed to facilitate the development of scalable and production-ready multi-skill virtual assistants, complex dialogue systems, and chatbots. Key features of DeepPavlov Agent include (1) scalability and reliability in the high load environment due to micro-service architecture; (2) ease of adding and orchestrating conversational skills; (3) shared dialogue state memory and NLP annotations accessible to all skills.
+
+DeepPavlov DREAM is a socialbot platform with a modular design with the main components such as annotators, skills and selectors run as independent services. These components are conﬁgured and deployed using Docker containers. It allows developers to focus on application development instead of focusing on the intrinsic details of the manual low-level infrastructure conﬁguration.",
+          "isLightning": null,
+          "timeString": "16:50",
+          "title": "DeepPavlov Agent: Open-source Framework for Multiskill Conversational AI",
+          "track": Object {
+            "isPrimary": true,
+            "name": "Talks & Q&A",
+          },
+        },
+      ],
+      "twitterUrl": "https://twitter.com/mikhailburtsev",
+      "workshops": Array [
+        Object {
+          "title": "AI Assistant with DeepPavlov",
+        },
+      ],
+      "workshopsActivity": Array [],
+    },
+    "startingTime": null,
+    "status": "PUBLISHED",
+    "title": "AI Assistant with DeepPavlov",
+    "toc": null,
+    "trainer": "Mikhail Burtsev",
+    "trainers": Array [],
+    "trainersTitle": "Mikhail Burtsev",
+  },
+  Object {
+    "additionalInfo": null,
+    "code": "3h-wsh",
+    "content": Array [
+      "1st part. An introduction to audio fingerprinting–one of the first algorithms developed in the industry and the most successful commercially until today was developed by researchers from Shazam. Their solution is to identify the strongest peaks in the spectrogram and to store the relative signatures of these peaks.",
+      "2nd part. Shazam allows you to send a recording made on your phone of nearly any song–not covers, and it will tell you the song’s name, and other data about that song. We will describe the process of creating an audio fingerprint from a media file, how to store it, and search for matches.",
+    ],
+    "contentType": "2ce17eb4016e4be5ae72bb0db484f3f0",
+    "date": "2020-11-04T00:00:00.000Z",
+    "dateString": "For full-access tickets holders only",
+    "description": "<p>An acoustic fingerprint is a condensed digital summary, a fingerprint, deterministically generated from an audio signal, that can be used to identify an audio sample or quickly locate similar items in an audio database. Using open-source python libraries, we will describe the process of creating an audio fingerprint from a media file, how to store it, and search for matches.</p>
+",
+    "duration": null,
+    "finishingTime": "",
+    "id": "ckgt7fihs2kht0b77w28gtnro",
+    "includedToPackage": true,
+    "level": null,
+    "location": "<p>Nov 4, 17:00-18:30 CET. The workshop will be recorded.</p>
+",
+    "order": 105,
+    "prerequisites": null,
+    "schedule": null,
+    "slogan": null,
+    "slug": "from-shazam-to-today-s-audio-fingerprinting-algorithms-the-theory-best-practices-and-open-source-libraries-to-experiment-with",
+    "speaker": Object {
+      "info": Array [],
+    },
+    "startingTime": null,
+    "status": "PUBLISHED",
+    "title": "From Shazam to Today's Audio Fingerprinting Algorithms, the Theory, Best Practices, and Open Source Libraries to Experiment with",
+    "toc": null,
+    "trainer": "Argyris Argyrou & Theodors Palamas",
+    "trainers": Array [
+      Object {
+        "avatar": Object {
+          "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/JOdGEw5WQLe2jEUSeHZ6",
+        },
+        "bio": "Argyris is the SVP of Data at Orfium.com, and a PhD candidate in Cyprus University of Technology. His research interests are NLP and Machine learning. He is the founder and lead researcher at summarly.com, and co-organizer of PyData Cyprus.",
+        "company": "Orfium.com",
+        "country": "Cyprus",
+        "githubUrl": null,
+        "id": "ckgt7phe5uv5l0911epmps679",
+        "idMain": "ckgt7phe5uv5l0911epmps679",
+        "mediumUrl": null,
+        "name": "Argyris Argyrou",
+        "ownSite": null,
+        "slug": "argyris-argyrou",
+        "talks": Array [],
+        "twitterUrl": "https://twitter.com/argyrisargyrou",
+        "workshops": Array [],
+        "workshopsActivity": Array [
+          Object {
+            "slug": "from-shazam-to-today-s-audio-fingerprinting-algorithms-the-theory-best-practices-and-open-source-libraries-to-experiment-with",
+            "title": "From Shazam to Today's Audio Fingerprinting Algorithms, the Theory, Best Practices, and Open Source Libraries to Experiment with",
+          },
+        ],
+      },
+      Object {
+        "avatar": Object {
+          "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/iePFXzNoTTikAM0J7Uli",
+        },
+        "bio": "Theodoros is the Lead ML Data Scientist in Audio Recognition at Orfium.com. His research and work focuses both on deep learning and algorithmic methods to solve audio-related problems such as exact audio recognition, cover song recognition, denoising and audio classification. The process includes everything from feature design and extraction to model training and evaluation. ",
+        "company": "Orfium.com",
+        "country": "USA",
+        "githubUrl": null,
+        "id": "ckgt7s0cc2lba0b77l3u1gw5m",
+        "idMain": "ckgt7s0cc2lba0b77l3u1gw5m",
+        "mediumUrl": null,
+        "name": "Theodoros Palamas",
+        "ownSite": null,
+        "slug": "theodoros-palamas",
+        "talks": Array [],
+        "twitterUrl": null,
+        "workshops": Array [],
+        "workshopsActivity": Array [
+          Object {
+            "slug": "from-shazam-to-today-s-audio-fingerprinting-algorithms-the-theory-best-practices-and-open-source-libraries-to-experiment-with",
+            "title": "From Shazam to Today's Audio Fingerprinting Algorithms, the Theory, Best Practices, and Open Source Libraries to Experiment with",
+          },
+        ],
+      },
+    ],
+    "trainersTitle": "Argyris Argyrou, Theodoros Palamas",
+  },
+  Object {
+    "additionalInfo": null,
+    "code": "3h-wsh-tensorflow.js",
+    "content": Array [],
+    "contentType": "2ce17eb4016e4be5ae72bb0db484f3f0",
+    "date": "2020-11-04T00:00:00.000Z",
+    "dateString": "For full-access tickets holders only",
+    "description": "<p>Come check out our workshop which will walk you through 3 common journeys when using TensorFlow.js. We will start with demonstrating how to use one of our pre-made models - super easy to use JS classes to get you working with ML fast. We will then look into how to retrain one of these models in minutes using in browser transfer learning via Teachable Machine and how that can be then used on your own custom website, and finally end with a hello world of writing your own model code from scratch to make a simple linear regression to predict fictional house prices based on their square footage.</p>
+",
+    "duration": null,
+    "finishingTime": "",
+    "id": "ckf2dx5zr5lis0976xpv3ryg4",
+    "includedToPackage": true,
+    "level": "Great for beginners or researchers looking to get the reach and scale of web technologies so more people can use their models. No ML knowledge is assumed.",
+    "location": "<p>Nov 4, 18:00-21:00 CET. The workshop will be recorded.</p>
+",
+    "order": 110,
+    "prerequisites": "<p>Workshop requires some working knowledge of using  HTML / CSS / JS to get the most out of it.
+No Machine Learning background is assumed. </p>
+",
+    "schedule": null,
+    "slogan": null,
+    "slug": "hands-on-with-tensor-flow-js",
+    "speaker": Object {
+      "avatar": Object {
+        "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/YeF9oCpNSz6mvX7LUXtU",
+      },
+      "bio": "Jason is a Senior Developer Advocate for TensorFlow.js at Google.
+
+Jason combines his knowledge of the technical and creative worlds to solve complex, strategic / technical challenges for Google's largest customers and internal teams. Developing innovative world firsts utilizing the latest technologies and hardware is a key component of his role to rapidly prototype new ideas and consult on project solutions globally. 
+
+With a background in Computer Science at the University of Bristol, England, where he specialized in reality mining and invisible computing,  Jason has been a \\"hybrid engineer\\" for over 15 years. Combining his passion for several areas including both front and back end web programming, but also design and user experience, he has worked in many sizes of companies from startups (including founding his own) to Google. ",
+      "company": "Google",
+      "country": "USA",
+      "githubUrl": null,
+      "id": "ckenytg4xv9ky0908tyf29riv",
+      "idMain": "ckenytg4xv9ky0908tyf29riv",
+      "info": Array [
+        Object {
+          "id": "ckenyu1y8v9mp0908c63db5oz",
+          "idAlt": "ckenyu1y8v9mp0908c63db5oz",
+          "isNightSpeaker": null,
+          "label": "November 5",
+          "order": 55,
+          "speaker": Object {
+            "avatar": Object {
+              "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/YeF9oCpNSz6mvX7LUXtU",
+            },
+            "bio": "Jason is a Senior Developer Advocate for TensorFlow.js at Google.
+
+Jason combines his knowledge of the technical and creative worlds to solve complex, strategic / technical challenges for Google's largest customers and internal teams. Developing innovative world firsts utilizing the latest technologies and hardware is a key component of his role to rapidly prototype new ideas and consult on project solutions globally. 
+
+With a background in Computer Science at the University of Bristol, England, where he specialized in reality mining and invisible computing,  Jason has been a \\"hybrid engineer\\" for over 15 years. Combining his passion for several areas including both front and back end web programming, but also design and user experience, he has worked in many sizes of companies from startups (including founding his own) to Google. ",
+            "company": "Google",
+            "country": "USA",
+            "githubUrl": null,
+            "id": "ckenytg4xv9ky0908tyf29riv",
+            "idMain": "ckenytg4xv9ky0908tyf29riv",
+            "mediumUrl": null,
+            "name": "Jason Mayes",
+            "ownSite": "http://jasonmayes.com/",
+            "twitterUrl": "https://twitter.com/jason_mayes",
+          },
+          "status": "PUBLISHED",
+        },
+      ],
+      "mediumUrl": null,
+      "name": "Jason Mayes",
+      "ownSite": "http://jasonmayes.com/",
+      "talks": Array [
+        Object {
+          "description": "Discover how to embrace machine learning in JavaScript using TensorFlow.js in the browser and beyond in this speedy talk. Get inspired through a whole bunch of creative prototypes that push the boundaries of what is possible in the modern web browser (things have come a long way) and then take your own first steps with machine learning in minutes. By the end of the talk everyone will understand how to recognize an object of their choice which could then be used in any creative way you can imagine. Familiarity with JavaScript is assumed, but no background in machine learning is required. Come take your first steps with TensorFlow.js!",
+          "isLightning": null,
+          "timeString": "20:10",
+          "title": "TensorFlow.js 101: ML in the Browser and Beyond",
+          "track": Object {
+            "isPrimary": true,
+            "name": "Talks & Q&A",
+          },
+        },
+      ],
+      "twitterUrl": "https://twitter.com/jason_mayes",
+      "workshops": Array [
+        Object {
+          "title": "Hands on with TensorFlow.js",
+        },
+      ],
+      "workshopsActivity": Array [],
+    },
+    "startingTime": null,
+    "status": "PUBLISHED",
+    "title": "Hands on with TensorFlow.js",
+    "toc": null,
+    "trainer": "Jason Mayes",
+    "trainers": Array [],
+    "trainersTitle": "Jason Mayes",
+  },
+  Object {
+    "additionalInfo": null,
+    "code": "3h-wsh",
+    "content": Array [
+      "Part I (first hour): Seminar on how Automated Machine Learning (AutoML) can help practitioners and engineers use AI in their domains even though they lack experience with machine learning or are concerned about the black box nature of AI models. AutoML simplifies model development to a few steps, and interpretability can draw back the curtain from complex black box models.",
+      "Part II (2 hours): Hands-on workshop where you work in our MATLAB Online platform and build machine learning models using interactive tools. You will apply machine learning to the problem of classifying human activities based on accelerometer sensors, get familiar with the basics of deep learning, and apply transfer learning to an image processing task.",
+    ],
+    "contentType": "2ce17eb4016e4be5ae72bb0db484f3f0",
+    "date": "2020-11-04T00:00:00.000Z",
+    "dateString": "For full-access tickets holders only",
+    "description": "<p>Are you new to Machine and Deep Learning and want to learn how to apply these techniques in your work? Building good machine learning models is difficult and time consuming – get empowered to apply AI to your domain with AutoML and tools that don’t require extensive coding experience!</p>
+",
+    "duration": null,
+    "finishingTime": "",
+    "id": "ckgkk999rgn730911evn8ukjh",
+    "includedToPackage": true,
+    "level": "Great for beginners who need to familiarize themselves with the basics, but also researchers and engineers eager to learn about how advanced methods like AutoML and model interpretability will help them apply AI to their domains.",
+    "location": "<p>Nov 9, 18:00-21:00 CET. The workshop will be recorded.</p>
+",
+    "order": 120,
+    "prerequisites": "<p>No machine learning background is assumed. No prior experience with MATLAB is expected, though casual knowledge of a high-level language will be helpful.</p>
+<p>To actively take part and access MATLAB Online, you will need a MathWorks account. If you do not already have one, please register by <a href=\\"https://www.mathworks.com/mwaccount/\\">following this link</a>.</p>
+",
+    "schedule": null,
+    "slogan": null,
+    "slug": "applied-ai-with-auto-ml-and-interpretability-in-matlab",
+    "speaker": Object {
+      "info": Array [],
+    },
+    "startingTime": null,
+    "status": "PUBLISHED",
+    "title": "Applied AI with AutoML and Interpretability in MATLAB",
+    "toc": "
+",
+    "trainer": "Bernhard Suhm & Louvere Walker-Hannon",
+    "trainers": Array [
+      Object {
+        "avatar": Object {
+          "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/7rZ4ptJ5QdmZ7jiilMHi",
+        },
+        "bio": "Bernhard Suhm is the product manager for Machine Learning at MathWorks. He works closely with customer facing and development teams to address customer needs and market trends in our machine learning related products, primarily the Statistics and Machine Learning toolbox. Prior to joining MathWorks Bernhard led analyst teams and developed methods applying analytics to optimizing the delivery of customer service in call centers. He also held positions at a usability consulting company and Carnegie Mellon University. He received a PhD in Computer Science specializing in speech user interfaces from Karlsruhe University in Germany.",
+        "company": "MathWorks",
+        "country": "USA",
+        "githubUrl": null,
+        "id": "ckg29vd0aouka09115rd0kiv6",
+        "idMain": "ckg29vd0aouka09115rd0kiv6",
+        "mediumUrl": null,
+        "name": "Bernhard Suhm",
+        "ownSite": null,
+        "slug": "bernhard-suhm",
+        "talks": Array [
+          Object {
+            "description": "Adoption of AI has been slowed by the challenges involved in obtaining performant models, which require significant expertise and effort, and the limited number of practitioners with machine learning expertise. Automated machine learning (AutoML) eliminates the routine steps in the machine learning workflow, thus empowering domain experts without machine learning background to build good initial models, and allowing experienced practitioners to focus additional manual model optimization. This talk describes the extent of automation available for the various steps and demonstrates AutoML with a classifier for human activities based on accelerometer sensor data.",
+            "isLightning": true,
+            "timeString": "19:30",
+            "title": "Broadening AI Adoption with AutoML",
+            "track": Object {
+              "isPrimary": true,
+              "name": "Talks & Q&A",
+            },
+          },
+        ],
+        "twitterUrl": "https://twitter.com/BernhardSuhm",
+        "workshops": Array [],
+        "workshopsActivity": Array [
+          Object {
+            "slug": "applied-ai-with-auto-ml-and-interpretability-in-matlab",
+            "title": "Applied AI with AutoML and Interpretability in MATLAB",
+          },
+        ],
+      },
+      Object {
+        "avatar": Object {
+          "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/9k2y3WBFRIKDHHdphIF5",
+        },
+        "bio": "Louvere Walker-Hannon is a MathWorks Senior Application Engineer, who provides direction and recommendations on technical workflows for various applications. Specifically, she assists with providing guidance on the following topics image processing, computer vision, machine learning, deep learning, geospatial analysis, and data analytics when discussing technical workflows.  She has a bachelor’s degree in Biomedical Engineering and a master’s degree in Geographic Information Technology with a specialization in Remote Sensing.  Louvere has worked in three different engineering roles throughout her 20 year career while at MathWorks and is a STEM advocate.",
+        "company": "MathWorks",
+        "country": "USA",
+        "githubUrl": null,
+        "id": "ckglyfhmgcxlu0970wsg35chb",
+        "idMain": "ckglyfhmgcxlu0970wsg35chb",
+        "mediumUrl": null,
+        "name": "Louvere Walker-Hannon",
+        "ownSite": null,
+        "slug": "louvere-walker-hannon",
+        "talks": Array [],
+        "twitterUrl": null,
+        "workshops": Array [],
+        "workshopsActivity": Array [
+          Object {
+            "slug": "applied-ai-with-auto-ml-and-interpretability-in-matlab",
+            "title": "Applied AI with AutoML and Interpretability in MATLAB",
+          },
+        ],
+      },
+    ],
+    "trainersTitle": "Bernhard Suhm, Louvere Walker-Hannon",
+  },
+  Object {
+    "additionalInfo": null,
+    "code": "3h-wsh",
+    "content": Array [
+      "AI-powered software versus traditional software",
+      "MLOPS and AI pipeline in a nutshell",
+      "ML Platform: what is this?",
+      "Hands-on with AI pipelines",
+    ],
+    "contentType": "2ce17eb4016e4be5ae72bb0db484f3f0",
+    "date": "2020-11-04T00:00:00.000Z",
+    "dateString": "For full-access tickets holders only",
+    "description": "<p>Are you a Software Engineer who got tasked to deploy a machine learning or deep learning model for the first time in your life? Are you wondering what steps to take and how AI-powered software is different from traditional software? Then it is the right workshop to attend.</p>
+<p>The internet offers thousands of articles and free of charge courses, showing how it is easy to train and deploy a simple AI model. At the same time in reality it is difficult to integrate a real model into the current infrastructure, debug, test, deploy, and monitor it properly. In this workshop, I will guide you through this process by sharing tips, tricks, and favorite open source tools that will make your life much easier. So, at the end of the workshop, you will know where to start your deployment journey, what tools to use, and what questions to ask.</p>
+",
+    "duration": null,
+    "finishingTime": "",
+    "id": "ckgm6l9jvjrf00911dydhq2pc",
+    "includedToPackage": true,
+    "level": "Great for software engineers who got tasked with AI model deployment for the first time. No ML knowledge is assumed.",
+    "location": "<p>Nov 10, 18:00-20:00 CET. The workshop will be recorded.</p>
+",
+    "order": 130,
+    "prerequisites": "<p>To get the most out of the workshop working knowledge of Python is required. No Machine Learning background is assumed.</p>
+",
+    "schedule": null,
+    "slogan": null,
+    "slug": "the-hitchhiker-s-guide-to-the-machine-learning-engineering-galaxy",
+    "speaker": Object {
+      "avatar": Object {
+        "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/vDjVGpY8SxCVmfgCSCZx",
+      },
+      "bio": "I encourage others to see different perspectives and constructively break the rules. Observe - Optimize - Learn - Repeat is my work and life motto. Next to it, I found my joy in building and optimizing end-to-end Machine Learning Systems. 
+
+- Principal Data Solutions Engineer @ LINKIT 
+- Organizer (volunteer) @ PyLadies Amsterdam 
+- WaiACCELERATE Tech Mentor (volunteer) @ Women in AI ",
+      "company": "LINKIT",
+      "country": "Netherlands",
+      "githubUrl": "https://github.com/EzheZhezhe",
+      "id": "ckgm6titarfyw0b77oqpl2kh8",
+      "idMain": "ckgm6titarfyw0b77oqpl2kh8",
+      "info": Array [
+        Object {
+          "id": "ckgm6u122dukb0970abulp1tx",
+          "idAlt": "ckgm6u122dukb0970abulp1tx",
+          "isNightSpeaker": null,
+          "label": "Workshop",
+          "order": null,
+          "speaker": Object {
+            "avatar": Object {
+              "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/vDjVGpY8SxCVmfgCSCZx",
+            },
+            "bio": "I encourage others to see different perspectives and constructively break the rules. Observe - Optimize - Learn - Repeat is my work and life motto. Next to it, I found my joy in building and optimizing end-to-end Machine Learning Systems. 
+
+- Principal Data Solutions Engineer @ LINKIT 
+- Organizer (volunteer) @ PyLadies Amsterdam 
+- WaiACCELERATE Tech Mentor (volunteer) @ Women in AI ",
+            "company": "LINKIT",
+            "country": "Netherlands",
+            "githubUrl": "https://github.com/EzheZhezhe",
+            "id": "ckgm6titarfyw0b77oqpl2kh8",
+            "idMain": "ckgm6titarfyw0b77oqpl2kh8",
+            "mediumUrl": null,
+            "name": "Alyona Galyeva",
+            "ownSite": "https://www.linkedin.com/in/alyonagalyeva",
+            "twitterUrl": null,
+          },
+          "status": "PUBLISHED",
+        },
+      ],
+      "mediumUrl": null,
+      "name": "Alyona Galyeva",
+      "ownSite": "https://www.linkedin.com/in/alyonagalyeva",
+      "talks": Array [],
+      "twitterUrl": null,
+      "workshops": Array [
+        Object {
+          "title": "The Hitchhiker's Guide to the Machine Learning Engineering Galaxy",
+        },
+      ],
+      "workshopsActivity": Array [],
+    },
+    "startingTime": null,
+    "status": "PUBLISHED",
+    "title": "The Hitchhiker's Guide to the Machine Learning Engineering Galaxy",
+    "toc": null,
+    "trainer": "Alyona Galyeva",
+    "trainers": Array [],
+    "trainersTitle": "Alyona Galyeva",
+  },
+  Object {
+    "additionalInfo": null,
+    "code": "3h-wsh",
+    "content": Array [],
+    "contentType": "2ce17eb4016e4be5ae72bb0db484f3f0",
+    "date": "2020-11-04T00:00:00.000Z",
+    "dateString": "For full-access tickets holders only",
+    "description": "<p>In this tutorial, we present a portion of unique industry experience in efficient data labeling via crowdsourcing shared by both leading researchers and engineers from Yandex.</p>
+<p>We will make an introduction to data labeling via public crowdsourcing marketplaces and will present the key components of efficient label collection. This will be followed by a practice session, where participants will choose one of the real label collection tasks, experiment with selecting settings for the labeling process, and launch their label collection project on one of the largest crowdsourcing marketplaces. The projects will be run on real crowds within the tutorial session. While the crowd performers are annotating the project set up by the attendees, we will present the major theoretical results in efficient aggregation, incremental relabeling, and dynamic pricing. We will also discuss the strengths and weaknesses as well as applicability to real-world tasks, summarizing our five year-long research and industrial expertise in crowdsourcing. Finally, participants will receive a feedback about their projects and practical advice on how to make them more efficient.</p>
+",
+    "duration": null,
+    "finishingTime": "",
+    "id": "ckh08z8if4ln20911xdkyr37j",
+    "includedToPackage": true,
+    "level": "Beginners, advanced specialists, and researchers are invited to learn how to collect high quality labeled data and do it efficiently.",
+    "location": "<p>Nov 11, 18:00-21:00 CET. The workshop will be recorded.</p>
+",
+    "order": 140,
+    "prerequisites": null,
+    "schedule": null,
+    "slogan": null,
+    "slug": "crowdsourcing-practice-for-efficient-data-labeling",
+    "speaker": Object {
+      "info": Array [],
+    },
+    "startingTime": null,
+    "status": "PUBLISHED",
+    "title": "Crowdsourcing Practice for Efficient Data Labeling",
+    "toc": null,
+    "trainer": "Olga Megorskaya & Alexey Drutsa & Dmitry Ustalov",
+    "trainers": Array [
+      Object {
+        "avatar": Object {
+          "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/cKd0CFeIT0elC6w0hyu4",
+        },
+        "bio": "Olga is a head of Toloka crowdsourcing platform. She's been responsible for providing human-labeled data for all AI projects at Yandex and implementing crowd-based human-in-the-loop solutions in such areas as software testing, customer support, product localization, generation of content, etc. Olga helped Yandex to grow the number of crowd performers involved in data labeling from several dozens in 2009 up to 6.5M in 2020 and is now developing Toloka as a global infrostructure for data labelling available for all ML specialists.
+She graduated from the Saint Petersburg State University as a specialist in Mathematical Methods and Modeling in Economics. Also, she was a co-author of research papers and tutorials on efficient crowdsourcing and quality control at SIGIR, CVPR, KDD, WSDM, and SIGMOD.",
+        "company": "Yandex.Toloka",
+        "country": "Russia",
+        "githubUrl": null,
+        "id": "ckh093snyccm30b778er0hfd4",
+        "idMain": "ckh093snyccm30b778er0hfd4",
+        "mediumUrl": null,
+        "name": "Olga Megorskaya",
+        "ownSite": "https://www.linkedin.com/in/omegorskaya/",
+        "slug": "olga-megorskaya",
+        "talks": Array [],
+        "twitterUrl": null,
+        "workshops": Array [],
+        "workshopsActivity": Array [
+          Object {
+            "slug": "crowdsourcing-practice-for-efficient-data-labeling",
+            "title": "Crowdsourcing Practice for Efficient Data Labeling",
+          },
+        ],
+      },
+      Object {
+        "avatar": Object {
+          "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/HiCzvN4SFi2tbA8J8zSW",
+        },
+        "bio": "Alexey is responsible for data-driven decisions and the crowd platform ecosystem. His research interests are focused on Machine Learning, Data Analysis, Auction Theory; his research is published at ICML, NeurIPS, WSDM, WWW, KDD, SIGIR, CIKM, and TWEB. Alexey was a co-author of three tutorials on practical A/B testing (at KDD2018, WWW2018, andSIGIR 2019) and four hands-on tutorials on efficient crowdsourcing (at KDD 2019, WSDM 2020, SIGMOD 2020, and CVPR2020). He served as a senior PC member at WWW2019 and as a PC member at several NeurIPS, ICML, KDD, WSDM, CIKM, and WWW conferences; he was also a session chair at WWW2017. He graduated from Lomonosov Moscow State University (Faculty of Mechanics and Mathematics) in 2008 and received his PhD in Computational Mathematics from the same university in 2011.",
+        "company": "Yandex.Toloka",
+        "country": "Russia",
+        "githubUrl": null,
+        "id": "ckh0a48qrconq0970sgunic5d",
+        "idMain": "ckh0a48qrconq0970sgunic5d",
+        "mediumUrl": null,
+        "name": "Alexey Drutsa",
+        "ownSite": null,
+        "slug": "alexey-drutsa",
+        "talks": Array [],
+        "twitterUrl": null,
+        "workshops": Array [],
+        "workshopsActivity": Array [
+          Object {
+            "slug": "crowdsourcing-practice-for-efficient-data-labeling",
+            "title": "Crowdsourcing Practice for Efficient Data Labeling",
+          },
+        ],
+      },
+      Object {
+        "avatar": Object {
+          "url": "https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:500,width:500/ZOvduo5TcCK6Yo5KGZsP",
+        },
+        "bio": "Dr. Dmitry Ustalov is responsible for crowd activity analysis, investigation of suspected fraud, and product metrics at Yandex.Toloka. His research interests are focused on Crowdsourcing and Natural Language Processing. His studies are published at such premier venues as COLI, ACL, EACL, and EMNLP; he serves as a reviewer for COLI, SWJ, ACL, EMNLP, COLING, ISWC, *SEM, EKAW, and other publications. Dmitry has organized the Crowd Science workshop at NeurIPS 2020 as well as the hands-on crowdsourcing tutorials at SIGMOD/PODS '20 and WSDM '20. Before joining Yandex, he received his Kandidat Nauk (PhD) degree in 2018 from the South Ural State University (Russia) and was a post-doctoral research fellow at the University of Mannheim (Germany).",
+        "company": "Yandex.Toloka",
+        "country": "Russia",
+        "githubUrl": "https://github.com/dustalov",
+        "id": "ckh0a6esy4n9u09111fgkj8js",
+        "idMain": "ckh0a6esy4n9u09111fgkj8js",
+        "mediumUrl": null,
+        "name": "Dmitry Ustalov",
+        "ownSite": null,
+        "slug": "dmitry-ustalov",
+        "talks": Array [],
+        "twitterUrl": null,
+        "workshops": Array [],
+        "workshopsActivity": Array [
+          Object {
+            "slug": "crowdsourcing-practice-for-efficient-data-labeling",
+            "title": "Crowdsourcing Practice for Efficient Data Labeling",
+          },
+        ],
+      },
+    ],
+    "trainersTitle": "Olga Megorskaya, Alexey Drutsa, Dmitry Ustalov",
+  },
+]
+`;

@@ -14,9 +14,19 @@ const contentTypeMap = {
   PieceOfText: 'c04bfcdd2eed47b880588f5506ed4f5a',
   Speaker: 'e981e312fd6c48a39230de9193be4db9',
   Sponsor: 'f188bcf25c8e419d9f8d10b0926dd825',
-  Talk: 'd5d4bfeb605c41569b30d478a03bbb0e',
+  // Talk: 'd5d4bfeb605c41569b30d478a03bbb0e',
   Track: '76d236bfe3344d0990028c5f69c69079',
   Workshop: '2ce17eb4016e4be5ae72bb0db484f3f0',
+
+  // updated
+  OrgEvent: 'cda52433c9fd4a6a818f71acd217e91d',
+  Talk: '03b4712293184731b7d1bf074302f8e0',
+  QA: '3473d8bc2712475c89e0b47d31b2ee97',
+  LightningTalk: '09be1744ee4d465ea3f5a82972d2cb28',
+  GroupLT: '694d3ca13ab44d45810c18fb01580c92',
+  SpeakersRoom: 'b701d52be9d84599a3d46972acafc42f',
+  DiscussionRoom: '07f1cfefde1942fbb63704917cbf2398',
+
 };
 
 module.exports = {

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RS should be correct tracks data 1`] = `
+Array [
+  "Talks & Q&A",
+]
+`;

@@ -1,10 +1,16 @@
 const { markdownToHtml } = require('./markdown');
+
+const { trySelectSettings } = require('./utils');
+const { formatEvent } = require('./formatters');
+
 const {
-  createSlug,
-  labelTag,
-  trySelectSettings,
-  contentTypeMap,
-} = require('./utils');
+  orgEvent,
+  talkEvent,
+  discussionRoomEvent,
+  speakerRoomEvent,
+  groupLTEvent,
+  qaEvent,
+} = require('./fragments');
 
 const selectSettings = trySelectSettings(
   s => ({
@@ -13,227 +19,151 @@ const selectSettings = trySelectSettings(
   {},
 );
 
-const queryPages = /* GraphQL */ `
+const updatedQuery = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
+    lightningEvents: lightningTalks(
+      where: {
+        track: {
+          conferenceEvent: {
+            year: $eventYear
+            conferenceBrand: { title: $conferenceTitle }
+          }
+        }
+      }
+    ) {
+      label
+      title
+      description
+      duration
+      youtubeUrl
+      extension
+      secondaryLabel
+      isoDate
+      speaker {
+        name
+        company
+        country
+        pieceOfSpeakerInfoes {
+          label
+        }
+      }
+      groupLT {
+        track {
+          name
+        }
+      }
+    }
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
       id
-      status
-      year: conferenceEvents(where: { year: $eventYear }) {
+      title
+      events: conferenceEvents(where: { year: $eventYear }) {
         id
-        status
-        schedule: daySchedules(where: { talks_some: {} }) {
+        title
+        tracks {
           id
-          status
-          additionalEvents
-          date
-          talks {
-            id
-            status
-            timeString
-            title
-            description
-            isLightning
-            track {
-              id
-              status
-              name
-              isPrimary
+          name
+          isPrimary
+          events {
+            __typename
+            ... on OrgEvent {
+              ...orgEventFragment
             }
-            speaker {
-              name
-              company
-              country
-              pieceOfSpeakerInfoes(
-                where: { conferenceEvent: { year: $eventYear } }
-              ) {
-                label
-              }
+            ... on Talk {
+              ...talkEventFragment
+            }
+            ... on QA {
+              ...qaEventFragment
+            }
+            ... on GroupLT {
+              ...groupLTEventFragment
+            }
+            ... on SpeakersRoom {
+              ...speakerRoomEventFragment
+            }
+            ... on DiscussionRoom {
+              ...discussionRoomEventFragment
             }
           }
         }
       }
     }
   }
+  ${orgEvent}
+  ${talkEvent}
+  ${discussionRoomEvent}
+  ${speakerRoomEvent}
+  ${groupLTEvent}
+  ${qaEvent}
 `;
 
-const byTime = (a, b) => {
-  const aTime = new Date(`1970/01/01 ${a.time}`);
-  const bTime = new Date(`1970/01/01 ${b.time}`);
-  return aTime - bTime;
-};
-
 const fetchData = async (client, { labelColors, ...vars }) => {
-  const overlay = label => labelTag({ prefix: 'talk', labelColors, label });
+  const {
+    conf: {
+      events: [rawData],
+    },
+    lightningEvents,
+  } = await client.request(updatedQuery, vars).then(res => res);
 
-  const rawData = await client
-    .request(queryPages, vars)
-    .then(res => res.conf.year[0].schedule);
+  const tracksData = rawData.tracks.filter(track => track.isPrimary);
+  const tracks = tracksData.map(track => track.name);
 
-  const dataTalks = rawData
-    .map(({ talks, date }) => talks.map(tl => ({ ...tl, isoDate: date })))
-    .reduce((flatArray, dayTalks) => [...flatArray, ...dayTalks], []);
-
-  if (!dataTalks.length) {
-    throw new Error('Schedule not set for this event yet');
-  }
-
-  const additionalEventsOfAllDays = rawData.reduce(
-    (allEvents, { additionalEvents, date }) => [
-      ...allEvents,
-      ...additionalEvents.map(event => ({
-        ...event,
-        isoDate: date,
-        contentType: contentTypeMap.DaySchedule,
-      })),
-    ],
-    [],
-  );
-
-  const talksRaw = dataTalks
-    .map(({ title, description, timeString, track, speaker, ...talk }) => ({
-      ...talk,
-      title,
-      text: description,
-      description,
-      time: timeString,
-      track: track && track.name,
-      name: speaker && speaker.name,
-      place: speaker && `${speaker.company}, ${speaker.country}`,
-      pieceOfSpeakerInfoes: speaker.pieceOfSpeakerInfoes[0] || {},
-      slug: createSlug({ title }, 'talk'),
-      speakerSlug: createSlug(speaker, 'user'),
-      contentType: contentTypeMap.Talk,
-    }))
-    .map(({ pieceOfSpeakerInfoes, ...talk }) => ({
-      ...talk,
-      contentType: contentTypeMap.Talk,
-      speaker: talk.name,
-      from: talk.place,
-      label: pieceOfSpeakerInfoes.label,
-      tag: overlay(pieceOfSpeakerInfoes.label),
-    }))
-    .map(async item => ({
-      ...item,
-      text: await markdownToHtml(item.text),
-    }));
-
-  const allTalks = await Promise.all(talksRaw);
-
-  const talks = allTalks.filter(({ isLightning }) => !isLightning);
-  const lightningTalks = allTalks.filter(({ isLightning }) => isLightning);
-
-  const tracks = [...new Set(allTalks.map(({ track }) => track))]
-    .map(track =>
-      dataTalks.find(talk => talk.track && talk.track.name === track),
-    )
-    .filter(Boolean)
-    .map(({ track }) => track)
-    .sort((a, b) => {
-      return +b.isPrimary - +a.isPrimary;
-    })
-    .map(({ name }) => name);
-
-  const ltTalksScheduleItems = tracks
-    .map(track => {
-      const ltTalks = lightningTalks.filter(lt => lt.track === track);
-      if (!ltTalks.length) return null;
-
-      const timeGroups = new Set(ltTalks.map(({ time }) => time));
-      const lightningTalksGroups = [...timeGroups].map(time =>
-        ltTalks.filter(lt => lt.time === time),
+  const schedule = await Promise.all(
+    tracksData.map(async (track, ind) => {
+      const listWithMarkdown = await Promise.all(
+        track.events
+          // eslint-disable-next-line no-underscore-dangle
+          .filter(event => event.__typename !== 'LightningTalk')
+          .map(async event => {
+            const result = await formatEvent(event, labelColors, track.name);
+            return result;
+          }),
       );
 
-      return lightningTalksGroups.map(ltGroup => ({
-        title: 'tbd',
-        time: ltGroup[0].time,
-        isoDate: ltGroup[0].isoDate || 'unknown',
-        isLightning: true,
-        track,
-        lightningTalks: ltGroup,
-      }));
-    })
-    .filter(Boolean);
+      const clearList = await Promise.all(
+        listWithMarkdown.map(async el => ({
+          ...el,
+          text: await markdownToHtml(el.text),
+        })),
+      );
 
-  const ltTalksScheduleItemsFlatMap = ltTalksScheduleItems.reduce(
-    (array, subArray) => [...array, ...subArray],
-    [],
+      return {
+        tab: track.name,
+        title: track.name,
+        name: `${10 + ind}`,
+        list: clearList,
+      };
+    }),
   );
 
-  const schedule = tracks.map((track, ind) => ({
-    tab: track,
-    title: track,
-    name: `${10 + ind}`,
-    list: [
-      ...talks,
-      ...ltTalksScheduleItemsFlatMap,
-      ...additionalEventsOfAllDays,
-    ]
-      .filter(event => event.track === track)
-      .reduce((list, talk) => {
-        const findSameTalk = (ls, tk) => {
-          const sameTalkInd = ls.findIndex(
-            ({ title, time, isLightning, overridden, isoDate }) =>
-              (title === tk.title && !isLightning && !isoDate) ||
-              (title === tk.title && !isLightning && isoDate === tk.isoDate) ||
-              (time === tk.time &&
-                isLightning &&
-                tk.isLightning &&
-                !overridden),
-          );
-          const sameTalk = ls[sameTalkInd];
-          if (!sameTalk) return {};
+  const formattedLightningEvents = await Promise.all(
+    lightningEvents.map(async event => {
+      const result = await formatEvent(
+        event,
+        labelColors,
+        event.groupLT.track.name,
+      );
+      return result;
+    }),
+  );
 
-          if (!sameTalk.time) {
-            return { sameTalk, sameTalkInd };
-          }
-
-          return tk.time === sameTalk.time ? { sameTalk, sameTalkInd } : {};
-        };
-
-        const { sameTalk, sameTalkInd } = findSameTalk(list, talk);
-
-        if (sameTalk) {
-          const newList = [...list];
-          newList[sameTalkInd] = {
-            ...sameTalk,
-            ...talk,
-            overridden: true,
-          };
-          return newList;
-        }
-        return [...list, talk];
-      }, [])
-      .sort(byTime),
-  }));
-
-  let scheduleTitle = 'Schedule';
-  let noTracks = false;
-
-  /**
-   * It was a workaround for listing early talks
-   */
-  // if (schedule.length === 1) {
-  //   schedule[0].list = talks.map(talk => ({ ...talk, time: null }));
-  //   scheduleTitle = 'First Talks';
-  //   noTracks = true;
-  // }
-
-  schedule[0].active = true;
+  const talks = schedule.reduce((result, cur) => {
+    return [...result, [...cur.list].filter(({ isLightning }) => !isLightning)];
+  }, []);
 
   return {
-    scheduleTitle,
+    scheduleTitle: 'Schedule',
     schedule,
     tracks,
     talks,
-    lightningTalks,
-    noTracks,
+    lightningTalks: formattedLightningEvents,
+    noTracks: false,
   };
 };
 
 module.exports = {
   fetchData,
   selectSettings,
-  queryPages,
+  queryPages: updatedQuery,
   getData: data => data.conf.year[0].schedule,
   story: 'schedule/talks',
 };
