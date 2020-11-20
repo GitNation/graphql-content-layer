@@ -4,7 +4,7 @@ const path = require('path');
 const { getContent } = require('../dist');
 const { getSettings } = require('./conference-settings');
 
-const CURRENT_CONF = 'mlconf';
+const CURRENT_CONF = 'gqconf';
 
 const testLaunch = async () => {
   const settings = getSettings();

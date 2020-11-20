@@ -151,6 +151,9 @@ const talkEvent = /* GraphQL */ `
       pieceOfSpeakerInfoes {
         label
       }
+      avatar {
+        url
+      }
     }
     label
     title
@@ -178,6 +181,19 @@ const groupLTEvent = /* GraphQL */ `
     isoDate
     duration
     extension
+    youtubeUrl
+    extension
+    lightningTalks {
+      id
+      title
+      label
+      description
+      isoDate
+      track {
+        name
+        isPrimary
+      }
+    }
   }
 `;
 const speakerRoomEvent = /* GraphQL */ `
@@ -189,6 +205,9 @@ const speakerRoomEvent = /* GraphQL */ `
       country
       pieceOfSpeakerInfoes {
         label
+      }
+      avatar {
+        url
       }
     }
     description
@@ -209,6 +228,9 @@ const discussionRoomEvent = /* GraphQL */ `
       pieceOfSpeakerInfoes {
         label
       }
+      avatar {
+        url
+      }
     }
     description
     isoDate
@@ -216,6 +238,7 @@ const discussionRoomEvent = /* GraphQL */ `
     extension
     pic {
       id
+      url
     }
     roomLink
     roomLinkText
