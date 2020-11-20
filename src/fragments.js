@@ -218,6 +218,26 @@ const speakerRoomEvent = /* GraphQL */ `
     subTrackIndex
   }
 `;
+const panelDiscussionEvent = /* GraphQL */ `
+  fragment panelDiscussionEventFragment on PanelDiscussion {
+    title
+    speakers {
+      name
+      company
+      country
+      pieceOfSpeakerInfoes {
+        label
+      }
+      avatar {
+        url
+      }
+    }
+    description
+    isoDate
+    duration
+    extension
+  }
+`;
 const discussionRoomEvent = /* GraphQL */ `
   fragment discussionRoomEventFragment on DiscussionRoom {
     title
@@ -256,6 +276,7 @@ module.exports = {
   orgEvent,
   talkEvent,
   discussionRoomEvent,
+  panelDiscussionEvent,
   speakerRoomEvent,
   groupLTEvent,
   qaEvent,

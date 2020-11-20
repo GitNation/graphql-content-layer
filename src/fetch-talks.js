@@ -7,6 +7,7 @@ const {
   orgEvent,
   talkEvent,
   discussionRoomEvent,
+  panelDiscussionEvent,
   speakerRoomEvent,
   groupLTEvent,
   qaEvent,
@@ -83,14 +84,19 @@ const updatedQuery = /* GraphQL */ `
             ... on DiscussionRoom {
               ...discussionRoomEventFragment
             }
+            ... on PanelDiscussion {
+              ...panelDiscussionEventFragment
+            }
           }
         }
       }
     }
   }
+
   ${orgEvent}
   ${talkEvent}
   ${discussionRoomEvent}
+  ${panelDiscussionEvent}
   ${speakerRoomEvent}
   ${groupLTEvent}
   ${qaEvent}

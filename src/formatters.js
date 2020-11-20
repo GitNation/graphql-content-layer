@@ -39,8 +39,13 @@ const formatEvent = async (event, labelColors, trackName) => {
     })),
   );
 
+  if (__typename === 'Talk') {
+    console.log(rest);
+  }
+
   return {
     ...rest,
+    ...speaker,
 
     eventType: __typename,
     title,

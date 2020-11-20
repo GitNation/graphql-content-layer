@@ -2,6 +2,7 @@ const {
   orgEvent,
   talkEvent,
   discussionRoomEvent,
+  panelDiscussionEvent,
   speakerRoomEvent,
   groupLTEvent,
   qaEvent,
@@ -49,6 +50,9 @@ const queryPages = /* GraphQL */ `
             ... on DiscussionRoom {
               ...discussionRoomEventFragment
             }
+            ... on PanelDiscussion {
+              ...panelDiscussionEventFragment
+            }
           }
         }
         pages {
@@ -75,6 +79,7 @@ const queryPages = /* GraphQL */ `
   ${orgEvent}
   ${talkEvent}
   ${discussionRoomEvent}
+  ${panelDiscussionEvent}
   ${speakerRoomEvent}
   ${groupLTEvent}
   ${qaEvent}
