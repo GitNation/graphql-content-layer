@@ -1,3 +1,5 @@
+const dayjs = require('dayjs');
+
 const populateTalkActivities = content => {
   const mainSpeakers = content.speakers.main;
   const { lightningTalks } = content;
@@ -68,5 +70,12 @@ export const postProcessLayer = content => {
     },
     content,
   );
+
+  content.schedule.forEach(data => {
+    data.list = data.list.sort((a, b) =>
+      new Date(a.isoDate).getTime() > new Date(b.isoDate).getTime() ? 1 : -1,
+    );
+  });
+
   return processedContent;
 };
