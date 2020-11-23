@@ -183,7 +183,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
   }, []);
 
   const customContent = {
-    videoRooms: videoRooms.length ? zoomBars : null,
+    videoRooms: videoRooms.length ? videoRooms : null,
     zoomBars: zoomBars.length ? zoomBars : null,
     scheduleExtends: [],
     tracks: formattedSecondaryTracks,
