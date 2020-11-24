@@ -222,6 +222,17 @@ const groupLTEvent = /* GraphQL */ `
         name
         isPrimary
       }
+      speaker {
+        name
+        company
+        country
+        pieceOfSpeakerInfoes {
+          label
+        }
+        avatar {
+          url
+        }
+      }
     }
   }
 `;
