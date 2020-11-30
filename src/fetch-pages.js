@@ -7,6 +7,7 @@ const {
   groupLTEvent,
   qaEvent,
   zoomBarEvent,
+  customEvent,
 } = require('./fragments');
 const { markdownToHtml } = require('./markdown');
 const { contentTypeMap, trySelectSettings } = require('./utils');
@@ -57,6 +58,9 @@ const queryPages = /* GraphQL */ `
             ... on ZoomBar {
               ...zoomBarEventFragment
             }
+            ... on CustomEvent {
+              ...customEventFragment
+            }
           }
         }
         pages {
@@ -88,6 +92,7 @@ const queryPages = /* GraphQL */ `
   ${groupLTEvent}
   ${qaEvent}
   ${zoomBarEvent}
+  ${customEvent}
 `;
 
 const fetchData = async (client, { labelColors, ...vars }) => {
@@ -182,8 +187,16 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     ];
   }, []);
 
+  const customEvents = formattedMainTracks.reduce((result, currentTrack) => {
+    return [
+      ...result,
+      ...currentTrack.list.filter(event => event.eventType === 'CustomEvent'),
+    ];
+  }, []);
+
   const customContent = {
     videoRooms: videoRooms.length ? videoRooms : null,
+    customEvents: customEvents.length ? customEvents : null,
     zoomBars: zoomBars.length ? zoomBars : null,
     scheduleExtends: [],
     tracks: formattedSecondaryTracks,
@@ -204,6 +217,9 @@ const fetchData = async (client, { labelColors, ...vars }) => {
         ...page.pageSections.eventInfo,
         conferenceStart: startDate,
         conferenceFinish: endDate,
+        QuakeJS: customEvents.length
+          ? customEvents.find(e => e.title === 'QuakeJS Tournament')
+          : null,
       };
     }
   });

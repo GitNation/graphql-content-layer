@@ -113,15 +113,14 @@ const fetchData = async (client, { labelColors, ...vars }) => {
 
   const tracksData = rawData.tracks.filter(track => track.isPrimary);
   const tracks = tracksData.map(track => track.name);
+  const notVisibleEventTypes = ['LightningTalk', 'ZoomBar', 'CustomEvent'];
 
   const schedule = await Promise.all(
     tracksData.map(async (track, ind) => {
       const listWithMarkdown = await Promise.all(
         track.events
           .filter(
-            event =>
-              event.__typename !== 'LightningTalk' &&
-              event.__typename !== 'ZoomBar',
+            event => notVisibleEventTypes.indexOf(event.__typename) === -1,
           )
           .map(async event => {
             const result = await formatEvent(event, labelColors, track.name);

@@ -306,6 +306,16 @@ const discussionRoomEvent = /* GraphQL */ `
   }
 `;
 
+const customEvent = /* GraphQL */ `
+  fragment customEventFragment on CustomEvent {
+    title
+    isoDate
+    duration
+    extension
+    link
+  }
+`;
+
 module.exports = {
   speakerInfoFragment,
   personAvatarFragment,
@@ -321,4 +331,5 @@ module.exports = {
   groupLTEvent,
   qaEvent,
   zoomBarEvent,
+  customEvent,
 };
