@@ -124,7 +124,7 @@ const fetchData = async (client, vars) => {
 
       const { extension, ...restExtensionFields } = extensionData;
 
-      return {
+      const resultData = {
         ...ws,
         date: confStartDate.toISOString(),
         dateString: confStartDate.format('MMMM D').trim(),
@@ -139,6 +139,13 @@ const fetchData = async (client, vars) => {
 
         ...(restExtensionFields || {}),
         ...(extension || {}),
+      };
+
+      return {
+        ...resultData,
+        isoDate: resultData.isoDate
+          ? dayjs(resultData.isoDate).toISOString()
+          : null,
       };
     });
 
