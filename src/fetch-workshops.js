@@ -35,6 +35,7 @@ const queryPages = /* GraphQL */ `
           description
           prerequisites
           content
+          toc
           additionalInfo
           level
           location
@@ -152,7 +153,7 @@ const fetchData = async (client, vars) => {
   const allWorkshops = await Promise.all(
     workshops.map(async wrp => ({
       ...wrp,
-      toc: await markdownToHtml(wrp.toc),
+      content: wrp.toc.length ? wrp.toc : wrp.content,
       location: await markdownToHtml(wrp.location),
       description: await markdownToHtml(wrp.description),
       additionalInfo: await markdownToHtml(wrp.additionalInfo),
