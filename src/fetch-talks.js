@@ -49,10 +49,8 @@ const updatedQuery = /* GraphQL */ `
           label
         }
       }
-      groupLT {
-        track {
-          name
-        }
+      track {
+        name
       }
     }
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
@@ -146,11 +144,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
 
   const formattedLightningEvents = await Promise.all(
     lightningEvents.map(async event => {
-      const result = await formatEvent(
-        event,
-        labelColors,
-        event.groupLT.track.name,
-      );
+      const result = await formatEvent(event, labelColors, event.track.name);
       return result;
     }),
   );
