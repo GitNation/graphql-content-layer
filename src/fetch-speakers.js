@@ -1,5 +1,5 @@
 const { prepareSpeakers, trySelectSettings } = require('./utils');
-const { speakerInfoFragment } = require('./fragments');
+const { speakerInfoFragment, sponsorLogoFragment } = require('./fragments');
 const dayjs = require('dayjs');
 
 const selectSettings = trySelectSettings(
@@ -29,6 +29,9 @@ const queryPages = /* GraphQL */ `
         openForTalks
         speakers: pieceOfSpeakerInfoes {
           ...speakerInfo
+          avatar {
+            ...imageUrl
+          }
           activities: speaker {
             lightningTalks(
               where: {
@@ -76,6 +79,7 @@ const queryPages = /* GraphQL */ `
   }
 
   ${speakerInfoFragment}
+  ${sponsorLogoFragment}
 `;
 
 const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
