@@ -85,6 +85,14 @@ const fetchData = async (client, vars) => {
       category: 'Silver',
     },
     {
+      title: 'Bronze',
+      mod: 'logos_sm sponsors-block_lg',
+      list: sponsorsList
+        .filter(({ category }) => category === 'Bronze')
+        .sort(sortByOrder),
+      category: 'Bronze',
+    },
+    {
       title: 'Party Partners',
       mod: 'logos_sm sponsors-block_lg',
       list: sponsorsList
