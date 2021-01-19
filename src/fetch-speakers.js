@@ -30,7 +30,18 @@ const queryPages = /* GraphQL */ `
         speakers: pieceOfSpeakerInfoes {
           ...speakerInfo
           avatar {
-            ...imageUrl
+            url(
+              transformation: {
+                image: {
+                  resize: {
+                    width: $avatarWidth
+                    height: $avatarHeight
+                    fit: crop
+                  }
+                }
+                document: { output: { format: jpg } }
+              }
+            )
           }
           activities: speaker {
             lightningTalks(
@@ -79,7 +90,6 @@ const queryPages = /* GraphQL */ `
   }
 
   ${speakerInfoFragment}
-  ${sponsorLogoFragment}
 `;
 
 const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
