@@ -30,7 +30,7 @@ const jobLogoFragment = /* GraphQL */ `
       url(
         transformation: {
           image: { resize: { width: 700 } }
-          document: { output: { format: jpg } }
+          document: { output: { format: png } }
         }
       )
     }
