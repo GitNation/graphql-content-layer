@@ -140,6 +140,7 @@ const orgEvent = /* GraphQL */ `
     isoDate
     duration
     extension
+    additionalLink
   }
 `;
 const talkEvent = /* GraphQL */ `
