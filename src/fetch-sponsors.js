@@ -10,6 +10,7 @@ const queryPages = /* GraphQL */ `
           id
           category
           order
+          site
           avatar {
             url
           }
@@ -40,15 +41,20 @@ const fetchData = async (client, vars) => {
     .then(res => res.conf.year[0].sponsors);
 
   const sponsorsList = data
-    .map(item => ({
-      ...item.sponsor,
-      ...item,
-      avatar: item.avatar || item.sponsor.avatar || {},
-      idAlt: item.id,
-      id: item.sponsor ? item.sponsor.id : 'error: no sponsor object',
-      contentType: contentTypeMap.Sponsor,
-      contentTypeAlt: contentTypeMap.PieceOfSponsorInfo,
-    }))
+    .map(item => {
+      const correctSite = item.site ? item.site : item.sponsor.site;
+
+      return {
+        ...item.sponsor,
+        ...item,
+        site: correctSite,
+        avatar: item.avatar || item.sponsor.avatar || {},
+        idAlt: item.id,
+        id: item.sponsor ? item.sponsor.id : 'error: no sponsor object',
+        contentType: contentTypeMap.Sponsor,
+        contentTypeAlt: contentTypeMap.PieceOfSponsorInfo,
+      };
+    })
     .map(({ site, avatar, title, width, category, ...item }) => ({
       ...item,
       category,
