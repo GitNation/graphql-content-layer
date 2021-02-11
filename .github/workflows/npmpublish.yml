@@ -19,7 +19,7 @@ jobs:
           path: node_modules
           key: dependencies
       - run: yarn
-      - run: yarn test:smoke
+      # - run: yarn test:smoke
       - run: yarn prepare
 
   publish-npm:
