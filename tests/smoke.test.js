@@ -3,7 +3,7 @@ import { getSettings } from '../develop/conference-settings';
 
 describe('get Content', () => {
   const settings = getSettings();
-  it.each(['jsn', 'gqconf', 'mlconf', 'qaconf', 'doconf', 'nodeconf', 'rs'])(
+  it.each(['mlconf', 'qaconf', 'doconf', 'nodeconf', 'rs', 'rsre', 'jsn'])(
     'should generate content for %s',
     async () => {
       expect(async confCode => {
