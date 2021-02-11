@@ -63,7 +63,7 @@ const prepareSpeakers = (speakers, tagColors, labelColors) =>
     }))
     .map(async ({ bio, speaker, avatar, activities, ...item }) => ({
       ...item,
-      company: `${item.company}, ${item.country}`,
+      company: [item.company, item.country].filter(Boolean).join(', '),
       avatar: avatar.url,
       bio: await markdownToHtml(bio),
       socials: getSocials(item),
