@@ -130,6 +130,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
         listWithMarkdown.map(async el => ({
           ...el,
           text: await markdownToHtml(el.text),
+          description: await markdownToHtml(el.description),
         })),
       );
 
