@@ -28,6 +28,7 @@ const queryPages = /* GraphQL */ `
         id
         startDate: isoStartDate
         endDate: isoEndDate
+        streamNotAvailableText
         tracks {
           id
           name
@@ -96,9 +97,13 @@ const queryPages = /* GraphQL */ `
 `;
 
 const fetchData = async (client, { labelColors, ...vars }) => {
-  const { pages: data, tracks, startDate, endDate } = await client
-    .request(queryPages, vars)
-    .then(res => res.conf.year[0]);
+  const {
+    pages: data,
+    tracks,
+    startDate,
+    endDate,
+    streamNotAvailableText,
+  } = await client.request(queryPages, vars).then(res => res.conf.year[0]);
 
   const secondaryTracks = tracks.filter(t => !t.isPrimary);
   const mainTracks = tracks.filter(t => t.isPrimary);
@@ -223,6 +228,12 @@ const fetchData = async (client, { labelColors, ...vars }) => {
       };
     }
   });
+
+  if (streamNotAvailableText) {
+    customContent.eventInfo.streamNotAvailableText = await markdownToHtml(
+      streamNotAvailableText,
+    );
+  }
 
   return {
     pages,
