@@ -80,6 +80,10 @@ const queryPages = /* GraphQL */ `
           keywords
           pageNavigation
           pageSections
+          ogImage {
+            url
+          }
+          ogUrl
         }
       }
     }
