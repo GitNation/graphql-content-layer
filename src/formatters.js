@@ -16,6 +16,7 @@ const formatEvent = async (event, labelColors, trackName) => {
     track,
     groupLT,
     lightningTalks = [],
+    additionalLightningTalks = [],
     ...rest
   } = event;
 
@@ -26,7 +27,7 @@ const formatEvent = async (event, labelColors, trackName) => {
   const speakerPlace = speaker && `${speaker.company}, ${speaker.country}`;
 
   const lightningTalksWithMarkup = await Promise.all(
-    lightningTalks.map(async e => {
+    [...lightningTalks, ...additionalLightningTalks].map(async e => {
       const result = await formatEvent(e, labelColors, trackName);
       return result;
     }),
@@ -69,7 +70,7 @@ const formatEvent = async (event, labelColors, trackName) => {
     tag: pieceOfSpeakerInfoes.label
       ? overlay(pieceOfSpeakerInfoes.label)
       : null,
-    lightningTalks: clearLightningTalks.length ? clearLightningTalks : null,
+    lightningTalks: clearLightningTalks.length ? clearLightningTalks : [],
     ...extension,
   };
 };

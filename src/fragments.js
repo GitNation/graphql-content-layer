@@ -235,6 +235,28 @@ const groupLTEvent = /* GraphQL */ `
         }
       }
     }
+    additionalLightningTalks {
+      id
+      title
+      label
+      description
+      isoDate
+      track {
+        name
+        isPrimary
+      }
+      speaker {
+        name
+        company
+        country
+        pieceOfSpeakerInfoes {
+          label
+        }
+        avatar {
+          url
+        }
+      }
+    }
   }
 `;
 const speakerRoomEvent = /* GraphQL */ `
