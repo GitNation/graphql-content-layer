@@ -152,10 +152,11 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     lightningEvents.map(async event => {
       const ownTrack = event.track.name;
       const extraTracks = event.groupAdditionalLTs
-        .map(group => group && group.track.name)
-        .filter(Boolean)
-        .join(', ');
-      const trackTitle = `${ownTrack}, ${extraTracks}`;
+        ? event.groupAdditionalLTs
+            .map(group => group && group.track.name)
+            .filter(Boolean)
+        : [];
+      const trackTitle = [ownTrack, ...extraTracks].join(', ');
       const result = await formatEvent(event, labelColors, trackTitle);
       return result;
     }),

@@ -70,7 +70,7 @@ const formatEvent = async (event, labelColors, trackName) => {
     tag: pieceOfSpeakerInfoes.label
       ? overlay(pieceOfSpeakerInfoes.label)
       : null,
-    lightningTalks: clearLightningTalks.length ? clearLightningTalks : [],
+    lightningTalks: clearLightningTalks.length ? clearLightningTalks : null,
     ...extension,
   };
 };
