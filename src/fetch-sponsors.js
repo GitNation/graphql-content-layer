@@ -130,6 +130,14 @@ const fetchData = async (client, vars) => {
         .sort(sortByOrder),
       category: 'Partner',
     },
+    {
+      title: 'Tech Partners',
+      mod: 'logos_xs sponsors-block_xs',
+      list: sponsorsList
+        .filter(({ category }) => category === 'TechPartner')
+        .sort(sortByOrder),
+      category: 'TechPartner',
+    },
   ].filter(({ list }) => list.length);
 
   return {
