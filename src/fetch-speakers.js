@@ -105,15 +105,28 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
     timeString: item.timeString ? dayjs(item.timeString).toISOString() : null,
   });
 
-  const speakersWithPlainActivities = data.speakers.map(speaker => ({
-    ...speaker,
-    activities: {
-      talks: [
-        ...speaker.activities.lightningTalks.map(convertDateToIso),
-        ...speaker.activities.talks.map(convertDateToIso),
-      ],
-    },
-  }));
+  const speakersWithPlainActivities = data.speakers.map(speaker => {
+    if (!speaker.activities) {
+      console.log('activities', JSON.stringify(speaker));
+    }
+
+    if (!speaker.speaker || !speaker.speaker.avatar) {
+      console.log('speaker', JSON.stringify(speaker));
+    }
+    return {
+      ...speaker,
+      activities: {
+        talks: [
+          ...(speaker.activities
+            ? speaker.activities.lightningTalks.map(convertDateToIso)
+            : []),
+          ...(speaker.activities
+            ? speaker.activities.talks.map(convertDateToIso)
+            : []),
+        ],
+      },
+    };
+  });
 
   const speakers = await prepareSpeakers(
     speakersWithPlainActivities,

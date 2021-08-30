@@ -5,13 +5,22 @@ const { contentTypeMap } = require('./content-type-map');
 const getSocials = speaker => {
   const ICONS = {
     githubUrl: 'gh',
+    portalUrl: 'portal',
     twitterUrl: 'tw',
     mediumUrl: 'med',
     ownSite: 'site',
   };
-  const { githubUrl, twitterUrl, mediumUrl, ownSite, companySite } = speaker;
+  const {
+    githubUrl,
+    portalUrl,
+    twitterUrl,
+    mediumUrl,
+    ownSite,
+    companySite,
+  } = speaker;
   const socials = Object.entries({
     githubUrl,
+    portalUrl,
     twitterUrl,
     mediumUrl,
     ownSite,

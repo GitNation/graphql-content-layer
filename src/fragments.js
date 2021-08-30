@@ -46,6 +46,7 @@ const personFragment = /* GraphQL */ `
     country
     bio
     githubUrl
+    portalUrl
     twitterUrl
     mediumUrl
     ownSite
