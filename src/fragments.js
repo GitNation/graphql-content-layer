@@ -167,6 +167,7 @@ const talkEvent = /* GraphQL */ `
     youtubeUrl
   }
 `;
+
 const qaEvent = /* GraphQL */ `
   fragment qaEventFragment on QA {
     title
@@ -340,6 +341,38 @@ const customEvent = /* GraphQL */ `
   }
 `;
 
+const referenceEvent = /* GraphQL */ `
+  fragment talkEventFragment on Talk {
+    title
+    isoDate
+
+    reference {
+      __typename
+      ... on OrgEvent {
+        ...orgEventFragment
+      }
+      ... on Talk {
+        ...talkEventFragment
+      }
+      ... on QA {
+        ...qaEventFragment
+      }
+      ... on GroupLT {
+        ...groupLTEventFragment
+      }
+      ... on SpeakersRoom {
+        ...speakerRoomEventFragment
+      }
+      ... on DiscussionRoom {
+        ...discussionRoomEventFragment
+      }
+      ... on PanelDiscussion {
+        ...panelDiscussionEventFragment
+      }
+    }
+  }
+`;
+
 module.exports = {
   speakerInfoFragment,
   personAvatarFragment,
@@ -356,4 +389,5 @@ module.exports = {
   qaEvent,
   zoomBarEvent,
   customEvent,
+  referenceEvent,
 };
