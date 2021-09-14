@@ -12,7 +12,6 @@ const {
   speakerRoomEvent,
   groupLTEvent,
   qaEvent,
-  referenceEvent,
 } = require('./fragments');
 
 const selectSettings = trySelectSettings(
@@ -94,9 +93,6 @@ const updatedQuery = /* GraphQL */ `
             ... on PanelDiscussion {
               ...panelDiscussionEventFragment
             }
-            ... on ReferenceEvent {
-              ...referenceEvent
-            }
           }
         }
         tracksOffline {
@@ -128,9 +124,6 @@ const updatedQuery = /* GraphQL */ `
             ... on PanelDiscussion {
               ...panelDiscussionEventFragment
             }
-            ... on ReferenceEvent {
-              ...referenceEvent
-            }
           }
         }
       }
@@ -144,7 +137,6 @@ const updatedQuery = /* GraphQL */ `
   ${speakerRoomEvent}
   ${groupLTEvent}
   ${qaEvent}
-  ${referenceEvent}
 `;
 
 const notVisibleEventTypes = ['LightningTalk', 'ZoomBar', 'CustomEvent'];
@@ -157,10 +149,6 @@ const getSchedule = (tracksData, labelColors) =>
           .filter(
             event => notVisibleEventTypes.indexOf(event.__typename) === -1,
           )
-          .map(event => ({
-            ...event.reference,
-            ...event,
-          }))
           .map(async event => {
             const result = await formatEvent(event, labelColors, track.name);
             return result;
@@ -178,7 +166,6 @@ const getSchedule = (tracksData, labelColors) =>
       return {
         tab: track.name,
         title: track.name,
-        isOfflineEvent: track.isOfflineEvent,
         name: `${10 + ind}`,
         list: clearList,
       };
