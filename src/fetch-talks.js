@@ -12,6 +12,7 @@ const {
   speakerRoomEvent,
   groupLTEvent,
   qaEvent,
+  referenceEvent,
 } = require('./fragments');
 
 const selectSettings = trySelectSettings(
@@ -68,6 +69,8 @@ const updatedQuery = /* GraphQL */ `
           id
           name
           isPrimary
+          # In Person:
+          isOfflineEvent
           events {
             __typename
             ... on OrgEvent {
@@ -91,6 +94,43 @@ const updatedQuery = /* GraphQL */ `
             ... on PanelDiscussion {
               ...panelDiscussionEventFragment
             }
+            ... on ReferenceEvent {
+              ...referenceEvent
+            }
+          }
+        }
+        tracksOffline {
+          id
+          name
+          isPrimary
+          # In Person:
+          isOfflineEvent
+          events {
+            __typename
+            ... on OrgEvent {
+              ...orgEventFragment
+            }
+            ... on Talk {
+              ...talkEventFragment
+            }
+            ... on QA {
+              ...qaEventFragment
+            }
+            ... on GroupLT {
+              ...groupLTEventFragment
+            }
+            ... on SpeakersRoom {
+              ...speakerRoomEventFragment
+            }
+            ... on DiscussionRoom {
+              ...discussionRoomEventFragment
+            }
+            ... on PanelDiscussion {
+              ...panelDiscussionEventFragment
+            }
+            ... on ReferenceEvent {
+              ...referenceEvent
+            }
           }
         }
       }
@@ -104,27 +144,23 @@ const updatedQuery = /* GraphQL */ `
   ${speakerRoomEvent}
   ${groupLTEvent}
   ${qaEvent}
+  ${referenceEvent}
 `;
 
-const fetchData = async (client, { labelColors, ...vars }) => {
-  const {
-    conf: {
-      events: [rawData],
-    },
-    lightningEvents,
-  } = await client.request(updatedQuery, vars).then(res => res);
+const notVisibleEventTypes = ['LightningTalk', 'ZoomBar', 'CustomEvent'];
 
-  const tracksData = rawData.tracks.filter(track => track.isPrimary);
-  const tracks = tracksData.map(track => track.name);
-  const notVisibleEventTypes = ['LightningTalk', 'ZoomBar', 'CustomEvent'];
-
-  const schedule = await Promise.all(
+const getSchedule = (tracksData, labelColors) =>
+  Promise.all(
     tracksData.map(async (track, ind) => {
       const listWithMarkdown = await Promise.all(
         track.events
           .filter(
             event => notVisibleEventTypes.indexOf(event.__typename) === -1,
           )
+          .map(event => ({
+            ...event.reference,
+            ...event,
+          }))
           .map(async event => {
             const result = await formatEvent(event, labelColors, track.name);
             return result;
@@ -142,11 +178,30 @@ const fetchData = async (client, { labelColors, ...vars }) => {
       return {
         tab: track.name,
         title: track.name,
+        isOfflineEvent: track.isOfflineEvent,
         name: `${10 + ind}`,
         list: clearList,
       };
     }),
   );
+
+const fetchData = async (client, { labelColors, ...vars }) => {
+  const {
+    conf: {
+      events: [rawData],
+    },
+    lightningEvents,
+  } = await client.request(updatedQuery, vars).then(res => res);
+
+  const tracksData = rawData.tracks.filter(track => track.isPrimary);
+  const tracksOfflineData = rawData.tracksOffline.filter(
+    track => track.isPrimary,
+  );
+  const tracks = tracksData.map(track => track.name);
+  const tracksOffline = tracksOfflineData.map(track => track.name);
+
+  const schedule = await getSchedule(tracksData, labelColors);
+  const scheduleOffline = await getSchedule(tracksOffline, labelColors);
 
   const formattedLightningEvents = await Promise.all(
     lightningEvents.map(async event => {
@@ -169,7 +224,9 @@ const fetchData = async (client, { labelColors, ...vars }) => {
   return {
     scheduleTitle: 'Schedule',
     schedule,
+    scheduleOffline,
     tracks,
+    tracksOffline,
     talks,
     zoomBars: [],
     lightningTalks: formattedLightningEvents,
