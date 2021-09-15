@@ -68,8 +68,6 @@ const updatedQuery = /* GraphQL */ `
           id
           name
           isPrimary
-          # In Person:
-          isOfflineEvent
           events {
             __typename
             ... on OrgEvent {
@@ -99,8 +97,6 @@ const updatedQuery = /* GraphQL */ `
           id
           name
           isPrimary
-          # In Person:
-          isOfflineEvent
           events {
             __typename
             ... on OrgEvent {
@@ -181,9 +177,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
   } = await client.request(updatedQuery, vars).then(res => res);
 
   const tracksData = rawData.tracks.filter(track => track.isPrimary);
-  const tracksOfflineData = rawData.tracksOffline.filter(
-    track => track.isPrimary,
-  );
+  const tracksOfflineData = rawData.tracksOffline;
   const tracks = tracksData.map(track => track.name);
   const tracksOffline = tracksOfflineData.map(track => track.name);
 
