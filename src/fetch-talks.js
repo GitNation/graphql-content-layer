@@ -182,7 +182,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
   const tracksOffline = tracksOfflineData.map(track => track.name);
 
   const schedule = await getSchedule(tracksData, labelColors);
-  const scheduleOffline = await getSchedule(tracksOffline, labelColors);
+  const scheduleOffline = await getSchedule(tracksOfflineData, labelColors);
 
   const formattedLightningEvents = await Promise.all(
     lightningEvents.map(async event => {
