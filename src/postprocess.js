@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const dayjs = require('dayjs');
 
 const populateTalkActivities = content => {
@@ -72,6 +73,12 @@ export const postProcessLayer = content => {
   );
 
   content.schedule.forEach(data => {
+    data.list = data.list.sort((a, b) =>
+      new Date(a.isoDate).getTime() > new Date(b.isoDate).getTime() ? 1 : -1,
+    );
+  });
+
+  content.scheduleOffline.forEach(data => {
     data.list = data.list.sort((a, b) =>
       new Date(a.isoDate).getTime() > new Date(b.isoDate).getTime() ? 1 : -1,
     );

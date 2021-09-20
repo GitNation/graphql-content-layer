@@ -99,6 +99,7 @@ const createSlug = (object, type) => {
     sponsor: obj => obj.title,
     talk: obj => obj.title,
     talks: obj => obj.title,
+    offlineTalks: obj => obj.title,
     workshop: obj => obj.title,
     workshops: obj => obj.title,
     other: obj => {

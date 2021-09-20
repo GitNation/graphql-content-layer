@@ -84,6 +84,47 @@ const queryPages = /* GraphQL */ `
               }
             }
           }
+          offlineActivities: speaker {
+            lightningTalks(
+              where: {
+                track: {
+                  conferenceOfflineEvent: {
+                    year: $eventYear
+                    conferenceBrand: { title: $conferenceTitle }
+                  }
+                }
+              }
+            ) {
+              id
+              title
+              description
+              timeString: isoDate
+              track {
+                name
+                isPrimary
+              }
+            }
+            talks(
+              where: {
+                track: {
+                  conferenceOfflineEvent: {
+                    year: $eventYear
+                    conferenceBrand: { title: $conferenceTitle }
+                  }
+                }
+              }
+            ) {
+              id
+              title
+              label
+              description
+              timeString: isoDate
+              track {
+                name
+                isPrimary
+              }
+            }
+          }
         }
       }
     }
@@ -107,21 +148,30 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
 
   const speakersWithPlainActivities = data.speakers.map(speaker => {
     if (!speaker.activities) {
-      console.log('activities', JSON.stringify(speaker));
+      console.log('invalid activities', JSON.stringify(speaker));
     }
 
     if (!speaker.speaker || !speaker.speaker.avatar) {
-      console.log('speaker', JSON.stringify(speaker));
+      console.log('invalid speaker', JSON.stringify(speaker));
     }
+
+    const { activities, offlineActivities, ...restSpeakerData } = speaker;
+
     return {
-      ...speaker,
+      ...restSpeakerData,
       activities: {
         talks: [
-          ...(speaker.activities
-            ? speaker.activities.lightningTalks.map(convertDateToIso)
+          ...(activities
+            ? activities.lightningTalks.map(convertDateToIso)
             : []),
-          ...(speaker.activities
-            ? speaker.activities.talks.map(convertDateToIso)
+          ...(activities ? activities.talks.map(convertDateToIso) : []),
+        ],
+        offlineTalks: [
+          ...(offlineActivities
+            ? offlineActivities.lightningTalks.map(convertDateToIso)
+            : []),
+          ...(offlineActivities
+            ? offlineActivities.talks.map(convertDateToIso)
             : []),
         ],
       },
