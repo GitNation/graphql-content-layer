@@ -16,6 +16,7 @@ const queryPages = /* GraphQL */ `
           location
           slackChannelName
           itemID
+          companyName
           registerLink
           locationLink
           image {
