@@ -12,7 +12,7 @@ const queryPages = /* GraphQL */ `
       id
       year: conferenceEvents(where: { year: $eventYear }) {
         id
-        pieceOfTexts {
+        pieceOfTexts(first: 1000) {
           id
           key
           renderStyle
