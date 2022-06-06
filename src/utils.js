@@ -64,16 +64,13 @@ const prepareSpeakers = (speakers, tagColors, labelColors) =>
   speakers
     .filter(Boolean)
     // .filter(({ speaker }) => !!speaker)
-    .map(
-      item =>
-        console.log('item.speaker ####\n', item.speaker) || {
-          ...item.speaker,
-          ...item,
-          avatar: item.avatar || item.speaker.avatar || {},
-          avatarHandle: item.handle || item.speaker.avatar.handle || null,
-          id: item.speaker.id,
-        },
-    )
+    .map(item => ({
+      ...item.speaker,
+      ...item,
+      avatar: item.avatar || item.speaker.avatar || {},
+      avatarHandle: item.handle || item.speaker.avatar.handle || null,
+      id: item.speaker.id,
+    }))
     .map(async ({ bio, speaker, avatar, activities, ...item }) => ({
       ...item,
       company: [item.company, item.country].filter(Boolean).join(', '),
