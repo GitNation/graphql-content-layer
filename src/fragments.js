@@ -2,6 +2,7 @@ const personAvatarFragment = /* GraphQL */ `
   fragment avatarUrl on Speaker {
     avatar {
       handle
+      mimeType
       url(
         transformation: {
           image: {
@@ -17,6 +18,7 @@ const personAvatarFragment = /* GraphQL */ `
 const sponsorLogoFragment = /* GraphQL */ `
   fragment imageUrl on Asset {
     handle
+    mimeType
     url #(
     # transformation: {
     #   image: { resize: { width: 500, height: 500, fit: crop } }
@@ -30,6 +32,7 @@ const jobLogoFragment = /* GraphQL */ `
   fragment logo on Job {
     image {
       handle
+      mimeType
       url(
         transformation: {
           image: { resize: { width: 700 } }
@@ -158,6 +161,7 @@ const talkEvent = /* GraphQL */ `
       }
       avatar {
         handle
+        mimeType
         url
       }
     }
@@ -192,11 +196,13 @@ const zoomBarEvent = /* GraphQL */ `
     roomLinkImage {
       id
       handle
+      mimeType
       url
     }
     bgImage {
       id
       handle
+      mimeType
       url
     }
     speaker {
@@ -208,6 +214,7 @@ const zoomBarEvent = /* GraphQL */ `
       }
       avatar {
         handle
+        mimeType
         url
       }
     }
@@ -241,6 +248,7 @@ const groupLTEvent = /* GraphQL */ `
         }
         avatar {
           handle
+          mimeType
           url
         }
       }
@@ -264,6 +272,7 @@ const groupLTEvent = /* GraphQL */ `
         }
         avatar {
           handle
+          mimeType
           url
         }
       }
@@ -282,6 +291,7 @@ const speakerRoomEvent = /* GraphQL */ `
       }
       avatar {
         handle
+        mimeType
         url
       }
     }
@@ -305,6 +315,7 @@ const panelDiscussionEvent = /* GraphQL */ `
       }
       avatar {
         handle
+        mimeType
         url
       }
     }
@@ -326,6 +337,7 @@ const discussionRoomEvent = /* GraphQL */ `
       }
       avatar {
         handle
+        mimeType
         url
       }
     }
@@ -336,6 +348,7 @@ const discussionRoomEvent = /* GraphQL */ `
     pic {
       id
       handle
+      mimeType
       url
     }
     roomLink
