@@ -82,6 +82,7 @@ const queryPages = /* GraphQL */ `
           pageSections
           ogImage {
             handle
+            mimeType
             url
           }
           ogUrl

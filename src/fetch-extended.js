@@ -20,6 +20,7 @@ const queryPages = /* GraphQL */ `
           registerLink
           locationLink
           image {
+            mimeType
             handle
             url
           }

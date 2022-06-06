@@ -13,6 +13,7 @@ const queryPages = /* GraphQL */ `
           site
           avatar {
             handle
+            mimeType
             url
           }
           sponsor {

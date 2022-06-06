@@ -31,6 +31,7 @@ const queryPages = /* GraphQL */ `
           ...speakerInfo
           avatar {
             handle
+            mimeType
             url(
               transformation: {
                 image: {
