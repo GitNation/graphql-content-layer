@@ -12,6 +12,7 @@ const queryPages = /* GraphQL */ `
           order
           site
           avatar {
+            handle
             url
           }
           sponsor {

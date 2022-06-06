@@ -30,6 +30,7 @@ const queryPages = /* GraphQL */ `
         speakers: pieceOfSpeakerInfoes {
           ...speakerInfo
           avatar {
+            handle
             url(
               transformation: {
                 image: {

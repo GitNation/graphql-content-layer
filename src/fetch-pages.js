@@ -81,6 +81,7 @@ const queryPages = /* GraphQL */ `
           pageNavigation
           pageSections
           ogImage {
+            handle
             url
           }
           ogUrl

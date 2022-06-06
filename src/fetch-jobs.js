@@ -50,6 +50,7 @@ const fetchData = async (client, vars) => {
     subtitle: await markdownToHtml(jb.subtitle),
     description: await markdownToHtml(jb.description),
     image: jb.image && jb.image.url,
+    imageHandle: jb.image && jb.image.handle,
     contentType: contentTypeMap.Job,
   }));
 

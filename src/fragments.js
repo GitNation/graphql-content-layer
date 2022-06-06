@@ -1,6 +1,7 @@
 const personAvatarFragment = /* GraphQL */ `
   fragment avatarUrl on Speaker {
     avatar {
+      handle
       url(
         transformation: {
           image: {
@@ -15,6 +16,7 @@ const personAvatarFragment = /* GraphQL */ `
 
 const sponsorLogoFragment = /* GraphQL */ `
   fragment imageUrl on Asset {
+    handle
     url #(
     # transformation: {
     #   image: { resize: { width: 500, height: 500, fit: crop } }
@@ -27,6 +29,7 @@ const sponsorLogoFragment = /* GraphQL */ `
 const jobLogoFragment = /* GraphQL */ `
   fragment logo on Job {
     image {
+      handle
       url(
         transformation: {
           image: { resize: { width: 700 } }
@@ -154,6 +157,7 @@ const talkEvent = /* GraphQL */ `
         label
       }
       avatar {
+        handle
         url
       }
     }
@@ -187,10 +191,12 @@ const zoomBarEvent = /* GraphQL */ `
     roomLink
     roomLinkImage {
       id
+      handle
       url
     }
     bgImage {
       id
+      handle
       url
     }
     speaker {
@@ -201,6 +207,7 @@ const zoomBarEvent = /* GraphQL */ `
         label
       }
       avatar {
+        handle
         url
       }
     }
@@ -233,6 +240,7 @@ const groupLTEvent = /* GraphQL */ `
           label
         }
         avatar {
+          handle
           url
         }
       }
@@ -255,6 +263,7 @@ const groupLTEvent = /* GraphQL */ `
           label
         }
         avatar {
+          handle
           url
         }
       }
@@ -272,6 +281,7 @@ const speakerRoomEvent = /* GraphQL */ `
         label
       }
       avatar {
+        handle
         url
       }
     }
@@ -294,6 +304,7 @@ const panelDiscussionEvent = /* GraphQL */ `
         label
       }
       avatar {
+        handle
         url
       }
     }
@@ -314,6 +325,7 @@ const discussionRoomEvent = /* GraphQL */ `
         label
       }
       avatar {
+        handle
         url
       }
     }
@@ -323,6 +335,7 @@ const discussionRoomEvent = /* GraphQL */ `
     extension
     pic {
       id
+      handle
       url
     }
     roomLink

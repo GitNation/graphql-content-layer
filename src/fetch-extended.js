@@ -20,6 +20,7 @@ const queryPages = /* GraphQL */ `
           registerLink
           locationLink
           image {
+            handle
             url
           }
         }
