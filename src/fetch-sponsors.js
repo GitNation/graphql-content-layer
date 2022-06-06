@@ -21,6 +21,8 @@ const queryPages = /* GraphQL */ `
             title
             site
             avatar {
+              handle
+              mimeType
               url
             }
           }
@@ -62,6 +64,8 @@ const fetchData = async (client, vars) => {
       category,
       alt: title,
       img: avatar.url,
+      imgHandle: avatar.handle,
+      imgMimeType: avatar.mimeType,
       link: site,
       width,
     }));

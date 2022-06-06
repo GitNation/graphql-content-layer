@@ -7,6 +7,8 @@ Object {
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/HCCCFbRSTL6X51beaCzO",
+      "avatarHandle": "HCCCFbRSTL6X51beaCzO",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Sayak loves understanding how things work and explaining them well.</p>
 ",
       "company": "Deep Learning Associate @ PyImageSearch, India",
@@ -38,6 +40,8 @@ Object {
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/Y4ppIrQgQRKzgrl5w64R",
+      "avatarHandle": "Y4ppIrQgQRKzgrl5w64R",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Gant Laborde is an owner of Infinite Red, mentor, adjunct professor, published author, and award-winning speaker. For 20 years, he has been involved in software development and continues strong today. He is an “open sourcerer”, team leader, and aspires to one day become a mad scientist. He blogs, videos, and maintains popular repositories for the community. Follow Gant’s adventures at <a href=\\"http://gantlaborde.com/\\">gantlaborde.com</a>.</p>
 ",
       "company": "Infinite Red, USA",
@@ -73,6 +77,8 @@ Object {
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/paAUEt3URgyNivFgMhr5",
+      "avatarHandle": "paAUEt3URgyNivFgMhr5",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Dmitry is a Microsoft veteran, working for more than 13 years. He started as a Technical Evangelist, and in this role presented on numerous conferences, including twice being on stage with Steve Ballmer. He then worked for 2 years as Senior Software Engineer, helping big European companies to start pilot digital transformation projects based on AI and ML. As Cloud Developer Advocate, Dmitry focuses on creating educational content and working with academic and research institutions. He is also an Associate Professor at MIPT, HSE and MAI in Moscow, a big fan of functional programming and F#, and a maintainer/primary developer of <a href=\\"http://soshnikov.com/mPyPl/\\">mPyPl</a> library. In his spare time, Dmitry explores Science Art and Technological Magic, as well as performs Chinese tea ceremonies. He can be reached at <a href=\\"http://soshnikov.com\\">soshnikov.com</a>.</p>
 ",
       "company": "Cloud Developer Advocate @ Microsoft, Russia",
@@ -100,6 +106,8 @@ Object {
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/x9TKZGXjTdaJEIOUqqTS",
+      "avatarHandle": "x9TKZGXjTdaJEIOUqqTS",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Microsoft AI MVP.  Software Developer and Data Scientist.</p>
 <p>Eva is absolutely obsessed with data and passionate about AI. Her main interest is to save lives and support humanity with the help of AI and data. Working in full time at Laerdal.</p>
 <p>In her free time she writes articles, speaks at conferences about data and AI. Her aim is to make people understand how intelligent applications affect our lives, how to use and control them.</p>
@@ -133,6 +141,8 @@ Object {
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/egC2TkK8RiGWvTO7sMMC",
+      "avatarHandle": "egC2TkK8RiGWvTO7sMMC",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Yuriy Guts is a Principal Machine Learning Engineer at DataRobot with over 10 years of industry experience in data science and software architecture. His primary interests are productionalizing data science, automated machine learning, time series forecasting, and processing spoken and written language. He teaches AI and ML at UCU, competes on Kaggle, and has led multiple international data science and engineering teams.</p>
 ",
       "company": "Principal Machine Learning Engineer @ DataRobot, Ukraine",
@@ -164,6 +174,8 @@ Object {
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/BoKNYpiwRpCs85A2ZRr1",
+      "avatarHandle": "BoKNYpiwRpCs85A2ZRr1",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Sergii enjoys building products with help of Data and Machine Learning.</p>
 <p>Sergii founded Machine Learning meetup in Munich - <a href=\\"https://www.meetup.com/Hacking-Machine-Learning\\">Hacking Machine Learning</a>. Currently, meetup has 2000+ members and hosted 29+ events with speakers from a variety of local, as well as top-tier companies like Google, Twitter, Facebook, etc.</p>
 <p>From time to time, Sergii invests time by contributing to Open Source projects like <a href=\\"https://github.com/lc0?org=tensorflow&#x26;year_list=1\\">TensorFlow</a> or <a href=\\"https://github.com/lc0?org=OpenMined&#x26;year_list=1\\">PySyft</a>.</p>
@@ -203,6 +215,8 @@ Object {
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/7brvhgSVS4uf6VITO3N7",
+      "avatarHandle": "7brvhgSVS4uf6VITO3N7",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Thomas Wolf is co-founder and Chief Science Officer of HuggingFace. His team is on a mission to catalyze and democratize NLP research. Prior to HuggingFace, Thomas gained a Ph.D. in physics, and later a law degree. He worked as a physics researcher and a European Patent Attorney.</p>
 ",
       "color": "#fff",
@@ -239,6 +253,8 @@ Object {
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/SMsO6hNqToSFLlHi5ZnD",
+      "avatarHandle": "SMsO6hNqToSFLlHi5ZnD",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Beril Sirmacek is a Dutch AI researcher.
 She received her PhD degree in Electrical and Electronics Engineering in 2009.  Later she has worked with German Aerospace Center and pursued a habilitation degree with University of Osnabrueck. </p>
 <p>She is an assistant professor at Jonkoping AI Lab and also leading her company <a href=\\"http://www.create4D.com\\">create4D</a>. Beril is passionate to use computer vision and AI algorithms for creating useful healthcare and earth care solutions.   </p>
@@ -282,6 +298,8 @@ She received her PhD degree in Electrical and Electronics Engineering in 2009.  
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/14lJcRaRKCM071OueBtG",
+      "avatarHandle": "14lJcRaRKCM071OueBtG",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Robert is a full stack engineer with 15 years of developer experience, helping lead a node based machine learning team at iFit.  From an early age, he strove to understand how things worked by taking them apart, and putting them back together.  He became interested in machine learning in 2015, saw a larger need in the node community, and eventually became a maintainer of Brain.js and GPU.js.  His desire to convey the simplicity of neural networks was manifest in his machine learning course on scrimba: Neural networks in JavaScript.</p>
 ",
       "color": "#fff",
@@ -318,6 +336,8 @@ She received her PhD degree in Electrical and Electronics Engineering in 2009.  
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/zftyKRqnRj2HCVzdU1ng",
+      "avatarHandle": "zftyKRqnRj2HCVzdU1ng",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Shivani Poddar is a Machine Learning Tech Lead for the Meeting Assistant team at Workplace, Facebook, leading the development of meeting assistants for making remote collaboration easier for work. Previously, Shivani built and launched the foundational machine learning and AI stack for Facebook Portal, spearheading product and engineering development across social graph technology for ML, deep personalization for a smarter calling experience.</p>
 <p>She was also the first ever student at Carnegie Mellon to be funded by the Amazon Alexa Prize, where she and her team built a social chatbot, eventually deployed to tens of thousands of users through Alexa. During her time at CMU she also pursued research in the field of Natural Language Generation, Reinforcement Learning for chatbots and multimodal machine learning.</p>
 <p>Outside of Work, Shivani has emerged as one of the leaders in talking about Artificial Intelligence and Machine Learning for Consumers as well as Enterprises. She has been a speaker at numerous conferences over the last 2 years covering topics such as – <a href=\\"https://www.linkedin.com/in/shivani-poddar/detail/overlay-view/urn:li:fsd_profileTreasuryMedia:(ACoAAAwpCiABeVxhNMfaStBzKpQsyhYaSIcLQfw,1598914763092)/\\">Diversity and Bias in AI</a>, <a href=\\"https://www.linkedin.com/pulse/future-work-now-shivani-poddar/\\">Future of Work</a>, <a href=\\"https://www.linkedin.com/in/shivani-poddar/detail/overlay-view/urn:li:fsd_profileTreasuryMedia:(ACoAAAwpCiABeVxhNMfaStBzKpQsyhYaSIcLQfw,1589495599728)/\\">Immersive Multimodal Assistants</a>. She is also a mentor for young aspirants looking to become the next innovators in the field, and regularly volunteers in resume building workshops, <a href=\\"https://www.linkedin.com/in/shivani-poddar/detail/overlay-view/urn:li:fsd_profileTreasuryMedia:(ACoAAAwpCiABeVxhNMfaStBzKpQsyhYaSIcLQfw,1589495956663)/\\">panels for hiring</a> and Q&#x26;As on LinkedIn.</p>
@@ -352,6 +372,8 @@ She received her PhD degree in Electrical and Electronics Engineering in 2009.  
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/HMcDToBZThKUyStSZokG",
+      "avatarHandle": "HMcDToBZThKUyStSZokG",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Laurence Moroney leads AI Advocacy at Google, working as part of the Google Research into Machine Intelligence (RMI) team. He's the author of more programming books than he can count, including 'AI and Machine Learning for Coders' with OReilly, to be published in October 2020. He's also the instructor and creator of the TensorFlow In Practice, and TensorFlow Data and Deployment specializations on Coursera. He also runs the YouTube channel for tensorflow at <a href=\\"http://tensorflow.org/certificate\\">Youtube.com/tensorflow</a>, and the TensorFlow certificate program for developers at tensorflow.org/certificate. When not working on AI, he's a published Sci-Fi author, comic book creator and IMDB-listed screenwriter. </p>
 ",
       "color": "#fff",
@@ -388,6 +410,8 @@ She received her PhD degree in Electrical and Electronics Engineering in 2009.  
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/N5EnxezQ3eEjw9Ug62Oc",
+      "avatarHandle": "N5EnxezQ3eEjw9Ug62Oc",
+      "avatarMimeType": "image/png",
       "bio": "<p>Dipanjan (DJ) Sarkar is a Data Science Lead at Applied Materials, leading advanced analytics efforts around computer vision, natural language processing and deep learning. He is also a Google Developer Expert in Machine Learning. He has also been recently recognized as one of the Top Ten Data Scientists in India, 2020 by Analytics India Magazine &#x26; TechGig.
 Dipanjan has advised and worked with several startups as well as Fortune 500 companies like Intel and Open Source organizations like Red Hat (now IBM). He primarily works on leveraging data science, machine learning and deep learning to build large- scale intelligent systems and evangelizing data science to the community.</p>
 <p>Dipanjan is also a published author, having authored several books on R, Python, Machine Learning, Natural Language Processing, and Deep Learning.</p>
@@ -426,6 +450,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/ERUxg3ltSYWNetaB0NhV",
+      "avatarHandle": "ERUxg3ltSYWNetaB0NhV",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Frans is Chief Data Officer at ixpantia. He combines a diverse skill-set, that includes business analysis, data analysis and enterprise architecture, with more than 15 years of experience to help organizations respond to their data driven innovation needs quickly and effectively. Frans has a PhD in biology from the University of Amsterdam and has taught at universities in Europe and Latin America. As a consultant he has facilitated in-company training on diverse topics, including data driven innovation, applied statistics, statistical programming and machine learning.</p>
 ",
       "color": "#fff",
@@ -462,6 +488,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/F7YCYuB6QRi2rJhNXGmS",
+      "avatarHandle": "F7YCYuB6QRi2rJhNXGmS",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Jason is a Senior Developer Advocate for TensorFlow.js at Google.</p>
 <p>Jason combines his knowledge of the technical and creative worlds to solve complex, strategic / technical challenges for Google's largest customers and internal teams. Developing innovative world firsts utilizing the latest technologies and hardware is a key component of his role to rapidly prototype new ideas and consult on project solutions globally. </p>
 <p>With a background in Computer Science at the University of Bristol, England, where he specialized in reality mining and invisible computing,  Jason has been a \\"hybrid engineer\\" for over 15 years. Combining his passion for several areas including both front and back end web programming, but also design and user experience, he has worked in many sizes of companies from startups (including founding his own) to Google. </p>
@@ -500,6 +528,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/8likmnwQQhaUevnwhfD1",
+      "avatarHandle": "8likmnwQQhaUevnwhfD1",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Haifeng is a member of Keras team at Google and a PhD candidate in DATA Lab at Texas A&#x26;M University. His research interests are AutoML and deep learning. He is the creator and project lead of AutoKeras, which aims to make deep learning more accessible with AutoML techniques.</p>
 ",
       "color": "#000",
@@ -540,6 +570,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/LTh49xvNR1CYJDdDlCHM",
+      "avatarHandle": "LTh49xvNR1CYJDdDlCHM",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Mikhail Burtsev is a head of Neural Networks and Deep Learning Laboratory at Moscow Institute of Physics and Technology. He is also a founder and leader of open-source conversational AI framework <a href=\\"http://deeppavlov.ai/\\">DeepPavlov</a>. Mikhail had proposed and co-organize a series of academic <a href=\\"http://convai.io/\\">Conversational AI Challenges</a> (including NIPS 2017, NeurIPS 2018, EMNLP 2020).  </p>
 <p>His research interests are in the fields of Natural Language Processing, Machine Learning, Artificial Intelligence and Complex Systems. Mikhail Burtsev has published more than 20 technical papers including – Nature, Artificial Life, Lecture Notes in Computer Science series, and other peer-reviewed venues. </p>
 ",
@@ -573,6 +605,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/w56yxLG3RAKaoRRKnQZQ",
+      "avatarHandle": "w56yxLG3RAKaoRRKnQZQ",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Yama is a data scientist at MyPart, an Israeli startup in the music industry, developing algorithms and researching lyrical and musical song features. In her spare time, she gives tech talks at conferences and meetups (Geektime Code, PyData Tel Aviv, IsraelClouds); and mentors a group of developers through their first steps in the data science world as a part of Baot - Israel’s largest community of senior female engineers and computer scientists. Yama has a B.Sc in mathematics and physics from Tel Aviv University where she also expresses her passion for music by playing the saxophone in the TAU Wind Band.</p>
 ",
       "color": "#000",
@@ -600,6 +634,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/h7xwGrZCTziaystEqdAn",
+      "avatarHandle": "h7xwGrZCTziaystEqdAn",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Håkan holds a Master of Science degree in Electrical Engineering and in addition, he holds a Master’s degree in Leadership and Organizational behavior. He has also taken courses on university level in psychology, interaction design and human-computer interaction. He has 20 years’ experience of software development in various positions such as developer, tester, architect, project manager, scrum master, practice manager and team lead. </p>
 <p>Håkan is Chairman of the local chapter of the Norwegian .NET User Group Oslo (NNUG) and is active as an Ambassador for Oslo.AI the local chapter for the global City.AI community. </p>
 <p>Håkan is a Microsoft Most Valuable Professional (MVP) in AI. </p>
@@ -639,6 +675,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/fQXe6CNSNWSFzZRHHNAt",
+      "avatarHandle": "fQXe6CNSNWSFzZRHHNAt",
+      "avatarMimeType": "image/png",
       "bio": "<p>Javier Alcaide is a mathematician and software developer focused on data science and machine learning. His professional career is based on the use of advanced analytics and big data techniques within the financial sector. His current role is the design and construction of AI models and the analysis of data using ETL processing with Big Data technologies.</p>
 ",
       "color": "#000",
@@ -671,6 +709,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/wZZYXMC5Q161kvF5tRLX",
+      "avatarHandle": "wZZYXMC5Q161kvF5tRLX",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Jayeeta is a Senior Data Scientist with 4+ years of industry experience. Currently, she is working on machine learning and NLP projects and explores a lot of state-of-the-art models to build cool products at Indellient US Inc., a leading software development and IT professional services company working with Fortune 100 companies. Prior to that, she worked at Deloitte. Jayeeta is also engaged with some amazing organizations like Women Who Code and Women Tech Network to promote and inspire more women to take up STEM and often leads technical webinars and talks. She received her Master of Science in Quantitative Methods and Modeling from City University of New York, NY and Bachelor of Science in Economics and Statistics from West Bengal State University, India.</p>
 ",
       "color": "#000",
@@ -707,6 +747,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/CaCEu0MlRDq0eucEqYlX",
+      "avatarHandle": "CaCEu0MlRDq0eucEqYlX",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Marco is a Data Scientist at the Samsung R&#x26;D Institute UK. Outside of work, he is a maintainer of pandas (data wrangling platform for Python widely adopted in the scientific computing community) and author of nbQA (code quality tool for Jupyter Notebooks). He holds an MSc in Mathematics and Foundations of Computer Science from the University of Oxford.</p>
 ",
       "color": "#000",
@@ -739,6 +781,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/xAAf375bRyukGEH9JbuW",
+      "avatarHandle": "xAAf375bRyukGEH9JbuW",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Andreas Müller is a Principal Research SDE at Microsoft, where he works on the interface of the Data Science ecosystem and cloud infrastructure.</p>
 <p>He previously held positions as Associate Research Scientist at the Columbia Data Science Institute and as a Research Engineer at the NYU Center for Data Science.</p>
 <p>He is one of the core developers of the scikit-learn machine learning library, a member of the scikit-learn technical committee, and the author of the book \\"Introduction to machine learning with Python\\".</p>
@@ -782,6 +826,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/SC4Js253SvGp4gBA34d3",
+      "avatarHandle": "SC4Js253SvGp4gBA34d3",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Jaroslaw Rzepecki is a Senior Research Engineer at Microsoft Research Lab in Cambridge, UK. He has a MSc in theoretical physics from Nicolaus Copernicus University and a PhD in astrophysics from Heidelberg University. After completion of his PhD he joined video games industry where he worked on two published titles (DiRT 2, Grid). Jaroslaw has also worked as a research engineer in computer graphics, investigating solutions to the global illumination problem in video games. Currently he is working in the Game Intelligence group at MSR where he combines his passion for engineering, video games and machine learning to make video games more fun for everybody.</p>
 ",
       "color": "white",
@@ -814,6 +860,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/4Fce7VV7RFeeFy60yzal",
+      "avatarHandle": "4Fce7VV7RFeeFy60yzal",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Argyris is the SVP of Data at Orfium.com, and a PhD candidate in Cyprus University of Technology. His research interests are NLP and Machine learning. He is the founder and lead researcher at summarly.com, and co-organizer of PyData Cyprus.</p>
 ",
       "color": "#fff",
@@ -846,6 +894,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/jGpjlA6GShqJnqYXGlHm",
+      "avatarHandle": "jGpjlA6GShqJnqYXGlHm",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Theodoros is the Lead ML Data Scientist in Audio Recognition at Orfium.com. His research and work focuses both on deep learning and algorithmic methods to solve audio-related problems such as exact audio recognition, cover song recognition, denoising and audio classification. The process includes everything from feature design and extraction to model training and evaluation. </p>
 ",
       "color": "#fff",
@@ -873,6 +923,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/5YFoZXvPQgyNW9kHnhnF",
+      "avatarHandle": "5YFoZXvPQgyNW9kHnhnF",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>I encourage others to see different perspectives and constructively break the rules. Observe - Optimize - Learn - Repeat is my work and life motto. Next to it, I found my joy in building and optimizing end-to-end Machine Learning Systems. </p>
 <ul>
 <li>Principal Data Solutions Engineer @ LINKIT </li>
@@ -914,6 +966,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/E3ZZ6fwJTiGnP8x6cGL8",
+      "avatarHandle": "E3ZZ6fwJTiGnP8x6cGL8",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Bernhard Suhm is the product manager for Machine Learning at MathWorks. He works closely with customer facing and development teams to address customer needs and market trends in our machine learning related products, primarily the Statistics and Machine Learning toolbox. Prior to joining MathWorks Bernhard led analyst teams and developed methods applying analytics to optimizing the delivery of customer service in call centers. He also held positions at a usability consulting company and Carnegie Mellon University. He received a PhD in Computer Science specializing in speech user interfaces from Karlsruhe University in Germany.</p>
 ",
       "color": "#fff",
@@ -946,6 +1000,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/wuUGibzUTjq8Yedc2b6A",
+      "avatarHandle": "wuUGibzUTjq8Yedc2b6A",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Louvere Walker-Hannon is a MathWorks Senior Application Engineer, who provides direction and recommendations on technical workflows for various applications. Specifically, she assists with providing guidance on the following topics image processing, computer vision, machine learning, deep learning, geospatial analysis, and data analytics when discussing technical workflows.  She has a bachelor’s degree in Biomedical Engineering and a master’s degree in Geographic Information Technology with a specialization in Remote Sensing.  Louvere has worked in three different engineering roles throughout her 20 year career while at MathWorks and is a STEM advocate.</p>
 ",
       "color": "#fff",
@@ -973,6 +1029,8 @@ Dipanjan has advised and worked with several startups as well as Fortune 500 com
     Object {
       "activities": Object {},
       "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/bigKWPlJTmirgRk4LusP",
+      "avatarHandle": "bigKWPlJTmirgRk4LusP",
+      "avatarMimeType": "image/jpeg",
       "bio": "<p>Sachin is a Deputy Director at Applied Materials leading efforts in Data Science and Advanced Analytics with a team of data scientists, working to provide innovative solutions with a focus on AI enablement in various products and systems for the semiconductor equipment manufacturing industry. </p>
 <p>He has over 15 years of diverse experience in the Industry around Software, Data Science and Artificial Intelligence.</p>
 ",
