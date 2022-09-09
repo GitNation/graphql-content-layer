@@ -13,6 +13,8 @@ const queryPages = /* GraphQL */ `
       facebookUrl
       mediumUrl
       youtubeUrl
+      discordUrl
+      gnPortal
       codeOfConductIntro
       codeOfConductMain
     }
