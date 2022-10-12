@@ -29,6 +29,7 @@ const queryPages = /* GraphQL */ `
         startDate: isoStartDate
         endDate: isoEndDate
         streamNotAvailableText
+        emsEventId
         tracks {
           id
           name
@@ -109,6 +110,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     startDate,
     endDate,
     streamNotAvailableText,
+    emsEventId,
   } = await client.request(queryPages, vars).then(res => res.conf.year[0]);
 
   const secondaryTracks = tracks.filter(t => !t.isPrimary);
@@ -239,6 +241,10 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     customContent.eventInfo.streamNotAvailableText = await markdownToHtml(
       streamNotAvailableText,
     );
+  }
+
+  if (emsEventId) {
+    customContent.eventInfo.emsEventId = await markdownToHtml(emsEventId);
   }
 
   return {
