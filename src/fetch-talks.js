@@ -67,6 +67,7 @@ const updatedQuery = /* GraphQL */ `
         tracks {
           id
           name
+          emptyMessage
           isPrimary
           events {
             __typename
@@ -96,6 +97,7 @@ const updatedQuery = /* GraphQL */ `
         tracksOffline {
           id
           name
+          emptyMessage
           isPrimary
           events {
             __typename
@@ -161,6 +163,7 @@ const getSchedule = (tracksData, labelColors) =>
 
       return {
         tab: track.name,
+        tabEmptyMessage: track.emptyMessage,
         title: track.name,
         name: `${10 + ind}`,
         list: clearList,

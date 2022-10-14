@@ -33,6 +33,7 @@ const queryPages = /* GraphQL */ `
         tracks {
           id
           name
+          emptyMessage
           isPrimary
           events {
             __typename
@@ -136,6 +137,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
 
       return {
         tab: track.name,
+        tabEmptyMessage: track.emptyMessage,
         title: track.name,
         name: `${10 + ind}`,
         odd: Boolean(ind % 2),
@@ -164,6 +166,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
 
       return {
         tab: track.name,
+        tabEmptyMessage: track.emptyMessage,
         title: track.name,
         name: `${10 + ind}`,
         odd: Boolean(ind % 2),
