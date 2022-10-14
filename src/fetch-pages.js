@@ -244,7 +244,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
   }
 
   if (emsEventId) {
-    customContent.eventInfo.emsEventId = await markdownToHtml(emsEventId);
+    customContent.eventInfo.emsEventId = emsEventId;
   }
 
   return {
