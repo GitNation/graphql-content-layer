@@ -187,14 +187,24 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     {},
   );
 
-  const videoRooms = formattedSecondaryTracks.reduce((result, currentTrack) => {
-    return [
-      ...result,
-      ...currentTrack.list.filter(
-        event => event.eventType === 'DiscussionRoom',
-      ),
-    ];
-  }, []);
+  const videoRooms = [
+    ...formattedSecondaryTracks.reduce((result, currentTrack) => {
+      return [
+        ...result,
+        ...currentTrack.list.filter(
+          event => event.eventType === 'DiscussionRoom',
+        ),
+      ];
+    }, []),
+    ...formattedMainTracks.reduce((result, currentTrack) => {
+      return [
+        ...result,
+        ...currentTrack.list.filter(
+          event => event.eventType === 'DiscussionRoom',
+        ),
+      ];
+    }, []),
+  ];
 
   const zoomBars = formattedMainTracks.reduce((result, currentTrack) => {
     return [
