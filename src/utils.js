@@ -68,8 +68,9 @@ const prepareSpeakers = (speakers, tagColors, labelColors) =>
       ...item.speaker,
       ...item,
       avatar: item.avatar || item.speaker.avatar || {},
-      avatarHandle: item.handle || item.speaker.avatar.handle || null,
-      avatarMimeType: item.mimeType || item.speaker.avatar.mimeType || null,
+      avatarHandle: item.avatar.handle || item.speaker.avatar.handle || null,
+      avatarMimeType:
+        item.avatar.mimeType || item.speaker.avatar.mimeType || null,
       id: item.speaker.id,
     }))
     .map(async ({ bio, speaker, avatar, activities, ...item }) => ({
