@@ -1,6 +1,6 @@
 {
   "name": "@focus-reactive/graphql-content-layer",
-  "version": "3.0.46",
+  "version": "3.0.51",
   "private": false,
   "main": "dist/index.js",
   "scripts": {

@@ -184,6 +184,7 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
     speakersWithPlainActivities,
     tagColors,
     labelColors,
+    true,
   );
 
   const allSpeakers = await Promise.all(speakers);
