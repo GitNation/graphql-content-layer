@@ -63,17 +63,21 @@ const labelTag = ({ prefix, labelColors = [], label }) => {
 const prepareSpeakers = (speakers, tagColors, labelColors, isCommonSpeakers) =>
   speakers
     .filter(Boolean)
-    // .filter(({ speaker }) => !!speaker)
     .map(item => {
       if (isCommonSpeakers) {
+        const avatarHandle = item.avatar
+          ? item.avatar.handle
+          : item.speaker.avatar.handle || null;
+        const avatarMimeType = item.avatar
+          ? item.avatar.mimeType
+          : item.speaker.avatar.mimeType || null;
+
         return {
           ...item.speaker,
           ...item,
           avatar: item.avatar || item.speaker.avatar || {},
-          avatarHandle:
-            item.avatar.handle || item.speaker.avatar.handle || null,
-          avatarMimeType:
-            item.avatar.mimeType || item.speaker.avatar.mimeType || null,
+          avatarHandle,
+          avatarMimeType,
           id: item.speaker.id,
         };
       }
