@@ -69,7 +69,9 @@ const fetchData = async (client, vars) => {
       site: item.url,
       avatar: null,
       idAlt: item.name,
-  }}));
+    },
+    width: item.width,
+  }));
 
   const fullData = [...data, ...emsSponsorsToOldFormat];
 
