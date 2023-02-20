@@ -1,6 +1,7 @@
 const { prepareSpeakers, trySelectSettings } = require('./utils');
 const { speakerInfoFragment, sponsorLogoFragment } = require('./fragments');
 const dayjs = require('dayjs');
+const { getSpeakers } = require('./http-utils');
 
 const selectSettings = trySelectSettings(
   s => ({
@@ -27,6 +28,7 @@ const queryPages = /* GraphQL */ `
       year: conferenceEvents(where: { year: $eventYear }) {
         id
         openForTalks
+        emsEventId
         speakers: pieceOfSpeakerInfoes {
           ...speakerInfo
           avatar {
@@ -139,7 +141,9 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
   const data = await client.request(queryPages, vars).then(res => ({
     speakers: res.conf.year[0].speakers,
     openForTalks: res.conf.year[0].openForTalks,
+    emsEventId: res.conf.year[0].emsEventId,
   }));
+  const emsSpeakers = await getSpeakers(data.emsEventId);
 
   const { openForTalks } = data;
 
@@ -148,7 +152,8 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
     timeString: item.timeString ? dayjs(item.timeString).toISOString() : null,
   });
 
-  const speakersWithPlainActivities = data.speakers.map(speaker => {
+  const speakersRaw = emsSpeakers || data.speakers;
+  const speakersWithPlainActivities = speakersRaw.map(speaker => {
     if (!speaker.activities) {
       console.log('invalid activities', JSON.stringify(speaker));
     }

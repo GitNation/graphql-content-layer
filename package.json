@@ -58,6 +58,7 @@
     "@storybook/storybook-deployer": "^2.8.1",
     "dayjs": "^1.9.6",
     "graphql-request": "^1.8.2",
+    "node-fetch": "^3.3.0",
     "react": "^16.12.0",
     "react-json-view": "^1.19.1",
     "remark-html": "^10.0.0",
