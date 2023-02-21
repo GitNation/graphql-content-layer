@@ -1,4 +1,5 @@
-const { contentTypeMap } = require('./utils');
+const { contentTypeMap, newSponsorCategoryToOld} = require('./utils');
+const { getPartners } = require('./http-utils');
 
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
@@ -6,6 +7,7 @@ const queryPages = /* GraphQL */ `
       id
       year: conferenceEvents(where: { year: $eventYear }) {
         id
+        emsEventId
         sponsors: pieceOfSponsorInfoes {
           id
           category
@@ -40,11 +42,40 @@ const sortByOrder = (a, b) => {
 };
 
 const fetchData = async (client, vars) => {
+  let emsEventId = null;
   const data = await client
     .request(queryPages, vars)
-    .then(res => res.conf.year[0].sponsors);
+    .then(res => {
+      // eslint-disable-next-line prefer-destructuring
+      emsEventId = res.conf.year[0].emsEventId;
+      return res.conf.year[0].sponsors;
+    });
 
-  const sponsorsList = data
+  const emsSponsors = await getPartners(emsEventId);
+
+  const emsSponsorsToOldFormat = emsSponsors.map(item => ({
+    id: item.name,
+    category: newSponsorCategoryToOld(item.type),
+    site: item.url,
+    order: null,
+    avatar: {
+      id: item.name,
+      handle: null,
+      url: item.logo,
+    },
+    sponsor: {
+      id: item.name,
+      title: item.name,
+      site: item.url,
+      avatar: null,
+      idAlt: item.name,
+    },
+    width: item.width,
+  }));
+
+  const fullData = [...data, ...emsSponsorsToOldFormat];
+
+  const sponsorsList = fullData
     .map(item => {
       const correctSite = item.site ? item.site : item.sponsor.site;
 

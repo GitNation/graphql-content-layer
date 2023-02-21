@@ -14,6 +14,19 @@ const getSpeakers = async (eventId) => {
     }
 }
 
+const getPartners = async (eventId) => {
+    if (!eventId) {
+        return null;
+    }
+
+    const res = await fetch(`${BASE_URL}/api/events/${eventId}/partners`);
+
+    if (res.ok) {
+        return res.json();
+    }
+}
+
 module.exports = {
     getSpeakers,
+    getPartners,
 }

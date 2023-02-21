@@ -138,6 +138,17 @@ const createSlug = (object, type) => {
   return slug;
 };
 
+function newSponsorCategoryToOld(category) {
+  switch (category) {
+    case 'Media':
+      return 'MediaPartner'
+    case 'Community':
+      return 'Partner'
+    default:
+      return category;
+  }
+}
+
 module.exports = {
   getLabelColor,
   prepareSpeakers,
@@ -146,4 +157,5 @@ module.exports = {
   createSlug,
   labelTag,
   contentTypeMap,
+  newSponsorCategoryToOld,
 };

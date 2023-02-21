@@ -1,6 +1,6 @@
 {
   "name": "@focus-reactive/graphql-content-layer",
-  "version": "3.0.53",
+  "version": "3.0.54",
   "private": false,
   "main": "dist/index.js",
   "scripts": {
@@ -58,7 +58,7 @@
     "@storybook/storybook-deployer": "^2.8.1",
     "dayjs": "^1.9.6",
     "graphql-request": "^1.8.2",
-    "node-fetch": "2.6.9",
+    "node-fetch": "^2.6.9",
     "react": "^16.12.0",
     "react-json-view": "^1.19.1",
     "remark-html": "^10.0.0",
