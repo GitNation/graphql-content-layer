@@ -1,6 +1,6 @@
 const dayJS = require('dayjs');
 
-const { createSlug, labelTag, contentTypeMap } = require('./utils');
+const { createSlug, labelTag, contentTypeMap, range } = require('./utils');
 const { markdownToHtml } = require('./markdown');
 
 const formatEvent = async (event, labelColors, trackName) => {
@@ -75,6 +75,56 @@ const formatEvent = async (event, labelColors, trackName) => {
   };
 };
 
+const groupByTime = (eventList) => {
+  const map = new Map();
+
+  const mapAdd = (key, value) => {
+    if (!map.get(key)) {
+      map.set(key, []);
+    }
+    map.get(key).push(value);
+  }
+
+  for (const event of eventList) {
+    if (!event.time) {
+      continue;
+    }
+
+    const beginDate = dayJS(event.time);
+    const endDate = event.duration && beginDate.add(event.duration, 'minute').subtract(1, 'second');
+    const beginHour = beginDate.set('minute', 0).set('second', 0);
+    const endHour = endDate ? endDate.set('minute', 0).set('second', 0) : beginHour;
+
+    const diffHours = endHour.diff(beginHour, 'hour');
+    for (let diff of range(0, diffHours, 1)) {
+      const time = beginHour.add(diff, 'hour').toISOString();
+
+      mapAdd(time, event);
+    }
+  }
+
+  const dates = Array.from(map.keys());
+  dates.sort();
+
+  return dates.map(date => {
+    const dateObj = new Date(date);
+    const hour = dateObj.getUTCHours();
+
+    dateObj.setMinutes(59);
+    dateObj.setSeconds(59);
+
+    const events = map.get(date);
+    events.sort((a, b) => a.time > b.time);
+    return {
+      id: `time-${hour}-${hour + 1}`,
+      start: date,
+      end: dateObj.toISOString(),
+      list: events,
+    }
+  });
+}
+
 module.exports = {
   formatEvent,
+  groupByTime,
 };

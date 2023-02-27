@@ -149,6 +149,23 @@ function newSponsorCategoryToOld(category) {
   }
 }
 
+const range = (start, end, step) => {
+  if ((start < end && step <= 0) || (start > end && step >= 0)) {
+    throw new Error('Invalid arguments');
+  }
+
+  const arr = [];
+  let current = start;
+
+  while (current !== end) {
+    arr.push(current);
+    current += step;
+  }
+
+  arr.push(end);
+  return arr;
+}
+
 module.exports = {
   getLabelColor,
   prepareSpeakers,
@@ -158,4 +175,5 @@ module.exports = {
   labelTag,
   contentTypeMap,
   newSponsorCategoryToOld,
+  range,
 };

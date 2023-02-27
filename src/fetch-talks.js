@@ -2,7 +2,7 @@
 const { markdownToHtml } = require('./markdown');
 
 const { trySelectSettings } = require('./utils');
-const { formatEvent } = require('./formatters');
+const { formatEvent, groupByTime } = require('./formatters');
 
 const {
   orgEvent,
@@ -153,6 +153,7 @@ const getSchedule = (tracksData, labelColors) =>
           }),
       );
 
+      const listByTime = groupByTime(listWithMarkdown);
       const clearList = await Promise.all(
         listWithMarkdown.map(async el => ({
           ...el,
@@ -167,6 +168,7 @@ const getSchedule = (tracksData, labelColors) =>
         title: track.name,
         name: `${10 + ind}`,
         list: clearList,
+        listByTime,
       };
     }),
   );
