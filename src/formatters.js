@@ -76,6 +76,7 @@ const formatEvent = async (event, labelColors, trackName) => {
 };
 
 const groupByTime = (eventList) => {
+  const minMaxByDay = new Map();
   const map = new Map();
 
   const mapAdd = (key, value) => {
@@ -83,6 +84,38 @@ const groupByTime = (eventList) => {
       map.set(key, []);
     }
     map.get(key).push(value);
+  }
+
+  const minMaxAdd = (iso) => {
+    const day = new Date(iso).getUTCDate();
+
+    if (!minMaxByDay.get(day)) {
+      minMaxByDay.set(day, { min: iso, max: iso });
+    } else {
+      const container = minMaxByDay.get(day);
+      if (iso < container.min) {
+        container.min = iso;
+      }
+      if (iso > container.max) {
+        container.max = iso;
+      }
+    }
+  }
+
+  // removes gaps in time interval (e.g. 12-13, 14-15)
+  const normalizeDateMap = () => {
+    for (const minMax of minMaxByDay.values()) {
+      const min = dayJS(minMax.min);
+      const max = dayJS(minMax.max);
+      const diffHours = max.diff(min, 'hour');
+
+      for (const diff of range(0, diffHours, 1)) {
+        const date = min.add(diff, 'hour').toISOString();
+        if (!map.get(date)) {
+          map.set(date, null);
+        }
+      }
+    }
   }
 
   for (const event of eventList) {
@@ -96,12 +129,15 @@ const groupByTime = (eventList) => {
     const endHour = endDate ? endDate.set('minute', 0).set('second', 0) : beginHour;
 
     const diffHours = endHour.diff(beginHour, 'hour');
-    for (let diff of range(0, diffHours, 1)) {
+    for (const diff of range(0, diffHours, 1)) {
       const time = beginHour.add(diff, 'hour').toISOString();
 
+      minMaxAdd(time);
       mapAdd(time, event);
     }
   }
+
+  normalizeDateMap();
 
   const dates = Array.from(map.keys());
   dates.sort();
@@ -114,7 +150,7 @@ const groupByTime = (eventList) => {
     dateObj.setSeconds(59);
 
     const events = map.get(date);
-    events.sort((a, b) => a.time > b.time);
+    events && events.sort((a, b) => a.time > b.time);
     return {
       id: `time-${hour}-${hour + 1}`,
       start: date,
