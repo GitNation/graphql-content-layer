@@ -135,12 +135,12 @@ const groupByTimeFactory = () => {
   }
 
   const mapToObject = () => {
-    const result = {};
+    const result = [];
     for (const [day, trackMap] of dayMap.entries()) {
-      const dayBucket = result[day] = {};
+      const dayBucket = [];
 
       for (const [track, timeMap] of trackMap.entries()) {
-        const trackBucket = dayBucket[track] = [];
+        const trackBucket = [];
 
         const dates = Array.from(timeMap.keys());
         dates.sort();
@@ -163,7 +163,9 @@ const groupByTimeFactory = () => {
             list: events,
           });
         }
+        dayBucket.push({ track, list: trackBucket })
       }
+      result.push({ day, list: dayBucket });
     }
     return result;
   }
