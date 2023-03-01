@@ -75,24 +75,36 @@ const formatEvent = async (event, labelColors, trackName) => {
   };
 };
 
-const groupByTime = (eventList) => {
+const groupByTimeFactory = () => {
+  const dayMap = new Map();
   const minMaxByDay = new Map();
-  const map = new Map();
 
-  const mapAdd = (key, value) => {
-    if (!map.get(key)) {
-      map.set(key, []);
+  const dayMapAdd = (iso, track, event) => {
+    const date = iso.split('T')[0];
+
+    if (!dayMap.get(date)) {
+      dayMap.set(date, new Map());
     }
-    map.get(key).push(value);
+
+    const trackMap = dayMap.get(date);
+    if (!trackMap.get(track.name)) {
+      trackMap.set(track.name, new Map());
+    }
+
+    const timeMap = trackMap.get(track.name);
+    if (!timeMap.get(iso)) {
+      timeMap.set(iso, []);
+    }
+    timeMap.get(iso).push(event);
   }
 
   const minMaxAdd = (iso) => {
-    const day = new Date(iso).getUTCDate();
+    const date = iso.split('T')[0];
 
-    if (!minMaxByDay.get(day)) {
-      minMaxByDay.set(day, { min: iso, max: iso });
+    if (!minMaxByDay.get(date)) {
+      minMaxByDay.set(date, { min: iso, max: iso });
     } else {
-      const container = minMaxByDay.get(day);
+      const container = minMaxByDay.get(date);
       if (iso < container.min) {
         container.min = iso;
       }
@@ -103,66 +115,88 @@ const groupByTime = (eventList) => {
   }
 
   // removes gaps in time interval (e.g. 12-13, 14-15)
-  const normalizeDateMap = () => {
-    for (const minMax of minMaxByDay.values()) {
+  const normalizeDayMap = () => {
+    for (const [day, trackMap] of dayMap.entries()) {
+      const minMax = minMaxByDay.get(day);
       const min = dayJS(minMax.min);
       const max = dayJS(minMax.max);
       const diffHours = max.diff(min, 'hour');
 
       for (const diff of range(0, diffHours, 1)) {
         const date = min.add(diff, 'hour').toISOString();
-        if (!map.get(date)) {
-          map.set(date, null);
+
+        for (const timeMap of trackMap.values()) {
+          if (!timeMap.get(date)) {
+            timeMap.set(date, null)
+          }
         }
       }
     }
   }
 
-  for (const event of eventList) {
-    if (!event.time) {
-      continue;
+  const mapToObject = () => {
+    const result = {};
+    for (const [day, trackMap] of dayMap.entries()) {
+      const dayBucket = result[day] = {};
+
+      for (const [track, timeMap] of trackMap.entries()) {
+        const trackBucket = dayBucket[track] = [];
+
+        const dates = Array.from(timeMap.keys());
+        dates.sort();
+
+        for (const date of dates) {
+          const dateObj = new Date(date);
+          const hour = dateObj.getUTCHours();
+          const day = dateObj.getUTCDate();
+
+          dateObj.setMinutes(59);
+          dateObj.setSeconds(59);
+
+          const events = timeMap.get(date);
+          events && events.sort((a, b) => a.time > b.time);
+
+          trackBucket.push({
+            id: `time-${day}-${hour}-${hour + 1}`,
+            start: date,
+            end: dateObj.toISOString(),
+            list: events,
+          });
+        }
+      }
     }
-
-    const beginDate = dayJS(event.time);
-    const endDate = event.duration && beginDate.add(event.duration, 'minute').subtract(1, 'second');
-    const beginHour = beginDate.set('minute', 0).set('second', 0);
-    const endHour = endDate ? endDate.set('minute', 0).set('second', 0) : beginHour;
-
-    const diffHours = endHour.diff(beginHour, 'hour');
-    for (const diff of range(0, diffHours, 1)) {
-      const time = beginHour.add(diff, 'hour').toISOString();
-
-      minMaxAdd(time);
-      mapAdd(time, event);
-    }
+    return result;
   }
 
-  normalizeDateMap();
+  return {
+    groupTrack: (eventList, track) => {
+      for (const event of eventList) {
+        if (!event.time) {
+          continue;
+        }
 
-  const dates = Array.from(map.keys());
-  dates.sort();
+        const beginDate = dayJS(event.time);
+        const endDate = event.duration && beginDate.add(event.duration, 'minute').subtract(1, 'second');
+        const beginHour = beginDate.set('minute', 0).set('second', 0);
+        const endHour = endDate ? endDate.set('minute', 0).set('second', 0) : beginHour;
 
-  return dates.map(date => {
-    const dateObj = new Date(date);
-    const hour = dateObj.getUTCHours();
-    const day = dateObj.getUTCDate();
+        const diffHours = endHour.diff(beginHour, 'hour');
+        for (const diff of range(0, diffHours, 1)) {
+          const time = beginHour.add(diff, 'hour').toISOString();
 
-    dateObj.setMinutes(59);
-    dateObj.setSeconds(59);
-
-    const events = map.get(date);
-    events && events.sort((a, b) => a.time > b.time);
-
-    return {
-      id: `time-${day}-${hour}-${hour + 1}`,
-      start: date,
-      end: dateObj.toISOString(),
-      list: events,
+          minMaxAdd(time);
+          dayMapAdd(time, track, event);
+        }
+      }
+    },
+    buildObject: () => {
+      normalizeDayMap();
+      return mapToObject();
     }
-  });
+  }
 }
 
 module.exports = {
   formatEvent,
-  groupByTime,
+  groupByTimeFactory,
 };

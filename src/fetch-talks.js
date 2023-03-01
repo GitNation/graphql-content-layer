@@ -2,7 +2,7 @@
 const { markdownToHtml } = require('./markdown');
 
 const { trySelectSettings } = require('./utils');
-const { formatEvent, groupByTime } = require('./formatters');
+const { formatEvent, groupByTimeFactory } = require('./formatters');
 
 const {
   orgEvent,
@@ -153,7 +153,42 @@ const getSchedule = (tracksData, labelColors) =>
           }),
       );
 
-      const listByTime = groupByTime(listWithMarkdown);
+      const clearList = await Promise.all(
+        listWithMarkdown.map(async el => ({
+          ...el,
+          text: await markdownToHtml(el.text),
+          description: await markdownToHtml(el.description),
+        })),
+      );
+      // const listByTime = groupByTime(clearList);
+
+      return {
+        tab: track.name,
+        tabEmptyMessage: track.emptyMessage,
+        title: track.name,
+        name: `${10 + ind}`,
+        list: clearList,
+        // listByTime,
+      };
+    }),
+  );
+
+const getNewSchedule = async (tracksData, labelColors) => {
+  const { groupTrack, buildObject } = groupByTimeFactory();
+
+  await Promise.all(
+    tracksData.map(async (track, ind) => {
+      const listWithMarkdown = await Promise.all(
+        track.events
+          .filter(
+            event => notVisibleEventTypes.indexOf(event.__typename) === -1,
+          )
+          .map(async event => {
+            const result = await formatEvent(event, labelColors, track.name);
+            return result;
+          }),
+      );
+
       const clearList = await Promise.all(
         listWithMarkdown.map(async el => ({
           ...el,
@@ -162,16 +197,12 @@ const getSchedule = (tracksData, labelColors) =>
         })),
       );
 
-      return {
-        tab: track.name,
-        tabEmptyMessage: track.emptyMessage,
-        title: track.name,
-        name: `${10 + ind}`,
-        list: clearList,
-        listByTime,
-      };
+      groupTrack(clearList, track);
     }),
   );
+
+  return buildObject();
+}
 
 const fetchData = async (client, { labelColors, ...vars }) => {
   const {
@@ -186,8 +217,20 @@ const fetchData = async (client, { labelColors, ...vars }) => {
   const tracks = tracksData.map(track => track.name);
   const tracksOffline = tracksOfflineData.map(track => track.name);
 
-  const schedule = await getSchedule(tracksData, labelColors);
-  const scheduleOffline = await getSchedule(tracksOfflineData, labelColors);
+  // const schedule = await getSchedule(tracksData, labelColors);
+  // const scheduleOffline = await getSchedule(tracksOfflineData, labelColors);
+  // const newSchedule = await getNewSchedule(tracksData, labelColors);
+  const [
+    schedule,
+    scheduleOffline,
+    newSchedule,
+    newScheduleOffline
+  ] = await Promise.all([
+    getSchedule(tracksData, labelColors),
+    getSchedule(tracksOfflineData, labelColors),
+    getNewSchedule(tracksData, labelColors),
+    getNewSchedule(tracksOfflineData, labelColors)
+  ]);
 
   const formattedLightningEvents = await Promise.all(
     lightningEvents.map(async event => {
@@ -211,6 +254,8 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     scheduleTitle: 'Schedule',
     schedule,
     scheduleOffline,
+    newSchedule,
+    newScheduleOffline,
     tracks,
     tracksOffline,
     talks,
