@@ -145,14 +145,16 @@ const groupByTime = (eventList) => {
   return dates.map(date => {
     const dateObj = new Date(date);
     const hour = dateObj.getUTCHours();
+    const day = dateObj.getUTCDate();
 
     dateObj.setMinutes(59);
     dateObj.setSeconds(59);
 
     const events = map.get(date);
     events && events.sort((a, b) => a.time > b.time);
+
     return {
-      id: `time-${hour}-${hour + 1}`,
+      id: `time-${day}-${hour}-${hour + 1}`,
       start: date,
       end: dateObj.toISOString(),
       list: events,
