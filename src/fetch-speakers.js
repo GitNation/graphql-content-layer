@@ -1,4 +1,4 @@
-const { prepareSpeakers, trySelectSettings } = require('./utils');
+const { prepareSpeakers, trySelectSettings, sortByOrder } = require('./utils');
 const { speakerInfoFragment, sponsorLogoFragment } = require('./fragments');
 const dayjs = require('dayjs');
 const { getSpeakers } = require('./http-utils');
@@ -183,7 +183,7 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
         ],
       },
     };
-  });
+  }).sort(sortByOrder);
 
   const speakers = await prepareSpeakers(
     speakersWithPlainActivities,
