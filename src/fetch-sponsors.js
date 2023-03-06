@@ -1,4 +1,4 @@
-const { contentTypeMap, newSponsorCategoryToOld} = require('./utils');
+const { contentTypeMap, newSponsorCategoryToOld, sortByOrder } = require('./utils');
 const { getPartners } = require('./http-utils');
 
 const queryPages = /* GraphQL */ `
@@ -34,12 +34,6 @@ const queryPages = /* GraphQL */ `
     }
   }
 `;
-
-const sortByOrder = (a, b) => {
-  const aInd = a.order || Infinity;
-  const bInd = b.order || Infinity;
-  return aInd - bInd;
-};
 
 const fetchData = async (client, vars) => {
   let emsEventId = null;

@@ -149,6 +149,12 @@ function newSponsorCategoryToOld(category) {
   }
 }
 
+function sortByOrder(a, b) {
+  const aInd = a.order || Infinity;
+  const bInd = b.order || Infinity;
+  return aInd - bInd;
+};
+
 module.exports = {
   getLabelColor,
   prepareSpeakers,
@@ -158,4 +164,5 @@ module.exports = {
   labelTag,
   contentTypeMap,
   newSponsorCategoryToOld,
+  sortByOrder
 };
