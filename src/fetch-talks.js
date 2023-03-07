@@ -160,7 +160,6 @@ const getSchedule = (tracksData, labelColors) =>
           description: await markdownToHtml(el.description),
         })),
       );
-      // const listByTime = groupByTime(clearList);
 
       return {
         tab: track.name,
@@ -168,7 +167,6 @@ const getSchedule = (tracksData, labelColors) =>
         title: track.name,
         name: `${10 + ind}`,
         list: clearList,
-        // listByTime,
       };
     }),
   );
@@ -217,9 +215,6 @@ const fetchData = async (client, { labelColors, ...vars }) => {
   const tracks = tracksData.map(track => track.name);
   const tracksOffline = tracksOfflineData.map(track => track.name);
 
-  // const schedule = await getSchedule(tracksData, labelColors);
-  // const scheduleOffline = await getSchedule(tracksOfflineData, labelColors);
-  // const newSchedule = await getNewSchedule(tracksData, labelColors);
   const [
     schedule,
     scheduleOffline,

@@ -178,17 +178,11 @@ const groupByTimeFactory = () => {
         }
 
         const beginDate = dayJS(event.time);
-        // const endDate = event.duration && beginDate.add(event.duration, 'minute').subtract(1, 'second');
         const beginHour = beginDate.set('minute', 0).set('second', 0);
-        // const endHour = endDate ? endDate.set('minute', 0).set('second', 0) : beginHour;
+        const time = beginHour.toISOString();
 
-        // const diffHours = endHour.diff(beginHour, 'hour');
-        // for (const diff of range(0, diffHours, 1)) {
-          const time = beginHour.toISOString();
-
-          minMaxAdd(time);
-          dayMapAdd(time, track, event);
-        // }
+        minMaxAdd(time);
+        dayMapAdd(time, track, event);
       }
     },
     buildObject: () => {
