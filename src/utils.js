@@ -166,6 +166,12 @@ const range = (start, end, step) => {
   return arr;
 }
 
+function sortByOrder(a, b) {
+  const aInd = a.order || Infinity;
+  const bInd = b.order || Infinity;
+  return aInd - bInd;
+};
+
 module.exports = {
   getLabelColor,
   prepareSpeakers,
@@ -176,4 +182,5 @@ module.exports = {
   contentTypeMap,
   newSponsorCategoryToOld,
   range,
+  sortByOrder
 };
