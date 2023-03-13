@@ -2,7 +2,7 @@
 const { markdownToHtml } = require('./markdown');
 
 const { trySelectSettings } = require('./utils');
-const { formatEvent } = require('./formatters');
+const { formatEvent, groupByTimeFactory } = require('./formatters');
 
 const {
   orgEvent,
@@ -171,6 +171,37 @@ const getSchedule = (tracksData, labelColors) =>
     }),
   );
 
+const getNewSchedule = async (tracksData, labelColors) => {
+  const { groupTrack, buildObject } = groupByTimeFactory();
+
+  await Promise.all(
+    tracksData.map(async (track, ind) => {
+      const listWithMarkdown = await Promise.all(
+        track.events
+          .filter(
+            event => notVisibleEventTypes.indexOf(event.__typename) === -1,
+          )
+          .map(async event => {
+            const result = await formatEvent(event, labelColors, track.name);
+            return result;
+          }),
+      );
+
+      const clearList = await Promise.all(
+        listWithMarkdown.map(async el => ({
+          ...el,
+          text: await markdownToHtml(el.text),
+          description: await markdownToHtml(el.description),
+        })),
+      );
+
+      groupTrack(clearList, track);
+    }),
+  );
+
+  return buildObject();
+}
+
 const fetchData = async (client, { labelColors, ...vars }) => {
   const {
     conf: {
@@ -184,8 +215,17 @@ const fetchData = async (client, { labelColors, ...vars }) => {
   const tracks = tracksData.map(track => track.name);
   const tracksOffline = tracksOfflineData.map(track => track.name);
 
-  const schedule = await getSchedule(tracksData, labelColors);
-  const scheduleOffline = await getSchedule(tracksOfflineData, labelColors);
+  const [
+    schedule,
+    scheduleOffline,
+    newSchedule,
+    newScheduleOffline
+  ] = await Promise.all([
+    getSchedule(tracksData, labelColors),
+    getSchedule(tracksOfflineData, labelColors),
+    getNewSchedule(tracksData, labelColors),
+    getNewSchedule(tracksOfflineData, labelColors)
+  ]);
 
   const formattedLightningEvents = await Promise.all(
     lightningEvents.map(async event => {
@@ -209,6 +249,8 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     scheduleTitle: 'Schedule',
     schedule,
     scheduleOffline,
+    newSchedule,
+    newScheduleOffline,
     tracks,
     tracksOffline,
     talks,

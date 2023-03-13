@@ -149,6 +149,23 @@ function newSponsorCategoryToOld(category) {
   }
 }
 
+const range = (start, end, step) => {
+  if ((start < end && step <= 0) || (start > end && step >= 0)) {
+    throw new Error('Invalid arguments');
+  }
+
+  const arr = [];
+  let current = start;
+
+  while (current !== end) {
+    arr.push(current);
+    current += step;
+  }
+
+  arr.push(end);
+  return arr;
+}
+
 function sortByOrder(a, b) {
   const aInd = a.order || Infinity;
   const bInd = b.order || Infinity;
@@ -164,5 +181,6 @@ module.exports = {
   labelTag,
   contentTypeMap,
   newSponsorCategoryToOld,
+  range,
   sortByOrder
 };
