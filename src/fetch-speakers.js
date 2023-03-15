@@ -29,6 +29,7 @@ const queryPages = /* GraphQL */ `
         id
         openForTalks
         emsEventId
+        useEmsData
         speakers: pieceOfSpeakerInfoes {
           ...speakerInfo
           avatar {
@@ -143,7 +144,7 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
     openForTalks: res.conf.year[0].openForTalks,
     emsEventId: res.conf.year[0].emsEventId,
   }));
-  const emsSpeakers = await getSpeakers(data.emsEventId);
+  const emsSpeakers = data.useEmsData && await getSpeakers(data.emsEventId);
 
   const { openForTalks } = data;
 
