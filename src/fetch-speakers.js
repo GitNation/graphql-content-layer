@@ -184,7 +184,7 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
         ],
       },
     };
-  }).sort(sortByOrder);
+  });
 
   const speakers = await prepareSpeakers(
     speakersWithPlainActivities,
