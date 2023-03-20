@@ -199,7 +199,7 @@ const getNewSchedule = async (tracksData, labelColors) => {
     }),
   );
 
-  return buildObject();
+  return buildObject(tracksData.map(t => t.name));
 }
 
 const fetchData = async (client, { labelColors, ...vars }) => {
