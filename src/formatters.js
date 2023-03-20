@@ -134,12 +134,16 @@ const groupByTimeFactory = () => {
     }
   }
 
-  const mapToObject = () => {
+  const mapToObject = (orderedTracks) => {
     const result = [];
     for (const [day, trackMap] of dayMap.entries()) {
       const dayBucket = [];
 
-      for (const [track, timeMap] of trackMap.entries()) {
+      for (const track of orderedTracks) {
+        const timeMap = trackMap.get(track);
+        if (!timeMap) {
+          continue;
+        }
         const trackBucket = [];
 
         const dates = Array.from(timeMap.keys());
@@ -185,9 +189,9 @@ const groupByTimeFactory = () => {
         dayMapAdd(time, track, event);
       }
     },
-    buildObject: () => {
+    buildObject: (orderedTracks) => {
       normalizeDayMap();
-      return mapToObject();
+      return mapToObject(orderedTracks);
     }
   }
 }
