@@ -54,7 +54,7 @@ const fetchData = async (client, vars) => {
     order: null,
     avatar: {
       id: item.name,
-      handle: null,
+      handle: item.logoHandle || null,
       url: item.logo,
     },
     sponsor: {
