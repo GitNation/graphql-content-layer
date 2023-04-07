@@ -11,6 +11,9 @@ const queryPages = /* GraphQL */ `
       slackUrl
       twitterUrl
       facebookUrl
+      instagramUrl
+      tiktokUrl
+      linkedinUrl
       mediumUrl
       youtubeUrl
       discordUrl

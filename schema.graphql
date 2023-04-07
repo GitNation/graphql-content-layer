@@ -1870,6 +1870,9 @@ type ConferenceBrand implements Node {
   slackUrl: String
   twitterUrl: String
   facebookUrl: String
+  instagramUrl: String
+  tiktokUrl: String
+  linkedinUrl: String
   mediumUrl: String
   youtubeUrl: String
   codeOfConductIntro: String
