@@ -36,7 +36,7 @@ const getLabelColor = (label, tagColors) => {
   return colors;
 };
 
-const prepareActivities = rawActivities => {
+const prepareActivities = async (rawActivities) => {
   const activities = Object.entries(rawActivities).reduce(
     (all, [key, value]) => ({
       ...all,
@@ -44,11 +44,17 @@ const prepareActivities = rawActivities => {
     }),
     {},
   );
-  Object.entries(activities).forEach(([key, value]) => {
-    value.forEach(item => {
+
+  const promises = [];
+  for (const [key, value] of Object.entries(activities)) {
+    const entryPromises = value.map(async item => {
       item.slug = createSlug(item, key);
+      item.description = await markdownToHtml(item.description);
     });
-  });
+    promises.push(...entryPromises);
+  }
+
+  await Promise.all(promises);
   return activities;
 };
 
@@ -97,7 +103,7 @@ const prepareSpeakers = (speakers, tagColors, labelColors, isCommonSpeakers) =>
       bio: await markdownToHtml(bio),
       socials: getSocials(item),
       ...getLabelColor(item.label, tagColors),
-      activities: prepareActivities(activities || {}),
+      activities: await prepareActivities(activities || {}),
       slug: createSlug(item, 'user'),
       tag: labelTag({ label: item.label, prefix: 'speaker', labelColors }),
       contentType: contentTypeMap.Speaker,
