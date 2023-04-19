@@ -1,32 +1,27 @@
 const fetch = require('node-fetch');
 
 const BASE_URL = 'https://ems.gitnation.org';
+// const BASE_URL = 'http://localhost:3000';
 
-const getSpeakers = async (eventId) => {
-    if (!eventId) {
-        return null;
-    }
+const baseEventFetch = (path) => {
+    return async (eventId) => {
+        if (!eventId) {
+            return null;
+        }
 
-    const res = await fetch(`${BASE_URL}/api/events/${eventId}/speakers`);
-
-    if (res.ok) {
-        return res.json();
-    }
-}
-
-const getPartners = async (eventId) => {
-    if (!eventId) {
-        return null;
-    }
-
-    const res = await fetch(`${BASE_URL}/api/events/${eventId}/partners`);
-
-    if (res.ok) {
-        return res.json();
+        const res = await fetch(`${BASE_URL}/api/events/${eventId}/${path}`);
+        if (res.ok) {
+            return res.json();
+        }
     }
 }
+
+const getSpeakers = baseEventFetch('speakers');
+const getPartners = baseEventFetch('partners');
+const getTopSpeaker = baseEventFetch('speakers/top')
 
 module.exports = {
     getSpeakers,
     getPartners,
+    getTopSpeaker
 }
