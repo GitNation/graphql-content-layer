@@ -2,7 +2,8 @@
 const { markdownToHtml } = require('./markdown');
 
 const { trySelectSettings } = require('./utils');
-const { formatEvent, groupByTimeFactory } = require('./formatters');
+const { formatEvent, groupByTimeFactory, formatActivity, groupEmsScheduleByTimeFactory } = require('./formatters');
+const { getSchedule: fetchSchedule } = require('./http-utils');
 
 const {
   orgEvent,
@@ -64,6 +65,8 @@ const updatedQuery = /* GraphQL */ `
       events: conferenceEvents(where: { year: $eventYear }) {
         id
         title
+        emsEventId
+        useEmsData
         tracks {
           id
           name
@@ -202,6 +205,43 @@ const getNewSchedule = async (tracksData, labelColors) => {
   return buildObject(tracksData.map(t => t.name));
 }
 
+const getEmsSchedule = async (eventId, labelColors) => {
+  const schedule = await fetchSchedule(eventId);
+  const [offline, remote] = [schedule['InPerson'], schedule['Remote']];
+
+  const promises = [offline, remote].map(async (tracks) => {
+    const { groupTrack, buildObject } = groupEmsScheduleByTimeFactory();
+
+    await Promise.all(
+      tracks.map(async (track) => {
+        const events = await Promise.all(
+          track.activities.map(async activity => {
+            const formatted = await formatActivity(activity, labelColors, track.name);
+
+            const [text, description] = await Promise.all([
+              markdownToHtml(formatted.text),
+              markdownToHtml(formatted.description)
+            ]);
+            return {
+              ...formatted,
+              text,
+              description
+            };
+          })
+        );
+
+        groupTrack(events, track);
+      })
+    );
+
+    const result = buildObject(tracks.map(t => t.name));
+    return result;
+  });
+
+  const [offlineSchedule, onlineSchedule] = await Promise.all(promises);
+  return [onlineSchedule, offlineSchedule];
+}
+
 const fetchData = async (client, { labelColors, ...vars }) => {
   const {
     conf: {
@@ -219,12 +259,15 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     schedule,
     scheduleOffline,
     newSchedule,
-    newScheduleOffline
+    newScheduleOffline,
+    [emsSchedule, emsScheduleOffline]
   ] = await Promise.all([
     getSchedule(tracksData, labelColors),
     getSchedule(tracksOfflineData, labelColors),
     getNewSchedule(tracksData, labelColors),
-    getNewSchedule(tracksOfflineData, labelColors)
+    getNewSchedule(tracksOfflineData, labelColors),
+    // rawData.useEmsData && getEmsSchedule(rawData.emsEventId, labelColors),
+    getEmsSchedule(rawData.emsEventId, labelColors),
   ]);
 
   const formattedLightningEvents = await Promise.all(
@@ -251,6 +294,8 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     scheduleOffline,
     newSchedule,
     newScheduleOffline,
+    emsSchedule,
+    emsScheduleOffline,
     tracks,
     tracksOffline,
     talks,

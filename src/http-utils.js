@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 
 const BASE_URL = 'https://ems.gitnation.org';
+// const BASE_URL = 'http://localhost:3000';
 
 const getSpeakers = async (eventId) => {
     if (!eventId) {
@@ -26,7 +27,19 @@ const getPartners = async (eventId) => {
     }
 }
 
+const getSchedule = async (eventId) => {
+    if (!eventId) {
+        return null;
+    }
+
+    const res = await fetch(`${BASE_URL}/api/events/${eventId}/schedule`);
+    if (res.ok) {
+        return res.json();
+    }
+}
+
 module.exports = {
     getSpeakers,
     getPartners,
+    getSchedule,
 }
