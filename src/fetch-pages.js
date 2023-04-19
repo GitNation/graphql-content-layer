@@ -12,6 +12,7 @@ const {
 const { markdownToHtml } = require('./markdown');
 const { contentTypeMap, trySelectSettings } = require('./utils');
 const { formatEvent } = require('./formatters');
+const { getTopSpeaker } = require('./http-utils');
 
 const selectSettings = trySelectSettings(
   s => ({
@@ -113,6 +114,8 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     streamNotAvailableText,
     emsEventId,
   } = await client.request(queryPages, vars).then(res => res.conf.year[0]);
+
+  const topSpeaker = await getTopSpeaker(emsEventId);
 
   const secondaryTracks = tracks.filter(t => !t.isPrimary);
   const mainTracks = tracks.filter(t => t.isPrimary);
@@ -226,7 +229,9 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     zoomBars: zoomBars.length ? zoomBars : null,
     scheduleExtends: [],
     tracks: formattedSecondaryTracks,
-    eventInfo: {},
+    eventInfo: {
+      topSpeaker,
+    },
   };
 
   data.forEach(page => {
