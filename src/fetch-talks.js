@@ -207,13 +207,10 @@ const getNewSchedule = async (tracksData, labelColors) => {
 
 const getEmsSchedule = async (eventId, labelColors) => {
   const schedule = await fetchSchedule(eventId);
-  if (!schedule) {
-    return [null, null];
-  }
 
   const [offline, remote] = [schedule['InPerson'], schedule['Remote']];
 
-  const promises = [offline, remote].map(async (tracks) => {
+  const promises = [offline, remote].filter(Boolean).map(async (tracks) => {
     const { groupTrack, buildObject } = groupEmsScheduleByTimeFactory();
 
     await Promise.all(
