@@ -207,6 +207,9 @@ const getNewSchedule = async (tracksData, labelColors) => {
 
 const getEmsSchedule = async (eventId, labelColors) => {
   const schedule = await fetchSchedule(eventId);
+  if (!schedule) {
+    return [null, null];
+  }
 
   const [offline, remote] = [schedule['InPerson'], schedule['Remote']];
 
@@ -261,14 +264,15 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     scheduleOffline,
     newSchedule,
     newScheduleOffline,
-    [emsSchedule, emsScheduleOffline]
+    [emsSchedule, emsScheduleOffline],
   ] = await Promise.all([
     getSchedule(tracksData, labelColors),
     getSchedule(tracksOfflineData, labelColors),
     getNewSchedule(tracksData, labelColors),
     getNewSchedule(tracksOfflineData, labelColors),
-    // rawData.useEmsData && getEmsSchedule(rawData.emsEventId, labelColors),
-    getEmsSchedule(rawData.emsEventId, labelColors),
+    rawData.useEmsData
+      ? getEmsSchedule(rawData.emsEventId, labelColors)
+      : [null, null],
   ]);
 
   const formattedLightningEvents = await Promise.all(
