@@ -19,9 +19,12 @@ const baseEventFetch = (path) => {
 const getSpeakers = baseEventFetch('speakers');
 const getPartners = baseEventFetch('partners');
 const getTopSpeaker = baseEventFetch('speakers/top')
+const getSchedule = baseEventFetch('schedule');
+
 
 module.exports = {
     getSpeakers,
     getPartners,
-    getTopSpeaker
+    getSchedule,
+    getTopSpeaker,
 }
