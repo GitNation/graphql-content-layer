@@ -219,6 +219,7 @@ const formatActivity = async (event, labelColors, trackName) => {
     title,
     description,
     startDate,
+    isoDate: startDate,
     eventType,
     text: description,
     dayISO: startDate
