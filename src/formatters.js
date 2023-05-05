@@ -1,6 +1,6 @@
 const dayJS = require('dayjs');
 
-const { createSlug, labelTag, contentTypeMap, range } = require('./utils');
+const { createSlug, labelTag, contentTypeMap, range, getSocials } = require('./utils');
 const { markdownToHtml } = require('./markdown');
 
 const formatEvent = async (event, labelColors, trackName) => {
@@ -206,13 +206,18 @@ const formatActivity = async (event, labelColors, trackName) => {
     eventType,
     subactivities = [],
     tags,
+    speakers,
     ...rest
   } = event;
-
 
   const formattedSubactivities = await Promise.all(
     subactivities.map(async e => formatActivity(e, labelColors, trackName))
   );
+
+  const formattedSpeakers = speakers && speakers.map(speaker => ({
+    ...speaker,
+    socials: getSocials(speaker),
+  }))
 
   return {
     ...rest,
@@ -236,6 +241,7 @@ const formatActivity = async (event, labelColors, trackName) => {
       ? overlay(tags[0].label)
       : null,
     tags,
+    speakers: formattedSpeakers,
     subactivities: formattedSubactivities,
   };
 };

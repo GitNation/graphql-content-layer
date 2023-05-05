@@ -179,6 +179,7 @@ function sortByOrder(a, b) {
 };
 
 module.exports = {
+  getSocials,
   getLabelColor,
   prepareSpeakers,
   // tagColors,
