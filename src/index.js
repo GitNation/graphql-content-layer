@@ -69,7 +69,7 @@ const getContent = async conferenceSettings => {
       });
     } catch (err) {
       console.error(err);
-      return undefined;
+      process.end(1);
     }
   });
 
