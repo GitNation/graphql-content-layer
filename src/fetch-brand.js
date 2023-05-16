@@ -1,8 +1,9 @@
 const { markdownToHtml } = require('./markdown');
 const { contentTypeMap } = require('./utils');
+const { getBrand } = require('./http-utils');
 
 const queryPages = /* GraphQL */ `
-  query($conferenceTitle: ConferenceTitle) {
+  query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
       id
       city
@@ -20,6 +21,9 @@ const queryPages = /* GraphQL */ `
       gnPortal
       codeOfConductIntro
       codeOfConductMain
+      events: conferenceEvents(where: { year: $eventYear }) {
+        emsEventId
+      }
     }
   }
 `;
@@ -35,8 +39,12 @@ const fetchData = async (client, vars) => {
       contentType: contentTypeMap.ConferenceBrand,
     }));
 
+  const { emsEventId } = conference.events[0];
+  const emsBrand = await getBrand(emsEventId);
+
   return {
     conference,
+    emsBrand,
   };
 };
 
