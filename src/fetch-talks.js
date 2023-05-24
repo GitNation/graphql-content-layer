@@ -208,10 +208,26 @@ const getNewSchedule = async (tracksData, labelColors) => {
 const getEmsSchedule = async (eventId, labelColors) => {
   const schedule = await fetchSchedule(eventId);
   if (!schedule) {
-    return [null, null];
+    return {
+      emsSchedule: null,
+      emsScheduleOffline: null
+    };
   }
 
-  const [offline, remote] = [schedule['InPerson'], schedule['Remote']];
+  /** @type {{ name: String, activities: Array }[]} */
+  const tracks = schedule;
+
+  const tracksOrdered = tracks.map(track => track.name);
+  const [offline, remote] = ['InPerson', 'Remote'].map(format =>
+    tracks
+      .map(track => ({
+        name: track.name,
+        activities: track.activities.filter(
+          activity => activity.format === format,
+        ),
+      }))
+      .filter(track => track.activities.length > 0),
+  );
 
   const promises = [offline, remote].filter(Boolean).map(async (tracks) => {
     const { groupTrack, buildObject } = groupEmsScheduleByTimeFactory();
@@ -243,7 +259,11 @@ const getEmsSchedule = async (eventId, labelColors) => {
   });
 
   const [offlineSchedule, onlineSchedule] = await Promise.all(promises);
-  return [onlineSchedule, offlineSchedule];
+  return {
+    emsSchedule: onlineSchedule,
+    emsScheduleOffline: offlineSchedule,
+    tracksOrdered,
+  };
 }
 
 const fetchData = async (client, { labelColors, ...vars }) => {
@@ -264,7 +284,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     scheduleOffline,
     newSchedule,
     newScheduleOffline,
-    [emsSchedule, emsScheduleOffline],
+    { emsSchedule, emsScheduleOffline, tracksOrdered },
   ] = await Promise.all([
     getSchedule(tracksData, labelColors),
     getSchedule(tracksOfflineData, labelColors),
@@ -272,7 +292,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     getNewSchedule(tracksOfflineData, labelColors),
     rawData.useEmsData
       ? getEmsSchedule(rawData.emsEventId, labelColors)
-      : [null, null],
+      : { emsSchedule: null, emsScheduleOffline: null },
   ]);
 
   const formattedLightningEvents = await Promise.all(
@@ -301,6 +321,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     newScheduleOffline,
     emsSchedule,
     emsScheduleOffline,
+    tracksOrdered,
     tracks,
     tracksOffline,
     talks,
