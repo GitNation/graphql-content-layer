@@ -31,6 +31,7 @@ const queryPages = /* GraphQL */ `
         endDate: isoEndDate
         streamNotAvailableText
         emsEventId
+        tbaSpeakersNumber
         tracks {
           id
           name
@@ -113,6 +114,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     endDate,
     streamNotAvailableText,
     emsEventId,
+    tbaSpeakersNumber,
   } = await client.request(queryPages, vars).then(res => res.conf.year[0]);
 
   const topSpeaker = await getTopSpeaker(emsEventId);
@@ -231,6 +233,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     tracks: formattedSecondaryTracks,
     eventInfo: {
       topSpeaker,
+      tbaSpeakersNumber,
     },
   };
 
