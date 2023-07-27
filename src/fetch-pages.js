@@ -12,7 +12,7 @@ const {
 const { markdownToHtml } = require('./markdown');
 const { contentTypeMap, trySelectSettings } = require('./utils');
 const { formatEvent } = require('./formatters');
-const { getTopSpeaker } = require('./http-utils');
+const { getTopSpeaker, getSchedule } = require('./http-utils');
 
 const selectSettings = trySelectSettings(
   s => ({
@@ -20,6 +20,9 @@ const selectSettings = trySelectSettings(
   }),
   {},
 );
+
+const DISCUSSION_ROOM_EVENT_TYPE = 'DiscussionRoom';
+const REMOTE_FORMAT = 'Remote';
 
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
@@ -31,6 +34,7 @@ const queryPages = /* GraphQL */ `
         endDate: isoEndDate
         streamNotAvailableText
         emsEventId
+        useEmsData
         tbaSpeakersNumber
         tracks {
           id
@@ -114,6 +118,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     endDate,
     streamNotAvailableText,
     emsEventId,
+    useEmsData,
     tbaSpeakersNumber,
   } = await client.request(queryPages, vars).then(res => res.conf.year[0]);
 
@@ -192,24 +197,26 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     {},
   );
 
-  const videoRooms = [
-    ...formattedSecondaryTracks.reduce((result, currentTrack) => {
-      return [
-        ...result,
-        ...currentTrack.list.filter(
-          event => event.eventType === 'DiscussionRoom',
-        ),
+  const videoRooms = useEmsData
+    ? await fetchEmsDiscussionRooms(emsEventId)
+    : [
+        ...formattedSecondaryTracks.reduce((result, currentTrack) => {
+          return [
+            ...result,
+            ...currentTrack.list.filter(
+              event => event.eventType === DISCUSSION_ROOM_EVENT_TYPE,
+            ),
+          ];
+        }, []),
+        ...formattedMainTracks.reduce((result, currentTrack) => {
+          return [
+            ...result,
+            ...currentTrack.list.filter(
+              event => event.eventType === DISCUSSION_ROOM_EVENT_TYPE,
+            ),
+          ];
+        }, []),
       ];
-    }, []),
-    ...formattedMainTracks.reduce((result, currentTrack) => {
-      return [
-        ...result,
-        ...currentTrack.list.filter(
-          event => event.eventType === 'DiscussionRoom',
-        ),
-      ];
-    }, []),
-  ];
 
   const zoomBars = formattedMainTracks.reduce((result, currentTrack) => {
     return [
@@ -273,6 +280,35 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     customContent,
   };
 };
+
+const fetchEmsDiscussionRooms  = async (emsEventId) => {
+  if (!emsEventId) {
+    return [];
+  }
+
+  const schedule = await getSchedule(emsEventId);
+  if (!schedule) {
+    return [];
+  }
+
+  let discussionRooms = [];
+  for (const track of schedule) {
+    for (const activity of track.activities) {
+      if (activity.eventType === DISCUSSION_ROOM_EVENT_TYPE && activity.format === REMOTE_FORMAT) {
+        discussionRooms.push({
+          ...activity,
+          roomLinkText: activity.title,
+          speakers: activity.speakers.map(speaker => ({
+            ...speaker,
+            country: speaker.location,
+          })),
+        });
+      }
+    }
+  }
+
+  return discussionRooms;
+}
 
 module.exports = {
   fetchData,
