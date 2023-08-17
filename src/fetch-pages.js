@@ -294,11 +294,11 @@ const fetchEmsDiscussionRooms  = async (emsEventId) => {
   let discussionRooms = [];
   for (const track of schedule) {
     for (const activity of track.activities) {
-      if (activity.eventType === DISCUSSION_ROOM_EVENT_TYPE && activity.format === REMOTE_FORMAT) {
+      if (activity.eventType === DISCUSSION_ROOM_EVENT_TYPE) {
         discussionRooms.push({
           ...activity,
           roomLinkText: activity.title,
-          speakers: activity.speakers.map(speaker => ({
+          speakers: activity.speakers && activity.speakers.map(speaker => ({
             ...speaker,
             country: speaker.location,
           })),
