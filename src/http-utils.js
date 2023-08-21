@@ -21,6 +21,7 @@ const getPartners = baseEventFetch('partners');
 const getTopSpeaker = baseEventFetch('speakers/top');
 const getSchedule = baseEventFetch('schedule');
 const getBrand = baseEventFetch('brand');
+const getDiscussionRooms = baseEventFetch('discussion-rooms');
 
 module.exports = {
     getSpeakers,
@@ -28,4 +29,5 @@ module.exports = {
     getSchedule,
     getTopSpeaker,
     getBrand,
+    getDiscussionRooms,
 }

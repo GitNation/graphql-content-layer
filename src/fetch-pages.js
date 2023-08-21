@@ -12,7 +12,7 @@ const {
 const { markdownToHtml } = require('./markdown');
 const { contentTypeMap, trySelectSettings } = require('./utils');
 const { formatEvent } = require('./formatters');
-const { getTopSpeaker, getSchedule } = require('./http-utils');
+const { getTopSpeaker, getDiscussionRooms } = require('./http-utils');
 
 const selectSettings = trySelectSettings(
   s => ({
@@ -22,7 +22,6 @@ const selectSettings = trySelectSettings(
 );
 
 const DISCUSSION_ROOM_EVENT_TYPE = 'DiscussionRoom';
-const REMOTE_FORMAT = 'Remote';
 
 const queryPages = /* GraphQL */ `
   query($conferenceTitle: ConferenceTitle, $eventYear: EventYear) {
@@ -286,28 +285,19 @@ const fetchEmsDiscussionRooms  = async (emsEventId) => {
     return [];
   }
 
-  const schedule = await getSchedule(emsEventId);
-  if (!schedule) {
+  const rooms = await getDiscussionRooms(emsEventId);
+  if (!rooms) {
     return [];
   }
 
-  let discussionRooms = [];
-  for (const track of schedule) {
-    for (const activity of track.activities) {
-      if (activity.eventType === DISCUSSION_ROOM_EVENT_TYPE) {
-        discussionRooms.push({
-          ...activity,
-          roomLinkText: activity.title,
-          speakers: activity.speakers && activity.speakers.map(speaker => ({
+  return rooms.map(room => ({
+    ...room,
+    roomLinkText: room.title,
+          speakers: room.speakers && room.speakers.map(speaker => ({
             ...speaker,
             country: speaker.location,
           })),
-        });
-      }
-    }
-  }
-
-  return discussionRooms;
+  }));
 }
 
 module.exports = {
