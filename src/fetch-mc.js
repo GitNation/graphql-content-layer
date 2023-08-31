@@ -1,5 +1,6 @@
 const { prepareSpeakers, trySelectSettings } = require('./utils');
 const { personFragment } = require('./fragments');
+const { getMcs } = require('./http-utils');
 
 const selectSettings = trySelectSettings(s => s.speakerAvatar.dimensions, {
   avatarWidth: 500,
@@ -17,6 +18,8 @@ const queryPages = /* GraphQL */ `
       id
       year: conferenceEvents(where: { year: $eventYear }) {
         id
+        emsEventId
+        useEmsData
         mcs {
           id
           speaker {
@@ -31,14 +34,23 @@ const queryPages = /* GraphQL */ `
 `;
 
 const fetchData = async (client, vars) => {
-  const data = await client
-    .request(queryPages, vars)
-    .then(res => res.conf.year[0].mcs);
+  const data = await client.request(queryPages, vars).then(res => ({
+    ...res.conf.year[0],
+  }));
 
-  const mcs = await prepareSpeakers(data, {});
+  const { mcs: cmsMcs, useEmsData, emsEventId } = data;
+
+  // prioritize CMS MCs
+  const rawMcs =
+    cmsMcs && cmsMcs.length
+      ? cmsMcs
+      : useEmsData
+      ? await getMcs(emsEventId)
+      : [];
+  const mcs = await Promise.all(prepareSpeakers(rawMcs, {}));
 
   return {
-    mcs: await Promise.all(mcs),
+    mcs,
   };
 };
 

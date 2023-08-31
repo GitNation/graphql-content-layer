@@ -36,7 +36,7 @@ const getLabelColor = (label, tagColors) => {
   return colors;
 };
 
-const prepareActivities = async (rawActivities) => {
+const prepareActivities = async rawActivities => {
   const activities = Object.entries(rawActivities).reduce(
     (all, [key, value]) => ({
       ...all,
@@ -147,9 +147,11 @@ const createSlug = (object, type) => {
 function newSponsorCategoryToOld(category) {
   switch (category) {
     case 'Media':
-      return 'MediaPartner'
+      return 'MediaPartner';
     case 'Community':
-      return 'Partner'
+      return 'Partner';
+    case 'Tech':
+      return 'TechPartner';
     default:
       return category;
   }
@@ -170,13 +172,13 @@ const range = (start, end, step) => {
 
   arr.push(end);
   return arr;
-}
+};
 
 function sortByOrder(a, b) {
   const aInd = a.order || Infinity;
   const bInd = b.order || Infinity;
   return aInd - bInd;
-};
+}
 
 module.exports = {
   getSocials,
@@ -189,5 +191,5 @@ module.exports = {
   contentTypeMap,
   newSponsorCategoryToOld,
   range,
-  sortByOrder
+  sortByOrder,
 };
