@@ -12,7 +12,7 @@ const {
 const { markdownToHtml } = require('./markdown');
 const { contentTypeMap, trySelectSettings } = require('./utils');
 const { formatEvent } = require('./formatters');
-const { getTopSpeaker, getDiscussionRooms } = require('./http-utils');
+const { getTopSpeaker, getDiscussionRooms, getEvent } = require('./http-utils');
 
 const selectSettings = trySelectSettings(
   s => ({
@@ -121,7 +121,12 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     tbaSpeakersNumber,
   } = await client.request(queryPages, vars).then(res => res.conf.year[0]);
 
-  const topSpeaker = await getTopSpeaker(emsEventId);
+  const topSpeakerPromise = getTopSpeaker(emsEventId);
+  const eventPromise = getEvent(emsEventId);
+  const [topSpeaker, event] = await Promise.all([
+    topSpeakerPromise,
+    eventPromise,
+  ]);
 
   const secondaryTracks = tracks.filter(t => !t.isPrimary);
   const mainTracks = tracks.filter(t => t.isPrimary);
@@ -240,6 +245,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     eventInfo: {
       topSpeaker,
       tbaSpeakersNumber,
+      emsEvent: event,
     },
   };
 
@@ -280,7 +286,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
   };
 };
 
-const fetchEmsDiscussionRooms  = async (emsEventId) => {
+const fetchEmsDiscussionRooms = async emsEventId => {
   if (!emsEventId) {
     return [];
   }
@@ -293,12 +299,14 @@ const fetchEmsDiscussionRooms  = async (emsEventId) => {
   return rooms.map(room => ({
     ...room,
     roomLinkText: room.title,
-          speakers: room.speakers && room.speakers.map(speaker => ({
-            ...speaker,
-            country: speaker.location,
-          })),
+    speakers:
+      room.speakers &&
+      room.speakers.map(speaker => ({
+        ...speaker,
+        country: speaker.location,
+      })),
   }));
-}
+};
 
 module.exports = {
   fetchData,
