@@ -73,10 +73,14 @@ const prepareSpeakers = (speakers, tagColors, labelColors, isCommonSpeakers) =>
       if (isCommonSpeakers) {
         const avatarHandle = item.avatar
           ? item.avatar.handle
-          : item.speaker.avatar.handle || null;
+          : item.speaker.avatar
+          ? item.speaker.avatar.handle
+          : null;
         const avatarMimeType = item.avatar
           ? item.avatar.mimeType
-          : item.speaker.avatar.mimeType || null;
+          : item.speaker.avatar
+          ? item.speaker.avatar.mimeType
+          : null;
 
         return {
           ...item.speaker,
@@ -91,8 +95,14 @@ const prepareSpeakers = (speakers, tagColors, labelColors, isCommonSpeakers) =>
         ...item.speaker,
         ...item,
         avatar: item.avatar || item.speaker.avatar || {},
-        avatarHandle: item.handle || item.speaker.avatar.handle || null,
-        avatarMimeType: item.mimeType || item.speaker.avatar.mimeType || null,
+        avatarHandle:
+          item.handle || item.speaker.avatar
+            ? item.speaker.avatar.handle
+            : null,
+        avatarMimeType:
+          item.mimeType || item.speaker.avatar
+            ? item.speaker.avatar.mimeType
+            : null,
         id: item.speaker.id,
       };
     })

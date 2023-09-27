@@ -145,7 +145,7 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
     emsEventId: res.conf.year[0].emsEventId,
     useEmsData: res.conf.year[0].useEmsData,
   }));
-  const emsSpeakers = data.useEmsData && await getSpeakers(data.emsEventId);
+  const emsSpeakers = data.useEmsData && (await getSpeakers(data.emsEventId));
 
   const { openForTalks } = data;
 
