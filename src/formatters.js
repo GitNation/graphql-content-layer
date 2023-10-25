@@ -250,8 +250,8 @@ const groupEmsScheduleByTimeFactory = (timezone) => {
   const dayMap = new Map();
   const minMaxByDay = new Map();
 
-  const dayMapAdd = (iso, track, event) => {
-    const date = iso.split('T')[0];
+  const dayMapAdd = (isoTz, iso, track, event) => {
+    const date = isoTz.split('T')[0];
 
     if (!dayMap.get(date)) {
       dayMap.set(date, new Map());
@@ -269,8 +269,8 @@ const groupEmsScheduleByTimeFactory = (timezone) => {
     timeMap.get(iso).push(event);
   }
 
-  const minMaxAdd = (iso) => {
-    const date = iso.split('T')[0];
+  const minMaxAdd = (isoTz, iso) => {
+    const date = isoTz.split('T')[0];
 
     if (!minMaxByDay.get(date)) {
       minMaxByDay.set(date, { min: iso, max: iso });
@@ -352,13 +352,16 @@ const groupEmsScheduleByTimeFactory = (timezone) => {
           continue;
         }
 
-        const beginDate = new Date(new Date(event.startDate).toLocaleString('en-US', { timeZone: timezone }));
+        const beginDate = new Date(event.startDate);
+        // hacky fix to put activity into the right chunk and display it properly on schedule page
+        const beginDateTz = new Date(beginDate.toLocaleString('en-US', { timeZone: timezone }));
         beginDate.setMinutes(0);
         beginDate.setSeconds(0);
         const time = beginDate.toISOString();
+        const timeTz = beginDateTz.toISOString();
 
-        minMaxAdd(time);
-        dayMapAdd(time, track, event);
+        minMaxAdd(timeTz, time);
+        dayMapAdd(timeTz, time, track, event);
       }
     },
     buildObject: (orderedTracks) => {
