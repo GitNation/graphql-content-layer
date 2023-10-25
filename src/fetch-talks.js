@@ -18,6 +18,7 @@ const {
 const selectSettings = trySelectSettings(
   s => ({
     labelColors: s.labelColors,
+    timezone: s.timezone,
   }),
   {},
 );
@@ -205,7 +206,7 @@ const getNewSchedule = async (tracksData, labelColors) => {
   return buildObject(tracksData.map(t => t.name));
 }
 
-const getEmsSchedule = async (eventId, labelColors) => {
+const getEmsSchedule = async (eventId, labelColors, timezone) => {
   const schedule = await fetchSchedule(eventId);
   if (!schedule) {
     return {
@@ -230,7 +231,7 @@ const getEmsSchedule = async (eventId, labelColors) => {
   );
 
   const promises = [offline, remote].filter(Boolean).map(async (tracks) => {
-    const { groupTrack, buildObject } = groupEmsScheduleByTimeFactory();
+    const { groupTrack, buildObject } = groupEmsScheduleByTimeFactory(timezone);
 
     await Promise.all(
       tracks.map(async (track) => {
@@ -266,7 +267,8 @@ const getEmsSchedule = async (eventId, labelColors) => {
   };
 }
 
-const fetchData = async (client, { labelColors, ...vars }) => {
+const fetchData = async (client, { labelColors, timezone = 'Europe/Amsterdam', ...vars }) => {
+  console.log('fetch-talks timezone', timezone);
   const {
     conf: {
       events: [rawData],
@@ -291,7 +293,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
     getNewSchedule(tracksData, labelColors),
     getNewSchedule(tracksOfflineData, labelColors),
     rawData.useEmsData
-      ? getEmsSchedule(rawData.emsEventId, labelColors)
+      ? getEmsSchedule(rawData.emsEventId, labelColors, timezone)
       : { emsSchedule: null, emsScheduleOffline: null },
   ]);
 

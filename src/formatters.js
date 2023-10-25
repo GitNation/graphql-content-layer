@@ -246,7 +246,7 @@ const formatActivity = async (event, labelColors, trackName) => {
   };
 };
 
-const groupEmsScheduleByTimeFactory = () => {
+const groupEmsScheduleByTimeFactory = (timezone) => {
   const dayMap = new Map();
   const minMaxByDay = new Map();
 
@@ -352,9 +352,10 @@ const groupEmsScheduleByTimeFactory = () => {
           continue;
         }
 
-        const beginDate = dayJS(event.startDate);
-        const beginHour = beginDate.set('minute', 0).set('second', 0);
-        const time = beginHour.toISOString();
+        const beginDate = new Date(new Date(event.startDate).toLocaleString('en-US', { timeZone: timezone }));
+        beginDate.setMinutes(0);
+        beginDate.setSeconds(0);
+        const time = beginDate.toISOString();
 
         minMaxAdd(time);
         dayMapAdd(time, track, event);
