@@ -335,6 +335,7 @@ const groupEmsScheduleByTimeFactory = timezone => {
           dateObj.setSeconds(59);
 
           const events = timeMap.get(date);
+
           events && events.sort((a, b) => a.startDate > b.startDate);
 
           trackBucket.push({
