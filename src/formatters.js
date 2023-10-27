@@ -1,6 +1,12 @@
 const dayJS = require('dayjs');
 
-const { createSlug, labelTag, contentTypeMap, range, getSocials } = require('./utils');
+const {
+  createSlug,
+  labelTag,
+  contentTypeMap,
+  range,
+  getSocials,
+} = require('./utils');
 const { markdownToHtml } = require('./markdown');
 
 const formatEvent = async (event, labelColors, trackName) => {
@@ -96,9 +102,9 @@ const groupByTimeFactory = () => {
       timeMap.set(iso, []);
     }
     timeMap.get(iso).push(event);
-  }
+  };
 
-  const minMaxAdd = (iso) => {
+  const minMaxAdd = iso => {
     const date = iso.split('T')[0];
 
     if (!minMaxByDay.get(date)) {
@@ -112,7 +118,7 @@ const groupByTimeFactory = () => {
         container.max = iso;
       }
     }
-  }
+  };
 
   // removes gaps in time interval (e.g. 12-13, 14-15)
   const normalizeDayMap = () => {
@@ -127,14 +133,14 @@ const groupByTimeFactory = () => {
 
         for (const timeMap of trackMap.values()) {
           if (!timeMap.get(date)) {
-            timeMap.set(date, null)
+            timeMap.set(date, null);
           }
         }
       }
     }
-  }
+  };
 
-  const mapToObject = (orderedTracks) => {
+  const mapToObject = orderedTracks => {
     const result = [];
     for (const [day, trackMap] of dayMap.entries()) {
       const dayBucket = [];
@@ -167,12 +173,12 @@ const groupByTimeFactory = () => {
             list: events,
           });
         }
-        dayBucket.push({ track, list: trackBucket })
+        dayBucket.push({ track, list: trackBucket });
       }
       result.push({ day, list: dayBucket });
     }
     return result;
-  }
+  };
 
   return {
     groupTrack: (eventList, track) => {
@@ -189,12 +195,12 @@ const groupByTimeFactory = () => {
         dayMapAdd(time, track, event);
       }
     },
-    buildObject: (orderedTracks) => {
+    buildObject: orderedTracks => {
       normalizeDayMap();
       return mapToObject(orderedTracks);
-    }
-  }
-}
+    },
+  };
+};
 
 const formatActivity = async (event, labelColors, trackName) => {
   const overlay = label => labelTag({ prefix: 'talk', labelColors, label });
@@ -211,13 +217,15 @@ const formatActivity = async (event, labelColors, trackName) => {
   } = event;
 
   const formattedSubactivities = await Promise.all(
-    subactivities.map(async e => formatActivity(e, labelColors, trackName))
+    subactivities.map(async e => formatActivity(e, labelColors, trackName)),
   );
 
-  const formattedSpeakers = speakers && speakers.map(speaker => ({
-    ...speaker,
-    socials: getSocials(speaker),
-  }))
+  const formattedSpeakers =
+    speakers &&
+    speakers.map(speaker => ({
+      ...speaker,
+      socials: getSocials(speaker),
+    }));
 
   return {
     ...rest,
@@ -237,16 +245,14 @@ const formatActivity = async (event, labelColors, trackName) => {
     slug: title ? createSlug({ title }, 'talk') : null,
     isLightning: eventType === 'LightningTalk' || eventType === 'GroupLT',
     label: tags && tags[0].label,
-    tag: tags
-      ? overlay(tags[0].label)
-      : null,
+    tag: tags ? overlay(tags[0].label) : null,
     tags,
     speakers: formattedSpeakers,
     subactivities: formattedSubactivities,
   };
 };
 
-const groupEmsScheduleByTimeFactory = (timezone) => {
+const groupEmsScheduleByTimeFactory = timezone => {
   const dayMap = new Map();
   const minMaxByDay = new Map();
 
@@ -267,7 +273,7 @@ const groupEmsScheduleByTimeFactory = (timezone) => {
       timeMap.set(iso, []);
     }
     timeMap.get(iso).push(event);
-  }
+  };
 
   const minMaxAdd = (isoTz, iso) => {
     const date = isoTz.split('T')[0];
@@ -283,7 +289,7 @@ const groupEmsScheduleByTimeFactory = (timezone) => {
         container.max = iso;
       }
     }
-  }
+  };
 
   // removes gaps in time interval (e.g. 12-13, 14-15)
   const normalizeDayMap = () => {
@@ -298,14 +304,14 @@ const groupEmsScheduleByTimeFactory = (timezone) => {
 
         for (const timeMap of trackMap.values()) {
           if (!timeMap.get(date)) {
-            timeMap.set(date, null)
+            timeMap.set(date, null);
           }
         }
       }
     }
-  }
+  };
 
-  const mapToObject = (orderedTracks) => {
+  const mapToObject = orderedTracks => {
     const result = [];
     for (const [day, trackMap] of dayMap.entries()) {
       const dayBucket = [];
@@ -338,12 +344,16 @@ const groupEmsScheduleByTimeFactory = (timezone) => {
             list: events,
           });
         }
-        dayBucket.push({ track, list: trackBucket })
+        dayBucket.push({ track, list: trackBucket });
       }
       result.push({ day, list: dayBucket });
     }
+    result.sort(
+      (a, b) => new Date(a.day).getTime() - new Date(b.day).getTime(),
+    );
+
     return result;
-  }
+  };
 
   return {
     groupTrack: (eventList, track) => {
@@ -354,7 +364,9 @@ const groupEmsScheduleByTimeFactory = (timezone) => {
 
         const beginDate = new Date(event.startDate);
         // hacky fix to put activity into the right chunk and display it properly on schedule page
-        const beginDateTz = new Date(beginDate.toLocaleString('en-US', { timeZone: timezone }));
+        const beginDateTz = new Date(
+          beginDate.toLocaleString('en-US', { timeZone: timezone }),
+        );
         beginDate.setMinutes(0);
         beginDate.setSeconds(0);
         const time = beginDate.toISOString();
@@ -364,16 +376,16 @@ const groupEmsScheduleByTimeFactory = (timezone) => {
         dayMapAdd(timeTz, time, track, event);
       }
     },
-    buildObject: (orderedTracks) => {
+    buildObject: orderedTracks => {
       normalizeDayMap();
       return mapToObject(orderedTracks);
-    }
-  }
-}
+    },
+  };
+};
 
 module.exports = {
   formatEvent,
   groupByTimeFactory,
   formatActivity,
-  groupEmsScheduleByTimeFactory
+  groupEmsScheduleByTimeFactory,
 };
