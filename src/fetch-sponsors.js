@@ -66,6 +66,8 @@ const fetchData = async (client, vars) => {
       avatar: null,
       idAlt: item.name,
     },
+    shortDescription: item.shortDescription,
+    description: item.description,
     width: item.width,
   }));
 
