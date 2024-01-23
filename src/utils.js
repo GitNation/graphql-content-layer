@@ -162,6 +162,8 @@ function newSponsorCategoryToOld(category) {
       return 'Partner';
     case 'Tech':
       return 'TechPartner';
+    case 'Entertainment':
+      return 'EntertainmentPartner';
     default:
       return category;
   }
