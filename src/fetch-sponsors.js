@@ -173,6 +173,14 @@ const fetchData = async (client, vars) => {
         .sort(sortByOrder),
       category: 'TechPartner',
     },
+    {
+      title: 'Entertainment partners',
+      mod: 'logos_xs sponsors-block_xs',
+      list: sponsorsList
+        .filter(({ category }) => category === 'EntertainmentPartner')
+        .sort(sortByOrder),
+      category: 'EntertainmentPartner',
+    },
   ].filter(({ list }) => list.length);
 
   return {
