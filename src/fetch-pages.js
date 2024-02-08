@@ -21,6 +21,8 @@ const selectSettings = trySelectSettings(
   {},
 );
 
+const now = new Date();
+
 const DISCUSSION_ROOM_EVENT_TYPE = 'DiscussionRoom';
 
 const queryPages = /* GraphQL */ `
@@ -263,6 +265,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
         ...page.pageSections.eventInfo,
         conferenceStart: startDate,
         conferenceFinish: endDate,
+        isConferenceFinish: new Date(endDate) < new Date() ? true : false,
         QuakeJS: customEvents.length
           ? customEvents.find(e => e.title === 'QuakeJS Tournament')
           : null,
