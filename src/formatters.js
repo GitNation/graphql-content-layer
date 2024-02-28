@@ -142,7 +142,6 @@ const groupByTimeFactory = () => {
 
   const mapToObject = orderedTracks => {
     const result = [];
-
     for (const [day, trackMap] of dayMap.entries()) {
       const dayBucket = [];
 
