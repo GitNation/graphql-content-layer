@@ -9,6 +9,8 @@ const getSocials = speaker => {
     twitterUrl: 'tw',
     mediumUrl: 'med',
     ownSite: 'site',
+    instagramUrl: 'instagram',
+    linkedinUrl: 'in',
   };
   const {
     githubUrl,
@@ -17,6 +19,8 @@ const getSocials = speaker => {
     mediumUrl,
     ownSite,
     companySite,
+    instagramUrl,
+    linkedinUrl,
   } = speaker;
   const socials = Object.entries({
     githubUrl,
@@ -25,6 +29,8 @@ const getSocials = speaker => {
     mediumUrl,
     ownSite,
     companySite,
+    instagramUrl,
+    linkedinUrl,
   })
     .map(([key, val]) => val && { link: val, icon: ICONS[key] })
     .filter(Boolean);
