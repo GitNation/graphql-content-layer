@@ -92,6 +92,7 @@ const prepareSpeakers = (speakers, tagColors, labelColors, isCommonSpeakers) =>
           ...item.speaker,
           ...item,
           avatar: item.avatar || item.speaker.avatar || {},
+          avatarSizes: item.speaker.avatar.size,
           avatarHandle,
           avatarMimeType,
           id: item.speaker.id,
