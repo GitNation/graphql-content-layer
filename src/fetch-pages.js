@@ -17,6 +17,7 @@ const { getTopSpeaker, getDiscussionRooms, getEvent } = require('./http-utils');
 const selectSettings = trySelectSettings(
   s => ({
     labelColors: s.labelColors,
+    timezone: s.timezone,
   }),
   {},
 );
@@ -109,7 +110,10 @@ const queryPages = /* GraphQL */ `
   ${customEvent}
 `;
 
-const fetchData = async (client, { labelColors, ...vars }) => {
+const fetchData = async (
+  client,
+  { labelColors, timezone = 'Europe/Amsterdam', ...vars },
+) => {
   const {
     pages: data,
     tracks,
@@ -246,6 +250,7 @@ const fetchData = async (client, { labelColors, ...vars }) => {
       topSpeaker,
       tbaSpeakersNumber,
       emsEvent: event,
+      currency: timezone.includes('America') ? '$' : '€',
     },
   };
 
