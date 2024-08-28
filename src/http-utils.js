@@ -24,6 +24,7 @@ const getBrand = baseEventFetch('brand');
 const getDiscussionRooms = baseEventFetch('discussion-rooms');
 const getMcs = baseEventFetch('users?role=MC');
 const getCommittee = baseEventFetch('users?role=PC');
+const getFreeWorkshops = baseEventFetch('free-workshops');
 const getEvent = baseEventFetch('');
 
 module.exports = {
@@ -36,4 +37,5 @@ module.exports = {
   getMcs,
   getCommittee,
   getEvent,
+  getFreeWorkshops,
 };

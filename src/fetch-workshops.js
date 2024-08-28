@@ -8,6 +8,7 @@ const {
   contentTypeMap,
 } = require('./utils');
 const { speakerInfoFragment, activitiesFragment } = require('./fragments');
+const { getFreeWorkshops } = require('./http-utils');
 
 dayjs.extend(customParseFormat);
 
@@ -25,6 +26,8 @@ const queryPages = /* GraphQL */ `
   ) {
     conf: conferenceBrand(where: { title: $conferenceTitle }) {
       events: conferenceEvents(where: { year: $eventYear }) {
+        emsEventId
+        useEmsData
         isoStartDate
         isoEndDate
         workshops {
@@ -98,16 +101,36 @@ const createWorkshopSchedule = (start, duration) => {
   };
 };
 
+const mergeWorkshops = (gqlWorkshops, emsWorkshops) => {
+  return [
+    ...gqlWorkshops,
+    ...emsWorkshops.filter(emsWs => {
+      const emsWsTitle = emsWs.title.toLowerCase();
+      return !gqlWorkshops.some(gqlWs => {
+        const gqlWsTitle = gqlWs.title.toLowerCase();
+        return (
+          gqlWsTitle === emsWsTitle ||
+          gqlWsTitle.includes(emsWsTitle) ||
+          emsWsTitle.includes(gqlWsTitle)
+        );
+      });
+    }),
+  ];
+};
+
 const fetchData = async (client, vars) => {
   const data = await client
     .request(queryPages, vars)
     .then(res => res.conf.events[0]);
 
-  const { isoStartDate } = data;
+  const { isoStartDate, useEmsData, emsEventId } = data;
+
+  const emsWorkshops = useEmsData ? await getFreeWorkshops(emsEventId) : [];
 
   const confStartDate = dayjs(isoStartDate);
 
-  const workshops = data.workshops
+  const mergedWorkshops = mergeWorkshops(data.workshops, emsWorkshops);
+  const workshops = mergedWorkshops
     .map(({ speaker, trainers, ...ws }) => ({
       speaker: speaker || {
         info: [],
@@ -153,7 +176,7 @@ const fetchData = async (client, vars) => {
   const allWorkshops = await Promise.all(
     workshops.map(async wrp => ({
       ...wrp,
-      content: wrp.toc.length ? wrp.toc : wrp.content,
+      content: wrp.toc && wrp.toc.length ? wrp.toc : wrp.content,
       location: await markdownToHtml(wrp.location),
       description: await markdownToHtml(wrp.description),
       additionalInfo: await markdownToHtml(wrp.additionalInfo),
@@ -166,7 +189,7 @@ const fetchData = async (client, vars) => {
     .reduce(
       (list, { speaker, trainers }) => [
         ...list,
-        speaker.info[0] || { speaker },
+        (speaker.info && speaker.info[0]) || { speaker },
         ...trainers.map(tr => ({ speaker: tr })),
       ],
       [],
