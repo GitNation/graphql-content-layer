@@ -164,7 +164,12 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
       console.log('invalid speaker', JSON.stringify(speaker));
     }
 
-    const { activities, offlineActivities, ...restSpeakerData } = speaker;
+    const {
+      activities,
+      offlineActivities,
+      allActivities,
+      ...restSpeakerData
+    } = speaker;
 
     return {
       ...restSpeakerData,
@@ -182,6 +187,12 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
           ...(offlineActivities
             ? offlineActivities.talks.map(convertDateToIso)
             : []),
+        ],
+        allTalks: [
+          ...(allActivities
+            ? allActivities.lightningTalks.map(convertDateToIso)
+            : []),
+          ...(allActivities ? allActivities.talks.map(convertDateToIso) : []),
         ],
       },
     };
