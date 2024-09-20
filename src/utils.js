@@ -115,7 +115,7 @@ const prepareSpeakers = (speakers, tagColors, labelColors, isCommonSpeakers) =>
     })
     .map(async ({ bio, speaker, avatar, activities, ...item }) => ({
       ...item,
-      companyCountryData: [item.company, item.country]
+      companyWithCountry: [item.company, item.country]
         .filter(Boolean)
         .join(', '),
       avatar: avatar.url,
