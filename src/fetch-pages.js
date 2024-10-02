@@ -250,7 +250,11 @@ const fetchData = async (
       topSpeaker,
       tbaSpeakersNumber,
       emsEvent: event,
-      currency: timezone.includes('America') ? '$' : '€',
+      currency: timezone.includes('America')
+        ? '$'
+        : timezone.includes('London')
+        ? '£'
+        : '€',
     },
   };
 
