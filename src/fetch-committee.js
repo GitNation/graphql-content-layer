@@ -2,10 +2,18 @@ const { prepareSpeakers, trySelectSettings } = require('./utils');
 const { personFragment } = require('./fragments');
 const { getCommittee } = require('./http-utils');
 
-const selectSettings = trySelectSettings(s => s.speakerAvatar.dimensions, {
-  avatarWidth: 500,
-  avatarHeight: 500,
-});
+const selectSettings = trySelectSettings(
+  s => ({
+    ...s.speakerAvatar.dimensions,
+    tagColors: s.tagColors,
+    labelColors: s.labelColors,
+  }),
+  {
+    avatarWidth: 500,
+    avatarHeight: 500,
+    tagColors: {},
+  },
+);
 
 const queryPages = /* GraphQL */ `
   query(
@@ -30,7 +38,7 @@ const queryPages = /* GraphQL */ `
   ${personFragment}
 `;
 
-const fetchData = async (client, vars) => {
+const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
   const data = await client.request(queryPages, vars).then(res => ({
     ...res.conf.year[0],
   }));
@@ -48,7 +56,8 @@ const fetchData = async (client, vars) => {
   const speakers = await Promise.all(
     prepareSpeakers(
       rawCommittee.map(speaker => ({ ...speaker, decor: true })),
-      {},
+      tagColors,
+      labelColors,
     ),
   );
 
