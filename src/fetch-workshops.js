@@ -182,6 +182,8 @@ const fetchData = async (client, vars) => {
       additionalInfo: await markdownToHtml(wrp.additionalInfo),
       prerequisites: await markdownToHtml(wrp.prerequisites),
       finishingTime: '',
+      startDate:
+        wrp.startDate || dayjs(wrp.location, 'MMMM D, HH').toISOString(),
     })),
   );
 
@@ -220,10 +222,17 @@ const fetchData = async (client, vars) => {
     ),
   );
 
+  const sortedWorkshops = allWorkshops.sort((a, b) => {
+    return (
+      Number(a.includedToPackage) - Number(b.includedToPackage) ||
+      new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
+    );
+  });
+
   return {
     trainers,
     workshopDays: data.length,
-    workshops: allWorkshops,
+    workshops: sortedWorkshops,
     speakers: {
       workshops: trainers,
     },
