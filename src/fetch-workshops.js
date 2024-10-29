@@ -174,17 +174,26 @@ const fetchData = async (client, vars) => {
     });
 
   const allWorkshops = await Promise.all(
-    workshops.map(async wrp => ({
-      ...wrp,
-      content: wrp.toc && wrp.toc.length ? wrp.toc : wrp.content,
-      location: await markdownToHtml(wrp.location),
-      description: await markdownToHtml(wrp.description),
-      additionalInfo: await markdownToHtml(wrp.additionalInfo),
-      prerequisites: await markdownToHtml(wrp.prerequisites),
-      finishingTime: '',
-      startDate:
-        wrp.startDate || dayjs(wrp.location, 'MMMM D, HH').toISOString(),
-    })),
+    workshops.map(async wrp => {
+      let djsStartDate = wrp.location && dayjs(wrp.location, 'MMMM D, HH');
+      if (djsStartDate && !djsStartDate.isValid()) {
+        djsStartDate = dayjs(wrp.location, 'MMMM D');
+      }
+
+      return {
+        ...wrp,
+        content: wrp.toc && wrp.toc.length ? wrp.toc : wrp.content,
+        location: await markdownToHtml(wrp.location),
+        description: await markdownToHtml(wrp.description),
+        additionalInfo: await markdownToHtml(wrp.additionalInfo),
+        prerequisites: await markdownToHtml(wrp.prerequisites),
+        finishingTime: '',
+        startDate:
+          wrp.startDate || djsStartDate.isValid()
+            ? djsStartDate.toISOString()
+            : null,
+      };
+    }),
   );
 
   const rawTrainers = allWorkshops
