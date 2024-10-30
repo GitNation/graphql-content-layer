@@ -177,7 +177,8 @@ const fetchData = async (client, vars) => {
     workshops.map(async wrp => {
       let djsStartDate = wrp.location && dayjs(wrp.location, 'MMMM D, HH');
       if (djsStartDate && !djsStartDate.isValid()) {
-        djsStartDate = dayjs(wrp.location, 'MMMM D');
+        djsStartDate =
+          dayjs(wrp.location, 'MMMM D') || dayjs(wrp.location, 'MMMM D-D');
       }
 
       return {
