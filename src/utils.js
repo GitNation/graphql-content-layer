@@ -54,7 +54,6 @@ const prepareActivities = async rawActivities => {
   const promises = [];
   for (const [key, value] of Object.entries(activities)) {
     const entryPromises = value.map(async item => {
-      item.slug = createSlug(item, key);
       item.description = await markdownToHtml(item.description);
     });
     promises.push(...entryPromises);
