@@ -11,11 +11,13 @@ const getSocials = speaker => {
     ownSite: 'site',
     instagramUrl: 'instagram',
     linkedinUrl: 'in',
+    blueskyUrl: 'bluesky',
   };
   const {
     githubUrl,
     portalUrl,
     twitterUrl,
+    blueskyUrl,
     mediumUrl,
     ownSite,
     companySite,
@@ -26,6 +28,7 @@ const getSocials = speaker => {
     githubUrl,
     portalUrl,
     twitterUrl,
+    blueskyUrl,
     mediumUrl,
     ownSite,
     companySite,
