@@ -189,9 +189,10 @@ const fetchData = async (client, vars) => {
         prerequisites: await markdownToHtml(wrp.prerequisites),
         finishingTime: '',
         startDate:
-          wrp.startDate || djsStartDate.isValid()
+          wrp.startDate ||
+          (djsStartDate && djsStartDate.isValid()
             ? djsStartDate.toISOString()
-            : null,
+            : null),
       };
     }),
   );
