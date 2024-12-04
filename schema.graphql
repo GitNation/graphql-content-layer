@@ -1873,6 +1873,7 @@ type ConferenceBrand implements Node {
   instagramUrl: String
   tiktokUrl: String
   linkedinUrl: String
+  blueskyUrl: String
   mediumUrl: String
   youtubeUrl: String
   codeOfConductIntro: String
