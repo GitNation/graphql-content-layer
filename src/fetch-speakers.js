@@ -1,7 +1,7 @@
 const { prepareSpeakers, trySelectSettings, sortByOrder } = require('./utils');
 const { speakerInfoFragment, sponsorLogoFragment } = require('./fragments');
 const dayjs = require('dayjs');
-const { getSpeakers } = require('./http-utils');
+const { getSpeakers, getPastSpeakers } = require('./http-utils');
 
 const selectSettings = trySelectSettings(
   s => ({
@@ -145,17 +145,43 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
     emsEventId: res.conf.year[0].emsEventId,
     useEmsData: res.conf.year[0].useEmsData,
   }));
-  const emsSpeakers = data.useEmsData && (await getSpeakers(data.emsEventId));
+
+  let emsSpeakers, pastSpeakers;
+  if (data.useEmsData) {
+    [emsSpeakers, pastSpeakers] = await Promise.all([
+      getSpeakers(data.emsEventId),
+      getPastSpeakers(data.emsEventId),
+    ]);
+  }
 
   const { openForTalks } = data;
 
-  const convertDateToIso = item => ({
-    ...item,
-    timeString: item.timeString ? dayjs(item.timeString).toISOString() : null,
-  });
+  const [
+    { daySpeakers, eveningSpeakers },
+    { daySpeakers: daySpeakersPast, eveningSpeakers: eveningSpeakersPast },
+  ] = await Promise.all([emsSpeakers || data.speakers, pastSpeakers].map(speakers =>
+    processSpeakers(speakers, tagColors, labelColors)
+  ));
 
-  const speakersRaw = emsSpeakers || data.speakers;
-  const speakersWithPlainActivities = speakersRaw.map(speaker => {
+  return {
+    speakers: { main: daySpeakers },
+    eveningSpeakers,
+    pastSpeakers: {
+      main: daySpeakersPast,
+      eveningSpeakers: eveningSpeakersPast,
+    },
+    speakersBtn: openForTalks ? 'CALL FOR SPEAKERS' : false,
+    labelColors,
+  };
+};
+
+const convertDateToIso = item => ({
+  ...item,
+  timeString: item.timeString ? dayjs(item.timeString).toISOString() : null,
+});
+
+const processSpeakers = async (rawSpeakers, tagColors, labelColors) => {
+  const speakersWithPlainActivities = rawSpeakers.map(speaker => {
     if (!speaker.activities) {
       console.log('invalid activities', JSON.stringify(speaker));
     }
@@ -214,12 +240,7 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
     ({ isNightSpeaker }) => isNightSpeaker,
   );
 
-  return {
-    speakers: { main: daySpeakers },
-    eveningSpeakers,
-    speakersBtn: openForTalks ? 'CALL FOR SPEAKERS' : false,
-    labelColors,
-  };
+  return { daySpeakers, eveningSpeakers };
 };
 
 module.exports = {
