@@ -159,9 +159,11 @@ const fetchData = async (client, { tagColors, labelColors, ...vars }) => {
   const [
     { daySpeakers, eveningSpeakers },
     { daySpeakers: daySpeakersPast, eveningSpeakers: eveningSpeakersPast },
-  ] = await Promise.all([emsSpeakers || data.speakers, pastSpeakers].map(speakers =>
-    processSpeakers(speakers, tagColors, labelColors)
-  ));
+  ] = await Promise.all(
+    [emsSpeakers || data.speakers || [], pastSpeakers || []].map(speakers =>
+      processSpeakers(speakers, tagColors, labelColors),
+    ),
+  );
 
   return {
     speakers: { main: daySpeakers },
