@@ -16,6 +16,7 @@ const extContent = require('./fetch-extended');
 const jobsContent = require('./fetch-jobs');
 const committeeContent = require('./fetch-committee');
 const diversityContent = require('./fetch-diversity');
+const latestLinksContent = require('./fetch-landings');
 const { postProcessLayer } = require('./postprocess');
 
 const createClient = ({ endpoint, token }) => {
@@ -57,6 +58,7 @@ const getContent = async conferenceSettings => {
     jobsContent,
     committeeContent,
     diversityContent,
+    latestLinksContent,
   ].map(async content => {
     try {
       getQueriesData(content, conferenceSettings);
