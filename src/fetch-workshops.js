@@ -129,7 +129,10 @@ const fetchData = async (client, vars) => {
 
   const confStartDate = dayjs(isoStartDate);
 
-  const mergedWorkshops = mergeWorkshops(data.workshops, emsWorkshops);
+  const mergedWorkshops = mergeWorkshops(
+    data.workshops || [],
+    emsWorkshops || [],
+  );
   const workshops = mergedWorkshops
     .map(({ speaker, trainers, ...ws }) => ({
       speaker: speaker || {
