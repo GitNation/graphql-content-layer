@@ -8,7 +8,7 @@ const {
   contentTypeMap,
 } = require('./utils');
 const { speakerInfoFragment, activitiesFragment } = require('./fragments');
-const { getFreeWorkshops } = require('./http-utils');
+const { getWorkshops } = require('./http-utils');
 
 dayjs.extend(customParseFormat);
 
@@ -125,7 +125,7 @@ const fetchData = async (client, vars) => {
 
   const { isoStartDate, useEmsData, emsEventId } = data;
 
-  const emsWorkshops = useEmsData ? await getFreeWorkshops(emsEventId) : [];
+  const emsWorkshops = useEmsData ? await getWorkshops(emsEventId) : [];
 
   const confStartDate = dayjs(isoStartDate);
 
